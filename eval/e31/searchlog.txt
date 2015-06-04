@@ -306,3 +306,112 @@ syntactic github
 syntactic flake8 characters per line
 vim mouse click
 skip check of line flake8
+vim set indent for file
+jquery ui cdn
+pysoundcard pyscstream api
+pysoundcard set input device
+load jquery on page
+figure out zotero storage, and linking to docs from personal collection
+vimrc json filetype
+python with osculator
+git pick ours
+pip install OSC
+add comments to alfred workflows
+vim templates for filetypes
+import unicode_literals python2
+os home python
+python git bindings
+strftime
+strftime python
+argparse python add_argument
+python get input
+python copy file
+git remove submodule
+launchagent as user osx
+python print user
+os.path. delimiter
+system root path python
+python get directory of fine
+firefox javascript as library or cfx
+compile javscript into library
+npm compile Javascript into script that can be included
+github fork your own repository
+javascript standalone library file npm
+isc license
+browserify with dependencies
+require jquery
+browserify require jquery
+require jquery-ui browserify
+node.js access document.body
+browserify document.body is null
+javascript document.on ready
+$.post is not a function
+latex easy documentation
+latex glossary
+build xpi with npm
+npm build firefox addon
+npm build dependencies
+jpm data directory
+jpm include icon
+firefox jpm icon doesn't appear
+vim copy selection
+vim osx clipboard visual selection
+jslint global
+alfred github refresh
+npm build with version number
+browserify output with version number
+openat command for launching apps at a time
+alfred show current time
+npm ansible
+ansible simple playbook
+django static_root
+django templatedoesnotexist
+ls delimiter
+ansible clean on git pull
+javascript document on ready
+remove trailing whitespace pre
+html monospace fonts
+osx open 7z
+preview huge xml file
+preview huge xml file osx
+index of programming tutorials
+alfred show time
+query counts major search engines
+counts of frequent web queries
+stackoverflow search data
+stackoverflow queries
+google query data
+cooccuring google query terms
+xml tomysql
+load StackOverflow XML into sql
+mysql create table
+delete table mysql
+mysql max length varchar
+mysql progress load xml
+mysqlload
+mysqlimport
+get number of rows in table mysql
+can't get stat mysqlimport
+pv mysqlimport
+osx pv
+mysqlimport
+mysqlimport from pipe
+mysqlimport progress
+how to use stackoverflow data dump
+stackoverflow tag combinations
+stackoverflow data explorer multiple pages
+local stackoverflow data dump
+alfred gmail from command line
+gmail alfred
+alfred cursor isn't appearing
+python strftime
+codesearch
+galaxy s2 android wear
+galaxy s2 with android wear
+argparse python
+play sound osx terminal
+stackoverflow tag n-grams
+peewee orm
+sqlite query database
+Error binding parameter 0 - probably unsupported type.
+git list all untracked files

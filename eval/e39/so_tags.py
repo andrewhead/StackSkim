@@ -6,35 +6,12 @@ import logging
 import argparse
 import cache
 import peewee
-from peewee import SqliteDatabase, Model, CharField, IntegerField
+from models import Bigram, Trigram, create_tables
 
 
 logging.basicConfig(level=logging.INFO, format="%(message)s")
-db = SqliteDatabase('so_tags.db')
 session = cache.get_session()
 TARGET_TAGS = ['wget', 'regex', 'css-selectors']
-
-
-class Bigram(Model):
-    tag1 = CharField()
-    tag2 = CharField()
-    count = IntegerField(default=0)
-
-    class Meta:
-        database = db
-
-
-class Trigram(Model):
-    tag1 = CharField()
-    tag2 = CharField()
-    tag3 = CharField()
-    count = IntegerField(default=0)
-
-    class Meta:
-        database = db
-        indexes = (
-            (('tag1', 'tag2', 'tag3'), True),
-        )
 
 
 def make_url(tags):
@@ -79,8 +56,7 @@ def fetch_trigrams():
                 tags = [pair[0], pair[1], i['name']]
                 tags_ord = sorted(tags)
                 try:
-                    with db.atomic():
-                        tg = Trigram.create(tag1=tags_ord[0], tag2=tags_ord[1], tag3=tags_ord[2])
+                    tg = Trigram.create(tag1=tags_ord[0], tag2=tags_ord[1], tag3=tags_ord[2])
                 except peewee.IntegrityError:
                     tg = Trigram.get(
                         Trigram.tag1 == tags_ord[0],
@@ -107,6 +83,6 @@ if __name__ == '__main__':
             print ' '.join([tg.tag1, tg.tag2, tg.tag3])
     else:
         if args.init:
-            db.create_tables([Bigram, Trigram])
+            create_tables()
         fetch_bigrams()
         fetch_trigrams()
