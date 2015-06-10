@@ -19,11 +19,12 @@ MICROLANGUAGES = ['wget', 'css-selectors']
 session = cache.get_session()
 
 
-def save_page(query, link, rank, title):
+def save_page(language, query, link, rank, title):
     try:
-        pg = Page.create(query=query, link=link, rank=rank, title=title)
+        pg = Page.create(language=language, query=query, link=link, rank=rank, title=title)
     except peewee.IntegrityError:
-        pg = Page.get(Page.link == link, Page.query == query)
+        pg = Page.get(Page.language == language, Page.link == link, Page.query == query)
+        pg.language = language
         pg.rank = rank
         pg.title = title
         pg.save()
@@ -48,7 +49,7 @@ def get_results(pages=200):
             res = fetch_results(query)
 
             for rank, r in enumerate(res, 1):
-                save_page(query, r['link'], rank, r['title'])
+                save_page(ml, query, r['link'], rank, r['title'])
 
             for r in res:
                 if r['link'] not in ml_links:

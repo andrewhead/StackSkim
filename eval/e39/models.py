@@ -31,15 +31,17 @@ class Trigram(Model):
 
 
 class Page(Model):
+    language = CharField()
     query = CharField()
     link = CharField()
     rank = IntegerField()
     title = CharField()
+    dest = CharField(default='')
 
     class Meta:
         database = db
         indexes = (
-            (('link', 'query'), True),
+            (('language', 'link', 'query'), True),
         )
 
 
