@@ -1,0 +1,13 @@
+{
+  "title": "Selection Addon",
+  "name": "selection-addon",
+  "version": "0.0.1",
+  "description": "Addon for copying to the clipboard selections and all possible paths and positions of that selection",
+  "main": "index.js",
+  "author": "Andrew Head",
+  "engines": {
+    "firefox": ">=38.0a1",
+    "fennec": ">=38.0a1"
+  },
+  "license": "None"
+}
