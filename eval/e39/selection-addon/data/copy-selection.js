@@ -97,6 +97,18 @@ function offsetsWithinElement(node, range) {
 }
 
 
+function getOffsetsInHtml(range) {
+    var node = getEncapsulatingNode(range);
+    var parents = $(node).parents().toArray();
+    var i;
+    for (i = 0; i < parents.length; i++) {
+        if (parents[i].tagName === 'HTML') {
+            return offsetsWithinElement(parents[i], range);
+        }
+    }
+}
+
+
 document.body.onmouseup = function() {
 
     var selection =  window.getSelection();
@@ -106,13 +118,25 @@ document.body.onmouseup = function() {
         var range = selection.getRangeAt(0);
         var node = getEncapsulatingNode(range);
         var parents = [node].concat($(node).parents().toArray());
-        var i, selector, par, offsets;
+        var htmlOffsets = getOffsetsInHtml(range);
+        var i, selector, par, offsets, start_char, end_char;
         for (i = 0; i < parents.length; i++) {
             par = parents[i];
             selector = getCssSelector(par);
             offsets = offsetsWithinElement(par, range);
-            console.log('[' + offsets.start + ',' + offsets.end + '], ' + selector);
-            msg += [selector, offsets.start, offsets.end].join('\t') + '\n';
+            start_char = offsets.start;
+            end_char = offsets.end - 1;  // ranges end at an index 1 after the last character
+            msg += [
+                start_char, 
+                end_char,
+                selector,
+                // Together, the page URL together with the offsets of the 
+                // text within the full body of the page should be a unique
+                // identifier for this range
+                window.location.href, 
+                htmlOffsets.start,
+                htmlOffsets.end
+            ].join('\t') + '\n';
         }
         self.port.emit('copy', {'msg': msg});
     }

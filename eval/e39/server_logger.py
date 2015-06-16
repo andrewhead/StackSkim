@@ -14,7 +14,7 @@ logging.basicConfig(level=logging.INFO, format="%(message)s")
 def main(logfilename):
 
     # Print TSV headings
-    print '\t'.join(["origin", "path", "text", "start", "end"])
+    print '\t'.join(["timestamp", "origin", "path", "text", "start", "end"])
     origin = 'none'
 
     with open(logfilename) as log:
@@ -32,7 +32,8 @@ def main(logfilename):
                 if m is not None:
                     path, text, start, end = m.groups()
                     text = text.replace('\t', '<tab>')  # remove tabs so we can print this as TSV
-                    print '\t'.join([origin, path, text, start, end])
+                    timestamp = time.strftime("%Y-%m-%d %H:%M:%S")
+                    print '\t'.join([timestamp, origin, path, text, start, end])
 
             try:
                 time.sleep(1)

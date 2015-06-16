@@ -2,6 +2,7 @@ var self = require('sdk/self');
 var data = require('sdk/self').data;
 var pageMod = require('sdk/page-mod');
 var clipboard = require('sdk/clipboard');
+var notifications = require('sdk/notifications');
 
 
 pageMod.PageMod({
@@ -13,6 +14,10 @@ pageMod.PageMod({
     attachTo: ['existing', 'top'],
     onAttach: function(worker) {
         worker.port.on('copy', function(payload) {
+            notifications.notify({
+                title: "Copied selection!",
+                text: "Paste anywhere in TSV format."
+            });
             clipboard.set(payload.msg);
         });
     },
