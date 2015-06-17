@@ -38,7 +38,8 @@ if __name__ == '__main__':
     if args.action == 'index':
         page = (Page
                 .select()
-                .order_by(Page.id.asc())
+                .group_by(Page.link)
+                .order_by(Page.link)
                 .limit(1)
                 .offset(args.index)
                 .first())
@@ -46,14 +47,16 @@ if __name__ == '__main__':
         page = (Page
                 .select()
                 .where(Page.language == args.microlanguage)
-                .order_by(Page.id.asc())
+                .group_by(Page.link)
+                .order_by(Page.link)
                 .limit(1)
                 .offset(args.index)
                 .first())
     elif args.action == 'query':
         page = (Page
                 .select()
-                .order_by(Page.id.asc())
+                .group_by(Page.link)
+                .order_by(Page.link)
                 .where(Page.query == args.query)
                 .limit(1)
                 .offset(args.index)
