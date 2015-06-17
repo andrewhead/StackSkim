@@ -30,7 +30,7 @@ def save_page(language, query, link, rank, title):
         pg.save()
 
 
-def get_results(pages=200):
+def get_results(pages=300):
 
     for ml in MICROLANGUAGES:
 

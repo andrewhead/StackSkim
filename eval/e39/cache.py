@@ -3,7 +3,6 @@
 
 from __future__ import unicode_literals
 import logging
-import requests
 import requests_cache
 import time
 
@@ -12,13 +11,13 @@ logging.basicConfig(level=logging.INFO, format="%(message)s")
 CACHE_NAME = 'cache'
 
 requests_cache.install_cache(CACHE_NAME)
-session = requests_cache.CachedSession()
+session = requests_cache.CachedSession(expire_after=60*60*24)
 
 
 def throttle_hook(timeout=1.0):
-    ''' 
+    '''
     Hook for throttling requests if not in cache.
-    Snippet from http://requests-cache.readthedocs.org/en/latest/user_guide.html#usage. 
+    Snippet from http://requests-cache.readthedocs.org/en/latest/user_guide.html#usage.
     '''
     def hook(response, *args, **kwargs):
         if not getattr(response, 'from_cache', False):
@@ -33,4 +32,3 @@ def throttle_hook(timeout=1.0):
 def get_session(timeout=1.0):
     session.hooks = {'response': throttle_hook(timeout)}
     return session
-
