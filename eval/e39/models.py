@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import unicode_literals
-from peewee import Model, CharField, IntegerField, SqliteDatabase
+from peewee import Model, CharField, IntegerField, SqliteDatabase, BooleanField
 
 
 db = SqliteDatabase('test_pages.db')
@@ -37,6 +37,7 @@ class Page(Model):
     rank = IntegerField()
     title = CharField()
     dest = CharField(default='')
+    has_example = BooleanField(null=True)
 
     class Meta:
         database = db

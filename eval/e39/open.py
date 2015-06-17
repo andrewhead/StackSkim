@@ -90,5 +90,5 @@ if __name__ == '__main__':
     if server_running:
         path = os.path.join(
             LOCALHOST, 'pages', page.language, page.query, str(page.rank), link)
-        print "Opening file: " + str(path)
+        print page.link
         subprocess.call(['open', path])
