@@ -38,6 +38,7 @@ class Page(Model):
     title = CharField()
     dest = CharField(default='')
     has_example = BooleanField(null=True)
+    notfound = BooleanField(null=True)
 
     class Meta:
         database = db

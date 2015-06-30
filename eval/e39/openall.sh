@@ -10,14 +10,22 @@ function link_has_example {
 
   while [[ 1 ]]
   do
-    read -p "Does page contain a code example (y/n): " response
+    echo "Does page contain a code example?"
+    read -p "Yes, No, Unfound (y/n/u): " response
     if printf "%s\n" "$response" | grep -Eq "$(locale yesexpr)"
     then
-      val=1
+      has_example=1
+      notfound=0
       break
     elif printf "%s\n" "$response" | grep -Eq "$(locale noexpr)"
     then
-      val=0
+      has_example=0
+      notfound=0
+      break
+    elif [ "$response" == "u" ]
+    then
+      has_example=0
+      notfound=1
       break
     else
       echo "Invalid response.  Try again."
@@ -25,8 +33,9 @@ function link_has_example {
   done
 
   # Update whether this link has a code example
-  echo "UPDATE page SET has_example = $val WHERE link='$link';"
-  sqlite3 test_pages.db "UPDATE page SET has_example = $val WHERE link='$link';"
+  sqlite3 test_pages.db "UPDATE page SET has_example = $has_example WHERE link='$link';"
+  sqlite3 test_pages.db "UPDATE page SET notfound = $notfound WHERE link='$link';"
+  echo "Stored (has_example = $has_example, notfound = $notfound)"
 
 }
 
@@ -35,15 +44,13 @@ i=${1:-0}
 while [[ 1 ]]
 do
   i=$((i+1))
-  echo "Opening file $i"
   link=`./open.py index $i`
-  echo "Reading file from link: $link"
+  echo "Opening file $i ($link)"
   link_has_example $link
+  echo "========================"
   if [ $? -eq 2 ]
   then
     echo "Read all files"
     break
   fi
-  echo "Press Enter to continue."
-  read  # wait for user input to move onto next file
 done
