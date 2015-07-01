@@ -1,0 +1,261 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<workbook source-platform='mac' version='8.3' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <!-- build 8200.14.0819.2015                                -->
+  <preferences>
+  </preferences>
+  <datasources>
+    <datasource caption='domains' inline='true' name='textscan.42185.708127280100' version='8.3'>
+      <connection class='textscan' directory='/Users/andrew/Adventures/design/code/research/eval/e39' filename='domains.tab'>
+        <relation name='domains#tab' table='[domains#tab]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator='&#9;'>
+            <column datatype='string' name='domain' ordinal='0' />
+            <column datatype='string' name='language' ordinal='1' />
+            <column datatype='string' name='query' ordinal='2' />
+            <column datatype='boolean' name='has_example' ordinal='3' />
+            <column datatype='boolean' name='notfound' ordinal='4' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>domain</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[domain]</local-name>
+            <parent-name>[domains#tab]</parent-name>
+            <remote-alias>domain</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteCollation'>&quot;binary&quot;</attribute>
+              <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>language</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[language]</local-name>
+            <parent-name>[domains#tab]</parent-name>
+            <remote-alias>language</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteCollation'>&quot;binary&quot;</attribute>
+              <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>query</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[query]</local-name>
+            <parent-name>[domains#tab]</parent-name>
+            <remote-alias>query</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteCollation'>&quot;binary&quot;</attribute>
+              <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>has_example</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[has_example]</local-name>
+            <parent-name>[domains#tab]</parent-name>
+            <remote-alias>has_example</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>1</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;bool&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>notfound</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[notfound]</local-name>
+            <parent-name>[domains#tab]</parent-name>
+            <remote-alias>notfound</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>1</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;bool&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name></remote-name>
+            <remote-type>0</remote-type>
+            <parent-name>[domains#tab]</parent-name>
+            <remote-alias></remote-alias>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;\\t&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column caption='Domain' datatype='string' name='[domain]' role='dimension' type='nominal'>
+      </column>
+      <column caption='Has Example' datatype='boolean' name='[has_example]' role='dimension' type='nominal'>
+      </column>
+      <column caption='Language' datatype='string' name='[language]' role='dimension' type='nominal'>
+      </column>
+      <column caption='Notfound' datatype='boolean' name='[notfound]' role='dimension' type='nominal'>
+      </column>
+      <column caption='Query' datatype='string' name='[query]' role='dimension' type='nominal'>
+      </column>
+      <layout dim-ordering='alphabetic' dim-percentage='0.5' measure-ordering='alphabetic' measure-percentage='0.4' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Sheet 1'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='domains' name='textscan.42185.708127280100' />
+          </datasources>
+          <datasource-dependencies datasource='textscan.42185.708127280100'>
+            <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+              <calculation class='tableau' formula='1' />
+            </column>
+            <column-instance column='[notfound]' derivation='None' name='[none:notfound:nk]' pivot='key' type='nominal' />
+            <column-instance column='[query]' derivation='None' name='[none:query:nk]' pivot='key' type='nominal' />
+            <column caption='Notfound' datatype='boolean' name='[notfound]' role='dimension' type='nominal'>
+            </column>
+            <column caption='Query' datatype='string' name='[query]' role='dimension' type='nominal'>
+            </column>
+            <column-instance column='[Number of Records]' derivation='Sum' name='[sum:Number of Records:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+        </style>
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[textscan.42185.708127280100].[none:notfound:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[textscan.42185.708127280100].[sum:Number of Records:qk]</rows>
+        <cols>[textscan.42185.708127280100].[none:query:nk]</cols>
+      </table>
+    </worksheet>
+  </worksheets>
+  <windows>
+    <window class='schema' source-height='-1' />
+    <window auto-hidden='0' class='worksheet' maximized='1' name='Sheet 1'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card pane-specification-id='0' param='[textscan.42185.708127280100].[none:notfound:nk]' type='color' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='31'>
+            <card type='columns' />
+          </strip>
+          <strip size='31'>
+            <card type='rows' />
+          </strip>
+        </edge>
+      </cards>
+      <highlight>
+        <color-one-way>
+          <field>[textscan.42185.708127280100].[none:domain:nk]</field>
+          <field>[textscan.42185.708127280100].[none:notfound:nk]</field>
+          <field>[textscan.42185.708127280100].[none:query:nk]</field>
+        </color-one-way>
+      </highlight>
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='Sheet 1' width='192'>
+      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
+      AElFTkSuQmCC
+    </thumbnail>
+  </thumbnails>
+</workbook>
