@@ -2,20 +2,6 @@
 /*globals $, self */
 
 
-var TUTORONS_SERVER = 'http://127.0.0.1:8000';
-var TUTORONS = ['wget', 'css'];
-
-// Send a request to the server to have it process this page
-var j;
-for (j = 0; j < TUTORONS.length; j++) {
-    $.post(TUTORONS_SERVER + '/' + TUTORONS[j], {
-        'origin': window.location.href,
-        'document': document.body.innerHTML,
-    });
-}
-
-
-
 /* Find the first node that holds the full range */
 function getEncapsulatingNode(range) {
 
