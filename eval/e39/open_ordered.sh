@@ -40,11 +40,12 @@ function link_has_example {
 }
 
 
-i=${1:-0}
+lang=$1
+i=${2:-0}
 while [[ 1 ]]
 do
   i=$((i+1))
-  link=`./open.py index $i`
+  link=`./open.py ml $lang $i`
   echo "Opening file $i ($link)"
   link_has_example $link
   echo "========================"

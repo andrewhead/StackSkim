@@ -16,7 +16,9 @@ SEED1 = 1
 
 def order_pages(language, random_seed):
 
-    random.seed(random_seed)
+    ''' Random seed should be deterministic, but different for each language. '''
+    random.seed(random_seed * hash(language))
+
     pages = (Page.select()
              .group_by(Page.link)
              .where(
