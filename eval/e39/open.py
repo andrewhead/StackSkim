@@ -72,7 +72,13 @@ def page_at_index(index):
 def language_page_at_index(language, index, testmode=None):
     if testmode is not None:
         lists = get_test_lists(language)
-        page = lists[testmode][index]
+        if testmode == 'all':
+            all_list = []
+            for l in lists.values():
+                all_list.extend(l)
+            page = all_list[index]
+        else:
+            page = lists[testmode][index]
     else:
         page = (Page
                 .select()

@@ -27,7 +27,7 @@ def main():
     pbar.start()
 
     page_index = 0
-    for page in Page.select():
+    for page in Page.select().where(Page.language == 'regex'):
 
         dest = os.path.join('pages', page.language, page.query, str(page.rank))
         if not os.path.isdir(dest):

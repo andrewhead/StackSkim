@@ -9,11 +9,10 @@ from selenium import webdriver
 from concurrent.futures import ThreadPoolExecutor
 import codecs
 from progressbar import ProgressBar, Percentage, Bar, RotatingMarker, ETA, Counter
-
+from multiprocessing import Process
 
 from order import get_test_lists
 from open import build_local_url, check_server_running, ServerNotRunningException
-from google_tutorials import MICROLANGUAGES
 from server_logger import FileMonitor
 
 
@@ -26,36 +25,48 @@ document.body.appendChild(document.createElement('script')).src =
 """
 TUTORONS_UPLOAD_SCRIPT = r"""
 var TUTORONS_SERVER = 'http://127.0.0.1:8002';
-var TUTORONS = ['wget', 'css'];
-for (j = 0; j < TUTORONS.length; j++) {
-    $.post(TUTORONS_SERVER + '/' + TUTORONS[j], {
-        'origin': window.location.href,
-        'document': document.body.innerHTML,
-    });
-}
+$.post(TUTORONS_SERVER + '/' + "{lang}", {{
+    'origin': window.location.href,
+    'document': document.body.innerHTML,
+}});
 """
+LOAD_TIME = 5
 READY_TIME = 5
 READY_RATIO = 2
 MAX_READY_TIME = 60
 FINISH_TIME = 20
+MICROLANGUAGES = ['wget']
 
 exit_logger = False
 
 
-def load_link(browser, link):
+def browser_get(browser, link):
+    browser.get(link)
 
-    wait_time = READY_TIME
+
+def load_link(browser, link):
+    ''' Return true if load successful, false otherwise. '''
 
     while True:
 
+        p = Process(target=browser_get, args=(browser, link))
+        p.start()
+        p.join(LOAD_TIME)
+        if p.is_alive():
+            p.terminate()
+        else:
+            break
+
+    while True:
+
+        wait_time = READY_TIME
         start_time = time.time()
-        browser.get(link)
 
         ''' Wait for page to have completely loaded. '''
         while True:
             state = browser.execute_script('return document.readyState;')
             if state == 'complete':
-                return
+                return True
             if time.time() - start_time > wait_time:
                 logging.info("Document %s not ready after %ds", link, wait_time)
                 break
@@ -64,16 +75,22 @@ def load_link(browser, link):
         wait_time = wait_time * READY_RATIO
         if wait_time > MAX_READY_TIME * READY_RATIO:
             logging.error("Skipping document %s.  Was never ready.", link)
-            return
+            return False
         else:
             logging.info("Increasing wait time to %ds", wait_time)
 
 
-def open_page(browser, pags):
-    load_link(browser, build_local_url(p))
-    browser.execute_script(JQUERY_SCRIPT)
-    time.sleep(.5)
-    browser.execute_script(TUTORONS_UPLOAD_SCRIPT)
+def open_page(browser, p):
+    load_success = load_link(browser, build_local_url(p))
+    if load_success is True:
+        browser.execute_script(JQUERY_SCRIPT)
+        time.sleep(.5)
+    return load_success
+
+
+def run_tutoron(browser, language):
+    script = TUTORONS_UPLOAD_SCRIPT.format(lang=language)
+    browser.execute_script(script)
 
 
 def save_detections(server_file, output_file):
@@ -112,7 +129,7 @@ if __name__ == '__main__':
     pages = []
     for lang in MICROLANGUAGES:
         test_lists = get_test_lists(lang)
-        pages.extend(test_lists[args.testset])
+        pages.extend([(p, lang) for p in test_lists[args.testset]])
 
     ''' Set up progress bar. '''
     widgets = [
@@ -127,8 +144,10 @@ if __name__ == '__main__':
     load_link(browser, FIRST_LINK)  # start by loading something inconsequential
 
     ''' Open the pages! '''
-    for i, p in enumerate(pages):
-        open_page(browser, p)
+    for i, (p, l) in enumerate(pages):
+        open_success = open_page(browser, p)
+        if open_success is True:
+            run_tutoron(browser, l)
         pbar.update(i + 1)
 
     ''' Let the future do some more work dequeuing events. '''

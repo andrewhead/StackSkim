@@ -32,7 +32,7 @@ class FileMonitor(object):
                 path, text, start, end = m.groups()
                 text = text.replace('\t', '<tab>')  # remove tabs so we can print this as TSV
                 timestamp = time.strftime("%Y-%m-%d %H:%M:%S")
-                return '\t'.join([timestamp, self.current_origin, path, text, start, end])
+                return '\t'.join([timestamp, self.current_origin, path, start, end, text])
         return None
 
     def finish(self):

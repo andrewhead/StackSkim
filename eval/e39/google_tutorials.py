@@ -15,7 +15,8 @@ API_URL = 'https://www.googleapis.com/customsearch/v1'
 API_KEY = 'AIzaSyBcHH5JqkalO6atnpCqZCjvFWFiT8-yC8k'
 SEARCH_ID = '011356320933563804135:byoi9uglfjg'
 
-MICROLANGUAGES = ['wget', 'css-selectors']
+# MICROLANGUAGES = ['wget', 'css-selectors']
+MICROLANGUAGES = ['regex']
 session = cache.get_session()
 
 
