@@ -114,7 +114,10 @@ if __name__ == '__main__':
     parser.add_argument('testset', help="test set to use: {validation,test}")
     parser.add_argument('server_file', help="server log file with detected regions")
     parser.add_argument('output_file', help="TSV listing all detections")
+    parser.add_argument('--count', help="how many pages to open", type=int)
     args = parser.parse_args()
+
+    count = args.count
 
     try:
         check_server_running()
@@ -136,7 +139,8 @@ if __name__ == '__main__':
         'Progress: ', Percentage(), ' ', Bar(marker=RotatingMarker()), ' ', ETA(),
         ' Visited ', Counter(), ' sites.'
     ]
-    pbar = ProgressBar(widgets=widgets, maxval=len(pages))
+    num_pages = min(len(pages), count) if count is not None else len(pages)
+    pbar = ProgressBar(widgets=widgets, maxval=num_pages)
     pbar.start()
 
     ''' Set up browser. '''
@@ -145,6 +149,8 @@ if __name__ == '__main__':
 
     ''' Open the pages! '''
     for i, (p, l) in enumerate(pages):
+        if i >= num_pages:
+            break
         open_success = open_page(browser, p)
         if open_success is True:
             run_tutoron(browser, l)

@@ -1,0 +1,142 @@
+=== PRECISION MISSES ===
+
+First round of precision misses (solved)
+- found single-word "wget" in code, and detected it as a full command
+- in my truth set, I ignore the fact that redirects are technically part of the command (though can this be handled by wget?)
+- multiline bash commands with <br> in between each line weren't getting split into lines
+- wget commands without URL were still getting read
+
+Additional examples of misses:
+- Placholder args, e.g., wget someArgs | grep keyword
+
+Redos for data collection:
+1. false-region 2
+2. false-region 3
+3. wget --load-cookies=cookies.txt http://en.wikipedia.org/wiki/User:A from askubuntu.com 161778
+4. wget --spider --force-html -r -l1 http://somesite.com 2>&1 | grep 'Saving to:' from stackoverflow 2804467 (question code snippet 2)
+5. Code snippet in comment of the first answer
+6. Includ redirects in the region of the command
+
+Mysteries we don't know
+*/5 * * * * wget mysite.com > /dev/null 2>&1  (from serverfault.com 619542)
+/5 * * * * wget -O - mysite.com > /dev/null 2>&1 
+
+=== RECALL MISSES ===
+
+Shouldn't have been logged as a valid command in the first place:
+(22) """" wget -X " -X /~nobody,/~somebody
+
+Probably stored the wrong range when adding it in the first place b/c redirects (23,33,40,44,45,46,47):
+(23) """" wget --spider --force-html -r -l1 http://somesite.com 2>&1
+
+Not inspecting the right parent element
+b (1,29,70), pre (2,7,11,16,21,23,27,57,58,60,65), div.console (6,26,56), p (9,15,20,25,30,31,37,45,46,48,51,59,62,64,71), div.command (53)
+
+Nested inside a text block (20,25,29,37,45,70,71).
+
+Argument not supported by wget (41):
+(-g) """" $ wget -g on ftp://somedom.com/pub/downloads/*.pdf
+
+It's valid to provide a file with '-i' and no URL (12):
+$ wget -cb -o /tmp/download.log -i /tmp/download.txt --quota=100m
+$ nohup wget -c -o /tmp/download.log -i /tmp/download.txt & (17)
+(39) """" $ wget -i /tmp/download.txt
+
+Arguments inside a variable, which is read as incorrect syntax, presumably by our wget-run step:
+(?) """" wget $WGETPARAMS "${SITE}user"
+(19) """" wget $u
+(50) """" wget $URL -O $FILE -o $LOGFILE
+(51) """"  wget $u
+
+Included as a string for another programming language:
+(1) """
+shell_exec('wget "'http://somedomain.com/somefile.mp4'"');
+sleep(20);
+continue my code...
+"""
+(24,36) inside chef
+(42) perl script, as string
+(54) interactive bash (numbers on line)
+""""
+$ wget -q --spider 'http://example.com/'
+$ echo $?
+0
+""""
+(67) again, shell_exec (in PHP)
+
+Incorrect syntax in part of the code block (71):
+"""
+wget https://www.dropbox.com/s/mx9eqve5l2ipgyk/test.tx
+(34) """" shell_exec("wget '$url'");
+
+ls -l 
+-rw-rw-r-- 1 mirror mirror  30K Sep  6 15:01 test.txt
+"""
+(9) """"
+<p>wget  –tries=1 <a href="http://xxx.com" rel="nofollow">http://xxx.com</a><br>
+It ‘s mean retry for 1 time </p>
+""""
+
+bash parse fails after comments (13,16,19,35,50,66):
+"""
+wget https://www.somewhere.com/chef/install-ubuntu-12.04-x86.deb -O /tmp/install.deb
+sudo dpkg -i /tmp/install.deb
+# or
+sudo yum install wget
+wget https://www.somewhere.com/chef/install-centos-6-x86.rpm -O /tmp/install.rpm
+sudo rpm -Uvh /tmp/install.rpm
+"""
+"""
+# cd /tmp
+# wget http://www.us.apache.org/dist/tomcat/tomcat-7/v7.0.59/bin/apache-tomcat-7.0.59.tar.gz
+"""
+"""
+#!/bin/bash
+dir=$(zenity --file-selection --directory)
+wget -O $dir/test.txt "https://www.dropbox.com/s/mx9eqve5l2ipgyk/test.txt?dl=1"
+"""
+(35) """"
+#!/bin/bash
+wget https://www.example.com/foo/bar.baz -O /path/to/destination/bar.baz
+curl https://www.example.com/baz/foo.bar --output /path/to/destination/foo.bar
+...
+""""
+(43) """"
+# Log in to the server.  This can be done only once.
+wget --save-cookies cookies.txt \
+     --post-data 'user=foo&password=bar' \
+     http://server.com/auth.php
+
+# Now grab the page or pages we care about.
+wget --load-cookies cookies.txt \
+     -p http://server.com/interesting/article.php
+""""
+
+No URL because of xargs, and xargs is the command (14):
+xargs -P 10 -r -n 1 wget -nv
+
+wget is specified by /usr/bin/wget/ (18,31,64)
+0 * * * * /usr/bin/wget -O - -q -t 1 http://www.example.com/cron.php?cron_key=YOUR_UNIQUE_CRON_KEY
+
+Preceded by another command
+(17) """" $ nohup wget -c -o /tmp/download.log -i /tmp/download.txt &
+(49) """" sudo wget http://nodejs.org/dist/node-latest.tar.gz
+
+Unknown (52,55,63)
+(28) """" wget -O - -q -t 1 'http://www.example.com/cron.php?cron_key=l4zX8MiBil7O072d-DCbfPNBINOs_OIRlsCskh9oulY'
+* inside a <code> block to begin with...
+
+crontab entry (others,32,33,38,44,47,64,69)
+"""" */5 * * * * wget -O /dev/null -o /dev/null example.com
+
+trailing spaces on a line
+(61)
+""""
+wget https://www.opscode.com/chef/install.sh 
+less install.sh
+sudo bash install.sh
+""""
+
+Not inspecting comment content (68)
+
+WGET is in all caps (73)
