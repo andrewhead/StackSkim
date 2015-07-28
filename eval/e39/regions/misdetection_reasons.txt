@@ -23,21 +23,38 @@ Mysteries we don't know
 
 === RECALL MISSES ===
 
+Critical:
+* in the middle of a <p> block
+* in <pre> element
+* get the right region of the redirect
+
+Done:
+* handle bash with comments in it
+* allow no URL if -i option provided
+* /usr/bin/wget
+* crontab entry
+
+STOPPED AT 119, didn't load it here.
+
 Shouldn't have been logged as a valid command in the first place:
 (22) """" wget -X " -X /~nobody,/~somebody
 
-Probably stored the wrong range when adding it in the first place b/c redirects (23,33,40,44,45,46,47):
+Probably stored the wrong range when adding it in the first place b/c redirects (23,33,40,44,45,46,47,75,97):
 (23) """" wget --spider --force-html -r -l1 http://somesite.com 2>&1
 
 Not inspecting the right parent element
-b (1,29,70), pre (2,7,11,16,21,23,27,57,58,60,65), div.console (6,26,56), p (9,15,20,25,30,31,37,45,46,48,51,59,62,64,71), div.command (53)
+b (1,29,70,76,97,107,108), pre (2,7,11,16,21,23,27,57,58,60,65,77,82,87,90,94,106,115), div.console (6,26,56), p (9,15,20,25,30,31,37,45,46,48,51,59,62,64,71,78,79,80,81,83,85,90,93,96,98,103,104,116,117,118), div.command (53), div.codeblock (74), div.crayon-code (89), dd (113)
+p (92) """"
+<p>How can I do it? I am trying it like this
+RESULT=`wget $URL`</p>
+""""
 
-Nested inside a text block (20,25,29,37,45,70,71).
+Nested inside a text block (20,25,29,37,45,70,71,76,78,79,83,90,92,93,96,97,104,107,108,113,116,118).
 
 Argument not supported by wget (41):
 (-g) """" $ wget -g on ftp://somedom.com/pub/downloads/*.pdf
 
-It's valid to provide a file with '-i' and no URL (12):
+It's valid to provide a file with '-i' and no URL (12,76,91,106):
 $ wget -cb -o /tmp/download.log -i /tmp/download.txt --quota=100m
 $ nohup wget -c -o /tmp/download.log -i /tmp/download.txt & (17)
 (39) """" $ wget -i /tmp/download.txt
@@ -62,9 +79,24 @@ $ wget -q --spider 'http://example.com/'
 $ echo $?
 0
 """"
-(67) again, shell_exec (in PHP)
+(67,95) again, shell_exec (in PHP)
+(77) inside <?system> (PHP)
+(105) python
+""""
+#wget 'http://google.com/' -r -l 1 -p -P Downloads/google
 
-Incorrect syntax in part of the code block (71):
+from subprocess import Popen
+
+url = 'google.com'
+location = '/Users/abhinay/Downloads'
+#as suggested by @SilentGhost the `location` and `url` should be separate argument
+args = ['wget', '-r', '-l', '1', '-p', '-P', location, url]
+
+output = Popen(args, stdout=PIPE)
+""""
+(110) Command substitution """" RESULT="`wget -qO- http://example.com`"
+
+Incorrect syntax in part of the code block (71,114):
 """
 wget https://www.dropbox.com/s/mx9eqve5l2ipgyk/test.tx
 (34) """" shell_exec("wget '$url'");
@@ -77,7 +109,7 @@ ls -l
 It ‘s mean retry for 1 time </p>
 """"
 
-bash parse fails after comments (13,16,19,35,50,66):
+bash parse fails after comments (13,16,19,35,50,66,99):
 """
 wget https://www.somewhere.com/chef/install-ubuntu-12.04-x86.deb -O /tmp/install.deb
 sudo dpkg -i /tmp/install.deb
@@ -111,22 +143,25 @@ wget --save-cookies cookies.txt \
 wget --load-cookies cookies.txt \
      -p http://server.com/interesting/article.php
 """"
+(81) """"
+wget http://www.cyberciti.biz/here/lsst.tar.gz
+–21:55:38– http://www.cyberciti.biz/here/lsst.tar.gz
+Resolving http://www.cyberciti.biz... 75.126.153.206, 2607:f0d0:1002:51::4
+Connecting to http://www.cyberciti.biz|75.126.153.206|:80… failed: Network is unreachable.
+Connecting to http://www.cyberciti.biz|2607:f0d0:1002:51::4|:80… failed: Network is unreachable.
+""""
 
 No URL because of xargs, and xargs is the command (14):
 xargs -P 10 -r -n 1 wget -nv
 
-wget is specified by /usr/bin/wget/ (18,31,64)
+wget is specified by /usr/bin/wget/ (18,31,64,74,96,101,103,111,118)
 0 * * * * /usr/bin/wget -O - -q -t 1 http://www.example.com/cron.php?cron_key=YOUR_UNIQUE_CRON_KEY
 
-Preceded by another command
+Preceded by another command (89)
 (17) """" $ nohup wget -c -o /tmp/download.log -i /tmp/download.txt &
 (49) """" sudo wget http://nodejs.org/dist/node-latest.tar.gz
 
-Unknown (52,55,63)
-(28) """" wget -O - -q -t 1 'http://www.example.com/cron.php?cron_key=l4zX8MiBil7O072d-DCbfPNBINOs_OIRlsCskh9oulY'
-* inside a <code> block to begin with...
-
-crontab entry (others,32,33,38,44,47,64,69)
+crontab entry (others,32,33,38,44,47,64,69,74,101,102,103,111,118)
 """" */5 * * * * wget -O /dev/null -o /dev/null example.com
 
 trailing spaces on a line
@@ -139,4 +174,12 @@ sudo bash install.sh
 
 Not inspecting comment content (68)
 
-WGET is in all caps (73)
+WGET is in all caps (73,112)
+
+Unknown (52,55,63,77,84,88,100,109,113)
+(28) """" wget -O - -q -t 1 'http://www.example.com/cron.php?cron_key=l4zX8MiBil7O072d-DCbfPNBINOs_OIRlsCskh9oulY'
+* inside a <code> block to begin with...
+(86) """" wget -O - -q -t 1 http://www.example.com/cron.php
+
+Suggestions:
+* Try to parse the full block.  If full block not bash, *then* try to do it line by line.  (But require that wget or the pre-command starts the line -- if finding in the middle of a sentence, should be formatted in some way.)
