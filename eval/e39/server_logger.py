@@ -6,6 +6,7 @@ import logging
 import argparse
 import time
 import re
+import io
 
 
 logging.basicConfig(level=logging.INFO, format="%(message)s")
@@ -15,7 +16,7 @@ class FileMonitor(object):
 
     def __init__(self, filename):
         self.filename = filename
-        self.log = open(self.filename)
+        self.log = io.open(self.filename, encoding='utf-8')
         self.log.seek(0, 2)
         self.current_origin = 'none'
 
@@ -24,7 +25,7 @@ class FileMonitor(object):
 
     def get_line(self):
         line = self.log.readline()
-        if line != '':
+        if len(line) > 0:
             m = re.search("Request for page from origin: (.*)$", line)
             self.current_origin = m.group(1) if m is not None else self.current_origin
             m = re.search("Path:(.*),,,Text:(.*),,,Range:\[(.*),(.*)\]", line)
