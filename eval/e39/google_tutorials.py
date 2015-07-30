@@ -60,7 +60,7 @@ def get_results(pages=300):
             if len(ml_results) >= pages:
                 break
 
-        write_results_file(os.path.join('results', ml + '-results.json'), ml_results)
+        write_results_file(os.path.join('search_results', ml + '-results.json'), ml_results)
 
 
 def fetch_results(query, num_results=10):
