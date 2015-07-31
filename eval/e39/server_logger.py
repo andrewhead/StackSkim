@@ -18,7 +18,6 @@ class FileMonitor(object):
         self.filename = filename
         self.log = io.open(self.filename, encoding='utf-8')
         self.log.seek(0, 2)
-        self.current_origin = 'none'
 
     def get_header(self):
         return '\t'.join(["timestamp", "origin", "path", "text", "start", "end"])
@@ -26,14 +25,12 @@ class FileMonitor(object):
     def get_line(self):
         line = self.log.readline()
         if len(line) > 0:
-            m = re.search("Request for page from origin: (.*)$", line)
-            self.current_origin = m.group(1) if m is not None else self.current_origin
-            m = re.search("Path:(.*),,,Text:(.*),,,Range:\[(.*),(.*)\]", line)
+            m = re.search("Origin:(.*),,,Path:(.*),,,Text:(.*),,,Range:\[(.*),(.*)\]", line)
             if m is not None:
-                path, text, start, end = m.groups()
+                origin, path, text, start, end = m.groups()
                 text = text.replace('\t', '<tab>')  # remove tabs so we can print this as TSV
                 timestamp = time.strftime("%Y-%m-%d %H:%M:%S")
-                return '\t'.join([timestamp, self.current_origin, path, start, end, text])
+                return '\t'.join([timestamp, origin, path, start, end, text])
         return None
 
     def finish(self):
