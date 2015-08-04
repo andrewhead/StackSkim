@@ -1,0 +1,1683 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr">
+<head profile="http://www.w3.org/1999/xhtml/vocab">
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="MobileOptimized" content="width" />
+  <!--[if IE]><![endif]-->
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<![endif]--><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="canonical" href="23714.html" />
+<link rel="shortlink" href="23714.html" />
+<meta name="description" content="Cron is a daemon that executes commands at specified intervals. These commands are called &quot;cron jobs.&quot; Cron is available on Unix, Linux and Mac servers. Windows servers use a Scheduled Task to execute commands. For a modest personal site, you might set up this cron job to run once a day. For a more active site you might want to run that job more often—perhaps every few hours or every hour. This regular visit will tell Drupal to perform its periodic tasks, and this will help keep your system running smoothly." />
+<link rel="prev" href="https://www.drupal.org/cron" />
+<link rel="up" href="https://www.drupal.org/cron" />
+<link rel="next" href="https://www.drupal.org/node/565408" />
+<meta name="generator" content="Drupal 7 (http://drupal.org)" />
+  <title>Configuring cron jobs using the cron command | Drupal.org</title>
+  <link type="text/css" rel="stylesheet" href="../files/advagg_css/css__AVcEcTVLBLX8vW4CyfA90b53b4fE0NaYtvcPwowjREk__BTnu98PCe61qizCcD6wWemE_JSPA6B5xt9Bk84RTPzA__gv1Ex41H719B2B-JraMAFF7pN_1ta0XhC2viKRmAdlk.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../files/advagg_css/css__P_Ul37jeAZE2F9uT0soLq65MHttoPUBbbI6hbarb2kg__eFOrLyLgVEOxiU5tP2gSwrNF5MiW9u-IPYjoZqgx-LM__gv1Ex41H719B2B-JraMAFF7pN_1ta0XhC2viKRmAdlk.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../files/advagg_css/css__2Cb0_fVLp3EibWr14x9J__4IVEik9PsgvdQbDmAk1fM__KXdXeaRDQiAvdthCGQXvOMDOg3qI0KTrYqFw6VcvKV0__gv1Ex41H719B2B-JraMAFF7pN_1ta0XhC2viKRmAdlk.css" media="all" />
+<link type="text/css" rel="stylesheet" href="../files/advagg_css/css__MtLn-7x4ar9XeF5ix7AqWDFcv6pyBibPSQ5B40DhN1s__1B3y9bR8BNb3DLYH5PWCUFdxkLijH-L5NqpRz7MupwA__gv1Ex41H719B2B-JraMAFF7pN_1ta0XhC2viKRmAdlk.css" media="all" />
+  <script type="text/javascript" src="../files/advagg_js/js__rLn1sFV1G4FBNF85piuGAls_LpzYtp_WKDlZtNhb15E__mGJS1lUvGW7ksx0OkXtE1hVra8XgPTbGuyUrYupNgjA__gv1Ex41H719B2B-JraMAFF7pN_1ta0XhC2viKRmAdlk.js"></script>
+<script type="text/javascript" src="../files/advagg_js/js__GthCWtFRd6w8zctulKFYcvVDsppNsNQWGI8H_GRlSc8__QLkQPaad9tn4EGexWBhbHoh1x3OrTyXq6FPSQ4NyoyA__gv1Ex41H719B2B-JraMAFF7pN_1ta0XhC2viKRmAdlk.js"></script>
+<script type="text/javascript" src="../files/advagg_js/js__FcaDpEfP3O0CIsAOg-KsPV4g6H8UP1faJVuVYuFkCmw__D4KaGgmzoAbG0Bd7v3Q1zJaWkAOj_ZB4yAQlckfzf34__gv1Ex41H719B2B-JraMAFF7pN_1ta0XhC2viKRmAdlk.js"></script>
+<script type="text/javascript" src="../files/advagg_js/js__9vd0ne3ZJceMEiZIpGBlYehRPx7LUU7UK9cm-kSssWI__xmeBp8JCcc7xtL79kic91_s2Py8Dm94aC1ZNsUjgQ60__gv1Ex41H719B2B-JraMAFF7pN_1ta0XhC2viKRmAdlk.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var _gaq = _gaq || [];_gaq.push(["_setAccount", "UA-2360451-1"]);_gaq.push(['_setCustomVar', 1, "User roles", "anonymous user,confirmed", 1]);_gaq.push(["_trackPageview"]);(function() {var ga = document.createElement("script");ga.type = "text/javascript";ga.async = true;ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(ga, s);})();
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings,{"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"bluecheese","theme_token":"Y1XEQSZvokhCNHGweGv36pJXXogb69SnnisrP2wbBfE","js":{"misc\/jquery.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/codefilter\/codefilter.js":1,"sites\/all\/modules\/drupalorg_crosssite\/js\/jquery.timeago.js":1,"sites\/all\/modules\/drupalorg_crosssite\/js\/drupalorg_crosssite.js":1,"sites\/all\/modules\/project_issue\/js\/project-issue.js":1,"sites\/all\/modules\/drupalorg\/drupalorg\/js\/general.js":1,"sites\/all\/modules\/google_analytics\/googleanalytics.js":1,"0":1,"sites\/all\/themes\/bluecheese\/js\/bluecheese.js":1,"sites\/all\/modules\/drupalorg\/drupalorg\/js\/drupalorg-perfect-audience.js":1,"misc\/form.js":1,"misc\/collapse.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/aggregator\/aggregator.css":1,"modules\/book\/book.css":1,"sites\/all\/modules\/codefilter\/codefilter.css":1,"modules\/comment\/comment.css":1,"modules\/field\/theme\/field.css":1,"sites\/all\/modules\/logintoboggan\/logintoboggan.css":1,"sites\/all\/modules\/mollom\/mollom.css":1,"modules\/node\/node.css":1,"modules\/user\/user.css":1,"modules\/forum\/forum.css":1,"modules\/search\/search.css":1,"sites\/all\/modules\/project_issue\/project_issue.css":1,"sites\/all\/modules\/project\/release\/project_release.css":1,"sites\/all\/modules\/project\/package\/project_package.css":1,"sites\/all\/modules\/views\/css\/views.css":1,"sites\/all\/modules\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/google_admanager\/google_admanager.css":1,"sites\/all\/themes\/bluecheese\/css\/styles.css":1}},"jcarousel":{"ajaxPath":"\/jcarousel\/ajax\/views"},"googleanalytics":{"trackOutbound":1,"trackMailto":1,"trackDownload":1,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls|xml|z|zip"}});
+//--><!]]>
+</script>
+</head>
+<body class="html not-front not-logged-in one-sidebar sidebar-second page-node page-node- page-node-23714 node-type-book drupalorg-site-main" >
+  <div id="skip-link">
+    <a class="element-invisible element-focusable" href="23714.html#content">Skip to main content</a>
+    <a class="element-invisible element-focusable" href="23714.html#search-block-form">Skip to search</a>
+  </div>
+        <div id="header" class="clearfix">
+    <div id="header-screen" class="clearfix">
+      <div id="header-inner" class="container-12 clearfix">
+        <div id="nav-header" role="navigation">
+            <div class="region region-navigation">
+    <div id="block-system-main-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <ul class="menu"><li class="first leaf"><a href="https://www.drupal.org/start" title="Getting Started with Drupal">Get Started</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community" title="Drupal Community">Community</a></li>
+<li class="leaf"><a href="https://www.drupal.org/documentation" title="Drupal Documentation">Documentation</a></li>
+<li class="leaf"><a href="https://www.drupal.org/support" title="Support for using Drupal">Support</a></li>
+<li class="leaf"><a href="https://www.drupal.org/download" title="Download and Extend Drupal">Download &amp; Extend</a></li>
+<li class="leaf"><a href="https://jobs.drupal.org/" title="Drupal Jobs">Jobs</a></li>
+<li class="leaf"><a href="https://www.drupal.org/drupal-services" title="Buy Drupal Products and Services">Marketplace</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/about" title="About Drupal">About</a></li>
+</ul>  </div>
+  </div>
+</div>
+  </div>
+        </div> <!-- /#nav-header -->
+
+        <div id="header-content">
+          <div id="header-left">
+            <div id="header-left-inner">
+              <div id="site-name"><a href="https://www.drupal.org/" title="Drupal">Drupal</a></div>
+                          </div> <!-- /#header-left-inner -->
+          </div> <!-- /#header-left -->
+
+          <div id="header-right">
+            <div id="header-right-inner" role="search">
+                <div class="region region-header">
+    <div id="block-search-form" class="block block-search">
+<div class="block-inner">
+    
+  <div class="content">
+    <form action="23714.html" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input placeholder="Search Drupal.org" type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input type="submit" id="edit-submit" name="op" value="Search" class="form-submit" /></div><div id="search-theme-form-advanced"><fieldset class="collapsible collapsed form-wrapper" id="edit-advanced"><legend><span class="fieldset-legend">Refine your search</span></legend><div class="fieldset-wrapper"><div id="edit-meta-type" class="form-radios"><div class="form-item form-type-radio form-item-meta-type">
+ <input type="radio" id="edit-meta-type-" name="meta_type" value="" checked="checked" class="form-radio" />  <label class="option" for="edit-meta-type-">All </label>
+
+</div>
+<div class="form-item form-type-radio form-item-meta-type">
+ <input type="radio" id="edit-meta-type-module" name="meta_type" value="module" class="form-radio" />  <label class="option" for="edit-meta-type-module">Modules </label>
+
+</div>
+<div class="form-item form-type-radio form-item-meta-type">
+ <input type="radio" id="edit-meta-type-theme" name="meta_type" value="theme" class="form-radio" />  <label class="option" for="edit-meta-type-theme">Themes </label>
+
+</div>
+<div class="form-item form-type-radio form-item-meta-type">
+ <input type="radio" id="edit-meta-type-documentation" name="meta_type" value="documentation" class="form-radio" />  <label class="option" for="edit-meta-type-documentation">Documentation </label>
+
+</div>
+<div class="form-item form-type-radio form-item-meta-type">
+ <input type="radio" id="edit-meta-type-forum-issues" name="meta_type" value="forum-issues" class="form-radio" />  <label class="option" for="edit-meta-type-forum-issues">Forums &amp; Issues </label>
+
+</div>
+<div class="form-item form-type-radio form-item-meta-type">
+ <input type="radio" id="edit-meta-type-group" name="meta_type" value="group" class="form-radio" />  <label class="option" for="edit-meta-type-group">Groups </label>
+
+</div>
+</div></div></fieldset>
+</div><input type="hidden" name="form_build_id" value="form-LeIzKQqx2QH1V6c66qx-lqhIeE8CIblrSAUeSt1T-tk" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>  </div>
+  </div>
+</div>
+  </div>
+            </div> <!-- /#header-right-inner -->
+          </div> <!-- /#header-right -->
+        </div> <!-- /#header-content -->
+
+        <div id="nav-masthead" role="navigation">
+          <ul><li class="homepage first"><a href="https://www.drupal.org/home">Drupal Homepage</a></li>
+<li class="login-register last"><a href="https://www.drupal.org/user?destination=node/23714">Log in / Register</a></li>
+</ul>        </div> <!-- /#nav-masthead -->
+      </div> <!-- /#header-inner -->
+    </div>
+  </div> <!-- /#header -->
+
+  <div id="page" class="container-12 clearfix">
+    <div id="page-inner">
+
+      <div id="page-heading">
+
+                  <div id="page-title-tools" class="clearfix" role="navigation">
+
+            <div class="page-title-wrapper">
+                                                <div id="page-title" class="h2">Community Documentation</div>
+                                          </div>
+
+                          <div id="page-tools"></div>
+                      </div> <!-- /#page-title-tools -->
+
+                      <div id="nav-content">
+              <ul class="links"><li class="home active first"><a href="https://www.drupal.org/documentation" class="active">Community Docs Home</a></li>
+<li class="develop"><a href="https://www.drupal.org/documentation/develop">Develop for Drupal</a></li>
+<li class="theme"><a href="https://www.drupal.org/documentation/theme">Theming Guide</a></li>
+<li class="glossary"><a href="https://www.drupal.org/glossary">Glossary</a></li>
+<li class="contribute last"><a href="https://www.drupal.org/contribute/documentation">Contribute to Docs</a></li>
+</ul>            </div> <!-- /#nav-content -->
+          
+          
+                      <h1 id="page-subtitle">Configuring cron jobs using the cron command</h1>
+          
+        
+      </div> <!-- /#page-heading -->
+
+      
+              <div id="sidebar-first" role="complementary" >
+          <div id="sidebar-first-region">
+                      </div> <!-- /#column-right-region-first -->
+        </div> <!-- /#column-right-first -->
+      
+      <div id="main" role="main">
+        
+        <div id="content" class="clearfix">
+                                        <div id="content-inner" class="clearfix">  <div class="region region-content">
+    <div id="block-system-main" class="block block-system">
+<div class="block-inner">
+    
+  <div class="content">
+    <div id="node-23714" class="node node-book node-content-23714 clearfix">
+
+  
+      
+  
+  <div class="content">
+    <p class="updated"><em>Last updated April 18, 2014. Created on May 27, 2005.<br />Edited by <a href="https://www.drupal.org/user/316951" title="View user profile." data-uid="316951" class="username">zk_deng</a>, <a href="https://www.drupal.org/u/kari.kaariainen" title="View user profile." data-uid="369957" class="username">kari.kaariainen</a>, <a href="https://www.drupal.org/u/undersound3" title="View user profile." data-uid="585014" class="username">undersound3</a>, <a href="https://www.drupal.org/u/pivica" title="View user profile." data-uid="41070" class="username">pivica</a>. <a href="https://www.drupal.org/user?destination=node/23714">Log in to edit this page</a>.</em></p>
+<div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>Cron is a daemon that executes commands at specified intervals. These commands are called "cron jobs." Cron is available on Unix, Linux and Mac servers. Windows servers use a <a href="http://drupal.org/node/31506" rel="nofollow">Scheduled Task</a> to execute commands.</p>
+<p>For a modest personal site, you might set up this cron job to run once a day. For a more active site you might want to run that job more often—perhaps every few hours or every hour. This regular visit will tell Drupal to perform its periodic tasks, and this will help keep your system running smoothly.</p>
+<p>There is a video, <a href="http://drupal.org/node/347981" rel="nofollow">How To: Setting up Drupal's Cron</a>, that talks about cron and shows various ways of configuring it.</p>
+<h3>The cron command</h3>
+<p>In the following example, the crontab command shown below will activate the cron tasks automatically on the hour:</p>
+<p><code class="code">0 * * * * wget -O - -q -t 1 http://www.example.com/cron.php</code></p>
+<p>In the above sample, the <code>0 * * * *</code> represents when the task should happen. The first figure represents minutes – in this case, on the "zero" minute, or top of the hour. (If the number were, say, 10, then the action would take place at 10 minutes past the hour.) The other figures represent, respectively, hour, day, month and day of the week. A <code>*</code> is a wildcard, meaning "every time."</p>
+<p>The rest of the line basically tells the server to request the url <a href="http://www.example.com/cron.php">http://www.example.com/cron.php</a>, so that the server executes the cron.php script. NOTE: The -O is "dash capital letter O", not "dash zero". Yes, the capital O is important. Lowercase o won't work</p>
+<p><strong>Drupal 7</strong><br />
+In Drupal 7, a secure private URL is generated to run the cron job. This URL is available in the Administration &gt; Reports &gt; Status page in the cron maintenance tasks.</p>
+<p>The URL is something like:</p>
+<p><a href="http://www.example.com/cron.php?cron_key=y85HnNQxjdqM-deRXj2Xrp2MJumqe1HGPSXhW8jftyI">http://www.example.com/cron.php?cron_key=y85HnNQxjdqM-deRXj2Xrp2MJumqe1H...</a></p>
+<p>Replace any reference to <a href="http://www.example.com/cron.php">http://www.example.com/cron.php</a> with your secure private URL if you use Drupal 7.</p>
+<p>Here is a diagram of the general crontab syntax, for illustration:</p>
+<div class="codeblock"><code># +---------------- minute (0 - 59)<br /># |  +------------- hour (0 - 23)<br /># |  |  +---------- day of month (1 - 31)<br /># |  |  |  +------- month (1 - 12)<br /># |  |  |  |  +---- day of week (0 - 6) (Sunday=0)<br /># |  |  |  |  |<br />  *  *  *  *  *  command to be executed</code></div>
+<p>Thus, the cron command example above means "ping <a href="http://www.example.com/cron.php">http://www.example.com/cron.php</a> at the zero minute on every hour of every day of every month of every day of the week."</p>
+<h3>How Drupal uses cron</h3>
+<p>Every Drupal install requires regular actions to handle maintenance tasks such as cleaning up log files and checking for updates. Cron.php is the file that Drupal uses to run the maintenance process.</p>
+<p>For instance, if your site were <em><a href="http://www.example.com">www.example.com</a></em>, loading the URL <em><a href="http://www.example.com/cron.php">http://www.example.com/cron.php</a></em> in your browser would run the maintenance. </p>
+<p>This page is automatically set up when you install Drupal.  Simply loading the URL will run the maintenance. Nothing more is required.</p>
+<h3>How to set up a cron job</h3>
+<p>Cron jobs are scheduled by setting up a "crontab." A crontab is a text file that contains the commands to be run. This file can be created and edited either through the command line interface, or, if you manage your website through a web-based control panel such as <a href="http://www.cpanel.net/support/docs/11/cpanel/advanced_cron_jobs.html" rel="nofollow">cpanel</a> or Plesk, you will use the web interface. </p>
+<p>In order to schedule your cron job in Plesk for Linux, go to Settings &gt; Scheduled Tasks in the General Group. Select the system user account on whose behalf the task will be executed (usually the domain ftp user). Click "Schedule New Task". Specify when to run your command. You can schedule the time using the UNIX crontab entry form as specified in this article. Then, specify which command to run, using the same format as specified in this article. Then, Click OK.  </p>
+<p>Otherwise, check with your hosting company for detailed instructions if you are using a web-based control panel.</p>
+<p>To edit a crontab through the command line, type:</p>
+<p><code>crontab -e</code></p>
+<p>If this fails, see the <a href="23714.html#help" rel="nofollow">Troubleshooting Cron</a> section below.</p>
+<p>Add ONE of the following lines:</p>
+<div class="codeblock"><code>45 * * * *  /usr/bin/lynx -source http://example.com/cron.php 
+<p>45 * * * * /usr/bin/wget -O - -q -t 1 http://www.example.com/cron.php </p>
+<p>45 * * * * curl -s http://example.com/cron.php </p></code></div>
+<p>This would have a  <a href="http://lynx.isc.org/" rel="nofollow">lynx</a>, <a href="http://www.gnu.org/software/wget/wget.html" rel="nofollow">wget</a>, or <a href="http://curl.haxx.se" rel="nofollow">curl</a> visit your cron page 45 minutes after every hour. </p>
+<p>Three options are provided in case either wget, lynx or curl are not installed on the server. Any will do the job well.</p>
+<p><a href="http://www.adminschoice.com/crontab-quick-reference" rel="nofollow">Learn more about the crontab file syntax here</a> to set up the cron job to run more or less often.</p>
+<p>There are many ways to configure a cron job. If you have full access to crontab features, you should be able to simply paste in one of the above example commands – <em>be sure to replace "example.com" with your own web domain or docroot</em>.</p>
+<p>If you're on shared hosting, you should be able to find cron job configuration somewhere in your hosting control panel. Some hosts even have cron "wizards" that walk you through the cron configuration, making it much easier if cron is new to you. On a Windows system you can accomplish the same thing with scheduled tasks to launch Internet Explorer pointed to the URL.</p>
+<p>Some hosting companies do not permit local loopback, so using wget, curl or lynx will not work. If this is the case, and they run PHP as a CGI (check with your hosting company to see if this is the case), the following will run the cron locally:-</p>
+<p><code>/usr/bin/php /home/sites/example.com/public_html/cron.php</code></p>
+<h3>Some hosting companies don’t allow access to cron</h3>
+<p>If your hosting company restricts access to cron, you have many options.</p>
+<ul><li>Ask the company to give you access, or to set up a cron job for you</li>
+<li>Ask someone else with access to a server to set up a cron job for you. Any Unix, Linux, or Mac server with access to the internet can have a cron job to regularly visit your site. There are also some companies that offer cron services.</li>
+<li>Use the <a href="https://www.drupal.org/project/poormanscron" rel="nofollow">Poor Man's Cron module</a>.</li>
+<li>Use webcron services like <a href="https://www.easycron.com" rel="nofollow">EasyCron</a>. You may find other providers at <a href="http://www.cronjobservices.com/" rel="nofollow">cron job services</a>.  Many are free but with restrictions.
+</li>
+</ul><p>Cron doesn't guarantee your commands will run at the specified interval. But Drupal will try its best to come as close as possible. The more you visit cron.php, the more accurate cron will be.<br /><a name="help" rel="nofollow" id="help"></a></p>
+<h3>Troubleshooting cron jobs</h3>
+<p>Make sure your web site is <strong>not</strong> in maintenance mode.</p>
+<p>If you receive a permission denied error after starting crontab -e, you may need to use sudo:</p>
+<p><code>sudo crontab -e</code></p>
+<p>You may need to adjust the path to wget, lynx or curl in your crontab. For example, the cron example listed above contains the line:</p>
+<p><code>45 * * * *  /usr/bin/lynx -source http://example.com/cron.php</code> </p>
+<p>However, Lynx may be in a different location on your server, or not installed at all. To find out where Lynx is installed, enter:</p>
+<p><code>whereis lynx</code></p>
+<p>or </p>
+<p><code>which lynx</code></p>
+<p>If it is not located at /usr/bin/lynx, adjust the path as needed. The same applies for wget and curl. If none are installed, ask a server administrator for help.</p>
+<p>It may be necessary to change <strong><a href="http://example.com/cron.php">http://example.com/cron.php</a></strong> to the location of your Drupal installation. For example, if you have Drupal installed in a subdirectory, it might be <a href="http://www.example.com/drupal/cron.php">http://www.example.com/drupal/cron.php</a>).</p>
+<h3>Example scripts</h3>
+<p>Drupal ships with two example scripts in the scripts directory, cron-curl.sh and cron-lynx.sh. You can call these scripts from cron as well:</p>
+<p><code>45 * * * * /home/www/drupal/scripts/cron-lynx.sh</code></p>
+<p>Note that the scripts will need to be updated with the path to your directory and URL.</p>
+<h3>Running cron as an authenticated user (D6 and earlier only)</h3>
+<p>If triggering cron.php via the methods above, cron tasks will run as the anonymous user. For most cases this should be fine, but if Drupal cron has been customized to include tasks that must run as a certain site user (e.g. custom logic has been implemented in hook_cron that requires special user permissions), the following script may be useful. This script authenticates a user of your choosing before calling cron.php.</p>
+<p>Note that as of Drupal 7, cron <em>always</em> runs as an anonymous user, so this will not work in Drupal 7 and later versions!</p>
+<p>Note that this script should be called instead of cron.php within your server's cron configuration and must be executable by appropriate system user on your server.</p>
+<div class="codeblock"><code>#!/bin/sh<br /># Reference http://drupal.org/node/479948#comment-1673488 by pearlbear
+<p>SITE=https://dev.example.com/<br />USERNAME=user.name<br />PASS=ChangeMe!!12</p>
+<p>COOKIES=/tmp/cron-cookies.txt<br />WGETPARAMS="--quiet -O /dev/null --no-check-certificate --save-cookies $COOKIES --keep-session-cookies --load-cookies $COOKIES"<br /># if you run drupal in a default language different than English you need to modify this<br />LOGIN="Log%20in"</p>
+<p>wget $WGETPARAMS "${SITE}user"<br />wget $WGETPARAMS --post-data="name=$USERNAME&amp;pass=$PASS&amp;op=$LOGIN&amp;form_id=user_login" "${SITE}user"<br />wget $WGETPARAMS "${SITE}cron.php"</p></code></div>
+<h3>Running Drupal cron tasks from Drush</h3>
+<p>If you just want to get started quickly, here is a crontab entry that will run cron once every hour at ten minutes after the hour: </p>
+<div class="codeblock"><code>10 * * * * /usr/bin/env PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin COLUMNS=72 /usr/local/drush/drush --root=/path/to/your/drupalroot --uri=your.drupalsite.org --quiet cron </code></div>
+<p>You should set up crontab to run your cron tasks as the same user that runs the web server; for example, if you run your webserver as the user www-data:</p>
+<div class="codeblock"><code>sudo -u www-data crontab -e </code></div>
+<p>More info <a href="http://drush.ws/docs/cron.html">http://drush.ws/docs/cron.html</a></p>
+<h3>Security notes</h3>
+<p>It is possible to run cron.php directly via scripts/drupal.sh with Drupal 6. Drupal.sh allows a Drupal page to be executed from a shell script. To do so, add the following cron job to run as the Apache user:</p>
+<p><code>/full/path/to/drupal.sh --root /full/path/to/site/root/ http://default/cron.php</code></p>
+<p>Note that <a href="http://default/cron.php">http://default/cron.php</a> is NOT shown as an example, it should be used as is, without changes.</p>
+<p>Taking this approach allows cron.php to be blocked to prevent remote access.</p>
+<p>To block remote access to cron.php, in the server's .htaccess file or vhost configuration file add this section:</p>
+<div class="codeblock"><code>    &lt;Files cron.php&gt;<br />        Order Deny,Allow<br />        Deny from all<br />        Allow from localhost<br />        Allow from 127.0.0.1<br />        Allow from xx.xx.xx.xx &lt;-- your IP address<br />    &lt;/Files&gt;</code></div>
+<p>If you take this approach and use drupal.sh to call cron.php, it is probably best not to use the root user to run the cron job. A non-privileged user account, or the Apache account user, for example http-service or www-data, is a better choice. To do so, call crontab -e when logged in as a non-privileged user, or for the Apache account on a Debian server, for example, you can add a user parameter:</p>
+<p><code>sudo crontab -e -u www-data</code></p>
+<p>The downside to this method is that any URLs generated by cron jobs using this method will not be properly formed, starting with "<a href="http://default/">http://default/</a>".</p>
+<h4>Multiple sites</h4>
+<p>If you run many sites, you can use this tip to make managing your cron jobs easier.  To minimize the clutter, create an /etc/cron.5min directory and have crontab read this directory every five minutes.</p>
+<p><code>*/5 * * * * root run-parts /etc/cron.5min</code></p>
+<p>Then place multiple individual files into the /etc/cron.5min directory, one for each site. The files can be named "site1", "site2", etc. -- note that <em>run-parts</em> may fail to detect files which contain a dot (.) in their name. To make sure that all of your files are visible to cron, type this at a shell prompt:</p>
+<p><code>$ sudo run-parts --test /etc/cron.5min</code><br />
+and make sure that all of your files are listed.
+</p>
+<p>Each of the files in /etc/cron.5min should contain one line:</p>
+<p><code>/usr/bin/lynx -source http://(full site URL)/cron.php &gt; /dev/null 2&gt;&amp;1</code><br />
+or, alternatively, one of the <em>curl</em> or <em>wget</em> commands specified above.</p>
+<p>If this doesn't work, try putting another line at the start of each file:</p>
+<p><code>#!/bin/sh</code><br />
+and make sure that the files are executable by doing</p>
+<p><code>$ sudo chmod u+x /etc/cron.5min/*</code>
+</p>
+<p>For more information about using cron in a multisite configuration, see the <a href="https://www.drupal.org/node/237503" rel="nofollow">Multisite Cron</a> section of this guide.</p>
+<h4>SSL</h4>
+<p>When using SSL, add one additional argument when calling wget: --no-check-certificate. Do not put  “--no-check-certificate” between the -0 and the -.</p>
+<p><code>45 * * * * /usr/bin/wget --no-check-certificate --quiet -O - https://example.com/cron.php</code></p>
+<h4>Configuring an editor for cron</h4>
+<p>You can specify which text editor (emacs, vi, nano, etc.) you want to use to edit the crontab. If you want to change your editor permanently to nano, type:</p>
+<p><code>export EDITOR=nano</code></p>
+<p>If you want to use nano for just this time, type:</p>
+<p><code>env EDITOR=nano crontab -e</code></p>
+</div></div></div>  <div id="book-navigation-251019" class="book-navigation">
+    <ul class="menu"><li class="first leaf"><a href="https://www.drupal.org/node/565408">Configuring Cron on Rackspace Cloud Sites</a></li>
+<li class="leaf"><a href="https://www.drupal.org/node/369267">Configuring cron jobs in cPanel</a></li>
+<li class="leaf"><a href="https://www.drupal.org/node/31548">Configuring cron jobs on DreamHost</a></li>
+<li class="leaf"><a href="https://www.drupal.org/node/434416">Configuring cron jobs on MAMP localhost</a></li>
+<li class="leaf"><a href="https://www.drupal.org/node/159340">Configuring cron jobs on Media Temple Grid (gs) and DV servers</a></li>
+<li class="leaf"><a href="https://www.drupal.org/node/31506">Configuring cron jobs on Windows</a></li>
+<li class="leaf"><a href="https://www.drupal.org/node/2011700">Configuring cron jobs on hosteurope</a></li>
+<li class="leaf"><a href="https://www.drupal.org/node/361763">Configuring cron jobs on ixWebHosting</a></li>
+<li class="leaf"><a href="https://www.drupal.org/node/562904">Configuring cron on Mac OS X Server 10.5.x and later</a></li>
+<li class="leaf"><a href="https://www.drupal.org/node/1192934">Plesk 10 configuration for cron job</a></li>
+<li class="leaf"><a href="https://www.drupal.org/node/1124666">Set up a cron job with Network Solutions</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/node/208579">Setting up cron on Hostmonster/Bluehost through the cPanel interface</a></li>
+</ul>
+        <div class="page-links clearfix">
+              <a href="https://www.drupal.org/cron" class="page-previous" title="Go to previous page">‹ Step 5: Setting up cron</a>
+                    <a href="https://www.drupal.org/cron" class="page-up" title="Go to parent page">up</a>
+                    <a href="https://www.drupal.org/node/565408" class="page-next" title="Go to next page">Configuring Cron on Rackspace Cloud Sites ›</a>
+          </div>
+    
+  </div>
+<p class="support"><strong>Looking for support? Visit the <a href="https://www.drupal.org/forum">Drupal.org forums</a>, or join #drupal-support in <a href="https://www.drupal.org/irc">IRC</a>.</strong></p>  </div>
+
+  <div class="node-footer"><ul class="links inline"><li class="comment_forbidden first"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+<li class="report last"></li>
+</ul></div>
+
+</div>
+
+<section class="comments comment-wrapper">
+          <h2 class="title">Comments</h2>
+      
+  <a id="comment-2196956"></a>
+<div class="comment comment-content-2196956 clearfix">
+  <a href="https://www.drupal.org/u/mr_scumbag" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/user-pictures/picture-551362-1400198420.jpg%3Fitok=ihJZa9RU" width="80" height="80" alt="mr_scumbag’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-2196956" class="permalink active" rel="bookmark">MacOSX crontab</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/u/mr_scumbag" title="View user profile." data-uid="551362" class="username">mr_scumbag</a> commented <time pubdate datetime="2009-10-27T15:45:21+00:00">October 27, 2009 at 3:45pm</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>On the Mac you may be getting an error after using <code>crontab -e</code></p>
+<p><em>crontab: temp file must be edited in place</em></p>
+<p>This seems to be a problem with the way vim works with it's backup files, and can be fixed by adding the following line to your <code>~/.vimrc</code></p>
+<p><code>set backupskip=/tmp/*,/private/tmp/*</code></p>
+<p>Now using <code>crontab -e</code> will work.</p>
+</div></div></div>        <div class="user-signature clearfix">
+      <p>--<br />
+"What are we gonna do tonight Brain ?"<br />
+"The same as every night Pinky. Try to take over the world !"</p>
+    </div>
+      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+<a id="comment-2602102"></a>
+<div class="comment comment-content-2602102 clearfix">
+  <a href="https://www.drupal.org/user/365180" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="cburn’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-2602102" class="permalink active" rel="bookmark">Setting up Crontab for Drupal 6.20--info that helped me</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/user/365180" title="View user profile." data-uid="365180" class="username">cburn</a> commented <time pubdate datetime="2011-03-21T21:58:49+00:00">March 21, 2011 at 9:58pm</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>I found this post which helped me set up my crontab on my host <a href="http://www.ktechdesign.com/node/82">http://www.ktechdesign.com/node/82</a> . I had searched everywhere and could not find anything that really helped with the actual command on the script (the timing I got), but this did and it works perfectly for me!</p>
+<p><b>UPDATE March 14, 2011</b><br />
+A few weeks ago, my provider's server had a problem and we lost about 2 weeks of data. Cron has not run since. I contacted Support and we went back and forth for about a week. Apparently something had changed on the provider's end and the original command would not run cron any longer. I finally decided to try a completely different command and it's running now.</p>
+<p>This was the original command that stopped working after the server problem:<br />
+0 	*/3 	* 	* 	* 	 ~/www/scripts/cron-lynx.sh</p>
+<p>I tried this new command suggested by Support that did not work. Every time cron did not run, I received an email notification:<br />
+0 	*/3 	* 	* 	*       /usr/bin/lynx -source <a href="http://myWebsite.org/scripts/cron-lynx.sh">http://myWebsite.org/scripts/cron-lynx.sh</a></p>
+<p>This is the new command that is working now:<br />
+0 	*/3 	* 	* 	* 	 /usr/bin/wget -O - -q -t 1 <a href="http://myWebsite.org/cron.php">http://myWebsite.org/cron.php</a> </p>
+<p><b>UPDATE March 18, 2011</b><br />
+Don't know if that was the problem; now I'm getting ALOT of these error messages - MySQL server has gone away query: INSERT INTO watchdog...(and on and on and on)...</p>
+<p>Have tried many different solutions but so far none have worked, including alternating these variables on php.ini:</p>
+<p>mysqli.reconnect = On;<br />
+max_execution_time = 120;        //  (default 30)<br />
+max_input_time = 120;               //  (default 60)<br />
+mysql.connect_timeout = 120;     //  (default 30)<br />
+default_socket_timeout = 300     //  (default 60) - Note: haven't tried this yet</p>
+<p>wait_timeout = 200;                   //  (default 28800 - Our server setting is 10) This has to be changed on my.cnf to which I do not have access</p>
+<p>max_allowed_packet = 32M;       //  (Max, 1G - Our server setting is 2MB) This has to be changed on my.cnf to which I do not have access</p>
+<p>I also disabled my Update Status module to no avail. Now my provider, AN Hosting, has basically told me they will not help any more and have referred me to a web design team--haha! So, what to do? I'm being driven mad!</p>
+<p><b>UPDATE March 21, 2011</b><br />
+I found a hack and hacked Drupal 6.20 core which I realize is not ideal. No more problems! Below is the code:</p>
+<p>I pasted the hack code above "return $connection;" </p>
+<p>In includes/database.mysql.inc, at the end of function db_connect(), under the "SET NAMES" line and above "return $connection;" add:<br />
+mysql_query('SET SESSION wait_timeout = 60', $connection);</p>
+<p>In includes/database.mysqli.inc, at the end of function db_connect(), under the "SET NAMES" line and above "return $connection;" add:<br />
+mysqli_query($connection, 'SET SESSION wait_timeout = 60');</p>
+</div></div></div>        <div class="user-signature clearfix">
+      <p>cburn</p>
+    </div>
+      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+
+<div class="indented"><a id="comment-4242150"></a>
+<div class="comment comment-content-4242150 clearfix">
+  <a href="https://www.drupal.org/user/94784" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="cookiesunshinex’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-4242150" class="permalink active" rel="bookmark">@cburn,
+I&#039;m wondering about</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/user/94784" title="View user profile." data-uid="94784" class="username">cookiesunshinex</a> commented <time pubdate datetime="2011-03-21T23:26:57+00:00">March 21, 2011 at 11:26pm</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>@cburn,</p>
+<p>I'm wondering about your post.  Shouldn't that be in some sort of support queue?</p>
+<p>I'm not sure how it contributes to this thread?  It sounds like a problem with your host provider and you are hacking core....none of which enhances the discussion here.</p>
+<p>Not trying to flame you, but I don't see the value your post has in educating further individuals who stumble on to this thread.</p>
+</div></div></div>      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+
+<div class="indented"><a id="comment-4246376"></a>
+<div class="comment comment-content-4246376 clearfix">
+  <a href="https://www.drupal.org/user/365180" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="cburn’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-4246376" class="permalink active" rel="bookmark">Simply the troubleshooting I had to do to get Cron running</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/user/365180" title="View user profile." data-uid="365180" class="username">cburn</a> commented <time pubdate datetime="2011-03-22T20:26:20+00:00">March 22, 2011 at 8:26pm</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>@cookiesunshinex What started out as a simple task to configure Cron a year ago started and has hopefully ended here. My post contains the issues I encountered while trying to successfully set up a Crontab. I have searched drupal.org over and many people have run into the same problems. Maybe the problems have not all been documented in the one place, but now they are. Who knows, you might have these troubles yourself sometime and want to know about this option if nothing else works. All of the issues in my posts are connected, and since I started here it seemed appropriate to me to finish here with the solution I found on configuring and running Cron. If the administrators of this thread think my post needs to be somewhere else, they can and will certainly move or delete it. No offense taken. </p>
+<p>I also found out there is a module, Drupal tweaks <a href="http://drupal.org/project/drupal_tweaks">http://drupal.org/project/drupal_tweaks</a>, that will do the same and more without hacking core.</p>
+<p>Here are some other threads relating to this issue <a href="http://drupal.org/node/227445">http://drupal.org/node/227445</a> and <a href="http://drupal.org/node/259580">http://drupal.org/node/259580</a>.</p>
+</div></div></div>        <div class="user-signature clearfix">
+      <p>cburn</p>
+    </div>
+      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+</div></div><a id="comment-2633550"></a>
+<div class="comment comment-content-2633550 clearfix">
+  <a href="https://www.drupal.org/u/davidwhthomas" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="davidwhthomas’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-2633550" class="permalink active" rel="bookmark">Patch to inspect per-module cron execution times</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/u/davidwhthomas" title="View user profile." data-uid="151344" class="username">davidwhthomas</a> commented <time pubdate datetime="2010-02-23T00:57:51+00:00">February 23, 2010 at 12:57am</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>Here's a patch to add per-module cron execution times to the watchdog log.<br />
+Great for debugging cron issues as it allows to to time each cron hook.</p>
+<p><b>In common.inc drupal_cron_run() - replace the lines ( around line 2698 in D6 )</b></p>
+<div class="codeblock"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// Iterate through the modules calling their cron handlers (if any):<br /></span><span style="color: #0000BB">module_invoke_all</span><span style="color: #007700">(</span><span style="color: #DD0000">'cron'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+<p>with this:</p>
+<h3>Drupal 5</h3>
+<div class="codeblock"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// Iterate through the modules calling their cron handlers (if any):<br /></span><span style="color: #0000BB">$cron_timer </span><span style="color: #007700">= </span><span style="color: #0000BB">variable_get</span><span style="color: #007700">(</span><span style="color: #DD0000">'cron_timer'</span><span style="color: #007700">, </span><span style="color: #DD0000">'1'</span><span style="color: #007700">); </span><span style="color: #FF8000">// can add to settings form, defaults to on<br /></span><span style="color: #007700">if (</span><span style="color: #0000BB">$cron_timer</span><span style="color: #007700">) {<br />  </span><span style="color: #FF8000">// start timer for cron total<br />  </span><span style="color: #0000BB">timer_start</span><span style="color: #007700">(</span><span style="color: #DD0000">'cron'</span><span style="color: #007700">);<br />  foreach (</span><span style="color: #0000BB">module_implements</span><span style="color: #007700">(</span><span style="color: #DD0000">'cron'</span><span style="color: #007700">) as </span><span style="color: #0000BB">$module</span><span style="color: #007700">) {<br />    </span><span style="color: #0000BB">$function </span><span style="color: #007700">= </span><span style="color: #0000BB">$module </span><span style="color: #007700">.</span><span style="color: #DD0000">'_cron'</span><span style="color: #007700">;<br />    </span><span style="color: #FF8000">// start timer for this module, using module cron function name as id<br />    </span><span style="color: #0000BB">timer_start</span><span style="color: #007700">(</span><span style="color: #0000BB">$function</span><span style="color: #007700">);<br />    </span><span style="color: #FF8000">// call cron hook<br />    </span><span style="color: #0000BB">$function</span><span style="color: #007700">();<br />    </span><span style="color: #0000BB">$timer </span><span style="color: #007700">= </span><span style="color: #0000BB">timer_stop</span><span style="color: #007700">(</span><span style="color: #0000BB">$function</span><span style="color: #007700">);<br />    </span><span style="color: #FF8000">// get total in seconds<br />    </span><span style="color: #0000BB">$total </span><span style="color: #007700">= </span><span style="color: #0000BB">round</span><span style="color: #007700">(</span><span style="color: #0000BB">$timer</span><span style="color: #007700">[</span><span style="color: #DD0000">'time'</span><span style="color: #007700">]/</span><span style="color: #0000BB">1000</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">);<br />    </span><span style="color: #0000BB">watchdog</span><span style="color: #007700">(</span><span style="color: #DD0000">'cron'</span><span style="color: #007700">, </span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'Cron time elapsed for @module is @secs seconds.'</span><span style="color: #007700">, array(</span><span style="color: #DD0000">'@module' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$module</span><span style="color: #007700">, </span><span style="color: #DD0000">'@secs' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$total</span><span style="color: #007700">) ));<br />  }<br />  </span><span style="color: #0000BB">$cron_timer </span><span style="color: #007700">= </span><span style="color: #0000BB">timer_stop</span><span style="color: #007700">(</span><span style="color: #DD0000">'cron'</span><span style="color: #007700">);<br />  </span><span style="color: #0000BB">$total </span><span style="color: #007700">= </span><span style="color: #0000BB">round</span><span style="color: #007700">(</span><span style="color: #0000BB">$cron_timer</span><span style="color: #007700">[</span><span style="color: #DD0000">'time'</span><span style="color: #007700">]/</span><span style="color: #0000BB">1000</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">);<br />  </span><span style="color: #0000BB">watchdog</span><span style="color: #007700">(</span><span style="color: #DD0000">'cron'</span><span style="color: #007700">, </span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'Cron time total was @secs seconds.'</span><span style="color: #007700">, array(</span><span style="color: #DD0000">'@secs' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$total</span><span style="color: #007700">) ));<br />}else{<br />  </span><span style="color: #FF8000">// just run cron<br />  </span><span style="color: #0000BB">module_invoke_all</span><span style="color: #007700">(</span><span style="color: #DD0000">'cron'</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+<h3>Drupal 6</h3>
+<div class="codeblock"><code><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">// Iterate through the modules calling their cron handlers (if any):<br /></span><span style="color: #0000BB">$cron_timer </span><span style="color: #007700">= </span><span style="color: #0000BB">variable_get</span><span style="color: #007700">(</span><span style="color: #DD0000">'cron_timer'</span><span style="color: #007700">, </span><span style="color: #DD0000">'1'</span><span style="color: #007700">); </span><span style="color: #FF8000">// can add to settings form, defaults to on<br /></span><span style="color: #007700">if (</span><span style="color: #0000BB">$cron_timer</span><span style="color: #007700">) {<br />  </span><span style="color: #FF8000">// start timer for cron total<br />  </span><span style="color: #0000BB">timer_start</span><span style="color: #007700">(</span><span style="color: #DD0000">'cron'</span><span style="color: #007700">);<br />  foreach (</span><span style="color: #0000BB">module_implements</span><span style="color: #007700">(</span><span style="color: #DD0000">'cron'</span><span style="color: #007700">) as </span><span style="color: #0000BB">$module</span><span style="color: #007700">) {<br />    </span><span style="color: #0000BB">$function </span><span style="color: #007700">= </span><span style="color: #0000BB">$module </span><span style="color: #007700">.</span><span style="color: #DD0000">'_cron'</span><span style="color: #007700">;<br />    </span><span style="color: #FF8000">// start timer for this module, using module cron function name as id<br />    </span><span style="color: #0000BB">timer_start</span><span style="color: #007700">(</span><span style="color: #0000BB">$function</span><span style="color: #007700">);<br />    </span><span style="color: #FF8000">// call cron hook<br />    </span><span style="color: #0000BB">$function</span><span style="color: #007700">();<br />    </span><span style="color: #0000BB">$timer </span><span style="color: #007700">= </span><span style="color: #0000BB">timer_stop</span><span style="color: #007700">(</span><span style="color: #0000BB">$function</span><span style="color: #007700">);<br />    </span><span style="color: #FF8000">// get total in seconds<br />    </span><span style="color: #0000BB">$total </span><span style="color: #007700">= </span><span style="color: #0000BB">round</span><span style="color: #007700">(</span><span style="color: #0000BB">$timer</span><span style="color: #007700">[</span><span style="color: #DD0000">'time'</span><span style="color: #007700">]/</span><span style="color: #0000BB">1000</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">);<br />    </span><span style="color: #0000BB">watchdog</span><span style="color: #007700">(</span><span style="color: #DD0000">'cron'</span><span style="color: #007700">, </span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'Cron time elapsed for @module is @secs seconds.'</span><span style="color: #007700">), array(</span><span style="color: #DD0000">'@module' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$module</span><span style="color: #007700">, </span><span style="color: #DD0000">'@secs' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$total</span><span style="color: #007700">) );<br />  }<br />  </span><span style="color: #0000BB">$cron_timer </span><span style="color: #007700">= </span><span style="color: #0000BB">timer_stop</span><span style="color: #007700">(</span><span style="color: #DD0000">'cron'</span><span style="color: #007700">);<br />  </span><span style="color: #0000BB">$total </span><span style="color: #007700">= </span><span style="color: #0000BB">round</span><span style="color: #007700">(</span><span style="color: #0000BB">$cron_timer</span><span style="color: #007700">[</span><span style="color: #DD0000">'time'</span><span style="color: #007700">]/</span><span style="color: #0000BB">1000</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">);<br />  </span><span style="color: #0000BB">watchdog</span><span style="color: #007700">(</span><span style="color: #DD0000">'cron'</span><span style="color: #007700">, </span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'Cron time total was @secs seconds.'</span><span style="color: #007700">), array(</span><span style="color: #DD0000">'@secs' </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$total</span><span style="color: #007700">) );<br />}else{<br />  </span><span style="color: #FF8000">// just run cron<br />  </span><span style="color: #0000BB">module_invoke_all</span><span style="color: #007700">(</span><span style="color: #DD0000">'cron'</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span></span></code></div>
+<p>Note: You'll need to remove the php tags from the above code, they're added for syntax highlighting only.</p>
+<p>After cron runs, you can see the timing of each hook recorded in the watchdog log.</p>
+<p>Just thought I'd share as I found this very useful.</p>
+<p>DT</p>
+</div></div></div>      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+
+<div class="indented"><a id="comment-2732812"></a>
+<div class="comment comment-content-2732812 clearfix">
+  <a href="https://www.drupal.org/u/vertikal.dk" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="vertikal.dk’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-2732812" class="permalink active" rel="bookmark">DT, Thanks for the excellent</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/u/vertikal.dk" title="View user profile." data-uid="81257" class="username">vertikal.dk</a> commented <time pubdate datetime="2011-01-04T19:26:25+00:00">January 4, 2011 at 7:26pm</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>DT,</p>
+<p>Thanks for the excellent code, which helped me find a cron process, which timed out. But it helped me to add a small text tellling me which cron-process started, because one might start and never finish. Since your code only reports after the process finishes, you don't know which process hangs or times out.</p>
+<p>I added a single line right after the loop start:</p>
+<div class="codeblock"><code>...<br />  timer_start('cron');<br />  foreach (module_implements('cron') as $module) {<br />    watchdog('cron', t('Starting cron for @module', array('@module' =&gt; $module)));<br />...</code></div>
+<p>This will add an extra line for each cron process, and only the extra line for the process, which hangs or times out.</p>
+<p>Martin</p>
+</div></div></div>      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+</div><a id="comment-2674410"></a>
+<div class="comment comment-content-2674410 clearfix">
+  <a href="https://www.drupal.org/user/303800" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="armanschwarz’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-2674410" class="permalink active" rel="bookmark">First, thank you for the</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/user/303800" title="View user profile." data-uid="303800" class="username">armanschwarz</a> commented <time pubdate datetime="2010-03-04T10:43:47+00:00">March 4, 2010 at 10:43am</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>First, thank you for the page, I appreciate the time it took to create it. I hope you don't mind some productive criticism. I think most people come to this page because they don't know how to configure cron, and they probably have no idea how cron jobs work. I am one of those people. I think I speak for at least 50% of all people who come to this page when I say that all we really want is something like this:</p>
+<p>"Your cron command should look like this":<br />
+CRON COMMAND HERE</p>
+<p>I am assuming this is the purpose of this line:</p>
+<p><code>0 * * * * wget -O - -q -t 1 http://www.example.com/cron.php</code></p>
+<p>I would really appreciate it if there was a line for people who simply don't understand cron jobs so well, and just want to run cron once an hour. If the above line is trying to achieve just that, maybe state it?</p>
+<p>Cheers again for the page, it helped me a lot (could have taken less of my time though...)<br />
+Arman</p>
+</div></div></div>      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+
+<div class="indented"><a id="comment-2782086"></a>
+<div class="comment comment-content-2782086 clearfix">
+  <a href="https://www.drupal.org/user/719984" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="medlife’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-2782086" class="permalink active" rel="bookmark">cron job</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/user/719984" title="View user profile." data-uid="719984" class="username">medlife</a> commented <time pubdate datetime="2010-03-29T15:43:14+00:00">March 29, 2010 at 3:43pm</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>Any one knows how to schedule automatic feed aggregator updates? I have set up a the following cron job but it does not make any difference to my feed aggregator. Any insights?</p>
+<p>0 * * * * wget -O - -q -t 1 <a href="http://www.example.com/cron.php">http://www.example.com/cron.php</a></p>
+<p>thanks,<br />
+Medlife</p>
+</div></div></div>        <div class="user-signature clearfix">
+      <p>Drupal lover!</p>
+    </div>
+      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+
+<div class="indented"><a id="comment-2782524"></a>
+<div class="comment comment-content-2782524 clearfix">
+  <a href="https://www.drupal.org/u/dan.hall" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/user-pictures/picture-31275-1401389797.png%3Fitok=NVmqeVRJ" width="80" height="80" alt="Dan.Hall’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-2782524" class="permalink active" rel="bookmark">wget may need its full</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/u/dan.hall" title="View user profile." data-uid="31275" class="username">Dan.Hall</a> commented <time pubdate datetime="2010-03-29T17:25:45+00:00">March 29, 2010 at 5:25pm</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>wget may need its full path</p>
+<p>on my system it is:  /usr/bin/wget </p>
+<p>so it may work after you change in your line:  'wget' to '/path/to/wget'</p>
+<p>if you dont know what path wget is under with your server, you can locate it with the command-line:<br />
+locate wget</p>
+<p>this will help you find the right path on your server and then you use that path in your crontab line.</p>
+<p>Hope it helps.</p>
+</div></div></div>        <div class="user-signature clearfix">
+      <p>Dan Hall / <a href="http://multimediainformationsystems.com/services/oregon/portland/drupal-developer" alt="portland drupal developer" rel="nofollow">portland drupal developer</a><br />
+----------------<br />
+Drupalicon in ascii  .(8)</p>
+    </div>
+      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+<a id="comment-3282310"></a>
+<div class="comment comment-content-3282310 clearfix">
+  <a href="https://www.drupal.org/user/199596" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="kudzai’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-3282310" class="permalink active" rel="bookmark">cron key</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/user/199596" title="View user profile." data-uid="199596" class="username">kudzai</a> commented <time pubdate datetime="2010-08-03T10:39:59+00:00">August 3, 2010 at 10:39am</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>If you are using Drupal 7 and you get a 403 message, it's probably because cron.php now expectes a key. Set up your cron job as e.g.</p>
+<p><code>0 * * * */usr/bin/wget -O - -q -t 1 http://www.example.com/cron.php?cron_key=l4zX8MiBil7O072d-DCbfPNBINOs_OIRlsCskh9oulY</code></p>
+<p>You can get the cron key from your Dashboard &gt; Reports &gt; Status reports page.</p>
+<p>cheers<br />
+kudzai</p>
+</div></div></div>      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+
+<div class="indented"><a id="comment-5405846"></a>
+<div class="comment comment-content-5405846 clearfix">
+  <a href="https://www.drupal.org/u/ressa" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="ressa’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-5405846" class="permalink active" rel="bookmark">Missing a space</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/u/ressa" title="View user profile." data-uid="102134" class="username">ressa</a> commented <time pubdate datetime="2012-03-12T11:38:25+00:00">March 12, 2012 at 11:38am</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>The above example is good, but missing a space, so it will give you an error. This will work:<br /><code>0 * * * * /usr/bin/wget -O - -q -t 1 http://www.example.com/cron.php?cron_key=YOUR_UNIQUE_CRON_KEY</code></p>
+</div></div></div>      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+<a id="comment-5835930"></a>
+<div class="comment comment-content-5835930 clearfix">
+  <a href="https://www.drupal.org/u/sheldon-rampton" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="Sheldon Rampton’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-5835930" class="permalink active" rel="bookmark">need quote marks</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/u/sheldon-rampton" title="View user profile." data-uid="13085" class="username">Sheldon Rampton</a> commented <time pubdate datetime="2012-04-06T08:47:12+00:00">April 6, 2012 at 8:47am</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>I kept getting a "No match" error when I tried to run my cron job until I put single quote marks around the URL, e.g., </p>
+<p><code>wget -O - -q -t 1 'http://www.example.com/cron.php?cron_key=l4zX8MiBil7O072d-DCbfPNBINOs_OIRlsCskh9oulY'</code></p>
+</div></div></div>        <div class="user-signature clearfix">
+      <p>----------------<br />
+Chief Technology Officer, NuCivic<br /><a href="http://nucivic.com">http://nucivic.com</a></p>
+    </div>
+      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+</div></div></div><a id="comment-2878586"></a>
+<div class="comment comment-content-2878586 clearfix">
+  <a href="https://www.drupal.org/u/matt-b" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="Matt B’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-2878586" class="permalink active" rel="bookmark">executing from a shell script</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/u/matt-b" title="View user profile." data-uid="97309" class="username">Matt B</a> commented <time pubdate datetime="2010-04-22T20:32:12+00:00">April 22, 2010 at 8:32pm</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>I've found some hosts allow me to call the cron.php URL via curl, lynx, wget etc, as they block that type of connection from a cron job, but they do allow cron jobs.  I found this advice useful:</p>
+<div class="codeblock"><code>It is possible to run cron.php directly via scripts/drupal.sh with Drupal 6. Drupal.sh allows a Drupal page to be executed from a shell script. To do so, add the following cron job to run as the Apache user.
+<p>/full/path/to/drupal.sh --root /full/path/to/site/root/ http://default/cron.php</p>
+<p>Note that http://default/cron.php is NOT shown as an example, it should be used as is, without changes.</p>
+<p>....</p>
+<p>The downside to this method is that any URLs generated by cron jobs using this method will not be properly formed, starting with "http://default/".</p></code></div>
+<p>However, I found that changing '<a href="http://default/cron.php">http://default/cron.php</a>' to be the correct URL (eg <a href="http://www.mysite.com/cron.php">http://www.mysite.com/cron.php</a>), URLs generated by the cron jobs are then formed properly.  Is there any issue in doing this?</p>
+</div></div></div>      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+<a id="comment-2890364"></a>
+<div class="comment comment-content-2890364 clearfix">
+  <a href="https://www.drupal.org/user/791420" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="fauskanger’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-2890364" class="permalink active" rel="bookmark">To those who is all fresh on cron jobs</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/user/791420" title="View user profile." data-uid="791420" class="username">fauskanger</a> commented <time pubdate datetime="2010-04-26T06:06:24+00:00">April 26, 2010 at 6:06am</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>I have no problems understanding that cron jobs make you look like a big questionmark, as I am sitting here as one myself.</p>
+<p>I actually found that <a href="http://en.wikipedia.org/wiki/Cron_job">http://en.wikipedia.org/wiki/Cron_job</a> has just a few examples needed and on <a href="http://en.wikipedia.org/wiki/CRON_expression">http://en.wikipedia.org/wiki/CRON_expression</a> you can what you need to get jiggy with fancy timing :P </p>
+<p>[ A quick google-search for cron job examples will get you startet too, I guess.. .. ]  /or watch the video</p>
+</div></div></div>        <div class="user-signature clearfix">
+      <p>.::.......................................::.<br /><i>Time doesn't pass, it comes..</i></p>
+    </div>
+      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+<a id="comment-3068810"></a>
+<div class="comment comment-content-3068810 clearfix">
+  <a href="https://www.drupal.org/user/128737" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="sam6’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-3068810" class="permalink active" rel="bookmark">Cron line for html authenticated sites</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/user/128737" title="View user profile." data-uid="128737" class="username">sam6</a> commented <time pubdate datetime="2010-06-09T14:10:12+00:00">June 9, 2010 at 2:10pm</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>If a site is access-protected using html authentication, for example using the Secure Site module (<a href="http://drupal.org/project/securesite">http://drupal.org/project/securesite</a>) this line can be used:</p>
+<p>45 * * * * curl -u	user:pwd --silent --compressed <a href="http://www.example.com/cron.php">http://www.example.com/cron.php</a></p>
+</div></div></div>      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+
+<div class="indented"><a id="comment-3123438"></a>
+<div class="comment comment-content-3123438 clearfix">
+  <a href="https://www.drupal.org/user/829476" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="ohnobinki’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-3123438" class="permalink active" rel="bookmark">security and the commandline</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/user/829476" title="View user profile." data-uid="829476" class="username">ohnobinki</a> commented <time pubdate datetime="2010-06-23T16:07:07+00:00">June 23, 2010 at 4:07pm</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>I would like to note that a command like ``curl -u user:passwd'' should never be used on a shared server. Passing the password on the command line means that anybody on the server can see the username and password as long as the curl process is alive. Alternatives would be using curl's ~/.netrc file to specify the username and password. See curl(1) for more information on curl.</p>
+</div></div></div>        <div class="user-signature clearfix">
+      <p>--<br /><i><a rel="nofollow"></a>binki</i></p>
+    </div>
+      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+</div><a id="comment-3111622"></a>
+<div class="comment comment-content-3111622 clearfix">
+  <a href="https://www.drupal.org/u/sunshiney" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="Sunshiney’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-3111622" class="permalink active" rel="bookmark">What I would love to know is:</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/u/sunshiney" title="View user profile." data-uid="399565" class="username">Sunshiney</a> commented <time pubdate datetime="2010-06-21T23:43:56+00:00">June 21, 2010 at 11:43pm</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>What I would love to know is: (1) what to do if the cron command runs fine in the command line interface but not in the crontab and (2) if it's the default for only logged-in user 1 to be able to run cron.php in the browser *and** have it run update status </p>
+<p>I have googled, binged, read forums, watched videos, to no avail.</p>
+<p>Postscript:  Yes, the default is user 1.  The permission is site configurations.  That answers 2...still working on 1.</p>
+</div></div></div>      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+
+<div class="indented"><a id="comment-3273324"></a>
+<div class="comment comment-content-3273324 clearfix">
+  <a href="https://www.drupal.org/user/876346" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="wa3riz’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-3273324" class="permalink active" rel="bookmark">Did anyone answer your question?</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/user/876346" title="View user profile." data-uid="876346" class="username">wa3riz</a> commented <time pubdate datetime="2010-07-31T18:55:30+00:00">July 31, 2010 at 6:55pm</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>I'm not seeing a lot of direct responses to questions here.</p>
+<p>Regarding your question (1).  A script may work on the command line and not in<br />
+cron because cron doesn't have most environmental variables set like your shell does.<br />
+The thing that usually causes a problem is PATH.  You need to specify the path for<br />
+most system commands and all files referenced.</p>
+<p>Jeff</p>
+</div></div></div>        <div class="user-signature clearfix">
+      <p>Jeff</p>
+    </div>
+      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+
+<div class="indented"><a id="comment-3367498"></a>
+<div class="comment comment-content-3367498 clearfix">
+  <a href="https://www.drupal.org/user/876346" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="wa3riz’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-3367498" class="permalink active" rel="bookmark">godaddy.com cron</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/user/876346" title="View user profile." data-uid="876346" class="username">wa3riz</a> commented <time pubdate datetime="2010-08-24T18:25:09+00:00">August 24, 2010 at 6:25pm</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>When I installed Drupal onto my godaddy sites using their software deployment tool they installed the Drupal cron job using the wget command.<br />
+I made the mistake of assuming that worked.  But, if you watched the status report, you'd see it wasn't.  I removed the "&gt; /dev/null 2&amp;1" from the cron line<br />
+and on the next hour received my answer why.  The wget was being denied access.</p>
+<p>A very long story short, This cron job works for me on godaddy.com shared hosting:</p>
+<p>/web/cgi-bin/php5 "$HOME/html/cron.php" &gt;/dev/null 2&gt;&amp;1</p>
+<p>Basically, I just browsed to the root directory of my site and selected cron.php.<br />
+Godaddy added the the interpreter path and $HOME for me.<br />
+I added the "&gt;/dev/null 2&gt;&amp;1"  because I continued to receive what I felt were<br />
+just informational warnings.  Maybe at some point in the future I'll need to investigate<br />
+those more closely.</p>
+<p>Jeff</p>
+</div></div></div>        <div class="user-signature clearfix">
+      <p>Jeff</p>
+    </div>
+      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+
+<div class="indented"><a id="comment-4095310"></a>
+<div class="comment comment-content-4095310 clearfix">
+  <a href="https://www.drupal.org/user/94784" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="cookiesunshinex’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-4095310" class="permalink active" rel="bookmark">Jeff,
+It’ll be better if you</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/user/94784" title="View user profile." data-uid="94784" class="username">cookiesunshinex</a> commented <time pubdate datetime="2011-02-15T16:39:58+00:00">February 15, 2011 at 4:39pm</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>Jeff,</p>
+<p>It’ll be better if you redirect only the std output to /dev/null instead redirecting both (stdout &amp; stderr). This way only commands with failure exit status will be delivered.</p>
+<p>That way you only get an email if there is an error.</p>
+<p>So use: web/cgi-bin/php5 "$HOME/html/cron.php" &gt;/dev/null</p>
+</div></div></div>      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+</div></div></div><a id="comment-3316032"></a>
+<div class="comment comment-content-3316032 clearfix">
+  <a href="https://www.drupal.org/user/134654" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="ManOfVirtues’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-3316032" class="permalink active" rel="bookmark">Best Solution I have for Windows</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/user/134654" title="View user profile." data-uid="134654" class="username">ManOfVirtues</a> commented <time pubdate datetime="2010-08-11T18:46:17+00:00">August 11, 2010 at 6:46pm</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>Here is what I did to get around Windows lack of support for cron <strong>WITHOUT USING A BROWSER or WGET</strong>.</p>
+<ol><li>In the root folder of your Drupal install create a new batch file (I called it cron.bat)</li>
+<li>In the batch file paste this line (edit path to PHP install) <code>"c:\program files\php\5.2\php.exe" cron.php</code>
+</li>
+<li>Create a windows schedule task and set it up for a daily run, the semantics of creating the task matter little until we can get to the advanced menu</li>
+<li>When you get to the screen with the option to show the <strong>Advanced Menu</strong>, check the box.</li>
+<li>Set the path to point to the batch file that you created</li>
+<li><strong>IMPORTANT:</strong> Set the "Start in" option to the path of the root of your Drupal install (ie. c:\web\com\foo\www\[Drupal install])</li>
+<li>run it once for safe measure. You will get a couple PHP Notices but they don't seem to impact the performance of the cron</li>
+</ol><p>Hope this helps someone else.</p>
+</div></div></div>      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+
+<div class="indented"><a id="comment-4141054"></a>
+<div class="comment comment-content-4141054 clearfix">
+  <a href="https://www.drupal.org/user/1189610" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="flexiblemirror’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-4141054" class="permalink active" rel="bookmark">great tip</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/user/1189610" title="View user profile." data-uid="1189610" class="username">flexiblemirror</a> commented <time pubdate datetime="2011-02-26T16:20:59+00:00">February 26, 2011 at 4:20pm</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>I used it today on my first ever drupal test installation on my PC.<br />
+Thanks!</p>
+</div></div></div>      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+<a id="comment-4475574"></a>
+<div class="comment comment-content-4475574 clearfix">
+  <a href="https://www.drupal.org/user/1322056" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="Disco’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-4475574" class="permalink active" rel="bookmark">Best solution</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/user/1322056" title="View user profile." data-uid="1322056" class="username">Disco</a> commented <time pubdate datetime="2011-05-16T15:58:31+00:00">May 16, 2011 at 3:58pm</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>I have now gone down this route and works a treat, simple to set up and schedule as required.</p>
+</div></div></div>      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+</div><a id="comment-3344246"></a>
+<div class="comment comment-content-3344246 clearfix">
+  <a href="https://www.drupal.org/user/893590" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="rippofunk’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-3344246" class="permalink active" rel="bookmark">triggering cron.php using php-cli on a Linux server</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/user/893590" title="View user profile." data-uid="893590" class="username">rippofunk</a> commented <time pubdate datetime="2010-08-22T18:02:41+00:00">August 22, 2010 at 6:02pm</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>cron.php can not be run from the php-cli directly out of the box ie: </p>
+<div class="codeblock"><code>1 * * * * php -f cron.php</code></div>
+<p>its kind of a bummer because all of the wget to <a href="http://yoursite.com/cron.php">http://yoursite.com/cron.php</a>  calls get logged as web traffic.</p>
+</div></div></div>      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+
+<div class="indented"><a id="comment-3535466"></a>
+<div class="comment comment-content-3535466 clearfix">
+  <a href="https://www.drupal.org/u/mdlueck" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="mdlueck’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-3535466" class="permalink active" rel="bookmark">Thanks - Just thought to check this...</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/u/mdlueck" title="View user profile." data-uid="103832" class="username">mdlueck</a> commented <time pubdate datetime="2010-12-08T16:56:32+00:00">December 8, 2010 at 4:56pm</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>Working with CiviCRM, for various things similar to Drupal's cron.php, they recommend using php-cli.</p>
+<p>Thus I went checking to see if Drupal could handle such... guess not yet.</p>
+<p>Update: Since posting I discovered Drush, "Problem solved!" Drush comes highly recommended:<br /><a href="http://drush.ws/">http://drush.ws/</a></p>
+</div></div></div>        <div class="user-signature clearfix">
+      <p>--<br />
+Michael Lueck<br />
+Lueck Data Systems<br /><a href="http://www.lueckdatasystems.com/">http://www.lueckdatasystems.com/</a></p>
+    </div>
+      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+<a id="comment-3799212"></a>
+<div class="comment comment-content-3799212 clearfix">
+  <a href="https://www.drupal.org/user/993632" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="cor3huis’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-3799212" class="permalink active" rel="bookmark">Yes, it can. Use for example</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/user/993632" title="View user profile." data-uid="993632" class="username">cor3huis</a> commented <time pubdate datetime="2010-12-07T21:23:52+00:00">December 7, 2010 at 9:23pm</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>Yes, it can. Use for example the following line in your crontab:</p>
+<div class="codeblock"><code>*/15 * * * * /usr/local/bin/setlock -n /home/yourusername/tmp/mycronlock sh -c $'/home/yourusername/yourdomain.com/scripts/drupal.sh --root /home/yourusername/yourdomain.com/ http\072//default/cron.php'</code></div>
+<p>Make sure you've created the /home/yourusername/tmp directory first. You could also have the cron lockfile saved to /tmp/mycronlock ofcourse, but on shared hosting this is not advised.</p>
+<p>Also make sure that in "drupal.sh" the first line stated which PHP executable must be used e.g.</p>
+<div class="codeblock"><code>#!/usr/local/php5/bin/php</code></div>
+<p>one could use the following command to determine that </p>
+<div class="codeblock"><code>which php</code></div>
+</div></div></div>      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+<a id="comment-3891622"></a>
+<div class="comment comment-content-3891622 clearfix">
+  <a href="https://www.drupal.org/user/894468" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="CJBrew’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-3891622" class="permalink active" rel="bookmark">302 redirect to http:///install.php</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/user/894468" title="View user profile." data-uid="894468" class="username">CJBrew</a> commented <time pubdate datetime="2011-01-02T21:34:24+00:00">January 2, 2011 at 9:34pm</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>I got a 302 redirect message after setting up cron in this way.</p>
+<p>I had<br />
+0 1 * * * php /home/mysite/blah/cron.php</p>
+<p>The issue -- I'd not got a settings.php in the default folder!  I had moved all the settings to sites/site.co.uk and sites/site.co.uk.archive as I'm now running multisite.</p>
+<p>There's probably a better solution but I just moved the default settings file back for the time being.</p>
+</div></div></div>      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+</div><a id="comment-3450658"></a>
+<div class="comment comment-content-3450658 clearfix">
+  <a href="https://www.drupal.org/u/andrewmac" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="andrewmac’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-3450658" class="permalink active" rel="bookmark">Cron on an SSL (https) website</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/u/andrewmac" title="View user profile." data-uid="844216" class="username">andrewmac</a> commented <time pubdate datetime="2010-09-15T15:23:32+00:00">September 15, 2010 at 3:23pm</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>In case anyone finds it useful, I was unable to run cron on my SSL-protected site, even using the advice in this article.</p>
+<p>My webhost discovered that the www record points to the SSL proxy but that isn't accessible inside the server's firewall. </p>
+<p>They resolved the problem by changing the crontab URL to point to cron.php via the alias for my site at their domain address (i.e. the 'temporary' URL you often get for setting up a website before you've migrated your domain to the host server).</p>
+<p>I had to make sure the URL address prefix was http NOT https for this to work.</p>
+<p>Hope that makes sense and is useful!</p>
+</div></div></div>      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+<a id="comment-3541612"></a>
+<div class="comment comment-content-3541612 clearfix">
+  <a href="https://www.drupal.org/u/amazon" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="Amazon’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-3541612" class="permalink active" rel="bookmark">Drupal 7 secure cron URL</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/u/amazon" title="View user profile." data-uid="18703" class="username">Amazon</a> commented <time pubdate datetime="2010-10-07T05:58:22+00:00">October 7, 2010 at 5:58am</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>In Drupal 7, a secure private URL is generated to run the cron job. This URL is available in the administration &gt;&gt; reports &gt;&gt; status page in the cron maintenance tasks.</p>
+<p>The URL is something like: </p>
+<blockquote><p>
+To run cron from outside the site, go to <a href="http://D7beta1.localhost:8082/cron.php?cron_key=y85HnNQxjdqM-deRXj2Xrp2MJumqe1HGPSXhW8jftyI">http://D7beta1.localhost:8082/cron.php?cron_key=y85HnNQxjdqM-deRXj2Xrp2M...</a></p></blockquote>
+<p>The page should be updated to reflect this.</p>
+<p>Kieran</p>
+</div></div></div>        <div class="user-signature clearfix">
+      <p>Kieran Lal</p>
+    </div>
+      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+
+<div class="indented"><a id="comment-6259178"></a>
+<div class="comment comment-content-6259178 clearfix">
+  <a href="https://www.drupal.org/u/santhosh-kalla" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="Santhosh Kalla’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-6259178" class="permalink active" rel="bookmark">Drupal 7 secure cron URL</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/u/santhosh-kalla" title="View user profile." data-uid="1890510" class="username">Santhosh Kalla</a> commented <time pubdate datetime="2012-07-21T10:38:23+00:00">July 21, 2012 at 10:38am</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>I need to restrict the anonymous users to run the cron job. As this is leading to lot of problems to my website. So anyone help with this issue ? </p>
+<p>Thanks &amp; Regards,</p>
+</div></div></div>      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+</div><a id="comment-3728498"></a>
+<div class="comment comment-content-3728498 clearfix">
+  <a href="https://www.drupal.org/user/791420" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="fauskanger’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-3728498" class="permalink active" rel="bookmark">I tried for a long time to</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/user/791420" title="View user profile." data-uid="791420" class="username">fauskanger</a> commented <time pubdate datetime="2010-11-19T04:05:39+00:00">November 19, 2010 at 4:05am</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>I tried to set up a cron job via cPanel. I was told to do this:</p>
+<p><code>php -cd /home2/my_username/public_html/my_drupal_site/cron.php</code></p>
+<p>and it worked. Why does this work while wget and curl don't? Also tried the full domain and failed. Now, I got it working with this, but I do not know why..</p>
+</div></div></div>        <div class="user-signature clearfix">
+      <p>.::.......................................::.<br /><i>Time doesn't pass, it comes..</i></p>
+    </div>
+      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+
+<div class="indented"><a id="comment-3799294"></a>
+<div class="comment comment-content-3799294 clearfix">
+  <a href="https://www.drupal.org/user/993632" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="cor3huis’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-3799294" class="permalink active" rel="bookmark">This worked for you since</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/user/993632" title="View user profile." data-uid="993632" class="username">cor3huis</a> commented <time pubdate datetime="2010-12-07T21:30:29+00:00">December 7, 2010 at 9:30pm</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>This worked for you since your webhosting company (with good reason) prevented running curl, wget and the like http request from the server where you run your domain. </p>
+<p>For short, now you run the cron.php application part of Drupal directly and not by using a webserver.<br />
+The way you have it running now is even better since it will not mess with your webserver access log, and possible even more secure. Be happy, it worked ;)</p>
+</div></div></div>      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+
+<div class="indented"><a id="comment-4022366"></a>
+<div class="comment comment-content-4022366 clearfix">
+  <a href="https://www.drupal.org/user/791420" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="fauskanger’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-4022366" class="permalink active" rel="bookmark">Thanks</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/user/791420" title="View user profile." data-uid="791420" class="username">fauskanger</a> commented <time pubdate datetime="2011-01-30T05:15:39+00:00">January 30, 2011 at 5:15am</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>Yes it did and indeed happy I am :)</p>
+<p>Thanks for the explaination. </p>
+<p>Now onwards to D7 :D</p>
+</div></div></div>        <div class="user-signature clearfix">
+      <p>.::.......................................::.<br /><i>Time doesn't pass, it comes..</i></p>
+    </div>
+      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+</div></div><a id="comment-3786144"></a>
+<div class="comment comment-content-3786144 clearfix">
+  <a href="https://www.drupal.org/u/jmws" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="jmws’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-3786144" class="permalink active" rel="bookmark">What exactly is the point of</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/u/jmws" title="View user profile." data-uid="1023270" class="username">jmws</a> commented <time pubdate datetime="2010-12-04T05:03:00+00:00">December 4, 2010 at 5:03am</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>What exactly is the point of the cron-lynx.sh file? Is it an option to run using cron and it will call the cron.php, or does it run in place of cron.php?</p>
+</div></div></div>        <div class="user-signature clearfix">
+      <p>Jason<br /><a href="http://www.jmws.biz">www.jmws.biz</a></p>
+    </div>
+      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+
+<div class="indented"><a id="comment-3787812"></a>
+<div class="comment comment-content-3787812 clearfix">
+  <a href="https://www.drupal.org/u/mdlueck" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="mdlueck’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-3787812" class="permalink active" rel="bookmark">The truth is in the code...</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/u/mdlueck" title="View user profile." data-uid="103832" class="username">mdlueck</a> commented <time pubdate datetime="2010-12-04T21:01:58+00:00">December 4, 2010 at 9:01pm</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>Check out the script. It is an example of how to run the cron utilizing lynx. This interacts with the web server to run the cron.</p>
+<p>For Drupal 6.x, I have converted all over to using Drush. Comes highly recommended. Drush is able to use CLI based PHP to run Cron, thus does not interact with the web server, cleaner web statistics, verbose logging of what cron is doing, etc...</p>
+</div></div></div>        <div class="user-signature clearfix">
+      <p>--<br />
+Michael Lueck<br />
+Lueck Data Systems<br /><a href="http://www.lueckdatasystems.com/">http://www.lueckdatasystems.com/</a></p>
+    </div>
+      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+</div><a id="comment-3925058"></a>
+<div class="comment comment-content-3925058 clearfix">
+  <a href="https://www.drupal.org/user/305849" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="ZeusTheMighty’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-3925058" class="permalink active" rel="bookmark">DRUPAL 7 with CPANEL on HOSTMONSTER</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/user/305849" title="View user profile." data-uid="305849" class="username">ZeusTheMighty</a> commented <time pubdate datetime="2011-01-10T02:06:24+00:00">January 10, 2011 at 2:06am</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>/usr/bin/wget -O - -p <a href="http://yoursite.com/cron.php?cron_key=Whatever">http://yoursite.com/cron.php?cron_key=Whatever</a> it is on the status page</p>
+<p>= SUCCESS!!!!!!</p>
+<p>well, for me at least.</p>
+</div></div></div>      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+
+<div class="indented"><a id="comment-6529124"></a>
+<div class="comment comment-content-6529124 clearfix">
+  <a href="https://www.drupal.org/user/214396" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="bartclarkson’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-6529124" class="permalink active" rel="bookmark">InMotionHosting Cpanel - HTTPS Caveat</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/user/214396" title="View user profile." data-uid="214396" class="username">bartclarkson</a> commented <time pubdate datetime="2012-09-27T14:41:42+00:00">September 27, 2012 at 2:41pm</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>I made this a lot harder on myself with an SSL problem.  Since SecurePages isn't out of -dev in Drupal 7, I have been doing a blanket enforcement of HTTPS in the htaccess file for the particular client.  I needed to NOT run the cron jobs through SSL, b/c it was causing a "startfile can't be found" issue.</p>
+<p>Also CiviCRM Cron figured in, so I'm throwing that in here in case it helps someone.</p>
+<p>I amended htaccess as follows:</p>
+<div class="codeblock"><code>  #<br />  # SSL settings:<br />  #<br />  # Run everything through HTTPS until the SECUREPAGES Drupal module is Production-Version<br />  # Except CRON.  CRON fails with CPanel Cron Job in HTTPS (InMotionHosting)<br />  RewriteCond %{HTTPS} off<br />  RewriteCond %{REQUEST_URI} !^/cron.php<br />  RewriteCond %{REQUEST_URI} !^/sites/all/modules/civicrm/bin/cron.php<br />  RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R,L]  # redirect to HTTPS</code></div>
+<p>Drupal 7:<br /><code>lynx -dump -useragent="Lynx" "http://domain.com/cron.php?cron_key=whatever-it-is"</code></p>
+<p>CiviCRM:<br /><code>lynx -dump -useragent="Lynx" "http://domain.com/sites/all/modules/civicrm/bin/cron.php?name=username&amp;pass=password&amp;key=defined-in-civicrm.settings.php"</code></p>
+</div></div></div>        <div class="user-signature clearfix">
+      <p>Principal | Web Developer<br />
+significode! LLC</p>
+    </div>
+      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+</div><a id="comment-3933476"></a>
+<div class="comment comment-content-3933476 clearfix">
+  <a href="https://www.drupal.org/user/383562" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="lifepillar’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-3933476" class="permalink active" rel="bookmark">Cron configuration in Drupal 7.0</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/user/383562" title="View user profile." data-uid="383562" class="username">lifepillar</a> commented <time pubdate datetime="2011-01-11T18:06:44+00:00">January 11, 2011 at 6:06pm</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>In Drupal 7.0, at admin/config/system/cron there is an option “Run cron every…”. What's for, if you have to define the cron task manually anyway?</p>
+</div></div></div>      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+
+<div class="indented"><a id="comment-4084234"></a>
+<div class="comment comment-content-4084234 clearfix">
+  <a href="https://www.drupal.org/u/aharown07" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="aharown07’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-4084234" class="permalink active" rel="bookmark">poor man&#039;s cron in core</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/u/aharown07" title="View user profile." data-uid="278693" class="username">aharown07</a> commented <time pubdate datetime="2011-02-13T01:04:07+00:00">February 13, 2011 at 1:04am</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>This is poor man's cron... now in core.<br />
+The way this works is that each page load checks to see when cron.php ran last and per your settings runs it.<br />
+So no need to set up a crontab at all.<br />
+Must work pretty well since they put it in core. But I've always used crontab.</p>
+<p>Read about it here <a href="http://drupal.org/project/poormanscron">http://drupal.org/project/poormanscron</a></p>
+</div></div></div>      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+</div><a id="comment-3938484"></a>
+<div class="comment comment-content-3938484 clearfix">
+  <a href="https://www.drupal.org/user/1112938" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="easyCron’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-3938484" class="permalink active" rel="bookmark">if you don&#039;t have privilege to setup cron job or don&#039;t know how </a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/user/1112938" title="View user profile." data-uid="1112938" class="username">easyCron</a> commented <time pubdate datetime="2011-01-12T17:42:37+00:00">January 12, 2011 at 5:42pm</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>A third party webcron may be a good option for you. easyCron provides a free plan at <a href="http://www.easycron.com/user/register/plan/1">http://www.easycron.com/user/register/plan/1</a>.</p>
+</div></div></div>      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+<a id="comment-4101164"></a>
+<div class="comment comment-content-4101164 clearfix">
+  <a href="https://www.drupal.org/user/1172812" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="sohocs’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-4101164" class="permalink active" rel="bookmark">godaddy cron</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/user/1172812" title="View user profile." data-uid="1172812" class="username">sohocs</a> commented <time pubdate datetime="2011-02-16T20:22:49+00:00">February 16, 2011 at 8:22pm</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>In the hosting administration section there is a cron setup.  Easy todo.</p>
+</div></div></div>        <div class="user-signature clearfix">
+      <p>Sohocs</p>
+    </div>
+      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+<a id="comment-4297404"></a>
+<div class="comment comment-content-4297404 clearfix">
+  <a href="https://www.drupal.org/user/1082418" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="WH Hammond’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-4297404" class="permalink active" rel="bookmark">subscribing</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/user/1082418" title="View user profile." data-uid="1082418" class="username">WH Hammond</a> commented <time pubdate datetime="2011-04-03T01:37:11+00:00">April 3, 2011 at 1:37am</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>subscribing</p>
+</div></div></div>        <div class="user-signature clearfix">
+      <p>WH Hammond</p>
+    </div>
+      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+<a id="comment-4331044"></a>
+<div class="comment comment-content-4331044 clearfix">
+  <a href="https://www.drupal.org/u/dereremit" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="derEremit’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-4331044" class="permalink active" rel="bookmark">for d7, when does the key change</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/u/dereremit" title="View user profile." data-uid="245531" class="username">derEremit</a> commented <time pubdate datetime="2011-04-11T09:48:02+00:00">April 11, 2011 at 9:48am</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>Hi, I just found out on a live site, that cron could not be started, because the key changed.<br />
+I'd like to know what triggers a change of that key.</p>
+</div></div></div>      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+<a id="comment-5011146"></a>
+<div class="comment comment-content-5011146 clearfix">
+  <a href="https://www.drupal.org/user/1129256" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="hughbris’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-5011146" class="permalink active" rel="bookmark">stated requirement to run drush as web server user</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/user/1129256" title="View user profile." data-uid="1129256" class="username">hughbris</a> commented <time pubdate datetime="2011-09-20T04:11:57+00:00">September 20, 2011 at 4:11am</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>Excellent documentation, by the way!</p>
+<p>Might be more of a drush question:</p>
+<p>I experienced problems using the drush method, before I read the drush section here, from cron. It works fine with wget, though it requires me to "hardcode" (hardcron?) a server address. I'm happy enough for now with that, but just curious why it doesn't work using drush cron.</p>
+<p>I've noticed now this documentation says "You <em>should</em> set up crontab to run your cron tasks as the same user that runs the web server" (my emphasis). That's taken from the drush page, I know. I can't do that on the server I tried it on because I don't have those privileges. If I can run the drush command from anywhere in my own user environment, I'm specifying full paths and using the -r argument (so context is OK), why shouldn't I have the necessary privilege to run it through a cron job? I'm particularly curious about the use of the word "should", which is not quite "must".</p>
+<p>Like I said, only curious, but I bet someone knows.</p>
+</div></div></div>      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+<a id="comment-6097452"></a>
+<div class="comment comment-content-6097452 clearfix">
+  <a href="https://www.drupal.org/u/davidwhthomas" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="davidwhthomas’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-6097452" class="permalink active" rel="bookmark">Run cron directly from shell</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/u/davidwhthomas" title="View user profile." data-uid="151344" class="username">davidwhthomas</a> commented <time pubdate datetime="2012-06-09T05:24:19+00:00">June 9, 2012 at 5:24am</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><h2>Running cron automatically from the command line<br /></h2>
+<p>Here's one way to run cron directly from the shell on linux systems, using the core <strong>drupal.sh</strong> file.</p>
+<p>This example runs cron at 45 minutes past the hour, every hour.</p>
+<h2>Cron file</h2>
+<p>I put the cron job file in <code>/etc/cron.d</code><br />
+e.g</p>
+<div class="codeblock"><code>/etc/cron.d/drupal-site-name</code></div>
+<h2>Cron command</h2>
+<p>The contents are:</p>
+<div class="codeblock"><code>45 * * * * www-data /var/www/public/site/scripts/drupal.sh --root /var/www/public/site/ http://default/cron.php?cron_key=[cron_key]</code></div>
+<p>Where:</p>
+<ul><li>"site" is the drupal site webroot, e.g /var/www/public/site</li>
+<li>[cron_key] is your drupal 7 install cron key, seen at admin &gt; reports &gt; status e.g y85HnNQxjdqM-deRXj2Xrp2MJumqe1HGPSXhW8jftyI</li>
+</ul><p>No wget / curl etc.. needed, cron is run internally via shell :)</p>
+<p>Cheers,</p>
+<p>DT</p>
+</div></div></div>      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+
+<div class="indented"><a id="comment-6107958"></a>
+<div class="comment comment-content-6107958 clearfix">
+  <a href="https://www.drupal.org/u/joaogarin" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/user-pictures/picture-612814-1413290760.png%3Fitok=aN1F7uje" width="80" height="80" alt="joaogarin’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-6107958" class="permalink active" rel="bookmark">Run cron as authenticated user</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/u/joaogarin" title="View user profile." data-uid="612814" class="username">joaogarin</a> commented <time pubdate datetime="2012-06-12T14:29:14+00:00">June 12, 2012 at 2:29pm</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>Hello i am trying to run the file containing :</p>
+<p>#!/bin/sh<br />
+# Reference <a href="http://drupal.org/node/479948#comment-1673488">http://drupal.org/node/479948#comment-1673488</a> by pearlbear</p>
+<p>SITE=<a href="https://dev.example.com/">https://dev.example.com/</a><br />
+USERNAME=user.name<br />
+PASS=ChangeMe!!12</p>
+<p>COOKIES=/tmp/cron-cookies.txt<br />
+WGETPARAMS="--quiet -O /dev/null --no-check-certificate --save-cookies $COOKIES --keep-session-cookies --load-cookies $COOKIES"<br />
+# if you run drupal in a default language different than English you need to modify this<br />
+LOGIN="Log%20in"</p>
+<p>wget $WGETPARAMS "${SITE}user"<br />
+wget $WGETPARAMS --post-data="name=$USERNAME&amp;pass=$PASS&amp;op=$LOGIN&amp;form_id=user_login" "${SITE}user"<br />
+wget $WGETPARAMS " ${SITE}cron.php"</p>
+<p>I have this in a .sh file (with all paths and passwords corrected) and i am running with the following command :</p>
+<p>wget -O - -q -t 1 path to file</p>
+<p>Is this last command the one that's wrong?I see a lot of people saying this is the solution (the code above) but none explaining really what to do with it..Is it suposed to be a sh file?</p>
+<p>I am still really nooby in using cron still so excuse me some stupid questions..</p>
+<p>Best regards<br />
+Jg</p>
+</div></div></div>        <div class="user-signature clearfix">
+      <p>Joao Garin</p>
+    </div>
+      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+
+<div class="indented"><a id="comment-6187424"></a>
+<div class="comment comment-content-6187424 clearfix">
+  <a href="https://www.drupal.org/u/rjacobs" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/user-pictures/picture-422459-1400198420.jpg%3Fitok=nT1Xb09X" width="80" height="80" alt="rjacobs’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-6187424" class="permalink active" rel="bookmark">You would be calling your</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/u/rjacobs" title="View user profile." data-uid="422459" class="username">rjacobs</a> commented <time pubdate datetime="2012-07-02T18:49:20+00:00">July 2, 2012 at 6:49pm</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>You would be calling your script file directly via cron, not from wget (as your script is what calls wget). So instead of your cron command being:</p>
+<p><code>wget -O - -q -t 1 http://www.example.com/cron.php</code></p>
+<p>It would be simply:</p>
+<p><code>full/path/to/executable/file.sh</code></p>
+<p>I suppose it would help if the notes were updated to clarify this.</p>
+</div></div></div>      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+</div></div><a id="comment-6415810"></a>
+<div class="comment comment-content-6415810 clearfix">
+  <a href="https://www.drupal.org/u/trond" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="trond’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-6415810" class="permalink active" rel="bookmark">Each module that implements hook_cron must handle access</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/u/trond" title="View user profile." data-uid="162579" class="username">trond</a> commented <time pubdate datetime="2012-08-30T15:24:32+00:00">August 30, 2012 at 3:24pm</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>I don't see how you actually can run cron as an authenticated user because cron calls drupal_cron_run() which among other things does the following before it invokes other modules:</p>
+<div class="codeblock"><code>// Force the current user to anonymous to ensure consistent permissions on<br />  // cron runs.<br />  $original_user = $GLOBALS['user'];<br />  $GLOBALS['user'] = drupal_anonymous_user();</code></div>
+<p>So if you want cron to invoke a module that handles actions that involves e.g. a db query using EntityFieldQuery and you don't want anonymous users to have access to your database, the module must be responsible for access.</p>
+<p>I might be missing something here, so please let me know if I am.</p>
+</div></div></div>      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+
+<div class="indented"><a id="comment-6430798"></a>
+<div class="comment comment-content-6430798 clearfix">
+  <a href="https://www.drupal.org/u/dreizwo" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="dreizwo’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-6430798" class="permalink active" rel="bookmark">I confirm to this! I reported</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/u/dreizwo" title="View user profile." data-uid="1048466" class="username">dreizwo</a> commented <time pubdate datetime="2012-09-03T21:16:36+00:00">September 3, 2012 at 9:16pm</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>I confirm to this! I reported an issue for this problem <a href="http://drupal.org/node/1772634" rel="nofollow">http://drupal.org/node/1772634</a></p>
+</div></div></div>      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+<a id="comment-7059652"></a>
+<div class="comment comment-content-7059652 clearfix">
+  <a href="https://www.drupal.org/u/robmalon" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/user-pictures/picture-282994-1413997690.jpg%3Fitok=-nOIdDZ-" width="80" height="80" alt="robmalon’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-7059652" class="permalink active" rel="bookmark">I came up with a work around</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/u/robmalon" title="View user profile." data-uid="282994" class="username">robmalon</a> commented <time pubdate datetime="2013-02-12T23:39:53+00:00">February 12, 2013 at 11:39pm</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>I came up with a work around for this (at least in my case) that anyone else should be able to apply to their scenario. It's not great, since it doesn't actually run the cron process as authenticated, but instead manually modifies whatever you need on a per case basis: <a href="http://robmalon.com/running-cron-as-an-authenticated-user/" title="Running Cron As An Authenticated User" rel="nofollow">Running Cron As An Authenticated User</a></p>
+</div></div></div>      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+</div><a id="comment-6451074"></a>
+<div class="comment comment-content-6451074 clearfix">
+  <a href="https://www.drupal.org/u/pmorris" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="PMorris’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-6451074" class="permalink active" rel="bookmark">For Godaddy dedicated linux server with cpanel</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/u/pmorris" title="View user profile." data-uid="449240" class="username">PMorris</a> commented <time pubdate datetime="2012-09-08T01:23:33+00:00">September 8, 2012 at 1:23am</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>I got my cron to work by  using the 'advanced &gt; cron jobs' tab of cpanel and adding the job:</p>
+<p><code>/usr/bin/php /home/musclein/public_html/cron.php</code></p>
+<p>lynx method didn't work on my server</p>
+</div></div></div>      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+<a id="comment-6760098"></a>
+<div class="comment comment-content-6760098 clearfix">
+  <a href="https://www.drupal.org/u/vindesh" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="vindesh’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-6760098" class="permalink active" rel="bookmark">crontab command</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/u/vindesh" title="View user profile." data-uid="391215" class="username">vindesh</a> commented <time pubdate datetime="2012-11-21T19:11:07+00:00">November 21, 2012 at 7:11pm</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>You can try another crontab command:</p>
+<p>PHP command: use "php" or "/usr/bin/php"</p>
+<p>php /var/www/vhosts/mydomain.com/httpdocs/cron.php<br />
+php -q /var/www/vhosts/mydomain.com/httpdocs/cron.php<br />
+cd /var/www/vhosts/mydomain.com/httpdocs/ ; /usr/bin/php -q cron.php<br />
+php /var/www/vhosts/mydomain.nl/httpdocs/cron.php &amp;&gt; /dev/null<br />
+php -q -f /var/www/vhosts/mydomain.com/httpdocs/cron.php</p>
+<p>WGET command:<br />
+use "wget" or "/usr/bin/wget"</p>
+<p>/usr/bin/wget <a href="http://www.mydomain.com/cron.php">http://www.mydomain.com/cron.php</a><br />
+wget <a href="http://www.mydomain.com/cron.php">http://www.mydomain.com/cron.php</a> -O /dev/null<br />
+wget -O /dev/null <a href="http://www.mydomain.com/cron.php">www.mydomain.com/cron.php</a><br />
+/usr/bin/wget -O - -q -t 1 <a href="http://www.mydomain.com/cron.php">www.mydomain.com/cron.php</a><br />
+/usr/bin/wget <a href="http://www.mydomain.com/cron.php">http://www.mydomain.com/cron.php</a> &gt;/dev/null 2&gt;&amp;1</p>
+<p>CURL:<br />
+/usr/bin/curl <a href="http://www.mydomain.com/cron.php">http://www.mydomain.com/cron.php</a><br />
+curl command is working for my godaddy hosting website</p>
+</div></div></div>        <div class="user-signature clearfix">
+      <p>Regard's<br />
+ Vindesh</p>
+    </div>
+      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+<a id="comment-7030814"></a>
+<div class="comment comment-content-7030814 clearfix">
+  <a href="https://www.drupal.org/u/marcus7777" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/user-pictures/picture-201357-1411226711.jpg%3Fitok=HskOH1s-" width="80" height="80" alt="marcus7777’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-7030814" class="permalink active" rel="bookmark">nice</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/u/marcus7777" title="View user profile." data-uid="201357" class="username">marcus7777</a> commented <time pubdate datetime="2013-02-05T21:18:18+00:00">February 5, 2013 at 9:18pm</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>use 'nice' it is so cool eg.</p>
+<div class="codeblock"><code>0,30 * * * * nice -n 10 drush -r /home/eg/ cron</code></div>
+<p>or for multisite</p>
+<div class="codeblock"><code>0,30 * * * * (cd ~/www;for i in $(drush sa) ; do nice -n 10 drush -q -l $i cron; done)</code></div>
+<p>from the man pages:<br />
+       nice - run a program with modified scheduling priority</p>
+<p>DESCRIPTION<br />
+       Run  COMMAND  with  an adjusted niceness, which affects process scheduling.  With no COMMAND, print the current niceness.  Nicenesses range from -20 (most favorable<br />
+       scheduling) to 19 (least favorable).</p>
+</div></div></div>      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+<a id="comment-7337348"></a>
+<div class="comment comment-content-7337348 clearfix">
+  <a href="https://www.drupal.org/u/%C3%B1ull" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="ñull’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-7337348" class="permalink active" rel="bookmark">Drupal 7 cron without cron</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/u/%C3%B1ull" title="View user profile." data-uid="12734" class="username">ñull</a> commented <time pubdate datetime="2013-04-24T07:50:57+00:00">April 24, 2013 at 7:50am</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>As far as I understand in Drupal 7 they introduced cron without cronjob (poor man's cron build in). When a cron job is really heavy on the server, I in fact don't like this automatic behaviour and would like only a command line started cron to rule on my time and frequency. Is there a way to disable the build in cron in d7? I tried by setting the setting "Run cron every" to none, but then apparently the command line cron is not executed either. How to configure that only the command line cron rules?</p>
+</div></div></div>      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+
+<div class="indented"><a id="comment-7380098"></a>
+<div class="comment comment-content-7380098 clearfix">
+  <a href="https://www.drupal.org/u/aharown07" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="aharown07’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-7380098" class="permalink active" rel="bookmark">Maybe...</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/u/aharown07" title="View user profile." data-uid="278693" class="username">aharown07</a> commented <time pubdate datetime="2013-05-06T01:31:44+00:00">May 6, 2013 at 1:31am</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>Might find what you're looking for here?  <a href="http://drupal.org/node/1014412">http://drupal.org/node/1014412</a></p>
+</div></div></div>      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+</div><a id="comment-7933833"></a>
+<div class="comment comment-content-7933833 clearfix">
+  <a href="https://www.drupal.org/u/samuraisjakkie-0" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="samuraisjakkie’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-7933833" class="permalink active" rel="bookmark">determin if cron is run using the cron_key in drupal 7</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/u/samuraisjakkie-0" title="View user profile." data-uid="1276072" class="username">samuraisjakkie</a> commented <time pubdate datetime="2013-10-04T15:56:53+00:00">October 4, 2013 at 3:56pm</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>Is there a way for drupal to determine whether the cron command is called from using the unique cron key. ANd if it can determine this then runs a a particular script.  Using thing in conjunction with an importer i wrote and only need to call the script if there is a change in the other location.</p>
+<p>thanks.</p>
+</div></div></div>        <div class="user-signature clearfix">
+      <p>Jacques</p>
+    </div>
+      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+<a id="comment-8225129"></a>
+<div class="comment comment-content-8225129 clearfix">
+  <a href="https://www.drupal.org/user/2760967" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="egocentric13’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-8225129" class="permalink active" rel="bookmark">Command not found</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/user/2760967" title="View user profile." data-uid="2760967" class="username">egocentric13</a> commented <time pubdate datetime="2013-11-29T05:36:30+00:00">November 29, 2013 at 5:36am</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>I need help with regards to executing the command.<br />
+When I type:<br />
+45 * * * * curl -s url<br />
+I always get error that the command is not found.<br />
+Any idea? Thanks in advance.</p>
+</div></div></div>      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+<a id="comment-8712655"></a>
+<div class="comment comment-content-8712655 clearfix">
+  <a href="https://www.drupal.org/u/nicorac" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="nicorac’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-8712655" class="permalink active" rel="bookmark">Better curl options</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/u/nicorac" title="View user profile." data-uid="235024" class="username">nicorac</a> commented <time pubdate datetime="2014-04-24T08:01:34+00:00">April 24, 2014 at 8:01am</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>These are, in my opinion, the best options for curl:<br /><code>curl -f -sS http://www.example.com/cron.php?cron_key?&lt;putYourKeyHere&gt;</code></p>
+<p>Linux crontab, by default, send a mail to root with the output of the command, if any.<br />
+Usually, if nothing goes wrong, cron.php has no output, so no mail.</p>
+<p>If something goes wrong (cron.php outputs something, the key becomes invalid, the URL changes, ...) the admin will receive a message like:<br /><code>curl: (22) The requested URL returned error: 403</code><br />
+or the content of the returned page.</p>
+<p>Completely silent wget/curl makes it difficult to detect cron issues that could happen in the future.</p>
+</div></div></div>        <div class="user-signature clearfix">
+      <p><a href="http://coolsoft.altervista.org">http://coolsoft.altervista.org</a></p>
+    </div>
+      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+<a id="comment-8940169"></a>
+<div class="comment comment-content-8940169 clearfix">
+  <a href="https://www.drupal.org/u/lars.ollen" title="View user profile." class="picture"><img src="../files/styles/drupalorg_user_picture/public/default-avatar.png%3Fitok=9nsrt1UL" width="80" height="80" alt="lars.ollen’s picture" /></a>
+  
+    <h3><a href="23714.html#comment-8940169" class="permalink active" rel="bookmark">Cron job with systemd</a></h3>
+  
+  <div class="submitted">
+        <a href="https://www.drupal.org/u/lars.ollen" title="View user profile." data-uid="2939939" class="username">lars.ollen</a> commented <time pubdate datetime="2014-07-04T10:10:49+00:00">July 4, 2014 at 10:10am</time>  </div>
+
+  <div class="content">
+    <div class="field field-name-comment-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><p>If you are using systemd you will probably need to use the timer feature. I wrote a short guide about it after setting up my own drupal installation:<br /><a href="http://northernlightlabs.se/drupal.cronjob.with.systemd">http://northernlightlabs.se/drupal.cronjob.with.systemd</a></p>
+</div></div></div>      </div>
+
+  <ul class="links inline"><li class="comment_forbidden first last"><span><a href="https://www.drupal.org/user/login?destination=comment/reply/23714%23comment-form">Log in</a> or <a href="https://www.drupal.org/user/register?destination=comment/reply/23714%23comment-form">register</a> to post comments</span></li>
+</ul></div>
+
+  </section>
+  </div>
+  </div>
+</div>
+  </div>
+</div>
+                  </div> <!-- /#content -->
+
+      </div> <!-- /#column-left -->
+
+              <div id="aside" role="complementary" >
+          <div id="aside-region">
+              <div class="region region-sidebar-second">
+    <div id="block-drupalorg-handbook-meta-sidebar" class="block block-drupalorg-handbook">
+<div class="block-inner">
+    <h2 class="">Page status</h2>
+  
+  <div class="content">
+    <p class="page-status page-ok"><span>No known problems</span></p><p><a href="https://www.drupal.org/user?destination=node/23714">Log in to edit this page</a></p>  </div>
+  </div>
+</div>
+<div id="block-drupalorg-handbook-about-page" class="block block-drupalorg-handbook">
+<div class="block-inner">
+    <h2 class="">About this page</h2>
+  
+  <div class="content">
+    <dl class="about-section">
+      <dt>Drupal version</dt>
+    <dd>Drupal 4.5.x or older, Drupal 4.6.x, Drupal 4.7.x, Drupal 5.x, Drupal 6.x, Drupal 7.x, Drupal 8.x</dd>
+      <dt>Audience</dt>
+    <dd>Site administrators</dd>
+      <dt>Level</dt>
+    <dd>Intermediate</dd>
+      <dt>Keywords</dt>
+    <dd><a href="https://www.drupal.org/taxonomy/term/35710">cron</a>, <a href="https://www.drupal.org/taxonomy/term/41148">scheduled tasks</a>, <a href="https://www.drupal.org/taxonomy/term/41150">crontab</a></dd>
+  </dl>
+  </div>
+  </div>
+</div>
+<div id="block-book-navigation" class="block block-book">
+<div class="block-inner">
+    <h2 class=""><a href="https://www.drupal.org/documentation/install" class="book-title">Installation Guide</a></h2>
+  
+  <div class="content">
+    <ul class="menu"><li class="first collapsed"><a href="https://www.drupal.org/requirements">System requirements</a></li>
+<li class="collapsed"><a href="https://www.drupal.org/documentation/install/download">Step 1: Download and extract Drupal</a></li>
+<li class="collapsed"><a href="https://www.drupal.org/documentation/install/create-database">Step 2: Create the database</a></li>
+<li class="collapsed"><a href="https://www.drupal.org/documentation/install/settings-file">Step 3: Create settings.php, services.yml and the files directory</a></li>
+<li class="collapsed"><a href="https://www.drupal.org/documentation/install/run-script">Step 4: Run the installation script</a></li>
+<li class="expanded active-trail"><a href="https://www.drupal.org/cron" class="active-trail">Step 5: Setting up cron</a><ul class="menu"><li class="first expanded active-trail"><a href="23714.html" class="active-trail active">Configuring cron jobs using the cron command</a><ul class="menu"><li class="first leaf"><a href="https://www.drupal.org/node/565408">Configuring Cron on Rackspace Cloud Sites</a></li>
+<li class="leaf"><a href="https://www.drupal.org/node/369267">Configuring cron jobs in cPanel</a></li>
+<li class="leaf"><a href="https://www.drupal.org/node/31548">Configuring cron jobs on DreamHost</a></li>
+<li class="leaf"><a href="https://www.drupal.org/node/434416">Configuring cron jobs on MAMP localhost</a></li>
+<li class="leaf"><a href="https://www.drupal.org/node/159340">Configuring cron jobs on Media Temple Grid (gs) and DV servers</a></li>
+<li class="leaf"><a href="https://www.drupal.org/node/31506">Configuring cron jobs on Windows</a></li>
+<li class="leaf"><a href="https://www.drupal.org/node/2011700">Configuring cron jobs on hosteurope</a></li>
+<li class="leaf"><a href="https://www.drupal.org/node/361763">Configuring cron jobs on ixWebHosting</a></li>
+<li class="leaf"><a href="https://www.drupal.org/node/562904">Configuring cron on Mac OS X Server 10.5.x and later</a></li>
+<li class="leaf"><a href="https://www.drupal.org/node/1192934">Plesk 10 configuration for cron job</a></li>
+<li class="leaf"><a href="https://www.drupal.org/node/1124666">Set up a cron job with Network Solutions</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/node/208579">Setting up cron on Hostmonster/Bluehost through the cPanel interface</a></li>
+</ul></li>
+<li class="leaf"><a href="https://www.drupal.org/node/158922">Running cron manually</a></li>
+<li class="leaf"><a href="https://www.drupal.org/node/553430">Solving cron problems</a></li>
+<li class="collapsed"><a href="https://www.drupal.org/node/237503">Multisite cron</a></li>
+<li class="last collapsed"><a href="https://www.drupal.org/node/65307">Configuring cron without wget, lynx, or curl commands</a></li>
+</ul></li>
+<li class="collapsed"><a href="https://www.drupal.org/getting-started/clean-urls">Step 6: Configure clean URLs</a></li>
+<li class="collapsed"><a href="https://www.drupal.org/documentation/install/after">After Installation</a></li>
+<li class="last collapsed"><a href="https://www.drupal.org/node/1839310">Additional topics</a></li>
+</ul>  </div>
+  </div>
+</div>
+<div id="block-drupalorg-handbook-license" class="block block-drupalorg-handbook">
+<div class="block-inner">
+    
+  <div class="content">
+    Drupal’s online documentation is © 2000-2015 by the individual contributors and can be used in accordance with the <a href="https://www.drupal.org/node/14307">Creative Commons License, Attribution-ShareAlike 2.0</a>. PHP code is distributed under the <a href="http://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GNU General Public License</a>. Comments on documentation pages are used to improve content and then deleted.  </div>
+  </div>
+</div>
+  </div>
+          </div> <!-- /#column-right-region -->
+        </div> <!-- /#column-right -->
+      
+          </div> <!-- /#page-inner -->
+  </div> <!-- /#page -->
+
+  <div id="footer" role="contentinfo">
+    <div id="footer-inner" class="container-12 clearfix">
+              <div id="footer-region">
+          <div id="footer-region-inner" class="clearfix">
+              <div class="region region-footer">
+    <div class="doormat clearfix"><h4 class="element-invisible">News Items</h4><ul class="drupal-news"><li class="0 first"><a href="https://www.drupal.org/news">Drupal News</a></li>
+<li class="1"><a href="https://www.drupal.org/planet" title="News from Drupal community members">Planet Drupal</a></li>
+<li class="2"><a href="https://association.drupal.org/news" title="News from association.drupal.org">Association News</a></li>
+<li class="3"><a href="https://www.drupal.org/social-media" title="Drupal on social media">Social Media Directory</a></li>
+<li class="4"><a href="https://www.drupal.org/security" title="Advisories from the security team">Security Announcements</a></li>
+<li class="5 last"><a href="https://jobs.drupal.org/" title="Drupal Jobs">Jobs</a></li>
+</ul><h4 class="element-invisible">Our Community</h4><ul class="community"><li class="0 first"><a href="https://drupal.org/community">Community</a></li>
+<li class="1"><a href="https://drupal.org/getting-involved" title="Learn how to contribute to the Drupal project">Getting Involved</a></li>
+<li class="2"><span><a href="https://drupal.org/drupal-services" title="People and organizations offering Drupal services">Services</a>, <a href="https://drupal.org/training" title="People and organizations offering Drupal training">Training</a> & <a href="https://drupal.org/hosting" title="Organizations offering Drupal hosting">Hosting</a></span></li>
+<li class="3"><a href="https://groups.drupal.org/groups" title="groups.drupal.org">Groups &amp; Meetups</a></li>
+<li class="4"><a href="https://drupal.org/drupalcon" title="Upcoming and past DrupalCons">DrupalCon</a></li>
+<li class="5 last"><a href="https://drupal.org/dcoc" title="Drupal Code of Conduct">Code of Conduct</a></li>
+</ul><h4 class="element-invisible">Online Documentation</h4><ul class="get-started"><li class="0 first"><a href="https://drupal.org/start">Get Started</a></li>
+<li class="1"><a href="https://drupal.org/documentation" title="Guidebooks and documentation for working with Drupal">Documentation Home</a></li>
+<li class="2"><a href="https://drupal.org/documentation/install" title="Guide for installing Drupal">Installation Guide</a></li>
+<li class="3"><a href="https://drupal.org/documentation/build" title="Guide for building and extending Drupal sites">Site Building Guide</a></li>
+<li class="4"><a href="https://drupal.org/support" title="Drupal support options">Support</a></li>
+<li class="5 last"><a href="https://api.drupal.org/" title="Drupal API Reference">api.drupal.org</a></li>
+</ul><h4 class="element-invisible">Drupal Code Base</h4><ul class="download-extend"><li class="0 first"><a href="https://drupal.org/download">Download &amp; Extend</a></li>
+<li class="1"><a href="https://drupal.org/project/drupal" title="Download the latest version of the Drupal software">Drupal Core</a></li>
+<li class="2"><a href="https://drupal.org/project/project_module" title="Download add-on features and functionality">Modules</a></li>
+<li class="3"><a href="https://drupal.org/project/project_theme" title="Download pre-designed styles for Drupal">Themes</a></li>
+<li class="4 last"><a href="https://drupal.org/project/project_distribution" title="Download a pre-packaged Drupal site">Distributions</a></li>
+</ul><h4 class="element-invisible">Governance of Community</h4><ul class="about"><li class="0 first"><a href="https://drupal.org/about">About</a></li>
+<li class="1"><a href="https://drupal.org/about/accessibility" title="Our committment to accessibility">Web accessibility</a></li>
+<li class="2"><a href="https://association.drupal.org/about" title="About the Drupal Association">The Drupal Association</a></li>
+<li class="3"><a href="https://drupal.org/about-drupalorg" title="About Drupal.org">About Drupal.org</a></li>
+<li class="4"><a href="https://drupal.org/terms" title="Drupal.org Terms of Service">Terms of Service</a></li>
+<li class="5 last"><a href="https://drupal.org/privacy" title="Drupal.org Privacy Policy">Privacy Policy</a></li>
+</ul></div><div id="block-block-77" class="block block-block">
+<div class="block-inner">
+    
+  <div class="content">
+    <p>Drupal is a <a href="http://drupal.com/trademark" rel="nofollow">registered trademark</a> of <a href="http://buytaert.net" rel="nofollow">Dries Buytaert</a>.</p>
+  </div>
+  </div>
+</div>
+  </div>
+          </div> <!-- /#footer-region-inner -->
+        </div> <!-- /#footer-region -->
+          </div> <!-- /#footer-inner -->
+  </div> <!-- /#footer -->
+    <div class="region region-page-bottom">
+    <!-- <a href="http://drupal.org/sites/all/modules/httpbl/donotremove.php">nobody click here</a> -->  </div>
+<script type="text/javascript" src="../files/advagg_js/js__to4E6ed7qbWQIIrZ8SjAf2iDoY3ZkHhlZySO3qQI4ws__30g4_YLNJDK0tUDy1vJDyqtAnbRAen2hxqieAjRIb3Q__gv1Ex41H719B2B-JraMAFF7pN_1ta0XhC2viKRmAdlk.js"></script>
+</body>
+</html>

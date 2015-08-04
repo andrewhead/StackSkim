@@ -1,0 +1,2469 @@
+
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+  Configuring cron jobs using the cron command | Drupal.org
+  
+
+
+
+  
+
+
+
+
+<!--//--><![CDATA[//><!--
+var _gaq = _gaq || [];_gaq.push(["_setAccount", "UA-2360451-1"]);_gaq.push(['_setCustomVar', 1, "User roles", "anonymous user,confirmed", 1]);_gaq.push(["_trackPageview"]);(function() {var ga = document.createElement("script");ga.type = "text/javascript";ga.async = true;ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(ga, s);})();
+//--><!]]>
+
+
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings,{"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"bluecheese","theme_token":"Y1XEQSZvokhCNHGweGv36pJXXogb69SnnisrP2wbBfE","js":{"misc\/jquery.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/codefilter\/codefilter.js":1,"sites\/all\/modules\/drupalorg_crosssite\/js\/jquery.timeago.js":1,"sites\/all\/modules\/drupalorg_crosssite\/js\/drupalorg_crosssite.js":1,"sites\/all\/modules\/project_issue\/js\/project-issue.js":1,"sites\/all\/modules\/drupalorg\/drupalorg\/js\/general.js":1,"sites\/all\/modules\/google_analytics\/googleanalytics.js":1,"0":1,"sites\/all\/themes\/bluecheese\/js\/bluecheese.js":1,"sites\/all\/modules\/drupalorg\/drupalorg\/js\/drupalorg-perfect-audience.js":1,"misc\/form.js":1,"misc\/collapse.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/aggregator\/aggregator.css":1,"modules\/book\/book.css":1,"sites\/all\/modules\/codefilter\/codefilter.css":1,"modules\/comment\/comment.css":1,"modules\/field\/theme\/field.css":1,"sites\/all\/modules\/logintoboggan\/logintoboggan.css":1,"sites\/all\/modules\/mollom\/mollom.css":1,"modules\/node\/node.css":1,"modules\/user\/user.css":1,"modules\/forum\/forum.css":1,"modules\/search\/search.css":1,"sites\/all\/modules\/project_issue\/project_issue.css":1,"sites\/all\/modules\/project\/release\/project_release.css":1,"sites\/all\/modules\/project\/package\/project_package.css":1,"sites\/all\/modules\/views\/css\/views.css":1,"sites\/all\/modules\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/google_admanager\/google_admanager.css":1,"sites\/all\/themes\/bluecheese\/css\/styles.css":1}},"jcarousel":{"ajaxPath":"\/jcarousel\/ajax\/views"},"googleanalytics":{"trackOutbound":1,"trackMailto":1,"trackDownload":1,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls|xml|z|zip"}});
+//--><!]]>
+
+/**
+ * Highlight style classes
+ * .a background color
+ * .b underline
+ * .c underline + font color
+ */
+ 
+@media screen{
+em.diigoHighlight {
+	text-align:inherit;
+	text-decoration: inherit;
+	line-height:inherit;
+	font:inherit;
+	color:inherit;
+	display:inline;
+	position:relative;
+}
+em.diigoHighlight.a_style.mouseOvered {
+	background-color: #ffc62a !important;
+}	
+
+em.diigoHighlight.b_style.mouseOvered, em.diigoHighlight.c_style.mouseOvered {
+	border-bottom: solid 2px #ffc62a;
+}
+	
+em.diigoHighlight.c_style {
+	color: #000099;
+}
+em.diigoHighlight.c_style.mouseOvered {
+	color: #ffc62a;
+}	
+
+em.diigoHighlight.a_style.yellow {
+	background-color: #FF9;
+}
+
+em.diigoHighlight.b_style.yellow, em.diigoHighlight.c_style.yellow {
+	border-bottom: solid 2px #FF9;
+}
+	
+img.diigoHighlight.yellow {/*image highlight*/
+	cursor: pointer; 
+	outline:2px solid #FF9;
+}
+	
+em.diigoHighlight.a_style.blue {
+	background-color: #ABD5FF;
+}
+
+em.diigoHighlight.b_style.blue, em.diigoHighlight.c_style.blue {
+	border-bottom: solid 2px #ABD5FF;
+}
+	
+img.diigoHighlight.blue {/*image highlight*/
+	cursor: pointer; 
+	outline:2px solid #ABD5FF;
+}
+	
+	
+em.diigoHighlight.a_style.green {
+	background-color: #B2E57E;
+}
+
+em.diigoHighlight.b_style.green, em.diigoHighlight.c_style.green {
+	border-bottom: solid 2px #B2E57E;
+}
+
+img.diigoHighlight.green {/*image highlight*/
+	cursor: pointer; 
+	outline:2px solid #B2E57E;
+}	
+	
+	
+em.diigoHighlight.a_style.pink {
+	background-color: #ffcccc;
+}
+
+em.diigoHighlight.b_style.pink, em.diigoHighlight.c_style.pink {
+	border-bottom: solid 2px #ffcccc;
+}
+	
+img.diigoHighlight.pink {/*image highlight*/
+	cursor: pointer; 
+	outline:2px solid #ffcccc;
+}	
+	
+img.diigoHighlight.mouseOvered {
+	cursor: pointer; 
+	outline:2px solid #ffc62a;
+}	
+	
+
+div.diigotb-inline-cloud{
+	position:fixed !important;
+	width:440px !important;
+	height:370px !important;
+	left:0;top:0;
+	background-color:#fef5c7 !important;
+	z-index:9999999999 !important;
+	display:none;
+	-moz-border-radius:15px !important;
+}
+/*  capture image */
+
+.diigotb-body #diigotb-upload-cover{
+	cursor:crosshair!important;
+	z-index:1999999!important;
+	position:fixed!important;
+	left:0!important;
+	top:31px;
+}
+	
+.diigotb-body #diigotb-upload-tip{
+    color: #fff!important;
+    padding:2px 4px!important;
+    position:fixed!important;
+    z-index:11000001!important;
+}
+	
+.diigotb-body #diigotb-upload-select{
+	position:fixed!important;
+	z-index:1000001;
+}
+	
+.diigotb-body #diigotb-upload-resizer{
+	z-index:11000002!important;
+	position:fixed!important;
+	cursor:move!important;
+	border:1px dashed black!important;
+}
+	
+.diigotb-body #currentColor{
+  background-color: #fff!important;
+  width: 37px!important;
+  height: 37px!important;
+  padding: 1px!important;
+  border: 1px solid #2e68e6!important;
+  float: left!important;
+  margin: 0 5px 0 0!important;
+}
+	
+.diigotb-body #currentColor div{
+  width: 37px!important;
+  height: 37px!important;	
+  margin:0!important;
+}
+.diigotb-body .selectPanel{
+	margin-top:5px!important;
+}
+	
+.diigotb-body .colorCell{
+  float: left!important;
+  margin: 0 1px 1px 0!important;
+  border: 1px solid #5f92ff!important;
+  width: 18px!important;
+  height: 18px!important;
+}
+	
+.diigotb-body .colorCell:hover{
+  border: 1px solid #FF9900!important;
+}
+.diigotb-body .colorCell.actived{
+  border: 1px solid #FF9900!important;
+}	
+	
+.diigotb-body .colorCell div{
+  width: 18px!important;
+  height: 18px!important;
+  cursor:pointer!important;
+  margin:0!important;
+}
+
+.diigotb-body .capture-black{background-color:#000!important;}
+.diigotb-body .capture-white{background-color:#fff!important;}
+.diigotb-body .capture-gray{background-color:#808080!important;}
+.diigotb-body .capture-light-gray{background-color:#c0c0c0!important;}
+
+.diigotb-body .capture-red{background-color:#ff0000!important;}
+.diigotb-body .capture-cyan{background-color:#00ffff!important;}
+.diigotb-body .capture-orange{background-color:#ff9900!important;}
+.diigotb-body .capture-blue{background-color:#0000ff!important;}
+
+.diigotb-body .capture-yellow{background-color:#ffff00!important;}
+.diigotb-body .capture-purple{background-color:#9900ff!important;}
+.diigotb-body .capture-green{background-color:#00ff00!important;}
+.diigotb-body .capture-pink{background-color:#ff00ff!important;}
+	
+.diigotb-body #diigotb-colorpanel{
+	background:transparent url(chrome://diigotb/skin/ann-bar-palette-bg-left.png) no-repeat scroll left center!important;
+	display:block;
+	height:55px!important;
+	position:fixed!important;
+	width:180px!important;
+	z-index:11000022!important;
+	margin:0!important;
+}
+	
+.diigotb-body .diigotb-cbg{
+	background:transparent url(chrome://diigotb/skin/ann-bar-palette-bg-right.png) no-repeat scroll right top!important;
+	height:55px!important;
+	line-height:55px!important;
+	padding-left:6px!important;
+	width:180px!important;
+	margin:0!important;
+}
+
+	
+.diigotb-body #currentArrow{
+	background:transparent url(chrome://diigotb/skin/ann-bar-palette-arrow.png) no-repeat scroll 0 0!important;
+	height:6px!important;
+	left:0;
+	position:relative!important;
+	top:-5px;
+	width:7px!important;
+	margin:0!important;
+}
+	
+.diigotb-body #currentArrow._istop{
+	background:transparent url(chrome://diigotb/skin/ann-bar-palette-arrow-down.png) no-repeat scroll 0 0!important;
+	top:51px!important;
+}
+	
+	
+.diigotb-body #diigotb-text-area{
+	position:fixed!important;
+	z-index:11000010!important;
+}
+	
+.diigotb-body .diigotb-text-input{
+	font: 18px/22px Helvetica,Arial,sans-serif!important;
+	border:0px solid #5f92ff!important;
+	z-index:11000011!important;
+}	
+	
+.diigotb-body #diigotb-editpanel{
+	background:transparent url(chrome://diigotb/skin/ann-bar-bg-right.png) no-repeat scroll right center!important;
+	height:35px!important;
+	position: fixed!important;
+	z-index:11000022!important;
+	margin:0!important;
+}
+	
+	
+.diigotb-body .diigotb-btn div{
+	cursor:pointer!important;
+	width:18px!important;
+	height:18px!important;
+	margin:2px!important;
+}
+.diigotb-body .diigotb-btn{
+	width:23px!important;
+	height:23px!important;
+}
+		
+	
+.diigotb-body #diigotb-editpanel .diigotb-bg{
+	background:transparent url(chrome://diigotb/skin/ann-bar-bg-left.png) repeat-x scroll left center!important;
+	height:35px!important;
+	padding-left:6px!important;
+	line-height:35px!important;
+	margin:0!important;
+}
+	
+		
+.diigotb-body div.diigotb-tip{
+	-moz-border-radius:4px 4px 4px 4px;
+	background-color:#f1f2f7;
+	border:1px solid #767676;
+	color:black;
+	display:none;
+	-moz-box-shadow:5px 5px 5px -5px #767676;
+	font:12px Arial,Helvetica,sans-serif;
+	margin:0 !important;
+	padding:3px 6px !important;
+	position:absolute;
+	z-index:2147483647;
+}
+	
+.diigotb-body #diigotb-editpanel div.diigotb-btn{
+	padding:0px!important;
+	display:inline-table!important;
+	margin-bottom:0 !important;
+	margin-left:0 !important;
+	margin-right:0 !important;
+	margin-top:5px;
+}
+	
+	
+.diigotb-body #diigotb-editpanel div.diigotb-sep img{
+	padding:0!important;
+	margin:0!important;
+}
+	
+.diigotb-body #diigotb-editpanel div.diigotb-sep{
+	padding:4px 0!important;
+	display:inline-table!important;
+	margin:0!important;
+	line-height:0 !important;
+}	
+	
+.diigotb-body #diigotb-editpanel div.diigotb-btn.enabled:hover{
+	background: transparent url("chrome://diigotb/skin/ann-bar-opt-current.png") no-repeat!important;
+}
+	
+.diigotb-body #diigotb-editpanel #diigotb-undo.enabled div{
+	background: transparent url("chrome://diigotb/skin/ann-bar-opt-undo.png") no-repeat center center!important;
+}
+	
+.diigotb-body #diigotb-editpanel div.diigotb-btn.actived{
+	background: transparent url("chrome://diigotb/skin/ann-bar-opt-current.png") no-repeat!important;
+}
+	
+.diigotb-image-border{
+	border:1px solid #666 !important;
+}
+	
+#diigotb-imagepanel{
+	height:22px!important;
+	position: absolute!important;
+	z-index:11000022!important;
+	margin:0!important;
+}
+
+#diigotb-imagepanel .diigotb-btn{
+	cursor:pointer!important;
+	width:20px!important;
+	height:20px!important;
+	margin:2px!important;
+	float:left !important;
+	background:transparent url(chrome://diigotb/skin/save-image-action-icons.png) no-repeat scroll!important;
+}	
+	
+	
+#diigotb-imagepanel #diigotb-quick-save{
+	background-position:0 0!important;
+}
+		
+#diigotb-imagepanel.processing #diigotb-quick-save{
+	background-position:0 -20px!important;
+	cursor:default!important;
+}
+
+		
+#diigotb-imagepanel.needpremium #diigotb-quick-save{
+	background-position:0 -20px!important;
+	cursor:default!important;
+}	
+
+#diigotb-imagepanel.hassaved #diigotb-quick-save{
+	background-position: -60px 0!important;
+	cursor: pointer !important;
+}
+
+.diigotb-imagetip{
+	background:transparent url(chrome://diigotb/skin/notice-bar-bg-right.png) no-repeat scroll right center !important;
+	height:21px !important;
+	margin:0 !important;
+	position:absolute !important;
+	z-index:11000022 !important;
+	width:106px;
+}
+	
+.diigotb-imagebg{
+	background:transparent url(chrome://diigotb/skin/notice-bar-bg-left.png) repeat-x scroll left center !important;
+	height:21px !important;
+	margin:0 !important;
+	padding-left:6px !important;
+	width:90px;
+}
+	
+.diigotb-imagetip-text{
+	padding-left:20px!important;
+	font:11px/13px Helvetica,Arial,sans-serif!important;
+	color:white!important;
+	line-height:20px!important;
+	float:left;
+}
+	
+.diigotb-imagetip.processing .diigotb-imagetip-text{
+	background:transparent url(chrome://diigotb/skin/processing-fb.gif) no-repeat scroll left center !important;
+}
+	
+.diigotb-imagetip.hassaved .diigotb-imagetip-text{
+	background:transparent url(chrome://diigotb/skin/icon-done.png) no-repeat scroll left center !important;
+}
+	
+.diigotb-border{
+	position: absolute!important;
+	z-index:11000000!important;
+	margin:0!important;
+	background-color: #4b8cdc!important;
+}
+.diigotb-left{
+	width:1px!important;
+}
+.diigotb-right{
+	width:1px!important;
+}
+.diigotb-top{
+	height:1px!important;
+}
+.diigotb-bottom{
+	height:1px!important;
+}
+
+.diigotb-body #diigotb-rect div{
+	background: transparent url("chrome://diigotb/skin/ann-bar-opt-rectangle.png") no-repeat center center!important;
+}	
+.diigotb-body #diigotb-round div{
+	background: transparent url("chrome://diigotb/skin/ann-bar-opt-ellipse.png") no-repeat center center!important;
+}
+.diigotb-body #diigotb-text div{
+	background: transparent url("chrome://diigotb/skin/ann-bar-opt-font.png") no-repeat center center!important;
+}
+	
+.diigotb-body #diigotb-arrow div{
+	background: transparent url("chrome://diigotb/skin/ann-bar-opt-arrow.png") no-repeat center center!important;
+}
+	
+.diigotb-body .diigotb-sep{
+	background: transparent url("chrome://diigotb/skin/ann-bar-bg-separator.png") no-repeat center center!important;
+}
+	
+.diigotb-body #diigotb-undo div{
+	background: transparent url("chrome://diigotb/skin/ann-bar-opt-undo-disabled.png") no-repeat center center!important;
+}
+	
+.diigotb-body #diigotb-capture-save div{
+	background: transparent url("chrome://diigotb/skin/ann-bar-opt-quickly-save.png") no-repeat center center!important;
+}
+	
+	
+	
+.diigotb-body #diigotb-upload-resizer div {
+  position: absolute!important;
+  width: 9px!important;
+  height: 9px!important;
+  /*background-color: white;*/
+  z-index:11000002!important;
+  margin:0px!important;
+  background:transparent url(chrome://diigotb/skin/spot.png) no-repeat scroll left center!important;
+}
+
+.diigotb-body #diigotb-upload-resizer div.gleft {
+  left: -9px!important;
+}
+
+.diigotb-body #diigotb-upload-resizer div.gtop {
+  top: -9px!important;
+}
+
+.diigotb-body #diigotb-upload-resizer div.gright {
+  right: -9px!important;
+}
+
+.diigotb-body #diigotb-upload-resizer div.gbottom {
+  bottom: -9px!important;
+}
+
+.diigotb-body #diigotb-upload-resizer div.ghor {
+  margin-left: auto!important;
+  margin-right: auto!important;
+  left: 0px!important;
+  right: 0px!important;
+}
+
+.diigotb-body #diigotb-upload-resizer div.gver {
+  margin-top: auto!important;
+  margin-bottom: auto!important;
+  top: 0px!important;
+  bottom: 0px!important;
+}
+	
+.diigotb-body{
+	padding-top: 31px!important;
+}
+	
+.diigotb-body #diigotb-topbar{
+  background: url(chrome://diigotb/skin/topbar-bg.png) left top repeat-x!important;
+  border-bottom: 1px solid #999!important;
+  color: #555!important;
+  font: 12px/18px Helvetica,Arial,sans-serif!important;
+  height: 30px!important;
+  line-height: 30px!important;
+  position: fixed!important;
+  left: 0!important;
+  top: 0!important;
+  text-align:center!important;
+  z-index:1999999!important;
+}
+
+.diigotb-body #diigotb-msg img{
+  margin:0 5px 0 0!important;
+  vertical-align: middle!important;
+}
+	
+.diigotb-body #diigotb-msg{
+	color:#333!important;
+}
+
+.diigotb-body #diigotb-msg a{
+  color: #0044cc!important;
+  text-decoration: none!important;
+}
+
+.diigotb-body #diigotb-msg a:hover{
+  text-decoration: underline!important;
+}
+
+.diigotb-body #diigotb-escLink{
+  display: block!important;
+  float: right!important;
+  margin: 5px 5px 0 0!important;
+  text-decoration: none!important;
+  width: 50px!important;
+  cursor:pointer!important;
+}
+
+.diigotb-body #diigotb-escLink:hover{
+  text-decoration: underline!important;
+}
+
+.diigotb-body #diigotb-escLink span{
+  background: url(chrome://diigotb/skin/esc-right.png) right top no-repeat!important;
+  display: block!important;
+  padding-right: 9px!important;
+}
+
+.diigotb-body #diigotb-escLink span strong{
+  background: url(chrome://diigotb/skin/esc-left.png) left top no-repeat!important;
+  display: block!important;
+  color: #fff!important;
+  font-weight: 700!important;
+  line-height: 20px!important;
+  text-indent:7px!important;
+}
+	
+	
+
+/*highlight label*/
+.diigoHighlight .diigoHighlightLabel sup {
+	font:normal normal normal 8px/8px "lucida grande",tahoma,verdana,arial,sans-serif;
+	text-decoration:none;
+	background-color:inherit;
+	cursor:default;
+}
+	
+body.diigoHiPen.yellow{
+	cursor:url(chrome://diigotb/skin/highlighter-orange.cur), text !important
+}
+	
+body.diigoHiPen.blue{
+	cursor:url(chrome://diigotb/skin/highlighter-blue.cur), text !important
+}
+
+body.diigoHiPen.green{
+	cursor:url(chrome://diigotb/skin/highlighter-green.cur), text !important
+}	
+	
+body.diigoHiPen.pink{
+	cursor:url(chrome://diigotb/skin/highlighter-pink.cur), text !important
+}
+em.diigoHighlight.type_0.commented {	
+	padding-left:30px;
+}
+	
+/*float note*/
+div.diigoHighlight.type_2 {
+	position:absolute;
+	width:29px;
+	height:36px;
+	text-align:center;
+	background:transparent url("chrome://diigotb/skin/float_icon.png") no-repeat 50% 50%;
+	z-index:9996;
+}
+div.diigoHighlight.type_2.mouseOvered {
+	position:absolute;
+	width:37px;
+	height:31px;
+	text-align:center;
+	background:transparent url("chrome://diigotb/skin/float_icon.png") no-repeat;
+	z-index:9996;
+}	
+div.diigoHighlight.type_2 span {
+	color:#000;
+	font:bold 13px Arial, Helvetica, sans-serif;
+	cursor: default;
+	line-height: 37px;
+	text-shadow: #fff 0 1px 0;
+}
+/*
+* html div.diigoHighlight.type_2{
+	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,sizingMethod=scale, src="http://www.diigo.com/javascripts/webtoolbar/images/float_icon.png");
+	overflow:hidden;
+	background:none;
+}
+*/
+	
+
+div.diigoIcon.commented.TextIcon.diigoEdit{
+	background-repeat:no-repeat !important;
+	background-position:right !important;
+}
+
+	
+div.diigoIcon.commented.ImageIcon.diigoEdit{
+	background-repeat:no-repeat !important;
+	background-position:right !important;
+}
+
+
+/*mouse over effect*/
+/*
+.diigoHighlight.id_190e5778b533dc0fa1b1660653a4f6f5 {outline: 2px dotted green !important;}
+*/
+div.diigoIcon{
+	cursor:pointer !important;
+	margin: 0pt; 
+	padding: 0px 0px 0px 0px;
+	position: absolute;
+	display:none;
+	width: 24px !important; 
+	z-index:999999;
+	height: 23px !important;
+	background: transparent url("chrome://diigotb/skin/edit-highlight.png") no-repeat left;
+}
+
+div.diigoIcon span{
+	color:#000000;
+	display:block;
+	font-family:Helvetica,Arial,sans-serif;
+	font-size:13px;
+	font-weight:700;
+	line-height:18px;
+	text-align:center;
+	text-shadow:0 1px 1px #FFFFFF;
+}
+
+div.diigoIcon.commented.ImageIcon{
+	display:block !important;
+	background-color: transparent !important;
+}
+	
+div.diigoIcon:hover{
+	background-color: transparent !important;
+	background-repeat:no-repeat !important;
+	background-position:right !important;
+}
+	
+div.diigoIcon.commented.TextIcon{
+	display:block !important;
+	left:0;
+	bottom:0;
+}
+	
+div.diigoIcon.commented.public{
+	background: #FFFFFF url("chrome://diigotb/skin/public-annotation.png") no-repeat left;
+}
+
+div.diigoIcon.commented.private{
+	background: #FFFFFF url("chrome://diigotb/skin/private-annotation.png") no-repeat left;
+}
+	
+div.diigoIcon.commented.group{
+	background: #FFFFFF url("chrome://diigotb/skin/group-annotation.png") no-repeat left;
+}
+	
+/*Clip video*/
+div.diigoClipVideo{
+	float:left;
+	height:16px;
+	padding:0 16px 0 6px;
+	background:#f5f5f5 url(chrome://diigotb/skin/toolbar-clip-bg.gif) no-repeat right 0;
+	border:1px solid #ccc;
+	border-bottom-width:0;
+	font-family:"lucida grande",tahoma,verdana,arial,sans-serif;
+	z-index:999;
+	position:absolute;
+}
+
+div.diigoClipVideo.clipped {
+  background-position: right -32px; left: 717px; top: 135px;
+}
+
+	div.diigoClipVideo span{
+		font-weight:bold;
+		font-size:10px;
+		line-height:16px;
+		text-decoration:underline;
+		color:#03f;
+		cursor:pointer;
+		margin-right:6px
+	}
+	div.diigoClipVideo span:hover,div.diigoClipVideo span:active{
+		color:#00f
+	}
+	/*.diigolet input{
+		font-family:"lucida grande",tahoma,verdana,arial,sans-serif;
+		font-size:9px;
+	}*/
+	
+/*-----------notice msg--------------*/
+.diigotb-notice-img  {
+	float:left!important;
+	height:16px!important;
+	width:16px!important;
+	margin-top:6px!important;
+	margin-right:3px!important;
+}
+.success .diigotb-notice-img{
+	background:url("chrome://diigotb/skin/notice-icons.png") no-repeat scroll 0 0 transparent!important;
+}
+.failed .diigotb-notice-img{
+	background:url("chrome://diigotb/skin/notice-icons.png") no-repeat scroll -16px 0 transparent!important;
+}
+.info .diigotb-notice-img{
+	background:url("chrome://diigotb/skin/notice-icons.png") no-repeat scroll -32px 0 transparent!important;
+}
+.process .diigotb-notice-img{
+	background:url("chrome://diigotb/skin/processing.gif") no-repeat scroll left 0 transparent!important;
+}	
+	
+.diigotb-notice-msg-rt  {
+	background:url("chrome://diigotb/skin/notice-bar-2-bg-left.png") no-repeat scroll left bottom transparent!important;
+	line-height:28px!important;
+	padding-left:10px!important;
+	height:30px!important;
+}
+.failed .diigotb-notice-msg-rt  {
+	background:url("chrome://diigotb/skin/notice-bar-2-bg-left.png") no-repeat scroll left top transparent!important;
+}
+	
+.diigotb-notice-close{
+	float:right!important;
+	height:16px!important;
+	width:16px!important;
+	margin-left:20px!important;
+	margin-top:6px!important;
+	cursor:pointer;
+	background:url("chrome://diigotb/skin/notice-icons.png") no-repeat scroll -48px 0 transparent!important;
+}
+
+.diigotb-notice-close:hover{
+	background-position: -63px 0!important;
+}
+	
+.diigotb-notice-msg  {
+	background:url("chrome://diigotb/skin/notice-bar-2-bg-right.png") no-repeat scroll right bottom transparent!important;
+	float:right!important;
+	height:30px!important;
+	padding:0 11px 0 0!important;
+	border: none!important;
+	margin:0!important;
+	position:fixed!important;
+	font:12px/14px Helvetica,Arial,sans-serif!important;
+	z-index:100000!important;
+}
+.diigotb-notice-msg a {
+	color:#0044cc!important; 
+	text-decoration:underline!important;
+}
+	
+.failed.diigotb-notice-msg  {
+	background:url("chrome://diigotb/skin/notice-bar-2-bg-right.png") no-repeat scroll right top transparent!important;
+}
+	
+}
+
+
+@media print{
+em.diigoHighlight.a, em.diigoHighlight.b, em.diigoHighlight.c {
+	border-bottom:0.5pt dashed Black;
+}
+
+
+/*image highlight*/
+/*no inline comments*/
+img.diigoHighlight {
+	border:0.5pt dashed Black
+}
+
+/*float note*/
+div.diigoHighlight.type_2 {
+	display:none
+}
+div.diigoHighlight.type_2 span {
+	display:none
+}
+}dummyRuleForDigg{}
+
+  
+    Skip to main content
+    Skip to search
+  
+        
+    
+      
+        
+            
+    
+
+    
+  
+    Get Started
+Community
+Documentation
+Support
+Download & Extend
+Jobs
+Marketplace
+About
+  
+  
+
+  
+         
+
+        
+          
+            
+              Drupal
+                           
+           
+
+          
+            
+                
+    
+
+    
+  
+    
+      Search form
+    
+  Search 
+ 
+
+Show Refine your search
+   All 
+
+
+
+   Modules 
+
+
+
+   Themes 
+
+
+
+   Documentation 
+
+
+
+   Forums & Issues 
+
+
+
+   Groups 
+
+
+
+
+
+
+  
+  
+
+  
+             
+           
+         
+
+        
+          Drupal Homepage
+Log in / Register
+         
+       
+    
+   
+
+  
+    
+
+      
+
+                  
+
+            
+                                                Community Documentation
+                                          
+
+                          
+                       
+
+                      
+              Community Docs Home
+Develop for Drupal
+Theming Guide
+Glossary
+Contribute to Docs
+             
+          
+          
+                      Configuring cron jobs using the cron command
+          
+        
+       
+
+      
+              
+          
+                       
+         
+      
+      
+        
+        
+                                          
+    
+
+    
+  
+    
+
+  
+      
+  
+  
+    Last updated April 18, 2014. Created on May 27, 2005.Edited by zk_deng, kari.kaariainen, undersound3, pivica. Log in to edit this page.
+Cron is a daemon that executes commands at specified intervals. These commands are called "cron jobs." Cron is available on Unix, Linux and Mac servers. Windows servers use a Scheduled Task to execute commands.
+For a modest personal site, you might set up this cron job to run once a day. For a more active site you might want to run that job more often—perhaps every few hours or every hour. This regular visit will tell Drupal to perform its periodic tasks, and this will help keep your system running smoothly.
+There is a video, How To: Setting up Drupal's Cron, that talks about cron and shows various ways of configuring it.
+The cron command
+In the following example, the crontab command shown below will activate the cron tasks automatically on the hour:
+0 * * * * wget -O - -q -t 1 http://www.example.com/cron.php
+In the above sample, the 0 * * * * represents when the task should happen. The first figure represents minutes – in this case, on the "zero" minute, or top of the hour. (If the number were, say, 10, then the action would take place at 10 minutes past the hour.) The other figures represent, respectively, hour, day, month and day of the week. A * is a wildcard, meaning "every time."
+The rest of the line basically tells the server to request the url http://www.example.com/cron.php, so that the server executes the cron.php script. NOTE: The -O is "dash capital letter O", not "dash zero". Yes, the capital O is important. Lowercase o won't work
+Drupal 7
+In Drupal 7, a secure private URL is generated to run the cron job. This URL is available in the Administration > Reports > Status page in the cron maintenance tasks.
+The URL is something like:
+http://www.example.com/cron.php?cron_key=y85HnNQxjdqM-deRXj2Xrp2MJumqe1H...
+Replace any reference to http://www.example.com/cron.php with your secure private URL if you use Drupal 7.
+Here is a diagram of the general crontab syntax, for illustration:
+# +---------------- minute (0 - 59)# |  +------------- hour (0 - 23)# |  |  +---------- day of month (1 - 31)# |  |  |  +------- month (1 - 12)# |  |  |  |  +---- day of week (0 - 6) (Sunday=0)# |  |  |  |  |  *  *  *  *  *  command to be executed
+Thus, the cron command example above means "ping http://www.example.com/cron.php at the zero minute on every hour of every day of every month of every day of the week."
+How Drupal uses cron
+Every Drupal install requires regular actions to handle maintenance tasks such as cleaning up log files and checking for updates. Cron.php is the file that Drupal uses to run the maintenance process.
+For instance, if your site were www.example.com, loading the URL http://www.example.com/cron.php in your browser would run the maintenance. 
+This page is automatically set up when you install Drupal.  Simply loading the URL will run the maintenance. Nothing more is required.
+How to set up a cron job
+Cron jobs are scheduled by setting up a "crontab." A crontab is a text file that contains the commands to be run. This file can be created and edited either through the command line interface, or, if you manage your website through a web-based control panel such as cpanel or Plesk, you will use the web interface. 
+In order to schedule your cron job in Plesk for Linux, go to Settings > Scheduled Tasks in the General Group. Select the system user account on whose behalf the task will be executed (usually the domain ftp user). Click "Schedule New Task". Specify when to run your command. You can schedule the time using the UNIX crontab entry form as specified in this article. Then, specify which command to run, using the same format as specified in this article. Then, Click OK.  
+Otherwise, check with your hosting company for detailed instructions if you are using a web-based control panel.
+To edit a crontab through the command line, type:
+crontab -e
+If this fails, see the Troubleshooting Cron section below.
+Add ONE of the following lines:
+45 * * * *  /usr/bin/lynx -source http://example.com/cron.php 
+45 * * * * /usr/bin/wget -O - -q -t 1 http://www.example.com/cron.php 
+45 * * * * curl -s http://example.com/cron.php 
+This would have a  lynx, wget, or curl visit your cron page 45 minutes after every hour. 
+Three options are provided in case either wget, lynx or curl are not installed on the server. Any will do the job well.
+Learn more about the crontab file syntax here to set up the cron job to run more or less often.
+There are many ways to configure a cron job. If you have full access to crontab features, you should be able to simply paste in one of the above example commands – be sure to replace "example.com" with your own web domain or docroot.
+If you're on shared hosting, you should be able to find cron job configuration somewhere in your hosting control panel. Some hosts even have cron "wizards" that walk you through the cron configuration, making it much easier if cron is new to you. On a Windows system you can accomplish the same thing with scheduled tasks to launch Internet Explorer pointed to the URL.
+Some hosting companies do not permit local loopback, so using wget, curl or lynx will not work. If this is the case, and they run PHP as a CGI (check with your hosting company to see if this is the case), the following will run the cron locally:-
+/usr/bin/php /home/sites/example.com/public_html/cron.php
+Some hosting companies don’t allow access to cron
+If your hosting company restricts access to cron, you have many options.
+Ask the company to give you access, or to set up a cron job for you
+Ask someone else with access to a server to set up a cron job for you. Any Unix, Linux, or Mac server with access to the internet can have a cron job to regularly visit your site. There are also some companies that offer cron services.
+Use the Poor Man's Cron module.
+Use webcron services like EasyCron. You may find other providers at cron job services.  Many are free but with restrictions.
+
+Cron doesn't guarantee your commands will run at the specified interval. But Drupal will try its best to come as close as possible. The more you visit cron.php, the more accurate cron will be.
+Troubleshooting cron jobs
+Make sure your web site is not in maintenance mode.
+If you receive a permission denied error after starting crontab -e, you may need to use sudo:
+sudo crontab -e
+You may need to adjust the path to wget, lynx or curl in your crontab. For example, the cron example listed above contains the line:
+45 * * * *  /usr/bin/lynx -source http://example.com/cron.php 
+However, Lynx may be in a different location on your server, or not installed at all. To find out where Lynx is installed, enter:
+whereis lynx
+or 
+which lynx
+If it is not located at /usr/bin/lynx, adjust the path as needed. The same applies for wget and curl. If none are installed, ask a server administrator for help.
+It may be necessary to change http://example.com/cron.php to the location of your Drupal installation. For example, if you have Drupal installed in a subdirectory, it might be http://www.example.com/drupal/cron.php).
+Example scripts
+Drupal ships with two example scripts in the scripts directory, cron-curl.sh and cron-lynx.sh. You can call these scripts from cron as well:
+45 * * * * /home/www/drupal/scripts/cron-lynx.sh
+Note that the scripts will need to be updated with the path to your directory and URL.
+Running cron as an authenticated user (D6 and earlier only)
+If triggering cron.php via the methods above, cron tasks will run as the anonymous user. For most cases this should be fine, but if Drupal cron has been customized to include tasks that must run as a certain site user (e.g. custom logic has been implemented in hook_cron that requires special user permissions), the following script may be useful. This script authenticates a user of your choosing before calling cron.php.
+Note that as of Drupal 7, cron always runs as an anonymous user, so this will not work in Drupal 7 and later versions!
+Note that this script should be called instead of cron.php within your server's cron configuration and must be executable by appropriate system user on your server.
+#!/bin/sh# Reference http://drupal.org/node/479948#comment-1673488 by pearlbear
+SITE=https://dev.example.com/USERNAME=user.namePASS=ChangeMe!!12
+COOKIES=/tmp/cron-cookies.txtWGETPARAMS="--quiet -O /dev/null --no-check-certificate --save-cookies $COOKIES --keep-session-cookies --load-cookies $COOKIES"# if you run drupal in a default language different than English you need to modify thisLOGIN="Log%20in"
+wget $WGETPARAMS "${SITE}user"wget $WGETPARAMS --post-data="name=$USERNAME&pass=$PASS&op=$LOGIN&form_id=user_login" "${SITE}user"wget $WGETPARAMS "${SITE}cron.php"
+Running Drupal cron tasks from Drush
+If you just want to get started quickly, here is a crontab entry that will run cron once every hour at ten minutes after the hour: 
+10 * * * * /usr/bin/env PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin COLUMNS=72 /usr/local/drush/drush --root=/path/to/your/drupalroot --uri=your.drupalsite.org --quiet cron 
+You should set up crontab to run your cron tasks as the same user that runs the web server; for example, if you run your webserver as the user www-data:
+sudo -u www-data crontab -e 
+More info http://drush.ws/docs/cron.html
+Security notes
+It is possible to run cron.php directly via scripts/drupal.sh with Drupal 6. Drupal.sh allows a Drupal page to be executed from a shell script. To do so, add the following cron job to run as the Apache user:
+/full/path/to/drupal.sh --root /full/path/to/site/root/ http://default/cron.php
+Note that http://default/cron.php is NOT shown as an example, it should be used as is, without changes.
+Taking this approach allows cron.php to be blocked to prevent remote access.
+To block remote access to cron.php, in the server's .htaccess file or vhost configuration file add this section:
+    <Files cron.php>        Order Deny,Allow        Deny from all        Allow from localhost        Allow from 127.0.0.1        Allow from xx.xx.xx.xx <-- your IP address    </Files>
+If you take this approach and use drupal.sh to call cron.php, it is probably best not to use the root user to run the cron job. A non-privileged user account, or the Apache account user, for example http-service or www-data, is a better choice. To do so, call crontab -e when logged in as a non-privileged user, or for the Apache account on a Debian server, for example, you can add a user parameter:
+sudo crontab -e -u www-data
+The downside to this method is that any URLs generated by cron jobs using this method will not be properly formed, starting with "http://default/".
+Multiple sites
+If you run many sites, you can use this tip to make managing your cron jobs easier.  To minimize the clutter, create an /etc/cron.5min directory and have crontab read this directory every five minutes.
+*/5 * * * * root run-parts /etc/cron.5min
+Then place multiple individual files into the /etc/cron.5min directory, one for each site. The files can be named "site1", "site2", etc. -- note that run-parts may fail to detect files which contain a dot (.) in their name. To make sure that all of your files are visible to cron, type this at a shell prompt:
+$ sudo run-parts --test /etc/cron.5min
+and make sure that all of your files are listed.
+
+Each of the files in /etc/cron.5min should contain one line:
+/usr/bin/lynx -source http://(full site URL)/cron.php > /dev/null 2>&1
+or, alternatively, one of the curl or wget commands specified above.
+If this doesn't work, try putting another line at the start of each file:
+#!/bin/sh
+and make sure that the files are executable by doing
+$ sudo chmod u+x /etc/cron.5min/*
+
+For more information about using cron in a multisite configuration, see the Multisite Cron section of this guide.
+SSL
+When using SSL, add one additional argument when calling wget: --no-check-certificate. Do not put  “--no-check-certificate” between the -0 and the -.
+45 * * * * /usr/bin/wget --no-check-certificate --quiet -O - https://example.com/cron.php
+Configuring an editor for cron
+You can specify which text editor (emacs, vi, nano, etc.) you want to use to edit the crontab. If you want to change your editor permanently to nano, type:
+export EDITOR=nano
+If you want to use nano for just this time, type:
+env EDITOR=nano crontab -e
+  
+    Configuring Cron on Rackspace Cloud Sites
+Configuring cron jobs in cPanel
+Configuring cron jobs on DreamHost
+Configuring cron jobs on MAMP localhost
+Configuring cron jobs on Media Temple Grid (gs) and DV servers
+Configuring cron jobs on Windows
+Configuring cron jobs on hosteurope
+Configuring cron jobs on ixWebHosting
+Configuring cron on Mac OS X Server 10.5.x and later
+Plesk 10 configuration for cron job
+Set up a cron job with Network Solutions
+Setting up cron on Hostmonster/Bluehost through the cPanel interface
+
+        
+              ‹ Step 5: Setting up cron
+                    up
+                    Configuring Cron on Rackspace Cloud Sites ›
+          
+    
+  
+Looking for support? Visit the Drupal.org forums, or join #drupal-support in IRC.  
+
+  Log in or register to post comments
+
+
+
+
+
+
+          Comments
+      
+  
+
+  
+  
+    MacOSX crontab
+  
+  
+        mr_scumbag commented 6 years ago  
+
+  
+    On the Mac you may be getting an error after using crontab -e
+crontab: temp file must be edited in place
+This seems to be a problem with the way vim works with it's backup files, and can be fixed by adding the following line to your ~/.vimrc
+set backupskip=/tmp/*,/private/tmp/*
+Now using crontab -e will work.
+        
+      --
+"What are we gonna do tonight Brain ?"
+"The same as every night Pinky. Try to take over the world !"
+    
+      
+
+  Log in or register to post comments
+
+
+
+  
+  
+    Setting up Crontab for Drupal 6.20--info that helped me
+  
+  
+        cburn commented 4 years ago  
+
+  
+    I found this post which helped me set up my crontab on my host http://www.ktechdesign.com/node/82 . I had searched everywhere and could not find anything that really helped with the actual command on the script (the timing I got), but this did and it works perfectly for me!
+UPDATE March 14, 2011
+A few weeks ago, my provider's server had a problem and we lost about 2 weeks of data. Cron has not run since. I contacted Support and we went back and forth for about a week. Apparently something had changed on the provider's end and the original command would not run cron any longer. I finally decided to try a completely different command and it's running now.
+This was the original command that stopped working after the server problem:
+0 	*/3 	* 	* 	* 	 ~/www/scripts/cron-lynx.sh
+I tried this new command suggested by Support that did not work. Every time cron did not run, I received an email notification:
+0 	*/3 	* 	* 	*       /usr/bin/lynx -source http://myWebsite.org/scripts/cron-lynx.sh
+This is the new command that is working now:
+0 	*/3 	* 	* 	* 	 /usr/bin/wget -O - -q -t 1 http://myWebsite.org/cron.php 
+UPDATE March 18, 2011
+Don't know if that was the problem; now I'm getting ALOT of these error messages - MySQL server has gone away query: INSERT INTO watchdog...(and on and on and on)...
+Have tried many different solutions but so far none have worked, including alternating these variables on php.ini:
+mysqli.reconnect = On;
+max_execution_time = 120;        //  (default 30)
+max_input_time = 120;               //  (default 60)
+mysql.connect_timeout = 120;     //  (default 30)
+default_socket_timeout = 300     //  (default 60) - Note: haven't tried this yet
+wait_timeout = 200;                   //  (default 28800 - Our server setting is 10) This has to be changed on my.cnf to which I do not have access
+max_allowed_packet = 32M;       //  (Max, 1G - Our server setting is 2MB) This has to be changed on my.cnf to which I do not have access
+I also disabled my Update Status module to no avail. Now my provider, AN Hosting, has basically told me they will not help any more and have referred me to a web design team--haha! So, what to do? I'm being driven mad!
+UPDATE March 21, 2011
+I found a hack and hacked Drupal 6.20 core which I realize is not ideal. No more problems! Below is the code:
+I pasted the hack code above "return $connection;" 
+In includes/database.mysql.inc, at the end of function db_connect(), under the "SET NAMES" line and above "return $connection;" add:
+mysql_query('SET SESSION wait_timeout = 60', $connection);
+In includes/database.mysqli.inc, at the end of function db_connect(), under the "SET NAMES" line and above "return $connection;" add:
+mysqli_query($connection, 'SET SESSION wait_timeout = 60');
+        
+      cburn
+    
+      
+
+  Log in or register to post comments
+
+
+
+
+  
+  
+    @cburn,
+I'm wondering about
+  
+  
+        cookiesunshinex commented 4 years ago  
+
+  
+    @cburn,
+I'm wondering about your post.  Shouldn't that be in some sort of support queue?
+I'm not sure how it contributes to this thread?  It sounds like a problem with your host provider and you are hacking core....none of which enhances the discussion here.
+Not trying to flame you, but I don't see the value your post has in educating further individuals who stumble on to this thread.
+      
+
+  Log in or register to post comments
+
+
+
+
+  
+  
+    Simply the troubleshooting I had to do to get Cron running
+  
+  
+        cburn commented 4 years ago  
+
+  
+    @cookiesunshinex What started out as a simple task to configure Cron a year ago started and has hopefully ended here. My post contains the issues I encountered while trying to successfully set up a Crontab. I have searched drupal.org over and many people have run into the same problems. Maybe the problems have not all been documented in the one place, but now they are. Who knows, you might have these troubles yourself sometime and want to know about this option if nothing else works. All of the issues in my posts are connected, and since I started here it seemed appropriate to me to finish here with the solution I found on configuring and running Cron. If the administrators of this thread think my post needs to be somewhere else, they can and will certainly move or delete it. No offense taken. 
+I also found out there is a module, Drupal tweaks http://drupal.org/project/drupal_tweaks, that will do the same and more without hacking core.
+Here are some other threads relating to this issue http://drupal.org/node/227445 and http://drupal.org/node/259580.
+        
+      cburn
+    
+      
+
+  Log in or register to post comments
+
+
+
+  
+  
+    Patch to inspect per-module cron execution times
+  
+  
+        davidwhthomas commented 5 years ago  
+
+  
+    Here's a patch to add per-module cron execution times to the watchdog log.
+Great for debugging cron issues as it allows to to time each cron hook.
+In common.inc drupal_cron_run() - replace the lines ( around line 2698 in D6 )
+<?php// Iterate through the modules calling their cron handlers (if any):module_invoke_all('cron');?>
+with this:
+Drupal 5
+<?php// Iterate through the modules calling their cron handlers (if any):$cron_timer = variable_get('cron_timer', '1'); // can add to settings form, defaults to onif ($cron_timer) {  // start timer for cron total  timer_start('cron');  foreach (module_implements('cron') as $module) {    $function = $module .'_cron';    // start timer for this module, using module cron function name as id    timer_start($function);    // call cron hook    $function();    $timer = timer_stop($function);    // get total in seconds    $total = round($timer['time']/1000, 2);    watchdog('cron', t('Cron time elapsed for @module is @secs seconds.', array('@module' => $module, '@secs' => $total) ));  }  $cron_timer = timer_stop('cron');  $total = round($cron_timer['time']/1000, 2);  watchdog('cron', t('Cron time total was @secs seconds.', array('@secs' => $total) ));}else{  // just run cron  module_invoke_all('cron');}?>
+Drupal 6
+<?php// Iterate through the modules calling their cron handlers (if any):$cron_timer = variable_get('cron_timer', '1'); // can add to settings form, defaults to onif ($cron_timer) {  // start timer for cron total  timer_start('cron');  foreach (module_implements('cron') as $module) {    $function = $module .'_cron';    // start timer for this module, using module cron function name as id    timer_start($function);    // call cron hook    $function();    $timer = timer_stop($function);    // get total in seconds    $total = round($timer['time']/1000, 2);    watchdog('cron', t('Cron time elapsed for @module is @secs seconds.'), array('@module' => $module, '@secs' => $total) );  }  $cron_timer = timer_stop('cron');  $total = round($cron_timer['time']/1000, 2);  watchdog('cron', t('Cron time total was @secs seconds.'), array('@secs' => $total) );}else{  // just run cron  module_invoke_all('cron');}?>
+Note: You'll need to remove the php tags from the above code, they're added for syntax highlighting only.
+After cron runs, you can see the timing of each hook recorded in the watchdog log.
+Just thought I'd share as I found this very useful.
+DT
+      
+
+  Log in or register to post comments
+
+
+
+
+  
+  
+    DT, Thanks for the excellent
+  
+  
+        vertikal.dk commented 5 years ago  
+
+  
+    DT,
+Thanks for the excellent code, which helped me find a cron process, which timed out. But it helped me to add a small text tellling me which cron-process started, because one might start and never finish. Since your code only reports after the process finishes, you don't know which process hangs or times out.
+I added a single line right after the loop start:
+...  timer_start('cron');  foreach (module_implements('cron') as $module) {    watchdog('cron', t('Starting cron for @module', array('@module' => $module)));...
+This will add an extra line for each cron process, and only the extra line for the process, which hangs or times out.
+Martin
+      
+
+  Log in or register to post comments
+
+
+
+  
+  
+    First, thank you for the
+  
+  
+        armanschwarz commented 5 years ago  
+
+  
+    First, thank you for the page, I appreciate the time it took to create it. I hope you don't mind some productive criticism. I think most people come to this page because they don't know how to configure cron, and they probably have no idea how cron jobs work. I am one of those people. I think I speak for at least 50% of all people who come to this page when I say that all we really want is something like this:
+"Your cron command should look like this":
+CRON COMMAND HERE
+I am assuming this is the purpose of this line:
+0 * * * * wget -O - -q -t 1 http://www.example.com/cron.php
+I would really appreciate it if there was a line for people who simply don't understand cron jobs so well, and just want to run cron once an hour. If the above line is trying to achieve just that, maybe state it?
+Cheers again for the page, it helped me a lot (could have taken less of my time though...)
+Arman
+      
+
+  Log in or register to post comments
+
+
+
+
+  
+  
+    cron job
+  
+  
+        medlife commented 5 years ago  
+
+  
+    Any one knows how to schedule automatic feed aggregator updates? I have set up a the following cron job but it does not make any difference to my feed aggregator. Any insights?
+0 * * * * wget -O - -q -t 1 http://www.example.com/cron.php
+thanks,
+Medlife
+        
+      Drupal lover!
+    
+      
+
+  Log in or register to post comments
+
+
+
+
+  
+  
+    wget may need its full
+  
+  
+        Dan.Hall commented 5 years ago  
+
+  
+    wget may need its full path
+on my system it is:  /usr/bin/wget 
+so it may work after you change in your line:  'wget' to '/path/to/wget'
+if you dont know what path wget is under with your server, you can locate it with the command-line:
+locate wget
+this will help you find the right path on your server and then you use that path in your crontab line.
+Hope it helps.
+        
+      Dan Hall / portland drupal developer
+----------------
+Drupalicon in ascii  .(8)
+    
+      
+
+  Log in or register to post comments
+
+
+
+  
+  
+    cron key
+  
+  
+        kudzai commented 5 years ago  
+
+  
+    If you are using Drupal 7 and you get a 403 message, it's probably because cron.php now expectes a key. Set up your cron job as e.g.
+0 * * * */usr/bin/wget -O - -q -t 1 http://www.example.com/cron.php?cron_key=l4zX8MiBil7O072d-DCbfPNBINOs_OIRlsCskh9oulY
+You can get the cron key from your Dashboard > Reports > Status reports page.
+cheers
+kudzai
+      
+
+  Log in or register to post comments
+
+
+
+
+  
+  
+    Missing a space
+  
+  
+        ressa commented 3 years ago  
+
+  
+    The above example is good, but missing a space, so it will give you an error. This will work:0 * * * * /usr/bin/wget -O - -q -t 1 http://www.example.com/cron.php?cron_key=YOUR_UNIQUE_CRON_KEY
+      
+
+  Log in or register to post comments
+
+
+
+  
+  
+    need quote marks
+  
+  
+        Sheldon Rampton commented 3 years ago  
+
+  
+    I kept getting a "No match" error when I tried to run my cron job until I put single quote marks around the URL, e.g., 
+wget -O - -q -t 1 'http://www.example.com/cron.php?cron_key=l4zX8MiBil7O072d-DCbfPNBINOs_OIRlsCskh9oulY'
+        
+      ----------------
+Chief Technology Officer, NuCivichttp://nucivic.com
+    
+      
+
+  Log in or register to post comments
+
+
+
+  
+  
+    executing from a shell script
+  
+  
+        Matt B commented 5 years ago  
+
+  
+    I've found some hosts allow me to call the cron.php URL via curl, lynx, wget etc, as they block that type of connection from a cron job, but they do allow cron jobs.  I found this advice useful:
+It is possible to run cron.php directly via scripts/drupal.sh with Drupal 6. Drupal.sh allows a Drupal page to be executed from a shell script. To do so, add the following cron job to run as the Apache user.
+/full/path/to/drupal.sh --root /full/path/to/site/root/ http://default/cron.php
+Note that http://default/cron.php is NOT shown as an example, it should be used as is, without changes.
+....
+The downside to this method is that any URLs generated by cron jobs using this method will not be properly formed, starting with "http://default/".
+However, I found that changing 'http://default/cron.php' to be the correct URL (eg http://www.mysite.com/cron.php), URLs generated by the cron jobs are then formed properly.  Is there any issue in doing this?
+      
+
+  Log in or register to post comments
+
+
+
+  
+  
+    To those who is all fresh on cron jobs
+  
+  
+        fauskanger commented 5 years ago  
+
+  
+    I have no problems understanding that cron jobs make you look like a big questionmark, as I am sitting here as one myself.
+I actually found that http://en.wikipedia.org/wiki/Cron_job has just a few examples needed and on http://en.wikipedia.org/wiki/CRON_expression you can what you need to get jiggy with fancy timing :P 
+[ A quick google-search for cron job examples will get you startet too, I guess.. .. ]  /or watch the video
+        
+      .::.......................................::.Time doesn't pass, it comes..
+    
+      
+
+  Log in or register to post comments
+
+
+
+  
+  
+    Cron line for html authenticated sites
+  
+  
+        sam6 commented 5 years ago  
+
+  
+    If a site is access-protected using html authentication, for example using the Secure Site module (http://drupal.org/project/securesite) this line can be used:
+45 * * * * curl -u	user:pwd --silent --compressed http://www.example.com/cron.php
+      
+
+  Log in or register to post comments
+
+
+
+
+  
+  
+    security and the commandline
+  
+  
+        ohnobinki commented 5 years ago  
+
+  
+    I would like to note that a command like ``curl -u user:passwd'' should never be used on a shared server. Passing the password on the command line means that anybody on the server can see the username and password as long as the curl process is alive. Alternatives would be using curl's ~/.netrc file to specify the username and password. See curl(1) for more information on curl.
+        
+      --binki
+    
+      
+
+  Log in or register to post comments
+
+
+
+  
+  
+    What I would love to know is:
+  
+  
+        Sunshiney commented 5 years ago  
+
+  
+    What I would love to know is: (1) what to do if the cron command runs fine in the command line interface but not in the crontab and (2) if it's the default for only logged-in user 1 to be able to run cron.php in the browser *and** have it run update status 
+I have googled, binged, read forums, watched videos, to no avail.
+Postscript:  Yes, the default is user 1.  The permission is site configurations.  That answers 2...still working on 1.
+      
+
+  Log in or register to post comments
+
+
+
+
+  
+  
+    Did anyone answer your question?
+  
+  
+        wa3riz commented 5 years ago  
+
+  
+    I'm not seeing a lot of direct responses to questions here.
+Regarding your question (1).  A script may work on the command line and not in
+cron because cron doesn't have most environmental variables set like your shell does.
+The thing that usually causes a problem is PATH.  You need to specify the path for
+most system commands and all files referenced.
+Jeff
+        
+      Jeff
+    
+      
+
+  Log in or register to post comments
+
+
+
+
+  
+  
+    godaddy.com cron
+  
+  
+        wa3riz commented 5 years ago  
+
+  
+    When I installed Drupal onto my godaddy sites using their software deployment tool they installed the Drupal cron job using the wget command.
+I made the mistake of assuming that worked.  But, if you watched the status report, you'd see it wasn't.  I removed the "> /dev/null 2&1" from the cron line
+and on the next hour received my answer why.  The wget was being denied access.
+A very long story short, This cron job works for me on godaddy.com shared hosting:
+/web/cgi-bin/php5 "$HOME/html/cron.php" >/dev/null 2>&1
+Basically, I just browsed to the root directory of my site and selected cron.php.
+Godaddy added the the interpreter path and $HOME for me.
+I added the ">/dev/null 2>&1"  because I continued to receive what I felt were
+just informational warnings.  Maybe at some point in the future I'll need to investigate
+those more closely.
+Jeff
+        
+      Jeff
+    
+      
+
+  Log in or register to post comments
+
+
+
+
+  
+  
+    Jeff,
+It’ll be better if you
+  
+  
+        cookiesunshinex commented 4 years ago  
+
+  
+    Jeff,
+It’ll be better if you redirect only the std output to /dev/null instead redirecting both (stdout & stderr). This way only commands with failure exit status will be delivered.
+That way you only get an email if there is an error.
+So use: web/cgi-bin/php5 "$HOME/html/cron.php" >/dev/null
+      
+
+  Log in or register to post comments
+
+
+
+  
+  
+    Best Solution I have for Windows
+  
+  
+        ManOfVirtues commented 5 years ago  
+
+  
+    Here is what I did to get around Windows lack of support for cron WITHOUT USING A BROWSER or WGET.
+In the root folder of your Drupal install create a new batch file (I called it cron.bat)
+In the batch file paste this line (edit path to PHP install) "c:\program files\php\5.2\php.exe" cron.php
+
+Create a windows schedule task and set it up for a daily run, the semantics of creating the task matter little until we can get to the advanced menu
+When you get to the screen with the option to show the Advanced Menu, check the box.
+Set the path to point to the batch file that you created
+IMPORTANT: Set the "Start in" option to the path of the root of your Drupal install (ie. c:\web\com\foo\www\[Drupal install])
+run it once for safe measure. You will get a couple PHP Notices but they don't seem to impact the performance of the cron
+Hope this helps someone else.
+      
+
+  Log in or register to post comments
+
+
+
+
+  
+  
+    great tip
+  
+  
+        flexiblemirror commented 4 years ago  
+
+  
+    I used it today on my first ever drupal test installation on my PC.
+Thanks!
+      
+
+  Log in or register to post comments
+
+
+
+  
+  
+    Best solution
+  
+  
+        Disco commented 4 years ago  
+
+  
+    I have now gone down this route and works a treat, simple to set up and schedule as required.
+      
+
+  Log in or register to post comments
+
+
+
+  
+  
+    triggering cron.php using php-cli on a Linux server
+  
+  
+        rippofunk commented 5 years ago  
+
+  
+    cron.php can not be run from the php-cli directly out of the box ie: 
+1 * * * * php -f cron.php
+its kind of a bummer because all of the wget to http://yoursite.com/cron.php  calls get logged as web traffic.
+      
+
+  Log in or register to post comments
+
+
+
+
+  
+  
+    Thanks - Just thought to check this...
+  
+  
+        mdlueck commented 5 years ago  
+
+  
+    Working with CiviCRM, for various things similar to Drupal's cron.php, they recommend using php-cli.
+Thus I went checking to see if Drupal could handle such... guess not yet.
+Update: Since posting I discovered Drush, "Problem solved!" Drush comes highly recommended:http://drush.ws/
+        
+      --
+Michael Lueck
+Lueck Data Systemshttp://www.lueckdatasystems.com/
+    
+      
+
+  Log in or register to post comments
+
+
+
+  
+  
+    Yes, it can. Use for example
+  
+  
+        cor3huis commented 5 years ago  
+
+  
+    Yes, it can. Use for example the following line in your crontab:
+*/15 * * * * /usr/local/bin/setlock -n /home/yourusername/tmp/mycronlock sh -c $'/home/yourusername/yourdomain.com/scripts/drupal.sh --root /home/yourusername/yourdomain.com/ http\072//default/cron.php'
+Make sure you've created the /home/yourusername/tmp directory first. You could also have the cron lockfile saved to /tmp/mycronlock ofcourse, but on shared hosting this is not advised.
+Also make sure that in "drupal.sh" the first line stated which PHP executable must be used e.g.
+#!/usr/local/php5/bin/php
+one could use the following command to determine that 
+which php
+      
+
+  Log in or register to post comments
+
+
+
+  
+  
+    302 redirect to http:///install.php
+  
+  
+        CJBrew commented 5 years ago  
+
+  
+    I got a 302 redirect message after setting up cron in this way.
+I had
+0 1 * * * php /home/mysite/blah/cron.php
+The issue -- I'd not got a settings.php in the default folder!  I had moved all the settings to sites/site.co.uk and sites/site.co.uk.archive as I'm now running multisite.
+There's probably a better solution but I just moved the default settings file back for the time being.
+      
+
+  Log in or register to post comments
+
+
+
+  
+  
+    Cron on an SSL (https) website
+  
+  
+        andrewmac commented 5 years ago  
+
+  
+    In case anyone finds it useful, I was unable to run cron on my SSL-protected site, even using the advice in this article.
+My webhost discovered that the www record points to the SSL proxy but that isn't accessible inside the server's firewall. 
+They resolved the problem by changing the crontab URL to point to cron.php via the alias for my site at their domain address (i.e. the 'temporary' URL you often get for setting up a website before you've migrated your domain to the host server).
+I had to make sure the URL address prefix was http NOT https for this to work.
+Hope that makes sense and is useful!
+      
+
+  Log in or register to post comments
+
+
+
+  
+  
+    Drupal 7 secure cron URL
+  
+  
+        Amazon commented 5 years ago  
+
+  
+    In Drupal 7, a secure private URL is generated to run the cron job. This URL is available in the administration >> reports >> status page in the cron maintenance tasks.
+The URL is something like: 
+
+To run cron from outside the site, go to http://D7beta1.localhost:8082/cron.php?cron_key=y85HnNQxjdqM-deRXj2Xrp2M...
+The page should be updated to reflect this.
+Kieran
+        
+      Kieran Lal
+    
+      
+
+  Log in or register to post comments
+
+
+
+
+  
+  
+    Drupal 7 secure cron URL
+  
+  
+        Santhosh Kalla commented 3 years ago  
+
+  
+    I need to restrict the anonymous users to run the cron job. As this is leading to lot of problems to my website. So anyone help with this issue ? 
+Thanks & Regards,
+      
+
+  Log in or register to post comments
+
+
+
+  
+  
+    I tried for a long time to
+  
+  
+        fauskanger commented 5 years ago  
+
+  
+    I tried to set up a cron job via cPanel. I was told to do this:
+php -cd /home2/my_username/public_html/my_drupal_site/cron.php
+and it worked. Why does this work while wget and curl don't? Also tried the full domain and failed. Now, I got it working with this, but I do not know why..
+        
+      .::.......................................::.Time doesn't pass, it comes..
+    
+      
+
+  Log in or register to post comments
+
+
+
+
+  
+  
+    This worked for you since
+  
+  
+        cor3huis commented 5 years ago  
+
+  
+    This worked for you since your webhosting company (with good reason) prevented running curl, wget and the like http request from the server where you run your domain. 
+For short, now you run the cron.php application part of Drupal directly and not by using a webserver.
+The way you have it running now is even better since it will not mess with your webserver access log, and possible even more secure. Be happy, it worked ;)
+      
+
+  Log in or register to post comments
+
+
+
+
+  
+  
+    Thanks
+  
+  
+        fauskanger commented 5 years ago  
+
+  
+    Yes it did and indeed happy I am :)
+Thanks for the explaination. 
+Now onwards to D7 :D
+        
+      .::.......................................::.Time doesn't pass, it comes..
+    
+      
+
+  Log in or register to post comments
+
+
+
+  
+  
+    What exactly is the point of
+  
+  
+        jmws commented 5 years ago  
+
+  
+    What exactly is the point of the cron-lynx.sh file? Is it an option to run using cron and it will call the cron.php, or does it run in place of cron.php?
+        
+      Jasonwww.jmws.biz
+    
+      
+
+  Log in or register to post comments
+
+
+
+
+  
+  
+    The truth is in the code...
+  
+  
+        mdlueck commented 5 years ago  
+
+  
+    Check out the script. It is an example of how to run the cron utilizing lynx. This interacts with the web server to run the cron.
+For Drupal 6.x, I have converted all over to using Drush. Comes highly recommended. Drush is able to use CLI based PHP to run Cron, thus does not interact with the web server, cleaner web statistics, verbose logging of what cron is doing, etc...
+        
+      --
+Michael Lueck
+Lueck Data Systemshttp://www.lueckdatasystems.com/
+    
+      
+
+  Log in or register to post comments
+
+
+
+  
+  
+    DRUPAL 7 with CPANEL on HOSTMONSTER
+  
+  
+        ZeusTheMighty commented 5 years ago  
+
+  
+    /usr/bin/wget -O - -p http://yoursite.com/cron.php?cron_key=Whatever it is on the status page
+= SUCCESS!!!!!!
+well, for me at least.
+      
+
+  Log in or register to post comments
+
+
+
+
+  
+  
+    InMotionHosting Cpanel - HTTPS Caveat
+  
+  
+        bartclarkson commented 3 years ago  
+
+  
+    I made this a lot harder on myself with an SSL problem.  Since SecurePages isn't out of -dev in Drupal 7, I have been doing a blanket enforcement of HTTPS in the htaccess file for the particular client.  I needed to NOT run the cron jobs through SSL, b/c it was causing a "startfile can't be found" issue.
+Also CiviCRM Cron figured in, so I'm throwing that in here in case it helps someone.
+I amended htaccess as follows:
+  #  # SSL settings:  #  # Run everything through HTTPS until the SECUREPAGES Drupal module is Production-Version  # Except CRON.  CRON fails with CPanel Cron Job in HTTPS (InMotionHosting)  RewriteCond %{HTTPS} off  RewriteCond %{REQUEST_URI} !^/cron.php  RewriteCond %{REQUEST_URI} !^/sites/all/modules/civicrm/bin/cron.php  RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R,L]  # redirect to HTTPS
+Drupal 7:lynx -dump -useragent="Lynx" "http://domain.com/cron.php?cron_key=whatever-it-is"
+CiviCRM:lynx -dump -useragent="Lynx" "http://domain.com/sites/all/modules/civicrm/bin/cron.php?name=username&pass=password&key=defined-in-civicrm.settings.php"
+        
+      Principal | Web Developer
+significode! LLC
+    
+      
+
+  Log in or register to post comments
+
+
+
+  
+  
+    Cron configuration in Drupal 7.0
+  
+  
+        lifepillar commented 5 years ago  
+
+  
+    In Drupal 7.0, at admin/config/system/cron there is an option “Run cron every…”. What's for, if you have to define the cron task manually anyway?
+      
+
+  Log in or register to post comments
+
+
+
+
+  
+  
+    poor man's cron in core
+  
+  
+        aharown07 commented 4 years ago  
+
+  
+    This is poor man's cron... now in core.
+The way this works is that each page load checks to see when cron.php ran last and per your settings runs it.
+So no need to set up a crontab at all.
+Must work pretty well since they put it in core. But I've always used crontab.
+Read about it here http://drupal.org/project/poormanscron
+      
+
+  Log in or register to post comments
+
+
+
+  
+  
+    if you don't have privilege to setup cron job or don't know how 
+  
+  
+        easyCron commented 5 years ago  
+
+  
+    A third party webcron may be a good option for you. easyCron provides a free plan at http://www.easycron.com/user/register/plan/1.
+      
+
+  Log in or register to post comments
+
+
+
+  
+  
+    godaddy cron
+  
+  
+        sohocs commented 4 years ago  
+
+  
+    In the hosting administration section there is a cron setup.  Easy todo.
+        
+      Sohocs
+    
+      
+
+  Log in or register to post comments
+
+
+
+  
+  
+    subscribing
+  
+  
+        WH Hammond commented 4 years ago  
+
+  
+    subscribing
+        
+      WH Hammond
+    
+      
+
+  Log in or register to post comments
+
+
+
+  
+  
+    for d7, when does the key change
+  
+  
+        derEremit commented 4 years ago  
+
+  
+    Hi, I just found out on a live site, that cron could not be started, because the key changed.
+I'd like to know what triggers a change of that key.
+      
+
+  Log in or register to post comments
+
+
+
+  
+  
+    stated requirement to run drush as web server user
+  
+  
+        hughbris commented 4 years ago  
+
+  
+    Excellent documentation, by the way!
+Might be more of a drush question:
+I experienced problems using the drush method, before I read the drush section here, from cron. It works fine with wget, though it requires me to "hardcode" (hardcron?) a server address. I'm happy enough for now with that, but just curious why it doesn't work using drush cron.
+I've noticed now this documentation says "You should set up crontab to run your cron tasks as the same user that runs the web server" (my emphasis). That's taken from the drush page, I know. I can't do that on the server I tried it on because I don't have those privileges. If I can run the drush command from anywhere in my own user environment, I'm specifying full paths and using the -r argument (so context is OK), why shouldn't I have the necessary privilege to run it through a cron job? I'm particularly curious about the use of the word "should", which is not quite "must".
+Like I said, only curious, but I bet someone knows.
+      
+
+  Log in or register to post comments
+
+
+
+  
+  
+    Run cron directly from shell
+  
+  
+        davidwhthomas commented 3 years ago  
+
+  
+    Running cron automatically from the command line
+Here's one way to run cron directly from the shell on linux systems, using the core drupal.sh file.
+This example runs cron at 45 minutes past the hour, every hour.
+Cron file
+I put the cron job file in /etc/cron.d
+e.g
+/etc/cron.d/drupal-site-name
+Cron command
+The contents are:
+45 * * * * www-data /var/www/public/site/scripts/drupal.sh --root /var/www/public/site/ http://default/cron.php?cron_key=[cron_key]
+Where:
+"site" is the drupal site webroot, e.g /var/www/public/site
+[cron_key] is your drupal 7 install cron key, seen at admin > reports > status e.g y85HnNQxjdqM-deRXj2Xrp2MJumqe1HGPSXhW8jftyI
+No wget / curl etc.. needed, cron is run internally via shell :)
+Cheers,
+DT
+      
+
+  Log in or register to post comments
+
+
+
+
+  
+  
+    Run cron as authenticated user
+  
+  
+        joaogarin commented 3 years ago  
+
+  
+    Hello i am trying to run the file containing :
+#!/bin/sh
+# Reference http://drupal.org/node/479948#comment-1673488 by pearlbear
+SITE=https://dev.example.com/
+USERNAME=user.name
+PASS=ChangeMe!!12
+COOKIES=/tmp/cron-cookies.txt
+WGETPARAMS="--quiet -O /dev/null --no-check-certificate --save-cookies $COOKIES --keep-session-cookies --load-cookies $COOKIES"
+# if you run drupal in a default language different than English you need to modify this
+LOGIN="Log%20in"
+wget $WGETPARAMS "${SITE}user"
+wget $WGETPARAMS --post-data="name=$USERNAME&pass=$PASS&op=$LOGIN&form_id=user_login" "${SITE}user"
+wget $WGETPARAMS " ${SITE}cron.php"
+I have this in a .sh file (with all paths and passwords corrected) and i am running with the following command :
+wget -O - -q -t 1 path to file
+Is this last command the one that's wrong?I see a lot of people saying this is the solution (the code above) but none explaining really what to do with it..Is it suposed to be a sh file?
+I am still really nooby in using cron still so excuse me some stupid questions..
+Best regards
+Jg
+        
+      Joao Garin
+    
+      
+
+  Log in or register to post comments
+
+
+
+
+  
+  
+    You would be calling your
+  
+  
+        rjacobs commented 3 years ago  
+
+  
+    You would be calling your script file directly via cron, not from wget (as your script is what calls wget). So instead of your cron command being:
+wget -O - -q -t 1 http://www.example.com/cron.php
+It would be simply:
+full/path/to/executable/file.sh
+I suppose it would help if the notes were updated to clarify this.
+      
+
+  Log in or register to post comments
+
+
+
+  
+  
+    Each module that implements hook_cron must handle access
+  
+  
+        trond commented 3 years ago  
+
+  
+    I don't see how you actually can run cron as an authenticated user because cron calls drupal_cron_run() which among other things does the following before it invokes other modules:
+// Force the current user to anonymous to ensure consistent permissions on  // cron runs.  $original_user = $GLOBALS['user'];  $GLOBALS['user'] = drupal_anonymous_user();
+So if you want cron to invoke a module that handles actions that involves e.g. a db query using EntityFieldQuery and you don't want anonymous users to have access to your database, the module must be responsible for access.
+I might be missing something here, so please let me know if I am.
+      
+
+  Log in or register to post comments
+
+
+
+
+  
+  
+    I confirm to this! I reported
+  
+  
+        dreizwo commented 3 years ago  
+
+  
+    I confirm to this! I reported an issue for this problem http://drupal.org/node/1772634
+      
+
+  Log in or register to post comments
+
+
+
+  
+  
+    I came up with a work around
+  
+  
+        robmalon commented 2 years ago  
+
+  
+    I came up with a work around for this (at least in my case) that anyone else should be able to apply to their scenario. It's not great, since it doesn't actually run the cron process as authenticated, but instead manually modifies whatever you need on a per case basis: Running Cron As An Authenticated User
+      
+
+  Log in or register to post comments
+
+
+
+  
+  
+    For Godaddy dedicated linux server with cpanel
+  
+  
+        PMorris commented 3 years ago  
+
+  
+    I got my cron to work by  using the 'advanced > cron jobs' tab of cpanel and adding the job:
+/usr/bin/php /home/musclein/public_html/cron.php
+lynx method didn't work on my server
+      
+
+  Log in or register to post comments
+
+
+
+  
+  
+    crontab command
+  
+  
+        vindesh commented 3 years ago  
+
+  
+    You can try another crontab command:
+PHP command: use "php" or "/usr/bin/php"
+php /var/www/vhosts/mydomain.com/httpdocs/cron.php
+php -q /var/www/vhosts/mydomain.com/httpdocs/cron.php
+cd /var/www/vhosts/mydomain.com/httpdocs/ ; /usr/bin/php -q cron.php
+php /var/www/vhosts/mydomain.nl/httpdocs/cron.php &> /dev/null
+php -q -f /var/www/vhosts/mydomain.com/httpdocs/cron.php
+WGET command:
+use "wget" or "/usr/bin/wget"
+/usr/bin/wget http://www.mydomain.com/cron.php
+wget http://www.mydomain.com/cron.php -O /dev/null
+wget -O /dev/null www.mydomain.com/cron.php
+/usr/bin/wget -O - -q -t 1 www.mydomain.com/cron.php
+/usr/bin/wget http://www.mydomain.com/cron.php >/dev/null 2>&1
+CURL:
+/usr/bin/curl http://www.mydomain.com/cron.php
+curl command is working for my godaddy hosting website
+        
+      Regard's
+ Vindesh
+    
+      
+
+  Log in or register to post comments
+
+
+
+  
+  
+    nice
+  
+  
+        marcus7777 commented 2 years ago  
+
+  
+    use 'nice' it is so cool eg.
+0,30 * * * * nice -n 10 drush -r /home/eg/ cron
+or for multisite
+0,30 * * * * (cd ~/www;for i in $(drush sa) ; do nice -n 10 drush -q -l $i cron; done)
+from the man pages:
+       nice - run a program with modified scheduling priority
+DESCRIPTION
+       Run  COMMAND  with  an adjusted niceness, which affects process scheduling.  With no COMMAND, print the current niceness.  Nicenesses range from -20 (most favorable
+       scheduling) to 19 (least favorable).
+      
+
+  Log in or register to post comments
+
+
+
+  
+  
+    Drupal 7 cron without cron
+  
+  
+        ñull commented 2 years ago  
+
+  
+    As far as I understand in Drupal 7 they introduced cron without cronjob (poor man's cron build in). When a cron job is really heavy on the server, I in fact don't like this automatic behaviour and would like only a command line started cron to rule on my time and frequency. Is there a way to disable the build in cron in d7? I tried by setting the setting "Run cron every" to none, but then apparently the command line cron is not executed either. How to configure that only the command line cron rules?
+      
+
+  Log in or register to post comments
+
+
+
+
+  
+  
+    Maybe...
+  
+  
+        aharown07 commented 2 years ago  
+
+  
+    Might find what you're looking for here?  http://drupal.org/node/1014412
+      
+
+  Log in or register to post comments
+
+
+
+  
+  
+    determin if cron is run using the cron_key in drupal 7
+  
+  
+        samuraisjakkie commented 2 years ago  
+
+  
+    Is there a way for drupal to determine whether the cron command is called from using the unique cron key. ANd if it can determine this then runs a a particular script.  Using thing in conjunction with an importer i wrote and only need to call the script if there is a change in the other location.
+thanks.
+        
+      Jacques
+    
+      
+
+  Log in or register to post comments
+
+
+
+  
+  
+    Command not found
+  
+  
+        egocentric13 commented 2 years ago  
+
+  
+    I need help with regards to executing the command.
+When I type:
+45 * * * * curl -s url
+I always get error that the command is not found.
+Any idea? Thanks in advance.
+      
+
+  Log in or register to post comments
+
+
+
+  
+  
+    Better curl options
+  
+  
+        nicorac commented about a year ago  
+
+  
+    These are, in my opinion, the best options for curl:curl -f -sS http://www.example.com/cron.php?cron_key?<putYourKeyHere>
+Linux crontab, by default, send a mail to root with the output of the command, if any.
+Usually, if nothing goes wrong, cron.php has no output, so no mail.
+If something goes wrong (cron.php outputs something, the key becomes invalid, the URL changes, ...) the admin will receive a message like:curl: (22) The requested URL returned error: 403
+or the content of the returned page.
+Completely silent wget/curl makes it difficult to detect cron issues that could happen in the future.
+        
+      http://coolsoft.altervista.org
+    
+      
+
+  Log in or register to post comments
+
+
+
+  
+  
+    Cron job with systemd
+  
+  
+        lars.ollen commented about a year ago  
+
+  
+    If you are using systemd you will probably need to use the timer feature. I wrote a short guide about it after setting up my own drupal installation:http://northernlightlabs.se/drupal.cronjob.with.systemd
+      
+
+  Log in or register to post comments
+
+
+  
+  
+  
+
+  
+
+                   
+
+       
+
+              
+          
+              
+    
+
+    Page status
+  
+  
+    No known problemsLog in to edit this page  
+  
+
+
+
+    About this page
+  
+  
+    
+      Drupal version
+    Drupal 4.5.x or older, Drupal 4.6.x, Drupal 4.7.x, Drupal 5.x, Drupal 6.x, Drupal 7.x, Drupal 8.x
+      Audience
+    Site administrators
+      Level
+    Intermediate
+      Keywords
+    cron, scheduled tasks, crontab
+  
+  
+  
+
+
+
+    Installation Guide
+  
+  
+    System requirements
+Step 1: Download and extract Drupal
+Step 2: Create the database
+Step 3: Create settings.php, services.yml and the files directory
+Step 4: Run the installation script
+Step 5: Setting up cronConfiguring cron jobs using the cron commandConfiguring Cron on Rackspace Cloud Sites
+Configuring cron jobs in cPanel
+Configuring cron jobs on DreamHost
+Configuring cron jobs on MAMP localhost
+Configuring cron jobs on Media Temple Grid (gs) and DV servers
+Configuring cron jobs on Windows
+Configuring cron jobs on hosteurope
+Configuring cron jobs on ixWebHosting
+Configuring cron on Mac OS X Server 10.5.x and later
+Plesk 10 configuration for cron job
+Set up a cron job with Network Solutions
+Setting up cron on Hostmonster/Bluehost through the cPanel interface
+
+Running cron manually
+Solving cron problems
+Multisite cron
+Configuring cron without wget, lynx, or curl commands
+
+Step 6: Configure clean URLs
+After Installation
+Additional topics
+  
+  
+
+
+
+    
+  
+    Drupal’s online documentation is © 2000-2015 by the individual contributors and can be used in accordance with the Creative Commons License, Attribution-ShareAlike 2.0. PHP code is distributed under the GNU General Public License. Comments on documentation pages are used to improve content and then deleted.  
+  
+
+  
+           
+         
+      
+           
+   
+
+  
+    
+              
+          
+              
+    News ItemsDrupal News
+Planet Drupal
+Association News
+Social Media Directory
+Security Announcements
+Jobs
+Our CommunityCommunity
+Getting Involved
+Services, Training & Hosting
+Groups & Meetups
+DrupalCon
+Code of Conduct
+Online DocumentationGet Started
+Documentation Home
+Installation Guide
+Site Building Guide
+Support
+api.drupal.org
+Drupal Code BaseDownload & Extend
+Drupal Core
+Modules
+Themes
+Distributions
+Governance of CommunityAbout
+Web accessibility
+The Drupal Association
+About Drupal.org
+Terms of Service
+Privacy Policy
+
+
+    
+  
+    Drupal is a registered trademark of Dries Buytaert.
+  
+  
+
+  
+           
+         
+           
+   
+    
+      
+
+
+
+
