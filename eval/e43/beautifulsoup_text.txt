@@ -1,0 +1,160 @@
+Contents
+
+1 Download jReality and run the tutorials from the command line
+
+1.1 Check java installation
+1.2 Compile tutorials
+1.3 Enabling OpenGL rendering
+1.4 Run the tutorials
+
+
+
+
+Download jReality and run the tutorials from the command line
+This tutorial is for a 64-bit linux machine. If you use windows, macosx or something else, this tutorial might NOT work.
+
+First of all you need an installation of a Java Platform, Standard Edition (Java SE) JDK. jReality is currently developed for Java Version 6 or higher. You might find the JDK at Java Website or look for installation packages from your OS vendor (Linux or Mac OS).
+
+NOTE: This tutorial uses BASH syntax, windows users can try to use cywin or something similar, or have to translate to windows command lines on there own... Sorry.
+
+
+Check java installation
+After installation, open a shell or on Windows a console (Execute... "cmd"). Type
+
+
+  java -version
+
+
+At the shell you should see something like this:
+
+
+  java version "1.7.0_25"
+  Java(TM) SE Runtime Environment (build 1.7.0_25-b15)
+  Java HotSpot(TM) 64-Bit Server VM (build 23.25-b01, mixed mode)
+
+
+Otherwise you have to change the path to your Java 6+. The standard Linux-path for the Java-lib is /usr/lib/jvm/'your-java-6+-version' and you can temporary change your used Java-version with:
+
+
+  export JAVA_HOME=/usr/lib/jvm/'your-java-6+-version'
+
+
+
+Compile tutorials
+Create a folder for jReality in your home directory:
+
+
+   mkdir jreality
+   cd jreality
+
+
+Download jReality.jar, jReality-tutorial.zip, jReality-3rd-party.zip and vrData.jar from the Download section and unzip jReality-tutorial.zip and jReality-3rdparty.zip. 
+
+
+   wget http://www3.math.tu-berlin.de/jreality/download/latest/jReality.jar
+   wget http://www3.math.tu-berlin.de/jreality/download/latest/jReality-tutorial.zip
+   wget http://www3.math.tu-berlin.de/jreality/download/latest/jReality-3rd-party.zip
+   wget http://www3.math.tu-berlin.de/jreality/ws/data/vrData.jar
+   unzip jReality-3rd-party.zip
+   unzip jReality-tutorial.zip
+
+
+For compiling the tutorials the classpath must contain the following entries:
+
+
+ jReality.jar
+ lib/jrworkspace.jar
+ lib/beans.jar
+ lib/jogl-all.jar (optional)
+
+In the tutorial sources there are some files that require java bindings to CSound and Mathematica. We will now delete these files to avoid compile errors. If you want to use one of these examples, look at the corresponding Wiki pages or post in the forum for help.
+
+Delete:
+
+
+  rm tutorial/de/jreality/tutorial/audio/MinimalExample.java 
+  rm tutorial/de/jreality/tutorial/misc/JLinkExample.java 
+  rm tutorial/de/jreality/tutorial/misc/ODEExample.java 
+  rm tutorial/de/jreality/tutorial/geom/GeometryMergeExample.java
+
+
+If you want to use jogl and you are interested in this example, first look up how to enable jogl (below), and then compile the examples. Otherwise delete the file
+
+
+  rm tutorial/de/jreality/tutorial/viewer/GLJPanelViewerExample.java
+  rm tutorial/de/jreality/tutorial/viewer/OffscreenRenderAlternateCameraPath.java
+
+
+Ok, now we can compile the tutorials:
+
+
+  export CLASSPATH=jReality.jar:lib/jrworkspace.jar:lib/beans.jar
+  javac -Xlint:deprecation tutorial/de/jreality/tutorial/*/*.java
+
+
+To run the examples, we need to add more 3rd party libs to the classpath: 
+
+
+  # 3rd party libs:
+  export CLASSPATH=$CLASSPATH:lib/xstream-1.4.2.jar:lib/xpp3-1.1.4c.jar
+  # more 3rd party libs:
+  export CLASSPATH=$CLASSPATH:lib/colorpicker.jar:lib/bsh.jar:lib/jterm.jar
+  # vr data (textures, sky boxes)
+  export CLASSPATH=$CLASSPATH:vrData.jar
+
+
+Now we still need to add the tutorial folder to the classpath:
+
+
+  export CLASSPATH=$CLASSPATH:tutorial
+
+
+Ok, that's it. Check your classpath with
+
+
+   echo $CLASSPATH
+
+
+and it should look like this:
+
+
+  jReality.jar:lib/jrworkspace.jar:lib/beans.jar:lib/xstream.jar:lib/xpp3.jar:
+  lib/colorpicker.jar:lib/bsh.jar:lib/jterm.jar:vrData.jar:tutorial
+
+Enabling OpenGL rendering
+Right now only software-rendering is enabled. To get much faster OpenGL rendering download jogl and gluegen-rt:
+
+
+  wget http://www3.math.tu-berlin.de/jreality/webstart/ws/jogl2/jogl-all.jar
+  wget http://www3.math.tu-berlin.de/jreality/webstart/ws/jogl2/gluegen-rt.jar
+
+
+and add them to the classpath:
+
+
+ export CLASSPATH=$CLASSPATH:jogl-all.jar:gluegen-rt.jar
+
+
+Download further the corresponding native libs for jogl and gluegen. E.g. for a 64-bit Linux:
+
+
+  wget http://www3.math.tu-berlin.de/jreality/webstart/ws/jogl2/jogl-all-natives-linux-amd64.jar
+  wget http://www3.math.tu-berlin.de/jreality/webstart/ws/jogl2/gluegen-rt-natives-linux-amd64.jar
+
+
+and add them to your classpath:
+
+
+  export CLASSPATH=$CLASSPATH:jogl-all-natives-linux-amd64.jar:gluegen-rt-natives-linux-amd64.jar
+
+Run the tutorials
+  java -Djava.library.path=. de.jreality.tutorial.geom.Cube05
+
+
+The application should now startup with the jogl viewer - rendering much faster than the software viewer.
+
+Please note that there are features that won't work until you've added all 3rd-party libraries to the classpath, e.g. Sunflow export.
+
+
+
+
