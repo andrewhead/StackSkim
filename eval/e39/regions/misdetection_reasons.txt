@@ -1,185 +1,135 @@
-=== PRECISION MISSES ===
+======== Precision Failures ==========
 
-First round of precision misses (solved)
-- found single-word "wget" in code, and detected it as a full command
-- in my truth set, I ignore the fact that redirects are technically part of the command (though can this be handled by wget?)
-- multiline bash commands with <br> in between each line weren't getting split into lines
-- wget commands without URL were still getting read
+We're missing some examples in our ground truth (0,1,2,3,4,11,13,173,204,206,208,210,220,245,246,247,249,250)
+Bounds given to region we scraped were incorrect (e.g., don't include redirection) (180)
+180. <code>wget --spider --force-html -r -l1 http://somesite.com 2&gt;&amp;1 | grep 'Saving to:'
+</code>
+181. <code>wget -r --spider -l1 -A mp3 http://example.com/page-with-mp3s 2&gt;&amp;1 | grep -Eio http.+mp3</code>
+188. <pre><code>wget --spider --force-html -r -l1 http://somesite.com 2&gt;&amp;1 | grep 'Saving to:'
+</code></pre>
+203. <code>*/5 * * * * wget mysite.com &gt; /dev/null 2&gt;&amp;1
+</code>
+205. <code>/5 * * * * wget -O - mysite.com &gt; /dev/null 2&gt;&amp;1
+</code>
+207. <pre><code>*/5 * * * * wget mysite.com &gt; /dev/null 2&gt;&amp;1
+</code></pre>
+209. <pre><code>/5 * * * * wget -O - mysite.com &gt; /dev/null 2&gt;&amp;1
+</code></pre>
+(197,200,202)
 
-Additional examples of misses:
-- Placholder args, e.g., wget someArgs | grep keyword
+Repetition groups (unmaintained)
+* 0,2
+* 1,3
+* 5,6,7,8
+* 9
+* (and a lot more...)
 
-Redos for data collection:
-1. false-region 2
-2. false-region 3
-3. wget --load-cookies=cookies.txt http://en.wikipedia.org/wiki/User:A from askubuntu.com 161778
-4. wget --spider --force-html -r -l1 http://somesite.com 2>&1 | grep 'Saving to:' from stackoverflow 2804467 (question code snippet 2)
-5. Code snippet in comment of the first answer
-6. Includ redirects in the region of the command
+Misdetected text example
+5,6,7,8. Linux wget command - how to download files
+	- solution: ignore the dash here because it's not an argument but an 'ndash'
+9. With wget you simply use the -c or –continue option. Some have a habit of always passing this option just in case.
+248. wget to go into background immediately after startup.  If no output file is specified via the -o option, output is redirected to wget-log file:
+	- solution: if more than one url comes before the argument, then forget it
+10. wget allows you to send an HTTP request with custom HTTP headers.  To supply custom HTTP headers, use "--header" option.  You can use "--header" option as many time as you want in a single run.
+	- solution (same deal w/ URLs from #9)
+12. WGET command:
+196. WGET command:
+199. WGET command:
+201. WGET command:
+	- solution (if end of line ends with a colon, then we suspect that this is something referring to the next line)
+	
+Too long of a continuation after text
+221. wget -O /dev/null -o /dev/null example.com. The idea is not to discard the output in some way, but not create any output at all.
+- solution: stop after a URL with a period at the end
+	
+Probably a bug in reporting the position of a code snippet (offsets don't match)
+(Note that 14- are all from the same tutorial with a very, very long DIV block from which this all was extracted)
+14. must be executable by appropri
+15. ate system user on your server.
+16. un since. I contacted Support and we went back and forth
+17. those people. I think I speak for at least 50% of
+18. er you change in your line:  'wget' to '/path/to/wget'
+if you dont know what path wget i
+19. / portland drupal developer
+20. and password
+21. ke to know what triggers a cha
+22. ge of that key.
+23.  sh file?
+24. ron still so excuse me some stupid questions..
+25. Best regards
+Jg
+        
+      Joao Garin
+    
+   
+26.  
 
-Mysteries we don't know
-*/5 * * * * wget mysite.com > /dev/null 2>&1  (from serverfault.com 619542)
-/5 * * * * wget -O - mysite.com > /dev/null 2>&1 
+  Log in or register to post comments
 
-=== RECALL MISSES ===
 
-Critical:
-* in the middle of a <p> block
-* in <pre> element
-* get the right region of the redirect
+27.  
 
-Done:
-* handle bash with comments in it
-* allow no URL if -i option provided
-* /usr/bin/wget
-* crontab entry
+  
+  
+    You would be calling your
+  
+  
+        
+28. jacobs commented 3 years ago  
 
-STOPPED AT 119, didn't load it here.
+  
+    You would be calling yo
+* HTML:  too long to render
 
-Shouldn't have been logged as a valid command in the first place:
-(22) """" wget -X " -X /~nobody,/~somebody
+29.  be executable by appropriate
+30. system user on your server.
+And so on... (31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105?,106,107,108,109,110,111,112,113,114,115,116,117,118,119,121,122,123,124,127,128,129,130,131,132,133,134,135,136,137,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,182,183,184,185,186,187,189,190,191,192,193,194,195,212,213,214,215,216,217,218,223,224,225,226,227,228,229,230,231,232,233,234,235,236,)
+120. groupinstall 'Development Tools'
+$ wget http:
+125.   apt-get install python g++ make
+$ wget http:/
+126.  groupinstall 'Development Tools'
+$ wget http:
+138. apt-get install python g++ make
+$ wget http:/
+139.  groupinstall 'Development Tools'
+$ wget http:
+140.  groupinstall 'Development Tools'
+$ wget http:
+141.  groupinstall 'Development Tools'
+$ wget http:
+142.  apt-get install python g++ make
+$ wget http:/
+143.  groupinstall 'Development Tools'
+$ wget http:
+144. ad using your computer’s browser
+145. e icon is a blue “C” with an arrow inside), select the entire contents of the co
+147. ng your computer’s browser, paus
+148.  is a blue “C” with an arrow inside), select the entire contents of the cookies 
+198. 
+wget -O /tmp/myfile 'http://www.google.com/logo.jpg
+221. Reality-tutorial.zip and jReality-3rdparty.zip. 
 
-Probably stored the wrong range when adding it in the first place b/c redirects (23,33,40,44,45,46,47,75,97):
-(23) """" wget --spider --force-html -r -l1 http://somesite.com 2>&1
 
-Not inspecting the right parent element
-b (1,29,70,76,97,107,108), pre (2,7,11,16,21,23,27,57,58,60,65,77,82,87,90,94,106,115), div.console (6,26,56), p (9,15,20,25,30,31,37,45,46,48,51,59,62,64,71,78,79,80,81,83,85,90,93,96,98,103,104,116,117,118), div.command (53), div.codeblock (74), div.crayon-code (89), dd (113)
-p (92) """"
-<p>How can I do it? I am trying it like this
-RESULT=`wget $URL`</p>
-""""
+   wget http://www3.m
+222. tu-berlin.de/jreality/download/latest/jReality.jar
+   wget http://www3.math.tu-be
 
-Nested inside a text block (20,25,29,37,45,70,71,76,78,79,83,90,92,93,96,97,104,107,108,113,116,118).
+Pages for which misalignment occurs:
+http://127.0.0.1:8000/pages/wget/crontab%20php%20wget%20tutorial/9/serverfault.com/questions/619542/piping-wget-output-to-dev-null-in-cron.html
+http://127.0.0.1:8000/pages/wget/curl%20php%20wget%20tutorial/8/www.drupal.org/node/23714.html
+http://127.0.0.1:8000/pages/wget/curl%20lynx%20wget%20tutorial/9/www.commandlinefu.com/commands/view/1811/dump-http-header-using-wget.html
+http://127.0.0.1:8000/pages/wget/java%20linux%20wget%20tutorial/10/www3.math.tu-berlin.de/jreality/mediawiki/index.php/Command-line-tutorial.html,
 
-Argument not supported by wget (41):
-(-g) """" $ wget -g on ftp://somedom.com/pub/downloads/*.pdf
-
-It's valid to provide a file with '-i' and no URL (12,76,91,106):
-$ wget -cb -o /tmp/download.log -i /tmp/download.txt --quota=100m
-$ nohup wget -c -o /tmp/download.log -i /tmp/download.txt & (17)
-(39) """" $ wget -i /tmp/download.txt
-
-Arguments inside a variable, which is read as incorrect syntax, presumably by our wget-run step:
-(?) """" wget $WGETPARAMS "${SITE}user"
-(19) """" wget $u
-(50) """" wget $URL -O $FILE -o $LOGFILE
-(51) """"  wget $u
-
-Included as a string for another programming language:
-(1) """
-shell_exec('wget "'http://somedomain.com/somefile.mp4'"');
-sleep(20);
-continue my code...
-"""
-(24,36) inside chef
-(42) perl script, as string
-(54) interactive bash (numbers on line)
-""""
-$ wget -q --spider 'http://example.com/'
-$ echo $?
-0
-""""
-(67,95) again, shell_exec (in PHP)
-(77) inside <?system> (PHP)
-(105) python
-""""
-#wget 'http://google.com/' -r -l 1 -p -P Downloads/google
-
-from subprocess import Popen
-
-url = 'google.com'
-location = '/Users/abhinay/Downloads'
-#as suggested by @SilentGhost the `location` and `url` should be separate argument
-args = ['wget', '-r', '-l', '1', '-p', '-P', location, url]
-
-output = Popen(args, stdout=PIPE)
-""""
-(110) Command substitution """" RESULT="`wget -qO- http://example.com`"
-
-Incorrect syntax in part of the code block (71,114):
-"""
-wget https://www.dropbox.com/s/mx9eqve5l2ipgyk/test.tx
-(34) """" shell_exec("wget '$url'");
-
-ls -l 
--rw-rw-r-- 1 mirror mirror  30K Sep  6 15:01 test.txt
-"""
-(9) """"
-<p>wget  –tries=1 <a href="http://xxx.com" rel="nofollow">http://xxx.com</a><br>
-It ‘s mean retry for 1 time </p>
-""""
-
-bash parse fails after comments (13,16,19,35,50,66,99):
-"""
-wget https://www.somewhere.com/chef/install-ubuntu-12.04-x86.deb -O /tmp/install.deb
-sudo dpkg -i /tmp/install.deb
-# or
-sudo yum install wget
-wget https://www.somewhere.com/chef/install-centos-6-x86.rpm -O /tmp/install.rpm
-sudo rpm -Uvh /tmp/install.rpm
-"""
-"""
-# cd /tmp
-# wget http://www.us.apache.org/dist/tomcat/tomcat-7/v7.0.59/bin/apache-tomcat-7.0.59.tar.gz
-"""
-"""
-#!/bin/bash
-dir=$(zenity --file-selection --directory)
-wget -O $dir/test.txt "https://www.dropbox.com/s/mx9eqve5l2ipgyk/test.txt?dl=1"
-"""
-(35) """"
-#!/bin/bash
-wget https://www.example.com/foo/bar.baz -O /path/to/destination/bar.baz
-curl https://www.example.com/baz/foo.bar --output /path/to/destination/foo.bar
-...
-""""
-(43) """"
-# Log in to the server.  This can be done only once.
-wget --save-cookies cookies.txt \
-     --post-data 'user=foo&password=bar' \
-     http://server.com/auth.php
-
-# Now grab the page or pages we care about.
-wget --load-cookies cookies.txt \
-     -p http://server.com/interesting/article.php
-""""
-(81) """"
-wget http://www.cyberciti.biz/here/lsst.tar.gz
-–21:55:38– http://www.cyberciti.biz/here/lsst.tar.gz
-Resolving http://www.cyberciti.biz... 75.126.153.206, 2607:f0d0:1002:51::4
-Connecting to http://www.cyberciti.biz|75.126.153.206|:80… failed: Network is unreachable.
-Connecting to http://www.cyberciti.biz|2607:f0d0:1002:51::4|:80… failed: Network is unreachable.
-""""
-
-No URL because of xargs, and xargs is the command (14):
-xargs -P 10 -r -n 1 wget -nv
-
-wget is specified by /usr/bin/wget/ (18,31,64,74,96,101,103,111,118)
-0 * * * * /usr/bin/wget -O - -q -t 1 http://www.example.com/cron.php?cron_key=YOUR_UNIQUE_CRON_KEY
-
-Preceded by another command (89)
-(17) """" $ nohup wget -c -o /tmp/download.log -i /tmp/download.txt &
-(49) """" sudo wget http://nodejs.org/dist/node-latest.tar.gz
-
-crontab entry (others,32,33,38,44,47,64,69,74,101,102,103,111,118)
-"""" */5 * * * * wget -O /dev/null -o /dev/null example.com
-
-trailing spaces on a line
-(61)
-""""
-wget https://www.opscode.com/chef/install.sh 
-less install.sh
-sudo bash install.sh
-""""
-
-Not inspecting comment content (68)
-
-WGET is in all caps (73,112)
-
-Unknown (52,55,63,77,84,88,100,109,113)
-(28) """" wget -O - -q -t 1 'http://www.example.com/cron.php?cron_key=l4zX8MiBil7O072d-DCbfPNBINOs_OIRlsCskh9oulY'
-* inside a <code> block to begin with...
-(86) """" wget -O - -q -t 1 http://www.example.com/cron.php
-
-Suggestions:
-* Try to parse the full block.  If full block not bash, *then* try to do it line by line.  (But require that wget or the pre-command starts the line -- if finding in the middle of a sentence, should be formatted in some way.)
+Offset by one space
+146.  wget http://nodejs.org/dist/node-latest.tar.g
+218. 
+wget -O /dev/null -o /dev/null example.com. The idea is not to discard the output in some way, but not create any output at all
+237.  wget http://www3.math.tu-berlin.de/jreality/download/latest/jReality.ja
+238.  wget http://www3.math.tu-berlin.de/jreality/download/latest/jReality-tutorial.zi
+239.  wget http://www3.math.tu-berlin.de/jreality/download/latest/jReality-3rd-party.zi
+240.  wget http://www3.math.tu-berlin.de/jreality/ws/data/vrData.ja
+241.  wget http://www3.math.tu-berlin.de/jreality/webstart/ws/jogl2/jogl-all.ja
+242.  wget http://www3.math.tu-berlin.de/jreality/webstart/ws/jogl2/gluegen-rt.ja
+243.  wget http://www3.math.tu-berlin.de/jreality/webstart/ws/jogl2/jogl-all-natives-linux-amd64.ja
+244.  wget http://www3.math.tu-berlin.de/jreality/webstart/ws/jogl2/gluegen-rt-natives-linux-amd64.ja
