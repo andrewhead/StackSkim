@@ -9,6 +9,12 @@ from cssselect.parser import \
 from cssselect.parser import SelectorSyntaxError
 import cssselect
 import re
+from antlr4.InputStream import InputStream
+from antlr4 import CommonTokenStream, ParseTreeWalker
+
+from pcre.parser.PCRELexer import PCRELexer
+from pcre.parser.PCREParser import PCREParser
+from pcre.parser.PCREListener import PCREListener
 
 
 logging.basicConfig(level=logging.INFO, format="%(message)s")
@@ -88,6 +94,38 @@ def get_css_nodes(string):
         return selector_nodes
     except SelectorSyntaxError:
         return []
+
+
+class PCRELiteralCounter(PCREListener):
+
+    def count_literals(self, pattern):
+
+        self.atom_count = 0
+        self.literal_count = 0
+
+        walker = ParseTreeWalker()
+        input_ = InputStream(pattern)
+        lexer = PCRELexer(input_)
+        stream = CommonTokenStream(lexer)
+        parser = PCREParser(stream)
+        tree = parser.parse()
+
+        walker.walk(self, tree)
+        return self.literal_count, self.atom_count
+
+    def enterAtom(self, ctx):
+        child = ctx.children[0]
+        if type(child) == PCREParser.LiteralContext:
+            self.literal_count += 1
+        self.atom_count += 1
+
+
+class RegexAffinityEvaluator(object):
+
+    def evaluate(self, text):
+        counter = PCRELiteralCounter()
+        lit_count, atom_count = counter.count_literals(text)
+        return (1 - float(lit_count) / atom_count)
 
 
 class CssAffinityEvaluator(object):
