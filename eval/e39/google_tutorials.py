@@ -15,8 +15,9 @@ API_URL = 'https://www.googleapis.com/customsearch/v1'
 API_KEY = 'AIzaSyBcHH5JqkalO6atnpCqZCjvFWFiT8-yC8k'
 SEARCH_ID = '011356320933563804135:byoi9uglfjg'
 
-# MICROLANGUAGES = ['wget', 'css-selectors']
-MICROLANGUAGES = ['regex']
+# TAGS = ['wget', 'css-selectors']
+# TAGS = ['regex']
+TAGS = ['jquery']
 session = cache.get_session()
 
 
@@ -33,7 +34,7 @@ def save_page(language, query, link, rank, title):
 
 def get_results(pages=300):
 
-    for ml in MICROLANGUAGES:
+    for ml in TAGS:
 
         ml_results = []
         ml_links = set()

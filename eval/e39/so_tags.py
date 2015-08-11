@@ -11,7 +11,7 @@ from models import Bigram, Trigram, create_tables
 
 logging.basicConfig(level=logging.INFO, format="%(message)s")
 session = cache.get_session()
-TARGET_TAGS = ['wget', 'regex', 'css-selectors']
+TARGET_TAGS = ['wget', 'regex', 'css-selectors', 'jquery']
 
 
 def make_url(tags):

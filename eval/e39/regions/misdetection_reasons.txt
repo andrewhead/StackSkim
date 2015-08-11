@@ -119,7 +119,7 @@ Pages for which misalignment occurs:
 http://127.0.0.1:8000/pages/wget/crontab%20php%20wget%20tutorial/9/serverfault.com/questions/619542/piping-wget-output-to-dev-null-in-cron.html
 http://127.0.0.1:8000/pages/wget/curl%20php%20wget%20tutorial/8/www.drupal.org/node/23714.html
 http://127.0.0.1:8000/pages/wget/curl%20lynx%20wget%20tutorial/9/www.commandlinefu.com/commands/view/1811/dump-http-header-using-wget.html
-http://127.0.0.1:8000/pages/wget/java%20linux%20wget%20tutorial/10/www3.math.tu-berlin.de/jreality/mediawiki/index.php/Command-line-tutorial.html,
+http://127.0.0.1:8000/pages/wget/java%20linux%20wget%20tutorial/10/www3.math.tu-berlin.de/jreality/mediawiki/index.php/Command-line-tutorial.html
 
 Offset by one space
 146.  wget http://nodejs.org/dist/node-latest.tar.g
