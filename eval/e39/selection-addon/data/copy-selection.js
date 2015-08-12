@@ -121,7 +121,8 @@ document.body.onmouseup = function() {
                 // identifier for this range
                 window.location.href, 
                 htmlOffsets.start,
-                htmlOffsets.end
+                htmlOffsets.end,
+                selString,
             ].join('\t') + '\n';
         }
         self.port.emit('copy', {'msg': msg});
