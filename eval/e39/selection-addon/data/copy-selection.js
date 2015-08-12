@@ -95,6 +95,25 @@ function getOffsetsInHtml(range) {
 }
 
 
+function prepTextForExcelEntry(text) {
+    var textRevised = text;
+    // Before we insert this into Excel, any leading double quotes and the next
+    // double quotes they match need to be expanded to three quotation marks so
+    // they are entered into the cell and not ignored.
+    if (text.match(/^"/)) {
+        var matches = 0;
+        textRevised = text.replace(/"/g, function() {
+            matches = matches + 1;
+            if (matches <= 2) {
+                return '"""';
+            }
+            return '"';
+        });
+    }
+    return textRevised;
+}
+
+
 document.body.onmouseup = function() {
 
     var selection =  window.getSelection();
@@ -122,7 +141,7 @@ document.body.onmouseup = function() {
                 window.location.href, 
                 htmlOffsets.start,
                 htmlOffsets.end,
-                selString,
+                prepTextForExcelEntry(selString),
             ].join('\t') + '\n';
         }
         self.port.emit('copy', {'msg': msg});
