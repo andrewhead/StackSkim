@@ -140,7 +140,7 @@ class CssAffinityEvaluator(object):
             s = f(text)
             if s is not None:
                 scores.append(s)
-        return sum(scores) / float(len(scores))
+        return sum(scores) / float(len(scores)) if len(scores) > 0 else 0
 
     def compute_token_type_purity(self, text):
         nodes = get_css_nodes(text)
@@ -151,7 +151,7 @@ class CssAffinityEvaluator(object):
                 total_tokens += 1
                 if self._is_pure_token(n):
                     pure_tokens += 1
-        return float(pure_tokens) / total_tokens
+        return pure_tokens / float(total_tokens) if total_tokens > 0 else None
 
     def compute_token_value_purity(self, text):
 
