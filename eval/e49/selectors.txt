@@ -1,0 +1,20 @@
+#infolist
+#message
+#other
+#frameDemo
+#txt
+div:last
+iframe[name=iframeTarget]
+#result
+.window
+#my-element
+div.foo
+#birthday
+#input
+.myeditable
+select.form-control
+#nav a
+#my-div img
+#followercnt
+.footable
+#submit4
