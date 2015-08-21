@@ -1,0 +1,334 @@
+.red
+.blue
+.green
+#myButton
+#submitButton
+iframe[name=iframeTarget]
+#div1
+#div1
+#div1
+#birthday
+#birthday
+#date
+#username
+#username
+#username
+#username
+#price
+#edit-button
+#username
+#user
+.myeditable
+#new_username
+.myeditable
+.myeditable
+#save-btn
+.myeditable
+#msg
+#save-btn
+#msg
+#reset-btn
+.myeditable
+#save-btn
+#msg
+div[data-role=”page”]
+div[data-role=”page”]
+div[data-role=”dialog”]
+div[data-role=”page”]
+div[data-role=”page”]
+#my-div
+#my-div
+#my-div
+#slideshow
+#slideshow
+#nav a
+.your-class
+#green-box
+#green-box
+#green-box
+#green-box
+#green-box
+#green-box
+#green-box
+#my-div
+#my-div
+#my-div img
+#my-div img
+#my-div
+#my-div img
+#my-div img
+#my-div img
+#my-div
+#my-div img
+#my-div img
+#my-div img
+#my-div
+#my-div img
+#my-div
+#my-div
+#my-div img
+#my-div img
+#my-div img
+#my-div
+#my-div img
+.demo-hadouken
+#my-div img
+.demo-hadouken
+#my-div
+#my-div img
+#my-div img
+#my-div img
+#my-div
+#my-div img
+.demo-hadouken
+#my-div img
+#my-div img
+#my-div
+#my-div img
+#my-div img
+#my-div img
+#my-div
+#my-div img
+.demo-hadouken
+#my-div img
+#my-div img
+.demo-hadouken
+#my-div
+#my-div img
+#my-div img
+#my-div img
+.demo-hadouken
+#my-div img
+#my-div
+#my-div img
+.demo-hadouken
+#my-div img
+#DropDownList1
+#outputTable
+#DropDownList1
+#spnEmployeeId
+#spnEmployeeName
+#spnSalary
+#outputTabl
+#hdrMain
+#hdrMain
+input[name*="_r"]
+#hdrMain
+#contentMain
+#ftrMain
+#contentTransition
+#stateLabel
+#whatLabel
+#state
+#what
+#form1
+#confirmation
+#contentDialog
+#hdrConfirmation
+#contentConfirmation
+#ftrConfirmation
+input[name*="_r"]
+#form1
+#tabs
+#accordion
+#accordion
+.demo button:first
+.demo button:first
+#datepicker
+#slider
+#progressbar
+#dialog
+#opener
+#dialog
+.content_container_7 button
+.content_container_7 button
+#accordion_1
+#accordion_2
+#accordion_3
+#accordion_4
+.demo button:first
+.content_container_7 button
+.button
+.error
+.button
+.error
+input#name
+label#name_error
+input#name
+input#email
+label#email_error
+input#email
+input#phone
+label#phone_error
+input#phone
+.error
+input#name
+label#name_error
+label#name_error
+input#name
+#contact_form
+#message
+#message
+input#name
+input#name
+input#email
+input#phone
+#contact_form
+#message
+#message
+#contact_form
+#message
+#message
+#testForm
+form[name='myForm']
+form:first
+#testForm
+#submit1
+#submit2
+#testForm
+form[name='myForm']
+#submit3
+form:first
+#submit4
+#testForm
+#testForm
+#jp_demo
+.popup_window
+#Content
+#target
+#other
+#target
+input:first
+form:first
+#contact_name
+#contact_email
+#contact_website
+#contact_message
+#contact_submit button
+#contact_submit button
+#contact
+a.fancy
+.js-ajax-php-json
+.the-return
+a.fancybox
+#txt
+#txt
+:submit
+#wines
+#wines
+#wines
+#wines
+#wines
+.openDialog
+#result
+#result
+#content
+#txtSentence
+#txtID
+#txtSentence
+#container
+#container
+.datepicker
+div :input
+.window
+#sticker
+#fade
+#fade
+#main
+#wrapper
+#image1
+#countdown
+#placeholder
+#placeholder
+.errors
+#my-element
+#my-other-element
+.delete_post
+#infolist
+#infolist
+#infolist
+#comment-notice
+#comments_count
+#comments
+#new_comment
+#comments_count
+.flash.notice
+#new_comment
+#new_comment
+.footable
+.footable
+.container
+#frameDemo
+.my-widget
+.my-widget
+#elem
+#elem
+#elem
+[data-role='foo']
+:jqmData(role='foo')
+#myelem
+#myelem
+:jqmData(role='page')
+:jqmData(role='content')
+.item-a
+.item-b
+.item-c
+.items
+#elem
+div:first
+div:last
+#myElement
+.classname
+.classname
+#submit_btn
+#submit_btn
+#contact_form input[required=true]
+#contact_form textarea[required=true]
+input[name=name]
+input[name=email]
+input[name=phone1]
+input[name=phone2]
+select[name=subject]
+textarea[name=message]
+#contact_form  input[required=true]
+#contact_form textarea[required=true]
+#contact_form #contact_body
+#contact_form #contact_results
+#contact_form  input[required=true]
+#contact_form textarea[required=true]
+#result
+#result
+input[name=namefield]
+#contact_form input
+#contact_form select
+#contact_form input
+#contact_form select
+#result
+#contact_form select
+#contact_form select
+#contact_form input
+#result
+div.foo
+div.foo
+div.foo
+#generate
+#generate
+#quote
+#generate
+#quote p
+#input
+#input
+#input
+#ajaxsubmit
+#message
+#message
+#followbtn
+#followbtn
+#followbtncontainer
+#followercnt
+#followercnt
+#morefllwrs
+#loadmorefollowers
+#morefllwrs
+#followers
+select.form-control
