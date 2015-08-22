@@ -56,7 +56,6 @@ public class CheckSelectors {
         System.out.println("Reasons for failures:");
         for (int i = 0; i < failureStrings.size(); i++) {
             System.out.printf("* %s: %s\n", failureStrings.get(i), failureMessages.get(i));
-            System.out.println((int)failureStrings.get(i).charAt(13));
         }
         System.out.println();
 
