@@ -7,13 +7,15 @@ import os.path
 from selenium import webdriver
 from selenium.common.exceptions import WebDriverException
 import codecs
+import argparse
+import time
 
 
 INPUT_FILE = os.path.join('data', 'jquery_validation_44.txt')
 OUTPUT_FILE = os.path.join('data', 'selectors.txt')
 
 
-logging.basicConfig(level=logging.INFO, format="%(message)s")
+logging.basicConfig(level=logging.INFO, format="%(asctime)s: %(message)s", filename=".fetch.log")
 
 
 class Record(object):
@@ -41,12 +43,12 @@ return node.textContent.substring({start}, {end} + 1)
     return text
 
 
-def main():
+def main(input_filename, output_filename, print_urls=False):
 
     records = {}
     keys_seen = []
 
-    with open(INPUT_FILE) as sel_file:
+    with open(input_filename) as sel_file:
 
         for line in sel_file.read().split('\r'):
 
@@ -74,10 +76,12 @@ def main():
                 records[url].append(rec)
                 keys_seen.append(key)
 
-    with codecs.open(OUTPUT_FILE, 'w', 'utf-8') as out_file:
+    with codecs.open(output_filename, 'w', 'utf-8') as out_file:
         browser = webdriver.Firefox()
         for url, url_records in records.items():
+            time.sleep(1)
             browser.get(url)
+            time.sleep(1)
             for rec in url_records:
                 try:
                     text = get_text(browser, rec.element, rec.start_offset, rec.end_offset)
@@ -86,9 +90,16 @@ def main():
                         "Failed to download region: %s,%s,%d,%d",
                         url, rec.element, rec.start_offset, rec.end_offset)
                 else:
-                    out_file.write(text + '\n')
-                    print text
+                    msg = ',,,'.join([text, url]) if print_urls else text
+                    out_file.write(msg + '\n')
+                    print msg
 
 
 if __name__ == '__main__':
-    main()
+    logging.info("Application started")
+    parser = argparse.ArgumentParser(description="fetch CSS selectors at region locations")
+    parser.add_argument('-u', help="print urls", action='store_true')
+    parser.add_argument('-i', help="input file", default=INPUT_FILE)
+    parser.add_argument('-o', help="input file", default=OUTPUT_FILE)
+    args = parser.parse_args()
+    main(args.i, args.o, args.u)

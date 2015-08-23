@@ -1,0 +1,330 @@
+.red,,,http://127.0.0.1:8000/pages/jquery/asp.net-mvc%20javascript%20jquery%20tutorial/7/www.infoq.com/news/2008/08/jquery-aspnetmvc.html
+.blue,,,http://127.0.0.1:8000/pages/jquery/asp.net-mvc%20javascript%20jquery%20tutorial/7/www.infoq.com/news/2008/08/jquery-aspnetmvc.html
+.green,,,http://127.0.0.1:8000/pages/jquery/asp.net-mvc%20javascript%20jquery%20tutorial/7/www.infoq.com/news/2008/08/jquery-aspnetmvc.html
+#myButton,,,http://127.0.0.1:8000/pages/jquery/c%23%20javascript%20jquery%20tutorial/3/stackoverflow.com/questions/5756147/basic-simple-asp-net-jquery-json-example.html
+#submitButton,,,http://127.0.0.1:8000/pages/jquery/iframe%20javascript%20jquery%20tutorial/6/www.startutorial.com/articles/view/jquery-file-posting-using-iframe.html
+iframe[name=iframeTarget],,,http://127.0.0.1:8000/pages/jquery/iframe%20javascript%20jquery%20tutorial/6/www.startutorial.com/articles/view/jquery-file-posting-using-iframe.html
+#div1,,,http://127.0.0.1:8000/pages/jquery/ajax%20html%20jquery%20tutorial/5/www.w3schools.com/jquery/jquery_ajax_load.asp.html
+#div1,,,http://127.0.0.1:8000/pages/jquery/ajax%20html%20jquery%20tutorial/5/www.w3schools.com/jquery/jquery_ajax_load.asp.html
+#div1,,,http://127.0.0.1:8000/pages/jquery/ajax%20html%20jquery%20tutorial/5/www.w3schools.com/jquery/jquery_ajax_load.asp.html
+#birthday,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20php%20tutorial/8/stackoverflow.com/questions/9347966/php-jquery-how-to-use-these-two-together-please-see-my-example.html
+#birthday,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20php%20tutorial/8/stackoverflow.com/questions/9347966/php-jquery-how-to-use-these-two-together-please-see-my-example.html
+#date,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20php%20tutorial/8/stackoverflow.com/questions/9347966/php-jquery-how-to-use-these-two-together-please-see-my-example.html
+#username,,,http://127.0.0.1:8000/pages/jquery/html%20jquery%20twitter-bootstrap%20tutorial/10/vitalets.github.io/x-editable/docs.html
+#username,,,http://127.0.0.1:8000/pages/jquery/html%20jquery%20twitter-bootstrap%20tutorial/10/vitalets.github.io/x-editable/docs.html
+#username,,,http://127.0.0.1:8000/pages/jquery/html%20jquery%20twitter-bootstrap%20tutorial/10/vitalets.github.io/x-editable/docs.html
+#username,,,http://127.0.0.1:8000/pages/jquery/html%20jquery%20twitter-bootstrap%20tutorial/10/vitalets.github.io/x-editable/docs.html
+#price,,,http://127.0.0.1:8000/pages/jquery/html%20jquery%20twitter-bootstrap%20tutorial/10/vitalets.github.io/x-editable/docs.html
+#edit-button,,,http://127.0.0.1:8000/pages/jquery/html%20jquery%20twitter-bootstrap%20tutorial/10/vitalets.github.io/x-editable/docs.html
+#username,,,http://127.0.0.1:8000/pages/jquery/html%20jquery%20twitter-bootstrap%20tutorial/10/vitalets.github.io/x-editable/docs.html
+#user,,,http://127.0.0.1:8000/pages/jquery/html%20jquery%20twitter-bootstrap%20tutorial/10/vitalets.github.io/x-editable/docs.html
+.myeditable,,,http://127.0.0.1:8000/pages/jquery/html%20jquery%20twitter-bootstrap%20tutorial/10/vitalets.github.io/x-editable/docs.html
+#new_username,,,http://127.0.0.1:8000/pages/jquery/html%20jquery%20twitter-bootstrap%20tutorial/10/vitalets.github.io/x-editable/docs.html
+.myeditable,,,http://127.0.0.1:8000/pages/jquery/html%20jquery%20twitter-bootstrap%20tutorial/10/vitalets.github.io/x-editable/docs.html
+.myeditable,,,http://127.0.0.1:8000/pages/jquery/html%20jquery%20twitter-bootstrap%20tutorial/10/vitalets.github.io/x-editable/docs.html
+#save-btn,,,http://127.0.0.1:8000/pages/jquery/html%20jquery%20twitter-bootstrap%20tutorial/10/vitalets.github.io/x-editable/docs.html
+.myeditable,,,http://127.0.0.1:8000/pages/jquery/html%20jquery%20twitter-bootstrap%20tutorial/10/vitalets.github.io/x-editable/docs.html
+#msg,,,http://127.0.0.1:8000/pages/jquery/html%20jquery%20twitter-bootstrap%20tutorial/10/vitalets.github.io/x-editable/docs.html
+#save-btn,,,http://127.0.0.1:8000/pages/jquery/html%20jquery%20twitter-bootstrap%20tutorial/10/vitalets.github.io/x-editable/docs.html
+#msg,,,http://127.0.0.1:8000/pages/jquery/html%20jquery%20twitter-bootstrap%20tutorial/10/vitalets.github.io/x-editable/docs.html
+#reset-btn,,,http://127.0.0.1:8000/pages/jquery/html%20jquery%20twitter-bootstrap%20tutorial/10/vitalets.github.io/x-editable/docs.html
+.myeditable,,,http://127.0.0.1:8000/pages/jquery/html%20jquery%20twitter-bootstrap%20tutorial/10/vitalets.github.io/x-editable/docs.html
+#save-btn,,,http://127.0.0.1:8000/pages/jquery/html%20jquery%20twitter-bootstrap%20tutorial/10/vitalets.github.io/x-editable/docs.html
+#msg,,,http://127.0.0.1:8000/pages/jquery/html%20jquery%20twitter-bootstrap%20tutorial/10/vitalets.github.io/x-editable/docs.html
+#my-div,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-plugins%20tutorial/9/devheart.org/articles/tutorial-creating-a-jquery-plugin/
+#my-div,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-plugins%20tutorial/9/devheart.org/articles/tutorial-creating-a-jquery-plugin/
+#my-div,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-plugins%20tutorial/9/devheart.org/articles/tutorial-creating-a-jquery-plugin/
+#slideshow,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-plugins%20tutorial/9/devheart.org/articles/tutorial-creating-a-jquery-plugin/
+#slideshow,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-plugins%20tutorial/9/devheart.org/articles/tutorial-creating-a-jquery-plugin/
+#nav a,,,http://127.0.0.1:8000/pages/jquery/jquery%20php%20wordpress%20tutorial/4/stackoverflow.com/questions/11159860/how-do-i-add-a-simple-jquery-script-to-wordpress.html
+.your-class,,,http://127.0.0.1:8000/pages/jquery/jquery%20php%20wordpress%20tutorial/4/stackoverflow.com/questions/11159860/how-do-i-add-a-simple-jquery-script-to-wordpress.html
+#green-box,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#green-box,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#green-box,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#green-box,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#green-box,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#green-box,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#green-box,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div img,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div img,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div img,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div img,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div img,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div img,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div img,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div img,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div img,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div img,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div img,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div img,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div img,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+.demo-hadouken,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div img,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+.demo-hadouken,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div img,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div img,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div img,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div img,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+.demo-hadouken,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div img,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div img,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div img,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div img,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div img,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div img,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+.demo-hadouken,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div img,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div img,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+.demo-hadouken,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div img,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div img,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div img,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+.demo-hadouken,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div img,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div img,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+.demo-hadouken,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#my-div img,,,http://127.0.0.1:8000/pages/jquery/google-chrome%20javascript%20jquery%20tutorial/10/www.thinkful.com/learn/intro-to-jquery.html
+#DropDownList1,,,http://127.0.0.1:8000/pages/jquery/ajax%20asp.net%20jquery%20tutorial/5/www.ezzylearning.com/tutorial/using-jquery-ajax-json-and-asp-net-web-services.html
+#outputTable,,,http://127.0.0.1:8000/pages/jquery/ajax%20asp.net%20jquery%20tutorial/5/www.ezzylearning.com/tutorial/using-jquery-ajax-json-and-asp-net-web-services.html
+#DropDownList1,,,http://127.0.0.1:8000/pages/jquery/ajax%20asp.net%20jquery%20tutorial/5/www.ezzylearning.com/tutorial/using-jquery-ajax-json-and-asp-net-web-services.html
+#spnEmployeeId,,,http://127.0.0.1:8000/pages/jquery/ajax%20asp.net%20jquery%20tutorial/5/www.ezzylearning.com/tutorial/using-jquery-ajax-json-and-asp-net-web-services.html
+#spnEmployeeName,,,http://127.0.0.1:8000/pages/jquery/ajax%20asp.net%20jquery%20tutorial/5/www.ezzylearning.com/tutorial/using-jquery-ajax-json-and-asp-net-web-services.html
+#spnSalary,,,http://127.0.0.1:8000/pages/jquery/ajax%20asp.net%20jquery%20tutorial/5/www.ezzylearning.com/tutorial/using-jquery-ajax-json-and-asp-net-web-services.html
+#outputTabl,,,http://127.0.0.1:8000/pages/jquery/ajax%20asp.net%20jquery%20tutorial/5/www.ezzylearning.com/tutorial/using-jquery-ajax-json-and-asp-net-web-services.html
+#hdrMain,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-mobile%20tutorial/10/code.tutsplus.com/tutorials/jquery-mobile-framework-a-forms-tutorial--mobile-4500.html
+#hdrMain,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-mobile%20tutorial/10/code.tutsplus.com/tutorials/jquery-mobile-framework-a-forms-tutorial--mobile-4500.html
+#hdrMain,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-mobile%20tutorial/10/code.tutsplus.com/tutorials/jquery-mobile-framework-a-forms-tutorial--mobile-4500.html
+#contentMain,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-mobile%20tutorial/10/code.tutsplus.com/tutorials/jquery-mobile-framework-a-forms-tutorial--mobile-4500.html
+#ftrMain,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-mobile%20tutorial/10/code.tutsplus.com/tutorials/jquery-mobile-framework-a-forms-tutorial--mobile-4500.html
+#contentTransition,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-mobile%20tutorial/10/code.tutsplus.com/tutorials/jquery-mobile-framework-a-forms-tutorial--mobile-4500.html
+#stateLabel,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-mobile%20tutorial/10/code.tutsplus.com/tutorials/jquery-mobile-framework-a-forms-tutorial--mobile-4500.html
+#whatLabel,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-mobile%20tutorial/10/code.tutsplus.com/tutorials/jquery-mobile-framework-a-forms-tutorial--mobile-4500.html
+#state,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-mobile%20tutorial/10/code.tutsplus.com/tutorials/jquery-mobile-framework-a-forms-tutorial--mobile-4500.html
+#what,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-mobile%20tutorial/10/code.tutsplus.com/tutorials/jquery-mobile-framework-a-forms-tutorial--mobile-4500.html
+#form1,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-mobile%20tutorial/10/code.tutsplus.com/tutorials/jquery-mobile-framework-a-forms-tutorial--mobile-4500.html
+#confirmation,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-mobile%20tutorial/10/code.tutsplus.com/tutorials/jquery-mobile-framework-a-forms-tutorial--mobile-4500.html
+#contentDialog,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-mobile%20tutorial/10/code.tutsplus.com/tutorials/jquery-mobile-framework-a-forms-tutorial--mobile-4500.html
+#hdrConfirmation,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-mobile%20tutorial/10/code.tutsplus.com/tutorials/jquery-mobile-framework-a-forms-tutorial--mobile-4500.html
+#contentConfirmation,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-mobile%20tutorial/10/code.tutsplus.com/tutorials/jquery-mobile-framework-a-forms-tutorial--mobile-4500.html
+#ftrConfirmation,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-mobile%20tutorial/10/code.tutsplus.com/tutorials/jquery-mobile-framework-a-forms-tutorial--mobile-4500.html
+#form1,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-mobile%20tutorial/10/code.tutsplus.com/tutorials/jquery-mobile-framework-a-forms-tutorial--mobile-4500.html
+#tabs,,,http://127.0.0.1:8000/pages/jquery/css%20jquery%20jquery-ui%20tutorial/8/code.tutsplus.com/tutorials/a-massive-guide-to-custom-theming-jquery-ui-widgets--net-22714.html
+#accordion,,,http://127.0.0.1:8000/pages/jquery/css%20jquery%20jquery-ui%20tutorial/8/code.tutsplus.com/tutorials/a-massive-guide-to-custom-theming-jquery-ui-widgets--net-22714.html
+#accordion,,,http://127.0.0.1:8000/pages/jquery/css%20jquery%20jquery-ui%20tutorial/8/code.tutsplus.com/tutorials/a-massive-guide-to-custom-theming-jquery-ui-widgets--net-22714.html
+.demo button:first,,,http://127.0.0.1:8000/pages/jquery/css%20jquery%20jquery-ui%20tutorial/8/code.tutsplus.com/tutorials/a-massive-guide-to-custom-theming-jquery-ui-widgets--net-22714.html
+.demo button:first,,,http://127.0.0.1:8000/pages/jquery/css%20jquery%20jquery-ui%20tutorial/8/code.tutsplus.com/tutorials/a-massive-guide-to-custom-theming-jquery-ui-widgets--net-22714.html
+#datepicker,,,http://127.0.0.1:8000/pages/jquery/css%20jquery%20jquery-ui%20tutorial/8/code.tutsplus.com/tutorials/a-massive-guide-to-custom-theming-jquery-ui-widgets--net-22714.html
+#slider,,,http://127.0.0.1:8000/pages/jquery/css%20jquery%20jquery-ui%20tutorial/8/code.tutsplus.com/tutorials/a-massive-guide-to-custom-theming-jquery-ui-widgets--net-22714.html
+#progressbar,,,http://127.0.0.1:8000/pages/jquery/css%20jquery%20jquery-ui%20tutorial/8/code.tutsplus.com/tutorials/a-massive-guide-to-custom-theming-jquery-ui-widgets--net-22714.html
+#dialog,,,http://127.0.0.1:8000/pages/jquery/css%20jquery%20jquery-ui%20tutorial/8/code.tutsplus.com/tutorials/a-massive-guide-to-custom-theming-jquery-ui-widgets--net-22714.html
+#opener,,,http://127.0.0.1:8000/pages/jquery/css%20jquery%20jquery-ui%20tutorial/8/code.tutsplus.com/tutorials/a-massive-guide-to-custom-theming-jquery-ui-widgets--net-22714.html
+#dialog,,,http://127.0.0.1:8000/pages/jquery/css%20jquery%20jquery-ui%20tutorial/8/code.tutsplus.com/tutorials/a-massive-guide-to-custom-theming-jquery-ui-widgets--net-22714.html
+.content_container_7 button,,,http://127.0.0.1:8000/pages/jquery/css%20jquery%20jquery-ui%20tutorial/8/code.tutsplus.com/tutorials/a-massive-guide-to-custom-theming-jquery-ui-widgets--net-22714.html
+.content_container_7 button,,,http://127.0.0.1:8000/pages/jquery/css%20jquery%20jquery-ui%20tutorial/8/code.tutsplus.com/tutorials/a-massive-guide-to-custom-theming-jquery-ui-widgets--net-22714.html
+#accordion_1,,,http://127.0.0.1:8000/pages/jquery/css%20jquery%20jquery-ui%20tutorial/8/code.tutsplus.com/tutorials/a-massive-guide-to-custom-theming-jquery-ui-widgets--net-22714.html
+#accordion_2,,,http://127.0.0.1:8000/pages/jquery/css%20jquery%20jquery-ui%20tutorial/8/code.tutsplus.com/tutorials/a-massive-guide-to-custom-theming-jquery-ui-widgets--net-22714.html
+#accordion_3,,,http://127.0.0.1:8000/pages/jquery/css%20jquery%20jquery-ui%20tutorial/8/code.tutsplus.com/tutorials/a-massive-guide-to-custom-theming-jquery-ui-widgets--net-22714.html
+#accordion_4,,,http://127.0.0.1:8000/pages/jquery/css%20jquery%20jquery-ui%20tutorial/8/code.tutsplus.com/tutorials/a-massive-guide-to-custom-theming-jquery-ui-widgets--net-22714.html
+.demo button:first,,,http://127.0.0.1:8000/pages/jquery/css%20jquery%20jquery-ui%20tutorial/8/code.tutsplus.com/tutorials/a-massive-guide-to-custom-theming-jquery-ui-widgets--net-22714.html
+.content_container_7 button,,,http://127.0.0.1:8000/pages/jquery/css%20jquery%20jquery-ui%20tutorial/8/code.tutsplus.com/tutorials/a-massive-guide-to-custom-theming-jquery-ui-widgets--net-22714.html
+.button,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/7/code.tutsplus.com/tutorials/submit-a-form-without-page-refresh-using-jquery--net-59.html
+.error,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/7/code.tutsplus.com/tutorials/submit-a-form-without-page-refresh-using-jquery--net-59.html
+.button,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/7/code.tutsplus.com/tutorials/submit-a-form-without-page-refresh-using-jquery--net-59.html
+.error,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/7/code.tutsplus.com/tutorials/submit-a-form-without-page-refresh-using-jquery--net-59.html
+input#name,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/7/code.tutsplus.com/tutorials/submit-a-form-without-page-refresh-using-jquery--net-59.html
+label#name_error,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/7/code.tutsplus.com/tutorials/submit-a-form-without-page-refresh-using-jquery--net-59.html
+input#name,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/7/code.tutsplus.com/tutorials/submit-a-form-without-page-refresh-using-jquery--net-59.html
+input#email,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/7/code.tutsplus.com/tutorials/submit-a-form-without-page-refresh-using-jquery--net-59.html
+label#email_error,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/7/code.tutsplus.com/tutorials/submit-a-form-without-page-refresh-using-jquery--net-59.html
+input#email,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/7/code.tutsplus.com/tutorials/submit-a-form-without-page-refresh-using-jquery--net-59.html
+input#phone,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/7/code.tutsplus.com/tutorials/submit-a-form-without-page-refresh-using-jquery--net-59.html
+label#phone_error,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/7/code.tutsplus.com/tutorials/submit-a-form-without-page-refresh-using-jquery--net-59.html
+input#phone,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/7/code.tutsplus.com/tutorials/submit-a-form-without-page-refresh-using-jquery--net-59.html
+.error,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/7/code.tutsplus.com/tutorials/submit-a-form-without-page-refresh-using-jquery--net-59.html
+input#name,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/7/code.tutsplus.com/tutorials/submit-a-form-without-page-refresh-using-jquery--net-59.html
+label#name_error,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/7/code.tutsplus.com/tutorials/submit-a-form-without-page-refresh-using-jquery--net-59.html
+label#name_error,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/7/code.tutsplus.com/tutorials/submit-a-form-without-page-refresh-using-jquery--net-59.html
+input#name,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/7/code.tutsplus.com/tutorials/submit-a-form-without-page-refresh-using-jquery--net-59.html
+#contact_form,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/7/code.tutsplus.com/tutorials/submit-a-form-without-page-refresh-using-jquery--net-59.html
+#message,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/7/code.tutsplus.com/tutorials/submit-a-form-without-page-refresh-using-jquery--net-59.html
+#message,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/7/code.tutsplus.com/tutorials/submit-a-form-without-page-refresh-using-jquery--net-59.html
+input#name,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/7/code.tutsplus.com/tutorials/submit-a-form-without-page-refresh-using-jquery--net-59.html
+input#name,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/7/code.tutsplus.com/tutorials/submit-a-form-without-page-refresh-using-jquery--net-59.html
+input#email,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/7/code.tutsplus.com/tutorials/submit-a-form-without-page-refresh-using-jquery--net-59.html
+input#phone,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/7/code.tutsplus.com/tutorials/submit-a-form-without-page-refresh-using-jquery--net-59.html
+#contact_form,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/7/code.tutsplus.com/tutorials/submit-a-form-without-page-refresh-using-jquery--net-59.html
+#message,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/7/code.tutsplus.com/tutorials/submit-a-form-without-page-refresh-using-jquery--net-59.html
+#message,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/7/code.tutsplus.com/tutorials/submit-a-form-without-page-refresh-using-jquery--net-59.html
+#contact_form,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/7/code.tutsplus.com/tutorials/submit-a-form-without-page-refresh-using-jquery--net-59.html
+#message,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/7/code.tutsplus.com/tutorials/submit-a-form-without-page-refresh-using-jquery--net-59.html
+#message,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/7/code.tutsplus.com/tutorials/submit-a-form-without-page-refresh-using-jquery--net-59.html
+#testForm,,,http://127.0.0.1:8000/pages/jquery/forms%20html%20jquery%20tutorial/10/hayageek.com/jquery-submit-form/
+form[name='myForm'],,,http://127.0.0.1:8000/pages/jquery/forms%20html%20jquery%20tutorial/10/hayageek.com/jquery-submit-form/
+form:first,,,http://127.0.0.1:8000/pages/jquery/forms%20html%20jquery%20tutorial/10/hayageek.com/jquery-submit-form/
+#testForm,,,http://127.0.0.1:8000/pages/jquery/forms%20html%20jquery%20tutorial/10/hayageek.com/jquery-submit-form/
+#submit1,,,http://127.0.0.1:8000/pages/jquery/forms%20html%20jquery%20tutorial/10/hayageek.com/jquery-submit-form/
+#submit2,,,http://127.0.0.1:8000/pages/jquery/forms%20html%20jquery%20tutorial/10/hayageek.com/jquery-submit-form/
+#testForm,,,http://127.0.0.1:8000/pages/jquery/forms%20html%20jquery%20tutorial/10/hayageek.com/jquery-submit-form/
+form[name='myForm'],,,http://127.0.0.1:8000/pages/jquery/forms%20html%20jquery%20tutorial/10/hayageek.com/jquery-submit-form/
+#submit3,,,http://127.0.0.1:8000/pages/jquery/forms%20html%20jquery%20tutorial/10/hayageek.com/jquery-submit-form/
+form:first,,,http://127.0.0.1:8000/pages/jquery/forms%20html%20jquery%20tutorial/10/hayageek.com/jquery-submit-form/
+#submit4,,,http://127.0.0.1:8000/pages/jquery/forms%20html%20jquery%20tutorial/10/hayageek.com/jquery-submit-form/
+#testForm,,,http://127.0.0.1:8000/pages/jquery/forms%20html%20jquery%20tutorial/10/hayageek.com/jquery-submit-form/
+#testForm,,,http://127.0.0.1:8000/pages/jquery/forms%20html%20jquery%20tutorial/10/hayageek.com/jquery-submit-form/
+#jp_demo,,,http://127.0.0.1:8000/pages/jquery/jquery%20php%20wordpress%20tutorial/1/www.inkthemes.com/how-to-implement-custom-jquery-and-css-in-wordpress-plugin/
+.popup_window,,,http://127.0.0.1:8000/pages/jquery/jquery%20php%20wordpress%20tutorial/1/www.inkthemes.com/how-to-implement-custom-jquery-and-css-in-wordpress-plugin/
+#Content,,,http://127.0.0.1:8000/pages/jquery/c%23%20javascript%20jquery%20tutorial/8/www.c-sharpcorner.com/UploadFile/dacca2/understand-jquery-ajax-function-call-code-behind-C-Sharp-method/
+#target,,,http://127.0.0.1:8000/pages/jquery/forms%20javascript%20jquery%20tutorial/7/api.jquery.com/submit/
+#other,,,http://127.0.0.1:8000/pages/jquery/forms%20javascript%20jquery%20tutorial/7/api.jquery.com/submit/
+#target,,,http://127.0.0.1:8000/pages/jquery/forms%20javascript%20jquery%20tutorial/7/api.jquery.com/submit/
+input:first,,,http://127.0.0.1:8000/pages/jquery/forms%20javascript%20jquery%20tutorial/7/api.jquery.com/submit/
+form:first,,,http://127.0.0.1:8000/pages/jquery/forms%20javascript%20jquery%20tutorial/7/api.jquery.com/submit/
+#contact_name,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20validation%20tutorial/8/formden.com/blog/validate-contact-form-jquery.html
+#contact_email,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20validation%20tutorial/8/formden.com/blog/validate-contact-form-jquery.html
+#contact_website,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20validation%20tutorial/8/formden.com/blog/validate-contact-form-jquery.html
+#contact_message,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20validation%20tutorial/8/formden.com/blog/validate-contact-form-jquery.html
+#contact_submit button,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20validation%20tutorial/8/formden.com/blog/validate-contact-form-jquery.html
+#contact_submit button,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20validation%20tutorial/8/formden.com/blog/validate-contact-form-jquery.html
+#contact,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20validation%20tutorial/8/formden.com/blog/validate-contact-form-jquery.html
+a.fancy,,,http://127.0.0.1:8000/pages/jquery/jquery%20php%20wordpress%20tutorial/6/jdmweb.com/how-to-turn-any-jquery-plugin-into-a-wordpress-one.html
+.js-ajax-php-json,,,http://127.0.0.1:8000/pages/jquery/jquery%20json%20php%20tutorial/2/labs.jonsuh.com/jquery-ajax-php-json.html
+.the-return,,,http://127.0.0.1:8000/pages/jquery/jquery%20json%20php%20tutorial/2/labs.jonsuh.com/jquery-ajax-php-json.html
+a.fancybox,,,http://127.0.0.1:8000/pages/jquery/jquery%20php%20wordpress%20tutorial/9/blog.nelga.com/how-to-convert-a-jquery-plugin-into-a-wordpress-plugin/
+#txt,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20regex%20tutorial/7/stackoverflow.com/questions/16137562/javascript-jquery-string-replace-with-regex.html
+#txt,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20regex%20tutorial/7/stackoverflow.com/questions/16137562/javascript-jquery-string-replace-with-regex.html
+:submit,,,http://127.0.0.1:8000/pages/jquery/jquery%20json%20php%20tutorial/10/www.lennu.net/jquery-ajax-example-with-json-response/
+#wines,,,http://127.0.0.1:8000/pages/jquery/jquery%20json%20php%20tutorial/10/www.lennu.net/jquery-ajax-example-with-json-response/
+#wines,,,http://127.0.0.1:8000/pages/jquery/jquery%20json%20php%20tutorial/10/www.lennu.net/jquery-ajax-example-with-json-response/
+#wines,,,http://127.0.0.1:8000/pages/jquery/jquery%20json%20php%20tutorial/10/www.lennu.net/jquery-ajax-example-with-json-response/
+#wines,,,http://127.0.0.1:8000/pages/jquery/jquery%20json%20php%20tutorial/10/www.lennu.net/jquery-ajax-example-with-json-response/
+#wines,,,http://127.0.0.1:8000/pages/jquery/jquery%20json%20php%20tutorial/10/www.lennu.net/jquery-ajax-example-with-json-response/
+.openDialog,,,http://127.0.0.1:8000/pages/jquery/asp.net-mvc%20javascript%20jquery%20tutorial/8/www.matthidinger.com/archive/2011/02/22/Progressive-enhancement-tutorial-with-ASP-NET-MVC-3-and-jQuery.aspx.html
+#result,,,http://127.0.0.1:8000/pages/jquery/ajax%20javascript%20jquery%20tutorial/9/html.net/tutorials/javascript/lesson21.php.html
+#result,,,http://127.0.0.1:8000/pages/jquery/ajax%20javascript%20jquery%20tutorial/9/html.net/tutorials/javascript/lesson21.php.html
+#content,,,http://127.0.0.1:8000/pages/jquery/ajax%20javascript%20jquery%20tutorial/9/html.net/tutorials/javascript/lesson21.php.html
+#txtSentence,,,http://127.0.0.1:8000/pages/jquery/ajax%20asp.net%20jquery%20tutorial/8/www.simple-talk.com/dotnet/asp.net/ajax-basics-with-jquery-in-asp.net/
+#txtID,,,http://127.0.0.1:8000/pages/jquery/ajax%20asp.net%20jquery%20tutorial/8/www.simple-talk.com/dotnet/asp.net/ajax-basics-with-jquery-in-asp.net/
+#txtSentence,,,http://127.0.0.1:8000/pages/jquery/ajax%20asp.net%20jquery%20tutorial/8/www.simple-talk.com/dotnet/asp.net/ajax-basics-with-jquery-in-asp.net/
+#container,,,http://127.0.0.1:8000/pages/jquery/ajax%20asp.net%20jquery%20tutorial/8/www.simple-talk.com/dotnet/asp.net/ajax-basics-with-jquery-in-asp.net/
+#container,,,http://127.0.0.1:8000/pages/jquery/ajax%20asp.net%20jquery%20tutorial/8/www.simple-talk.com/dotnet/asp.net/ajax-basics-with-jquery-in-asp.net/
+.datepicker,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-plugins%20tutorial/10/tutorialzine.com/2013/04/50-amazing-jquery-plugins/
+div :input,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-plugins%20tutorial/10/tutorialzine.com/2013/04/50-amazing-jquery-plugins/
+.window,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-plugins%20tutorial/10/tutorialzine.com/2013/04/50-amazing-jquery-plugins/
+#sticker,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-plugins%20tutorial/10/tutorialzine.com/2013/04/50-amazing-jquery-plugins/
+#fade,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-plugins%20tutorial/10/tutorialzine.com/2013/04/50-amazing-jquery-plugins/
+#fade,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-plugins%20tutorial/10/tutorialzine.com/2013/04/50-amazing-jquery-plugins/
+#main,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-plugins%20tutorial/10/tutorialzine.com/2013/04/50-amazing-jquery-plugins/
+#wrapper,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-plugins%20tutorial/10/tutorialzine.com/2013/04/50-amazing-jquery-plugins/
+#image1,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-plugins%20tutorial/10/tutorialzine.com/2013/04/50-amazing-jquery-plugins/
+#countdown,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-plugins%20tutorial/10/tutorialzine.com/2013/04/50-amazing-jquery-plugins/
+#placeholder,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20json%20tutorial/1/iviewsource.com/codingtutorials/getting-started-with-javascript-object-notation-json-for-absolute-beginners/
+#placeholder,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20json%20tutorial/1/iviewsource.com/codingtutorials/getting-started-with-javascript-object-notation-json-for-absolute-beginners/
+.errors,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20json%20tutorial/1/iviewsource.com/codingtutorials/getting-started-with-javascript-object-notation-json-for-absolute-beginners/
+#my-element,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20twitter-bootstrap%20tutorial/5/bootstraptour.com/
+#my-other-element,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20twitter-bootstrap%20tutorial/5/bootstraptour.com/
+.delete_post,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20ruby-on-rails%20tutorial/5/code.tutsplus.com/tutorials/using-unobtrusive-javascript-and-ajax-with-rails-3--net-15243.html
+#infolist,,,http://127.0.0.1:8000/pages/jquery/html%20html5%20jquery%20tutorial/8/netbeans.org/kb/docs/webclient/html5-gettingstarted.html
+#infolist,,,http://127.0.0.1:8000/pages/jquery/html%20html5%20jquery%20tutorial/8/netbeans.org/kb/docs/webclient/html5-gettingstarted.html
+#infolist,,,http://127.0.0.1:8000/pages/jquery/html%20html5%20jquery%20tutorial/8/netbeans.org/kb/docs/webclient/html5-gettingstarted.html
+#comment-notice,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20ruby-on-rails%20tutorial/3/bernatfarrero.com/jquery-and-rails-3-mini-tutorial/
+#comments_count,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20ruby-on-rails%20tutorial/3/bernatfarrero.com/jquery-and-rails-3-mini-tutorial/
+#comments,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20ruby-on-rails%20tutorial/3/bernatfarrero.com/jquery-and-rails-3-mini-tutorial/
+#new_comment,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20ruby-on-rails%20tutorial/3/bernatfarrero.com/jquery-and-rails-3-mini-tutorial/
+#comments_count,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20ruby-on-rails%20tutorial/3/bernatfarrero.com/jquery-and-rails-3-mini-tutorial/
+.flash.notice,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20ruby-on-rails%20tutorial/3/bernatfarrero.com/jquery-and-rails-3-mini-tutorial/
+#new_comment,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20ruby-on-rails%20tutorial/3/bernatfarrero.com/jquery-and-rails-3-mini-tutorial/
+#new_comment,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20ruby-on-rails%20tutorial/3/bernatfarrero.com/jquery-and-rails-3-mini-tutorial/
+.footable,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20wordpress%20tutorial/7/www.mattcromwell.com/how-to-use-any-jquery-script-in-wordpress/
+.footable,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20wordpress%20tutorial/7/www.mattcromwell.com/how-to-use-any-jquery-script-in-wordpress/
+.container,,,http://127.0.0.1:8000/pages/jquery/iframe%20javascript%20jquery%20tutorial/10/api.jquery.com/contents/
+#frameDemo,,,http://127.0.0.1:8000/pages/jquery/iframe%20javascript%20jquery%20tutorial/10/api.jquery.com/contents/
+.my-widget,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-plugins%20tutorial/5/www.smashingmagazine.com/2011/10/essential-jquery-plugin-patterns/
+.my-widget,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-plugins%20tutorial/5/www.smashingmagazine.com/2011/10/essential-jquery-plugin-patterns/
+#elem,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-plugins%20tutorial/5/www.smashingmagazine.com/2011/10/essential-jquery-plugin-patterns/
+#elem,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-plugins%20tutorial/5/www.smashingmagazine.com/2011/10/essential-jquery-plugin-patterns/
+#elem,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-plugins%20tutorial/5/www.smashingmagazine.com/2011/10/essential-jquery-plugin-patterns/
+[data-role='foo'],,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-plugins%20tutorial/5/www.smashingmagazine.com/2011/10/essential-jquery-plugin-patterns/
+#myelem,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-plugins%20tutorial/5/www.smashingmagazine.com/2011/10/essential-jquery-plugin-patterns/
+#myelem,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-plugins%20tutorial/5/www.smashingmagazine.com/2011/10/essential-jquery-plugin-patterns/
+.item-a,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-plugins%20tutorial/5/www.smashingmagazine.com/2011/10/essential-jquery-plugin-patterns/
+.item-b,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-plugins%20tutorial/5/www.smashingmagazine.com/2011/10/essential-jquery-plugin-patterns/
+.item-c,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-plugins%20tutorial/5/www.smashingmagazine.com/2011/10/essential-jquery-plugin-patterns/
+.items,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-plugins%20tutorial/5/www.smashingmagazine.com/2011/10/essential-jquery-plugin-patterns/
+#elem,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-plugins%20tutorial/5/www.smashingmagazine.com/2011/10/essential-jquery-plugin-patterns/
+div:first,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-plugins%20tutorial/5/www.smashingmagazine.com/2011/10/essential-jquery-plugin-patterns/
+div:last,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-plugins%20tutorial/5/www.smashingmagazine.com/2011/10/essential-jquery-plugin-patterns/
+#myElement,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-plugins%20tutorial/5/www.smashingmagazine.com/2011/10/essential-jquery-plugin-patterns/
+.classname,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-plugins%20tutorial/5/www.smashingmagazine.com/2011/10/essential-jquery-plugin-patterns/
+.classname,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20jquery-plugins%20tutorial/5/www.smashingmagazine.com/2011/10/essential-jquery-plugin-patterns/
+#submit_btn,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/1/www.sanwebe.com/2011/12/making-simple-jquery-ajax-contact-form.html
+#submit_btn,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/1/www.sanwebe.com/2011/12/making-simple-jquery-ajax-contact-form.html
+#contact_form input[required=true],,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/1/www.sanwebe.com/2011/12/making-simple-jquery-ajax-contact-form.html
+#contact_form textarea[required=true],,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/1/www.sanwebe.com/2011/12/making-simple-jquery-ajax-contact-form.html
+input[name=name],,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/1/www.sanwebe.com/2011/12/making-simple-jquery-ajax-contact-form.html
+input[name=email],,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/1/www.sanwebe.com/2011/12/making-simple-jquery-ajax-contact-form.html
+input[name=phone1],,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/1/www.sanwebe.com/2011/12/making-simple-jquery-ajax-contact-form.html
+input[name=phone2],,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/1/www.sanwebe.com/2011/12/making-simple-jquery-ajax-contact-form.html
+select[name=subject],,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/1/www.sanwebe.com/2011/12/making-simple-jquery-ajax-contact-form.html
+textarea[name=message],,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/1/www.sanwebe.com/2011/12/making-simple-jquery-ajax-contact-form.html
+#contact_form textarea[required=true],,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/1/www.sanwebe.com/2011/12/making-simple-jquery-ajax-contact-form.html
+#contact_form #contact_body,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/1/www.sanwebe.com/2011/12/making-simple-jquery-ajax-contact-form.html
+#contact_form #contact_results,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/1/www.sanwebe.com/2011/12/making-simple-jquery-ajax-contact-form.html
+#contact_form textarea[required=true],,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/1/www.sanwebe.com/2011/12/making-simple-jquery-ajax-contact-form.html
+#result,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/1/www.sanwebe.com/2011/12/making-simple-jquery-ajax-contact-form.html
+#result,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/1/www.sanwebe.com/2011/12/making-simple-jquery-ajax-contact-form.html
+input[name=namefield],,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/1/www.sanwebe.com/2011/12/making-simple-jquery-ajax-contact-form.html
+#contact_form input,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/1/www.sanwebe.com/2011/12/making-simple-jquery-ajax-contact-form.html
+#contact_form select,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/1/www.sanwebe.com/2011/12/making-simple-jquery-ajax-contact-form.html
+#contact_form input,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/1/www.sanwebe.com/2011/12/making-simple-jquery-ajax-contact-form.html
+#contact_form select,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/1/www.sanwebe.com/2011/12/making-simple-jquery-ajax-contact-form.html
+#result,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/1/www.sanwebe.com/2011/12/making-simple-jquery-ajax-contact-form.html
+#contact_form select,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/1/www.sanwebe.com/2011/12/making-simple-jquery-ajax-contact-form.html
+#contact_form select,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/1/www.sanwebe.com/2011/12/making-simple-jquery-ajax-contact-form.html
+#contact_form input,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/1/www.sanwebe.com/2011/12/making-simple-jquery-ajax-contact-form.html
+#result,,,http://127.0.0.1:8000/pages/jquery/forms%20jquery%20php%20tutorial/1/www.sanwebe.com/2011/12/making-simple-jquery-ajax-contact-form.html
+div.foo,,,http://127.0.0.1:8000/pages/jquery/ajax%20javascript%20jquery%20tutorial/8/www.sitepoint.com/ajax-jquery/
+div.foo,,,http://127.0.0.1:8000/pages/jquery/ajax%20javascript%20jquery%20tutorial/8/www.sitepoint.com/ajax-jquery/
+div.foo,,,http://127.0.0.1:8000/pages/jquery/ajax%20javascript%20jquery%20tutorial/8/www.sitepoint.com/ajax-jquery/
+#generate,,,http://127.0.0.1:8000/pages/jquery/ajax%20javascript%20jquery%20tutorial/8/www.sitepoint.com/ajax-jquery/
+#generate,,,http://127.0.0.1:8000/pages/jquery/ajax%20javascript%20jquery%20tutorial/8/www.sitepoint.com/ajax-jquery/
+#quote,,,http://127.0.0.1:8000/pages/jquery/ajax%20javascript%20jquery%20tutorial/8/www.sitepoint.com/ajax-jquery/
+#generate,,,http://127.0.0.1:8000/pages/jquery/ajax%20javascript%20jquery%20tutorial/8/www.sitepoint.com/ajax-jquery/
+#quote p,,,http://127.0.0.1:8000/pages/jquery/ajax%20javascript%20jquery%20tutorial/8/www.sitepoint.com/ajax-jquery/
+#element,,,http://127.0.0.1:8000/pages/jquery/jquery%20json%20php%20tutorial/8/www.phpeveryday.com/articles/jQuery-AJAX-and-JSON-P969.html
+#content,,,http://127.0.0.1:8000/pages/jquery/jquery%20json%20php%20tutorial/8/www.phpeveryday.com/articles/jQuery-AJAX-and-JSON-P969.html
+#car,,,http://127.0.0.1:8000/pages/jquery/jquery%20json%20php%20tutorial/8/www.phpeveryday.com/articles/jQuery-AJAX-and-JSON-P969.html
+#content,,,http://127.0.0.1:8000/pages/jquery/jquery%20json%20php%20tutorial/8/www.phpeveryday.com/articles/jQuery-AJAX-and-JSON-P969.html
+#content,,,http://127.0.0.1:8000/pages/jquery/jquery%20json%20php%20tutorial/8/www.phpeveryday.com/articles/jQuery-AJAX-and-JSON-P969.html
+#ca,,,http://127.0.0.1:8000/pages/jquery/jquery%20json%20php%20tutorial/8/www.phpeveryday.com/articles/jQuery-AJAX-and-JSON-P969.html
+#content,,,http://127.0.0.1:8000/pages/jquery/jquery%20json%20php%20tutorial/8/www.phpeveryday.com/articles/jQuery-AJAX-and-JSON-P969.html
+#content,,,http://127.0.0.1:8000/pages/jquery/jquery%20json%20php%20tutorial/8/www.phpeveryday.com/articles/jQuery-AJAX-and-JSON-P969.html
+#input,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20twitter-bootstrap%20tutorial/8/blog.twitter.com/2013/twitter-typeaheadjs-you-autocomplete-me.html
+#input,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20twitter-bootstrap%20tutorial/8/blog.twitter.com/2013/twitter-typeaheadjs-you-autocomplete-me.html
+#input,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20twitter-bootstrap%20tutorial/8/blog.twitter.com/2013/twitter-typeaheadjs-you-autocomplete-me.html
+#ajaxsubmit,,,http://127.0.0.1:8000/pages/jquery/forms%20javascript%20jquery%20tutorial/1/www.websitecodetutorials.com/code/jquery-plugins/jquery-ajaxsubmit.php.html
+#message,,,http://127.0.0.1:8000/pages/jquery/forms%20javascript%20jquery%20tutorial/1/www.websitecodetutorials.com/code/jquery-plugins/jquery-ajaxsubmit.php.html
+#message,,,http://127.0.0.1:8000/pages/jquery/forms%20javascript%20jquery%20tutorial/1/www.websitecodetutorials.com/code/jquery-plugins/jquery-ajaxsubmit.php.html
+#followbtn,,,http://127.0.0.1:8000/pages/jquery/jquery%20json%20php%20tutorial/5/blog.teamtreehouse.com/beginners-guide-to-ajax-development-with-php.html
+#followbtn,,,http://127.0.0.1:8000/pages/jquery/jquery%20json%20php%20tutorial/5/blog.teamtreehouse.com/beginners-guide-to-ajax-development-with-php.html
+#followbtncontainer,,,http://127.0.0.1:8000/pages/jquery/jquery%20json%20php%20tutorial/5/blog.teamtreehouse.com/beginners-guide-to-ajax-development-with-php.html
+#followercnt,,,http://127.0.0.1:8000/pages/jquery/jquery%20json%20php%20tutorial/5/blog.teamtreehouse.com/beginners-guide-to-ajax-development-with-php.html
+#followercnt,,,http://127.0.0.1:8000/pages/jquery/jquery%20json%20php%20tutorial/5/blog.teamtreehouse.com/beginners-guide-to-ajax-development-with-php.html
+#morefllwrs,,,http://127.0.0.1:8000/pages/jquery/jquery%20json%20php%20tutorial/5/blog.teamtreehouse.com/beginners-guide-to-ajax-development-with-php.html
+#loadmorefollowers,,,http://127.0.0.1:8000/pages/jquery/jquery%20json%20php%20tutorial/5/blog.teamtreehouse.com/beginners-guide-to-ajax-development-with-php.html
+#morefllwrs,,,http://127.0.0.1:8000/pages/jquery/jquery%20json%20php%20tutorial/5/blog.teamtreehouse.com/beginners-guide-to-ajax-development-with-php.html
+#followers,,,http://127.0.0.1:8000/pages/jquery/jquery%20json%20php%20tutorial/5/blog.teamtreehouse.com/beginners-guide-to-ajax-development-with-php.html
+select.form-control,,,http://127.0.0.1:8000/pages/jquery/javascript%20jquery%20twitter-bootstrap%20tutorial/3/getbootstrap.com/getting-started/

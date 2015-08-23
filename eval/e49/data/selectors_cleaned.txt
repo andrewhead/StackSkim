@@ -31,6 +31,7 @@ iframe[name=iframeTarget]
 .myeditable
 #save-btn
 #msg
+div[data-role="page"]
 div[data-role=”page”]
 div[data-role=”page”]
 div[data-role=”dialog”]
@@ -316,6 +317,14 @@ div.foo
 #quote
 #generate
 #quote p
+#element
+#content
+#car
+#content
+#content
+#ca
+#content
+#content
 #input
 #input
 #input

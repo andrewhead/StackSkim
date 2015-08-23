@@ -1,0 +1,42 @@
+.blue
+#myButton
+iframe[name=iframeTarget]
+#div1
+#date
+#save-btn
+#submit4
+select.form-control
+#nav a
+#my-div img
+#DropDownList1
+#contentTransition
+#tabs
+.footable
+#content
+a.fancy
+#Content
+form:first
+#contact_email
+.the-return
+a.fancybox
+#txt
+#wines
+.openDialog
+#result
+#txtID
+#countdown
+#placeholder
+#my-element
+.delete_post
+#infolist
+#new_comment
+.popup_window
+#frameDemo
+.classname
+#contact_form textarea[required=true]
+#generate
+#message
+#input
+#message
+#followbtncontainer
+#my-div
