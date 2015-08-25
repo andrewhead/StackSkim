@@ -1,0 +1,177 @@
+Recall
+  Missing contexts
+    tcl syntax
+      0
+        if {[regexp {^(\d+)\.(\d+)\.(\d+)\.(\d+)$} $string _ a b c d]
+      3
+        regexp {^"(?:[^\\"]|\\.)*"$} $str
+      8
+        % set num [regexp {.*?(\d+).*} $str junk result]
+      11
+        % regexp "<(bo)>(.*?)</bo>" $text dummy tag body
+      13
+        {\S+}
+      15
+        set rest [regexp {^ +(.*) *$} $str match noinfinite]
+      20
+         {^[A-Za-z]+$}   Only letters.
+      27
+        regsub -all { (?= )} $line {\&nbsp;} line
+      34
+        {^[[:alpha¥:]]+$} Only letters, the Unicode way.
+    plain strings (not embedded in any language)
+      1
+        .*abc([0-9]+)xyz.*
+      9
+        The first ocurrence of the path in the line is represented by “\1″, not “\(\/[^:]*\)”.
+      28
+        <p>The complete regex should look like: /&lt;a\s[^&gt;]*href=([\"\']??)([^\\1 &gt;]*?)\\1[^&gt;]*&gt;(.*)&lt;\/a&gt;/siU</p>
+      35
+        <span style="color: #0000ff;">"<span style="color: #000099; font-weight: bold;">\\</span>s*(?i)href<span style="color: #000099; font-weight: bold;">\\</span>s*=<span style="color: #000099; font-weight: bold;">\\</span>s*(<span style="color: #000099; font-weight: bold;">\"</span>([^<span style="color: #000099; font-weight: bold;">\"</span>]*<span style="color: #000099; font-weight: bold;">\"</span>)|'[^']*'|([^'<span style="color: #000099; font-weight: bold;">\"</span>&gt;<span style="color: #000099; font-weight: bold;">\\</span>s]+))"</span>
+    nested within text
+      14
+        If you simply don’t want the hot linkers to see any image at all when they hot link to your images, then simply change the final line to RewriteRule \.(gif|jpg|png)$ - [F].
+    perl
+      2
+        perl -ne 'print $1 if /.*abc([0-9]+)xyz.*/'
+    PHP strings
+      4
+        $regexp = "<tagname\s[^>]*>(.*)<\/tagname>";
+      16
+        preg_match_all("#<option.*?>([^<]+)</option>#", $str, $foo);
+      23
+        $ langRegex='(..)_(..)'
+    awk
+      17
+        awk '/pattern/{ print $0 }' file
+    gawk
+      6
+        gawk '/abc[0-9]+xyz/ { print gensub(/.*([0-9]+).*/,"\\1","g"); } < file
+    Apache config (FilesMatch)
+      12
+        <FilesMatch "\.(gif|jpe?g|png)$">
+    Java strings
+      7
+      36
+        private static final String HTML_A_HREF_TAG_PATTERN = 
+            "\\s*(?i)href\\s*=\\s*(\"([^\"]*\")|'[^']*'|([^'\">\\s]+))";
+      37
+        String[] smartPhonesSplits = smartPhones.split("\\.");
+    Bash variables for use as regex
+      33
+        FS="[[:space:]+]"
+  Languages that should have matched
+    sed
+      5
+        sed -e '/[0-9]/!d' -e 's/^[^0-9]*//' -e 's/[^0-9]*$//'
+      24
+        <code>sed -n 's/^.*abc\([0-9]\+\)xyz.*$/\1/p'</code>
+      29
+        <code>sed -e '/username/s/CDATA\[name\]/CDATA\[something\]/' \
+        -e '/password/s/CDATA\[password\]/CDATA\[somethingelse\]/' \
+        -e '/dbname/s/CDATA\[name\]/CDATA\[somethingdifferent\]/' file.txt
+        </code>
+      31
+        sed -i -e ‘/ls –color=auto/a \<br>
+            alias ll=’\”ls –color=auto -lh’\” \<br>
+            alias la=’\”ls –color=auto -lAh’\” \<br>
+            alias l=’\”ls –color=auto -CF’\”<br>
+        ‘ ~/.bashrc</p>
+          The problem here is probably the fancy quotation marks
+      39
+        egrep '[^0-9]*[0-9]+[^0-9]*$' inputFile | sed -e 's/^[^0-9]*//' -e 's/[^0-9]*$//'
+          Misses ^[^0-9]*
+          Is this because the sed comes after a pipe?
+    Javascript
+      26
+        <code>myString.replace(/&lt;br ?\/?&gt;/g, "\n")</code>
+    Apache Config
+      32
+         RewriteRule ^products/([0-9]+)$ /products/$1/ [R] 
+  Comments
+    18
+      #RewriteRule ^page/([^/\.]+)/?$ index.php?page=$1 [L]
+  Tags that didn't get matched
+    10
+      var ck_password = /^[A-Za-z0-9!@#$%^&*()_]{6,20}$/;
+    19
+      <p>sed ‘s/[:].*/ /g’ /etc/passwd<br>
+      best example</p>
+    21
+      <td>grep smug *.txt</td>
+    22
+      <td>grep '[a-zA-Z]'</td>
+    25
+      var ck_username = /^[A-Za-z0-9_]{3,20}$/;
+        Inside divs and spans
+    38
+      <td> % grep -i -w blkptr * </td>
+  Unknown Causes
+    30
+
+Precision
+  Code is mistaken for another syntax:
+    0,1,2,3,4,5,6,7,8,9,10,11,12
+      cat path.txt
+      /usr/kbos/bin:/usr/local/bin:/usr/jbin:/usr/bin:/usr/sas/bin
+      /usr/local/sbin:/sbin:/bin/:/usr/sbin:/usr/bin:/opt/omni/bin:
+      /opt/omni/lbin:/opt/omni/sbin:/root/bin
+        In particular -- filepaths that are output from a file are considered to be regular expressions
+    13,14,15,16,17,18,19,20,21,22,23,24,25
+      $ sed 's@/opt/omni/lbin@/opt/tools/bin@g' path.txt
+      /usr/kbos/bin:/usr/local/bin:/usr/jbin/:/usr/bin:/usr/sas/bin
+      /usr/local/sbin:/sbin:/bin/:/usr/sbin:/usr/bin:/opt/omni/bin:
+      <strong>/opt/tools/bin</strong>:/opt/omni/sbin:/root/bin
+    Probable, but not certain cause
+      bash read as Javascript
+        28
+          sed -n '/(?&lt;=finalNumber=")(.*?)(?=")/p' file.xml
+            Found string: )(.*?)(?=
+        35,36
+          $ echo {/home/*,/root}/.*profile
+            Found 'home', 'root'
+        37
+          $ echo /home/*/.*profile /root/.*profile
+            Found '.*profile '
+    HTML is read as Javascript
+      33
+        });
+        </script>
+      34
+    Python is read as Javascript
+      41,42
+        #! /usr/bin/env python
+          Finds 'usr'
+    tcl is read as Javascript
+      43
+        % set text {<bo>s</bo><it><bo>M</bo></it>}
+          Finds 'bo><it><bo>M<'
+      44
+        % set text2 {<bo h="m">s</bo><it><bo>M</bo></it>}
+          Finds 'bo><it><bo>M<'
+  Current matching rules for a syntax underfit actual rules
+    Apache config
+      Matching flags as regular expressions
+        29,31
+          RewriteCond %{REQUEST_FILENAME} !-f
+            Finds '!-f'
+        30,32
+          RewriteCond %{REQUEST_FILENAME} !-d
+            Finds '!-d'
+  Actually _is_ valid (and intended) regex, but not one we collected
+    Not an end user regular expression
+      26
+        <code>/(\a+)(\b+)/</code>
+      39
+        function _process () {
+          awk -v l="$line" '
+          BEGIN {p=0}
+          /'"$1"'/ {p=1}
+          END{ if(p) print l &gt;&gt; "outfile.txt" }
+          '
+        }
+        Finds '"$1"'
+  Unknown
+    27
+    37
+    40

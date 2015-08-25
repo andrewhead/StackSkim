@@ -64,11 +64,42 @@ For sed, we'll want to handle regexp-style addresses AND arguments to commands
 Some commands accept addresses, and some don't (I think)
 To install, I first fork from the Savannah GNU sed repository v4.2.2.  Then I install the dependency md5sha1sum, `./bootstrap`, `./configure`, `make`.
 
+#### Detecting regex in Javascript
+
+The CSS tutoron we developed earlier (see [Evaluation 45](../eval/eval45)) used the `slimit` Python library for Javascript lexing.  Once again, we use the `slimit` lexer, this time to locate all regular expressions.
+
+##### Removing noise
+
+Other programming languages frequently use forward-slashes (`/`) to convey division or paths.  Whenever there is more than two slashes in a code example, slimit will detect a regular expression, which yields many false positives.
+
+To reduce the number of false positives of Javascript-style regular expressions, we propose the following:
+
+1. Attempt to compile the code example with a Javascript parser to make sure that the lexed is valid Javascript
+2. Check the flags for the regular expression.
+
+###### Checking the flags
+
+According to the [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp), the only valid flags for a regular expression are `m`, `g`, `i`, and `y`.  It is unlikely that someone using these flags will specify any of them more than once.
+
+Here are several examples of the false positives of regular expressions that we detected:
+
+    /usr/kbos
+    /opt/omni
+    /bo><it><bo>M</bo
+
+For each of these, the flags detected for the regular expression are not valid — they don't belong to the allowable flags.  We can easily exclude these false detections if we scan the flags character by character, check for any repeats or flags that are outside of the allowable set.
+
 ### Expected Outcome
 
 ## Notes
 
-### Observations
+### Results
+
+#### Iteration 1
+
+Precision: 41.11%, Recall 18.51%
+
+##### Causes of failure
 
 In the first iteration of regular expression detection quality (server version `2f1fdc1`), we found the following reasons for the first 40 failed detections where the regexp could not be found:
 We cannot find regular expressions in the following languages:
@@ -82,6 +113,8 @@ We cannot find regular expressions in the following languages:
 We also can't find them when they're not in a code or pre block
 
 Then we also recognized these errors for the first 40 false detections where a regexp was found where it should have been.  The most frequent cause (accounting for ~75% of false detections) is finding Javascript regular expressions where they aren't by interpreting '/' in other languages as delimiters for regular expressions.
+
+### Observations
 
 ### Errata
 
