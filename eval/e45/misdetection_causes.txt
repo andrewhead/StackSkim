@@ -1,0 +1,29 @@
+=== PRECISION FAILURES ===
+
+Tag-only selectors (0,1,2,3,4,5,9,12,18,20)
+
+href to element with an ID (10,13,14)
+
+Detecting tag name used for non-selection reasons
+8,11,21. Creating an element
+15,16,17. String in PHP
+19. Miscellaneous
+
+False detection of a tag
+6,7. <code>wp_enqueue_script( 'script', plugins_url('js/demo_script.js', __FILE__), array('jquery'));
+</code>
+
+
+Possible solutions:
+1. Actually try to parse the Javascript instead of just lexing it
+
+=== RECALL FAILURES ===
+
+Are these due to system crashes?
+0. <div class="de1">$.simpleSlideShow('#slideshow');<br></div>
+1. input#email
+2. #comments_count
+3. #content
+4. #content
+5. #accordion
+6. .demo button:first:
