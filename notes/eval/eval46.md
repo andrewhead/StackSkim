@@ -114,6 +114,16 @@ We also can't find them when they're not in a code or pre block
 
 Then we also recognized these errors for the first 40 false detections where a regexp was found where it should have been.  The most frequent cause (accounting for ~75% of false detections) is finding Javascript regular expressions where they aren't by interpreting '/' in other languages as delimiters for regular expressions.
 
+#### Iteration 2
+
+For server version `a4ef8ca`.  Javascript code snippets must parse before we try to find regular expressions in them, and regular expressions must have valid flags.
+
+Precision 77.52%, Recall 13.93%
+
+##### Errata
+
+May have accidentally run some sites multiple times through the detector and skipped over others while trying to force the browser to skip loading some slow-to-load resources for some pages.
+
 ### Observations
 
 ### Errata
