@@ -74,7 +74,7 @@ We were able to drastically improve detection accuracy on our validation set by 
 
 In the round of improvements at Tutorons server commit `fc51aac`, we began to parse each page using the `html5lib` library, which better preserves the whitespace to match how the examples were originally extracted in our ground truth data by Javascript.
 
-### Round 8 Improvements
+### Round 8/9 Improvements
 
 To ease debugging, `514640d` introduced finding a region once and not multiple times.  However, the initial version of this had a bug where the wrong node was reported for each region found.  So, we report the accuracy of both this initial 'bugged' version and the improved version.
 
@@ -86,7 +86,7 @@ To ease debugging, `514640d` introduced finding a region once and not multiple t
 
 Version `fc51aac`: Precision 82.63%, Recall 61.70%
 Version `514640d` (with bugs): Precision 22.79%, Recall 16.49%
-Version `514640d`: Precision , Recall 
+Version `514640d`: Precision 83.82%, Recall 60.64%
 
 ### Errata
 
