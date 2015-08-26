@@ -85,7 +85,9 @@ To ease debugging, `514640d` introduced finding a region once and not multiple t
 #### Server version `fc51aac`
 
 Version `fc51aac`: Precision 82.63%, Recall 61.70%
+
 Version `514640d` (with bugs): Precision 22.79%, Recall 16.49%
+
 Version `514640d`: Precision 83.82%, Recall 60.64%
 
 ### Errata

@@ -115,7 +115,7 @@ if __name__ == '__main__':
     parser.add_argument('server_file', help="server log file with detected regions")
     parser.add_argument('output_file', help="TSV listing all detections")
     parser.add_argument('--count', help="how many pages to open", type=int)
-    parser.add_argument('--skip', help="optional index to skip", type=int)
+    parser.add_argument('--skip', nargs='+', help="optional index to skip", type=int)
     args = parser.parse_args()
 
     count = args.count
@@ -152,7 +152,7 @@ if __name__ == '__main__':
     for i, (p, l) in enumerate(pages):
         if i >= num_pages:
             break
-        elif args.skip is not None and i == args.skip:
+        elif args.skip is not None and i in args.skip:
             continue
         open_success = open_page(browser, p)
         if open_success is True:

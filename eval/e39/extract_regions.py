@@ -35,7 +35,7 @@ READY_TIME = 5
 READY_RATIO = 2
 MAX_READY_TIME = 60
 FINISH_TIME = 20
-MICROLANGUAGES = ['wget']
+MICROLANGUAGES = ['jquery']
 
 exit_logger = False
 
@@ -153,7 +153,7 @@ if __name__ == '__main__':
             break
         open_success = open_page(browser, p)
         if open_success is True:
-            run_tutoron(browser, l)
+            run_tutoron(browser, 'css')
         pbar.update(i + 1)
 
     ''' Let the future do some more work dequeuing events. '''
