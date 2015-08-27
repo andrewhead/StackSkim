@@ -189,21 +189,26 @@ def load_detected_regions(filename, valid_urls=None):
     return detected_regions
 
 
-def load_groundtruth_regions(filename, delimiter=str('\t'), valid_urls=None):
+def load_groundtruth_regions(filename, delimiter='\t', valid_urls=None):
     '''
     For the manually extracted regions, index each on by the absolute offsets within the page and
     the URL of the page. This is because we extract all possible relative positions of the region
     within the page, but each of these are really the same region.
     '''
     with open(filename, 'rU') as truth_tsv:
-        reader = csv.DictReader(
-            truth_tsv, delimiter=delimiter,
-            fieldnames=[
-                'rel_start_offset', 'rel_end_offset', 'element',
-                'url', 'abs_start_offset', 'abs_end_offset',
-            ])
         truth_regions = {}
-        for r in reader:
+        for line in truth_tsv.readlines():
+            tokens = line.strip().split(delimiter)
+            if len(line.strip()) == 0:
+                continue
+            r = {
+                'rel_start_offset': tokens[0],
+                'rel_end_offset': tokens[1],
+                'element': tokens[2],
+                'url': tokens[3],
+                'abs_start_offset': tokens[4],
+                'abs_end_offset': tokens[5],
+            }
             if valid_urls is not None and r['url'] in valid_urls:
                 key = (r['url'], r['abs_start_offset'], r['abs_end_offset'])
                 if key not in truth_regions:
