@@ -1,0 +1,3 @@
+[submodule "proto/p11/regexper-static"]
+	path = proto/p11/regexper-static
+	url = https://github.com/javallone/regexper-static.git

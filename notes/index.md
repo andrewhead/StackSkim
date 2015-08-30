@@ -14,4 +14,5 @@ The server must be restarted every time a new evaluation is created for that to 
 
 # Prototypes
 
+* [Prototype 11: Getting Regexper to run on a server](proto/proto11)
 * [Prototype 10: Node.js server](proto/proto10)
