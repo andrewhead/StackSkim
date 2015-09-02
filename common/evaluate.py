@@ -139,7 +139,7 @@ class RegionInspector(object):
     def display_region(self, browser, region, index, debug):
         print ""
         print "===== REGION %d =====" % index
-        print region
+        print unicode(region)
         browser.show_region(region)
         if debug:
             print "* Text: ", browser.get_text(region)
@@ -170,7 +170,7 @@ class Region(object):
     def __ne__(self, other):
         return not self.__eq__(other)
 
-    def __repr__(self):
+    def __unicode__(self):
         return "{{Text: {text} URL: {url}, Element: {el}, Offsets: ({so}, {eo})}}".format(
             text=self.text, url=self.url, el=self.element, so=self.start_offset, eo=self.end_offset)
 
@@ -184,7 +184,8 @@ def load_detected_regions(filename, valid_urls=None):
         for r in reader:
             if valid_urls is not None and r['url'] in valid_urls:
                 detected_regions.append(
-                    Region(r['url'], r['element'], r['start_offset'], r['end_offset'], r['text'])
+                    Region(r['url'], r['element'], r['start_offset'],
+                           r['end_offset'], r['text'].decode('utf-8'))
                 )
     return detected_regions
 

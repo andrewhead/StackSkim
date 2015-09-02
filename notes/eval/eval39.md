@@ -78,17 +78,25 @@ In the round of improvements at Tutorons server commit `fc51aac`, we began to pa
 
 To ease debugging, `514640d` introduced finding a region once and not multiple times.  However, the initial version of this had a bug where the wrong node was reported for each region found.  So, we report the accuracy of both this initial 'bugged' version and the improved version.
 
+### Round 10 Improvements
+
+We examined all of the false detections (causes of poor precision) from round 9.  For the ones which were indeed valid `wget` commands, we added these to our list of 'ground truth' examples.  Then we re-ran our precision calculation.  This increased both the precision (because we identified the false negatives) and the recall (it added to the ratio of correct detections found).
+
 ## Notes
 
 ### Accuracy
-
-#### Server version `fc51aac`
 
 Version `fc51aac`: Precision 82.63%, Recall 61.70%
 
 Version `514640d` (with bugs): Precision 22.79%, Recall 16.49%
 
 Version `514640d`: Precision 83.82%, Recall 60.64%
+
+Version `514640d` (false negatives added to ground truth): Precision 94.85% (129/136), Recall 63.55% (129/203)
+
+#### Version `514650d` false negatives
+
+For each of the false negatives, we store it into our list of ground truths sot that we can re-run the tests with an updated version of the test dataset.
 
 ### Errata
 
