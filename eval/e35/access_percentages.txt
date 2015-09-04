@@ -1,0 +1,2 @@
+"With Micro-explanations",.0556
+"Without Micro-explanations",.6389
