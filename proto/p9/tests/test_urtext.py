@@ -6,6 +6,7 @@ import unittest
 import logging
 import string
 import re
+import mock
 
 from regex_parse import InNode, LiteralNode, RepeatNode, BranchNode,\
     ChoiceNode, RangeNode, NegateNode, CategoryNode
@@ -59,27 +60,20 @@ class UrtestVisitorTest(unittest.TestCase):
         msg = self.visitor.visit(in_node)
         self.assertIn(msg, string.digits)
 
-    def test_visit_branch_first_child(self):
+    def test_visit_branch_random_child(self):
         br_node = BranchNode("")
         choice1 = ChoiceNode("")
         choice1.children.extend([LiteralNode(ord('a'), "")])
         choice2 = ChoiceNode("")
         choice2.children.extend([LiteralNode(ord('b'), "")])
         br_node.children.extend([choice1, choice2])
-        br_node.choice = 0
-        msg = self.visitor.visit(br_node)
-        self.assertEqual(msg, 'a')
-
-    def test_visit_branch_last_child(self):
-        br_node = BranchNode("")
-        choice1 = ChoiceNode("")
-        choice1.children.extend([LiteralNode(ord('a'), "")])
-        choice2 = ChoiceNode("")
-        choice2.children.extend([LiteralNode(ord('b'), "")])
-        br_node.children.extend([choice1, choice2])
-        br_node.choice = 1
-        msg = self.visitor.visit(br_node)
-        self.assertEqual(msg, 'b')
+        # br_node.choice = 0
+        with mock.patch('random.choice', return_value=choice1):
+            msg = self.visitor.visit(br_node)
+            self.assertEqual(msg, 'a')
+        with mock.patch('random.choice', return_value=choice2):
+            msg = self.visitor.visit(br_node)
+            self.assertEqual(msg, 'b')
 
 
 class UrtextRepeatsText(unittest.TestCase):

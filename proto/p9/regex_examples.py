@@ -60,7 +60,7 @@ class UrtextVisitor(object):
             return ''.join([self.visit(node.children[0]) for _ in range(reps)])
 
     def visit_branch(self, node):
-        return self.visit(node.children[node.choice])
+        return self.visit(random.choice(node.children))
 
     def visit_in(self, node):
         chars = get_valid_characters(node)
