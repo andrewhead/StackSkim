@@ -17,7 +17,7 @@ logging.basicConfig(level=logging.INFO, format="%(message)s")
 
 
 class UrtestVisitorTest(unittest.TestCase):
- 
+
     def setUp(self):
         dictionary = ["aaaa", "bbbb", "gfed", "yxxy"]
         self.visitor = UrtextVisitor(dictionary, messy_words=False)

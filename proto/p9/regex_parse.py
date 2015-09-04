@@ -137,12 +137,14 @@ def _count_indents(line):
 parse_literal = lambda line: int(re.match('^literal (\d+)', line).group(1))
 parse_category = lambda line: re.match('^category category_(\w+)', line).group(1)
 
+
 def parse_repeat(line):
     bounds = [int(_) for _ in re.match('^max_repeat (\d+) (\d+)', line).groups()]
     ranged = not (bounds[0] == bounds[1])
     min_repeats = bounds[0]
     repetitions = None if ranged else bounds[0]
     return (ranged, min_repeats, repetitions)
+
 
 def parse_range(line):
     match = re.match('^range \((\d+), (\d+)\)', line)
@@ -233,7 +235,7 @@ def parse_regex(regex):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
-            description='Give examples of when a regular expression is satisfied or not.')
+        description='Give examples of when a regular expression is satisfied or not.')
     parser.add_argument('regex', help="regular expression")
     args = parser.parse_args()
     tree = parse_regex(args.regex)

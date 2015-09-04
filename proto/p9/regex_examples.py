@@ -29,8 +29,8 @@ def urtext(regex, dictionary=None):
 
 
 class UrtextVisitor(object):
-    ''' 
-    Visitor for parsed regular expression that generates a representative, readable example of a 
+    '''
+    Visitor for parsed regular expression that generates a representative, readable example of a
     string that matches the regular expression.
     '''
     def __init__(self, dictionary, messy_words=True):
@@ -58,7 +58,7 @@ class UrtextVisitor(object):
             return self.word_builder.build_word(chars, messy=self.messy_words, length=reps)
         else:
             return ''.join([self.visit(node.children[0]) for _ in range(reps)])
- 
+
     def visit_branch(self, node):
         return self.visit(node.children[node.choice])
 
@@ -74,7 +74,7 @@ class WordBuilder(object):
 
     def __init__(self, dictionary):
         self.dictionary = dictionary
-    
+
     def build_word(self, chars, length=None, messy=True):
         if length:
             return ''.join([random.choice(chars) for _ in range(length)])
@@ -95,11 +95,10 @@ class WordBuilder(object):
         return ''.join(new_word)
 
     def _get_dict_term(self, chars):
-        
+
         # If we can, we get a dictionary word that satisfies the pattern.
         # Otherwise, return a random word
         dict_shuf = sorted(self.dictionary, key=lambda k: random.random())
-        chars_upper = [c.upper() for c in chars]
         chars_lower = [c.lower() for c in chars]
 
         # We match with lower-case versions of dictionary words.  If it
@@ -120,15 +119,14 @@ class WordBuilder(object):
                         clist[i] = c.lower()
                 return ''.join(clist)
         return self._make_random_word(chars)
- 
+
     def _make_random_word(self, chars):
         # Try to make readable word by only using alphanumeric chars.
         choices = list(set(chars).intersection(set(string.ascii_letters)))
         if len(choices) == 0:
             return ''
         else:
-            return ''.join([random.choice(choices) 
-                for _ in range(RANDOM_WORD_LEN)])
+            return ''.join([random.choice(choices) for _ in range(RANDOM_WORD_LEN)])
 
 
 def get_valid_characters(in_node):
@@ -167,8 +165,8 @@ def get_default_dict():
 
 
 if __name__ == '__main__':
-    argparser = argparse.ArgumentParser(description=
-        "Generate readable string that satisfies a regular expression.")
+    argparser = argparse.ArgumentParser(
+        description="Generate readable string that satisfies a regular expression.")
     argparser.add_argument('regex', help="regular expression")
     args = argparser.parse_args()
     print urtext(args.regex)

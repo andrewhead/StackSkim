@@ -4,7 +4,6 @@
 from __future__ import unicode_literals
 import unittest
 import logging
-import re
 
 from regex_examples import WordBuilder
 
@@ -20,7 +19,7 @@ class WordBuilderTest(unittest.TestCase):
         word = 'abba'
         chars = [
             'a', 'b',  # alphabetic
-            '!'        # non-alphabetic 
+            '!'        # non-alphabetic
         ]
         new_word = self.word_builder.add_nonalpha(word, chars, count=2)
         symbols = [c for c in new_word if c in '!']
