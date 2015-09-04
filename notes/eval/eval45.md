@@ -40,12 +40,15 @@ When taking a pass through the 50 randomly selected tutorials, I intentionally o
 
 In preparation for round 3, I go back through the tutorials, and look for all examples of jQuery selectors that are actually simple (only the tag name), and add for a second time any selectors that I thought were obscure enough to be missed on the first pass-through.  I also find both simple (purely tag-name) and complex selectors in Validation 45-49.
 
+For round 6, I realized that there were some datapoints missing from the new validation set from the original `jquery_validation_44.txt`, so I merged those selectors back in.
+
 ## Notes
 
 ### Results
 
 Round 2: Precision 68.91% (164/238), Recall 47.81% (164/343)
 Rounds 3,4,5: Precision 80.25% (191/238), Recall 45.26% (191/422)
+Rounds 6: Precision 80.25% (191/238), Recall 40.99% (191/466)
 
 ### Errata
 
