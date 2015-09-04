@@ -117,16 +117,16 @@ class RegionInspector(object):
             ''' Most specific selector will be the longest one. '''
             r = max(region_list, key=lambda r: len(r.element))
             specific_regions.append(r)
-        self.display_regions(browser, specific_regions, debug)
+        self.display_regions(browser, specific_regions, debug, start_index)
 
     def open_false_detections(self, false_regions, start_index=0, debug=True):
         browser = Browser()
-        self.display_regions(browser, false_regions[start_index:], debug)
+        self.display_regions(browser, false_regions[start_index:], debug, start_index)
 
-    def display_regions(self, browser, regions, debug):
+    def display_regions(self, browser, regions, debug, start_index):
         print ""
         print "?? Open next example of missed detection? ",
-        for i, r in enumerate(regions):
+        for i, r in enumerate(regions, start=start_index):
             try:
                 again = raw_input()
                 if again.lower() == 'n':
