@@ -16,6 +16,7 @@ def main():
         old_seen = set()
         new_seen = set()
         new_unique = set()
+        new_strings = []
         seen = set()
         lines = ifile.read()
 
@@ -36,14 +37,16 @@ def main():
                 old_seen.add(id_tuple)
             if id_tuple not in new_seen and len(tokens) >= 7:
                 new_seen.add(id_tuple)
-                if id_tuple not in old_seen:
+                if id_tuple not in old_seen and id_tuple not in new_unique:
                     new_unique.add(id_tuple)
-                    print tokens[6]
+                    new_strings.append(tokens[6])
 
         print len(old_seen)
         print len(new_seen)
         print len(new_unique)
         print len(seen)
+        for s in new_strings:
+            print s
 
 
 if __name__ == '__main__':

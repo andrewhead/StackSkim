@@ -341,3 +341,126 @@ div.foo
 #morefllwrs
 #followers
 select.form-control
+#result
+#contact_result
+#contact_form input,#contact_form select
+#contact_form input,#contact_form select
+#result
+#contact_form select
+#contact_form select,#contact_form input
+#result
+body
+body
+a
+body
+tr
+button
+p
+img
+br
+p
+a
+tr
+.myeditable
+.flash.notice
+#new_comment
+#new_comment
+#placeholder
+#placeholder
+.errors
+a
+a
+a
+#generate
+input
+h1
+.dialog
+span
+form
+span
+span
+form
+.my-widget
+.my-widget
+#elem
+#elem
+#foo
+#foo
+#foo
+#elem
+:jqmData(role='page')
+:jqmData(role='content')
+#myelem
+#myelem
+[data-role='foo']
+:jqmData(role='foo')
+#elem
+.classname
+.classname
+.flexslider
+#getdata-button
+#showdata
+#ff
+#stage li
+#container
+#filter
+#filter a
+#stage
+li
+#filter a:first
+#stage
+li
+a:visible
+a:visible
+#filter a:contains("Bing")
+#filter a:nth-child(5)
+#filter a:contains("Bing")
+#filter a:nth-child(5)
+#filter a:contains("Contact")
+#stage
+li
+section#container
+ul.hidden
+#stage
+li
+section#container
+ul.hidden
+#filter a
+#filter
+a
+body
+#images
+body
+#content
+#car
+a
+#username
+#username, #fullname
+#username
+.editable
+#username
+#username, #fullname
+#username
+#comments
+#status
+#dob
+#last_seen
+#dob
+#dob
+#email
+#options
+#comments
+#country
+#country
+#country
+#country
+#country
+#username
+.editable
+tr
+#username
+#username
+#username
+#username
+#jp_demo
+.popup_window

@@ -22,6 +22,10 @@ Finally, for a sample of 42 of all correctly parsed selectors (with all those th
 
 For each selector in this sample, I produce a string representation of the parse tree in the format that ANTLR writes with the `tree.toStringTree(parser)` method (`data/expected_trees.txt`).  I compare the parse trees I write to the ones produced by our parser (`data/generated_trees.txt`) using `diff` and report on the number that are parsed in an incorrect format.
 
+#### Iterations on Data set
+
+We increased the number of selectors in the ground truth to 466 after viewing the false negatives from rounds 3-6 of [Evaluation 45](../eval/eval45).  I update the overall parser accuracy based on this updated data set.
+
 ### Expected Outcome
 
 We find that our system fails on 10% of examples.  We also find that there is only 1% of examples that are malformed CSS selectors to begin with.  We discover that our system does not support pseudo-selectors.
@@ -29,6 +33,41 @@ We find that our system fails on 10% of examples.  We also find that there is on
 With the sample of 50 correctly parsed selectors, we find that there are none that are parsed into an incorrect parse tree.
 
 ## Notes
+
+### Parser Completion Rate (Round 2)
+
+Overall, we successfully parse 94.42% (440/466) selectors.  We find that the following strings fail to parse:
+
+    div[data-role="page"]
+    div[data-role=”page”]
+    div[data-role=”page”]
+    div[data-role=”dialog”]
+    div[data-role=”page”]
+    div[data-role=”page”]
+    input[name*="_r"]
+    input[name*="_r"]
+    :jqmData(role='foo')
+    :jqmData(role='page')
+    :jqmData(role='content')
+    #contact_form  input[required=true]
+    #contact_form  input[required=true]
+    #contact_form input,#contact_form select
+    #contact_form input,#contact_form select
+    #contact_form select,#contact_form input
+    :jqmData(role='page')
+    :jqmData(role='content')
+    :jqmData(role='foo')
+    #filter a:contains("Bing")
+    #filter a:nth-child(5)
+    #filter a:contains("Bing")
+    #filter a:nth-child(5)
+    #filter a:contains("Contact")
+    #username, #fullname
+    #username, #fullname
+
+The first 13 above are the same as before (3 that should have parsed, and 10 that should not).  Then the next 13 include 10 that should have parsed, and 3 that should not.  The 3 that should not are the selectors including ':jqmData'.  Those that should failed to parse due to the function construct or commas.
+
+This leaves us at 440/453 (97.13%) of 'proper' selectors from our online corpus as correctly parsing.
 
 ### Parser Completion Rate
 
@@ -49,6 +88,7 @@ These are the strings that failed to parse:
     :jqmData(role='content')
     #contact_form  input[required=true]
     #contact_form  input[required=true]
+
 
 We can divide these into 3 strings (.88%) that *should have* parsed and 10 strings (2.92%) that were incorrectly specified online / had invalid syntax to begin with.
 
