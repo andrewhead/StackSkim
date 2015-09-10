@@ -11,6 +11,7 @@ The server must be restarted every time a new evaluation is created for that to 
 
 # Evaluations
 
+* [Evaluation 51: Understanding SQL Examples on the Web](eval/eval51)
 * [Evaluation 50: Using requests for automatic testing](eval/eval50)
 * [Evaluation 49: CSS Selector Parsing accuracy](eval/eval49)
 * [Evaluation 46: Regex detection accuracy](eval/eval46)

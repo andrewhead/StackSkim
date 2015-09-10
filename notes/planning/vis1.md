@@ -39,3 +39,7 @@ Sources of SQL tables include:
 * Scrape SQL tutorials, look for downloadable files with some SQL extension, inspect, and then use as a basis, or for plaintext that's formatted as a table.
 * Or use non-SQL data sources.  For example, Microsoft Excel tables that are from tutorial pages, or just collected at random from peers.  See if there are Google Sheets examples.  The formatting of the cells in this case may indicate the datatype of each row.
 * Go to some large open data hub such as Enigma.io, and choose several tables at random
+
+### Preliminary findings
+
+Not all StackOverflow questions include questions of the form "give me the query that does X to data".  For example, [the most popular question for SQL](http://stackoverflow.com/questions/60174/how-can-i-prevent-sql-injection-in-php) is about preventing SQL injection in PHP, and includes a pretty arbitrary SQL command.
