@@ -1,4 +1,4 @@
 #! /bin/sh
 
 ./makeindex.sh
-harp server .
+harp server . -p ${1:-9000}

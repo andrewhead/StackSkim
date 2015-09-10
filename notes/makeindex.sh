@@ -2,6 +2,7 @@
 
 EVAL_DIR=eval
 PROTO_DIR=proto
+PLANNING_DIR=planning
 BASE_FILE=base.md
 OUTPUT_FILE=index.md
 
@@ -21,5 +22,6 @@ function add_notes {
 }
 
 cp $BASE_FILE $OUTPUT_FILE
+add_notes "Planning" $PLANNING_DIR ''
 add_notes "Evaluations" $EVAL_DIR eval
 add_notes "Prototypes" $PROTO_DIR proto

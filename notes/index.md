@@ -5,6 +5,10 @@ This is the evaluation documentation for Tutorons.  Each evaluation is a separat
 The server must be restarted every time a new evaluation is created for that to show up in the links below.
 
 
+# Planning
+
+* [Vision 1: SQL Examples](planning/vis1)
+
 # Evaluations
 
 * [Evaluation 50: Using requests for automatic testing](eval/eval50)
