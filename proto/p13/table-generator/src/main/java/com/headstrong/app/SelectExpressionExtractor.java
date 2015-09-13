@@ -50,7 +50,6 @@ import net.sf.jsqlparser.expression.operators.arithmetic.Division;
 import net.sf.jsqlparser.expression.operators.arithmetic.Modulo;
 import net.sf.jsqlparser.expression.operators.arithmetic.Multiplication;
 import net.sf.jsqlparser.expression.operators.arithmetic.Subtraction;
-import net.sf.jsqlparser.expression.operators.conditional.AndExpression;
 import net.sf.jsqlparser.expression.operators.conditional.OrExpression;
 import net.sf.jsqlparser.expression.operators.relational.Between;
 import net.sf.jsqlparser.expression.operators.relational.EqualsTo;
@@ -86,15 +85,9 @@ public class SelectExpressionExtractor extends StatementVisitorAdapter
     }
 
     private Expression visitLeafExpression(net.sf.jsqlparser.expression.Expression sqlParserExpression) {
-        return visitExpression(sqlParserExpression, true);
-    }
-
-    private Expression visitExpression(net.sf.jsqlparser.expression.Expression sqlParserExpression, boolean isLeaf) {
         Expression exp = new Expression(sqlParserExpression.toString());
         mExpressions.put(sqlParserExpression, exp);
-        if (isLeaf == true) {
-            mLeafExpressions.add(exp);
-        }
+        mLeafExpressions.add(exp);
         // If this is the first time visiting a condition, then save it as the tree root.
         if (mRoot == null) {
             mRoot = exp;
@@ -107,8 +100,12 @@ public class SelectExpressionExtractor extends StatementVisitorAdapter
     }
 
     @Override
-    public void visit(AndExpression andExpression) {
-        Expression exp = visitExpression(andExpression, false);
+    public void visit(net.sf.jsqlparser.expression.operators.conditional.AndExpression andExpression) {
+        AndExpression exp = new AndExpression(andExpression.toString());
+        mExpressions.put(andExpression, exp);
+        if (mRoot == null) {
+            mRoot = exp;
+        }
         net.sf.jsqlparser.expression.Expression left = andExpression.getLeftExpression();
         net.sf.jsqlparser.expression.Expression right = andExpression.getRightExpression();
         left.accept(this);
