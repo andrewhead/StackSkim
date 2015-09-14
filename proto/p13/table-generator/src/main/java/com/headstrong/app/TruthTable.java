@@ -2,6 +2,9 @@ package com.headstrong.app;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.BitSet;
+import java.util.HashMap;
+import java.util.HashSet;
 
 
 /**
@@ -58,6 +61,68 @@ public class TruthTable {
 
     public ArrayList<Evaluation> getEvaluations() {
         return mEvaluations;
+    }
+
+    public ArrayList<Evaluation> getTrueEvaluations() {
+        ArrayList<Evaluation> trueEvaluations = new ArrayList<Evaluation>();
+        for (Evaluation eval: mEvaluations) {
+            if (eval.getResult() == true) {
+                trueEvaluations.add(eval);
+            }
+        }
+        return trueEvaluations;
+    }
+
+    /**
+     * Get list of evaluations that fail due to one bit being flipped from
+     * a truth evaluation.
+     */
+    public ArrayList<Evaluation> getOneOffEvaluations() {
+        HashSet<Evaluation> oneOffEvaluationSet = new HashSet<Evaluation>();
+        for (int i = 0; i < mVariables.size(); i++) {
+            oneOffEvaluationSet.addAll(getOneOffEvaluations(i));
+        }
+        ArrayList<Evaluation> oneOffEvaluationList = new ArrayList<Evaluation>();
+        oneOffEvaluationList.addAll(oneOffEvaluationSet);
+        return oneOffEvaluationList;
+    }
+
+    public ArrayList<Evaluation> getOneOffEvaluations(int varIndex) {
+
+        HashSet<Evaluation> oneOffEvaluations = new HashSet<Evaluation>();
+
+        // Index evaluations by their bits
+        HashMap<BitSet,Evaluation> bitsets = new HashMap<BitSet,Evaluation>();
+        for (Evaluation eval: mEvaluations) {
+            ArrayList<Boolean> values = eval.getValues();
+            BitSet bitset = new BitSet(values.size());
+            for (int i = 0; i < values.size(); i++) {
+                bitset.set(i, values.get(i));
+            }
+            bitsets.put(bitset, eval);
+        }
+
+        // Find all rows in the table with 'false' output based on one bit
+        // changing from a configuration with a 'true' output 
+        for (Evaluation eval: mEvaluations) {
+            if (eval.getResult() == true) {
+                ArrayList<Boolean> values = eval.getValues();
+                BitSet oneOffKey = new BitSet(values.size());
+                for (int j = 0; j < values.size(); j++) {
+                    oneOffKey.set(j, values.get(j));
+                }
+                oneOffKey.flip(varIndex);
+                Evaluation oneOffEvaluation = bitsets.get(oneOffKey);
+                if (oneOffEvaluation.getResult() == false) {
+                    oneOffEvaluations.add(oneOffEvaluation);
+                }
+            }
+        }        
+    
+        ArrayList<Evaluation> oneOffEvaluationList = new ArrayList<Evaluation>();
+        oneOffEvaluationList.addAll(oneOffEvaluations);
+        return oneOffEvaluationList;
+
     }
 
 }

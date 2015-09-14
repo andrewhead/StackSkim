@@ -26,6 +26,10 @@ public class Evaluation {
         return mValues;
     }
 
+    public boolean getResult() {
+        return mResult;
+    }
+
     @Override
     public int hashCode() {
         int code = mValues.size();
