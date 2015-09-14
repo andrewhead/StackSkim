@@ -16,9 +16,9 @@ public class AndExpressionTest extends TestCase {
     }
 
     public void testEvaluateAnd() {
-        Expression left = new Expression("col1 = 0");
-        Expression right = new Expression("col2 = 0");
-        AndExpression exp = new AndExpression("col1 = 0 AND col2 = 0");
+        EgExpression left = new EgExpression(null, "col1 = 0");
+        EgExpression right = new EgExpression(null, "col2 = 0");
+        EgAndExpression exp = new EgAndExpression(null, "col1 = 0 AND col2 = 0");
         exp.getChildren().add(left);
         exp.getChildren().add(right);
         left.setValue(false); right.setValue(false);

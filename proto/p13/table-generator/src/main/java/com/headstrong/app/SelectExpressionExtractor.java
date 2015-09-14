@@ -11,6 +11,7 @@ import net.sf.jsqlparser.statement.select.PlainSelect;
 import net.sf.jsqlparser.statement.select.WithItem;
 import net.sf.jsqlparser.statement.select.SetOperationList;
 import net.sf.jsqlparser.statement.select.SelectItem;
+import net.sf.jsqlparser.expression.Expression;
 import net.sf.jsqlparser.expression.ExpressionVisitor;
 import net.sf.jsqlparser.statement.Statement;
 import net.sf.jsqlparser.statement.StatementVisitorAdapter;
@@ -50,6 +51,7 @@ import net.sf.jsqlparser.expression.operators.arithmetic.Division;
 import net.sf.jsqlparser.expression.operators.arithmetic.Modulo;
 import net.sf.jsqlparser.expression.operators.arithmetic.Multiplication;
 import net.sf.jsqlparser.expression.operators.arithmetic.Subtraction;
+import net.sf.jsqlparser.expression.operators.conditional.AndExpression;
 import net.sf.jsqlparser.expression.operators.conditional.OrExpression;
 import net.sf.jsqlparser.expression.operators.relational.Between;
 import net.sf.jsqlparser.expression.operators.relational.EqualsTo;
@@ -72,20 +74,19 @@ import net.sf.jsqlparser.statement.select.SubSelect;
 public class SelectExpressionExtractor extends StatementVisitorAdapter
     implements SelectVisitor, ExpressionVisitor {
 
-    private Expression mRoot;
-    private ArrayList<Expression> mLeafExpressions;
-    private HashMap<net.sf.jsqlparser.expression.Expression, Expression> mExpressions = 
-        new HashMap<net.sf.jsqlparser.expression.Expression, Expression>();
+    private EgExpression mRoot;
+    private ArrayList<EgExpression> mLeafExpressions;
+    private HashMap<Expression, EgExpression> mExpressions = new HashMap<Expression, EgExpression>();
 
-    public Expression visit(Statement statement) {
+    public EgExpression visit(Statement statement) {
         mRoot = null;
-        mLeafExpressions = new ArrayList<Expression>();
+        mLeafExpressions = new ArrayList<EgExpression>();
         statement.accept(this);
         return mRoot;
     }
 
-    private Expression visitLeafExpression(net.sf.jsqlparser.expression.Expression sqlParserExpression) {
-        Expression exp = new Expression(sqlParserExpression.toString());
+    private EgExpression visitLeafExpression(Expression sqlParserExpression) {
+        EgExpression exp = new EgExpression(sqlParserExpression, sqlParserExpression.toString());
         mExpressions.put(sqlParserExpression, exp);
         mLeafExpressions.add(exp);
         // If this is the first time visiting a condition, then save it as the tree root.
@@ -95,284 +96,284 @@ public class SelectExpressionExtractor extends StatementVisitorAdapter
         return exp;
     }
 
-    public ArrayList<Expression> getLeafExpressions() {
+    public ArrayList<EgExpression> getLeafExpressions() {
         return mLeafExpressions;
     }
 
     @Override
-    public void visit(net.sf.jsqlparser.expression.operators.conditional.AndExpression andExpression) {
-        AndExpression exp = new AndExpression(andExpression.toString());
+    public void visit(AndExpression andExpression) {
+        EgAndExpression exp = new EgAndExpression(andExpression, andExpression.toString());
         mExpressions.put(andExpression, exp);
         if (mRoot == null) {
             mRoot = exp;
         }
-        net.sf.jsqlparser.expression.Expression left = andExpression.getLeftExpression();
-        net.sf.jsqlparser.expression.Expression right = andExpression.getRightExpression();
+        Expression left = andExpression.getLeftExpression();
+        Expression right = andExpression.getRightExpression();
         left.accept(this);
         right.accept(this);
-        ArrayList<Expression> andChildren = exp.getChildren();
+        ArrayList<EgExpression> andChildren = exp.getChildren();
         andChildren.add(mExpressions.get(left));
         andChildren.add(mExpressions.get(right));
     }
 
     @Override
     public void visit(NullValue nullValue) {
-        Expression exp = visitLeafExpression(nullValue);
+        EgExpression exp = visitLeafExpression(nullValue);
     }
 
     @Override
     public void visit(Function function) {
-        Expression exp = visitLeafExpression(function);
+        EgExpression exp = visitLeafExpression(function);
     }
 
     @Override
     public void visit(SignedExpression signedExpression) {
-        Expression exp = visitLeafExpression(signedExpression);
+        EgExpression exp = visitLeafExpression(signedExpression);
     }
 
     @Override
     public void visit(JdbcParameter jdbcParameter) {
-        Expression exp = visitLeafExpression(jdbcParameter);
+        EgExpression exp = visitLeafExpression(jdbcParameter);
     }
 
     @Override
     public void visit(JdbcNamedParameter jdbcNamedParameter) {
-        Expression exp = visitLeafExpression(jdbcNamedParameter);
+        EgExpression exp = visitLeafExpression(jdbcNamedParameter);
     }
 
     @Override
     public void visit(DoubleValue doubleValue) {
-        Expression exp = visitLeafExpression(doubleValue);
+        EgExpression exp = visitLeafExpression(doubleValue);
     }
     
     @Override
     public void visit(LongValue longValue) {
-        Expression exp = visitLeafExpression(longValue);
+        EgExpression exp = visitLeafExpression(longValue);
     }
     
     @Override
     public void visit(DateValue dateValue) {
-        Expression exp = visitLeafExpression(dateValue);
+        EgExpression exp = visitLeafExpression(dateValue);
     }
 
     @Override
     public void visit(TimeValue timeValue) {
-        Expression exp = visitLeafExpression(timeValue);
+        EgExpression exp = visitLeafExpression(timeValue);
     }
 
     @Override
     public void visit(TimestampValue timestampValue) {
-        Expression exp = visitLeafExpression(timestampValue);
+        EgExpression exp = visitLeafExpression(timestampValue);
     }
 
     @Override
     public void visit(Parenthesis parenthesis) {
-        Expression exp = visitLeafExpression(parenthesis);
+        EgExpression exp = visitLeafExpression(parenthesis);
     }
 
     @Override
     public void visit(StringValue stringValue) {
-        Expression exp = visitLeafExpression(stringValue);
+        EgExpression exp = visitLeafExpression(stringValue);
     }
 
     @Override
     public void visit(Addition addition) {
-        Expression exp = visitLeafExpression(addition);
+        EgExpression exp = visitLeafExpression(addition);
     }
 
     @Override
     public void visit(Division division) {
-        Expression exp = visitLeafExpression(division);
+        EgExpression exp = visitLeafExpression(division);
     }
 
     @Override
     public void visit(Multiplication multiplication) {
-        Expression exp = visitLeafExpression(multiplication);
+        EgExpression exp = visitLeafExpression(multiplication);
     }
 
     @Override
     public void visit(Subtraction subtraction) {
-        Expression exp = visitLeafExpression(subtraction);
+        EgExpression exp = visitLeafExpression(subtraction);
     }
 
     @Override
     public void visit(OrExpression orExpression) {
-        Expression exp = visitLeafExpression(orExpression);
+        EgExpression exp = visitLeafExpression(orExpression);
     }
 
     @Override
     public void visit(Between between) {
-        Expression exp = visitLeafExpression(between);
+        EgExpression exp = visitLeafExpression(between);
     }
 
     @Override
     public void visit(EqualsTo equalsTo) {
-        Expression exp = visitLeafExpression(equalsTo);
+        EgExpression exp = visitLeafExpression(equalsTo);
     }
 
     @Override
     public void visit(GreaterThan greaterThan) {
-        Expression exp = visitLeafExpression(greaterThan);
+        EgExpression exp = visitLeafExpression(greaterThan);
     }
 
     @Override
     public void visit(GreaterThanEquals greaterThanEquals) {
-        Expression exp = visitLeafExpression(greaterThanEquals);
+        EgExpression exp = visitLeafExpression(greaterThanEquals);
     }
 
     @Override
     public void visit(InExpression inExpression) {
-        Expression exp = visitLeafExpression(inExpression);
+        EgExpression exp = visitLeafExpression(inExpression);
     }
 
     @Override
     public void visit(IsNullExpression isNullExpression) {
-        Expression exp = visitLeafExpression(isNullExpression);
+        EgExpression exp = visitLeafExpression(isNullExpression);
     }
 
     @Override
     public void visit(LikeExpression likeExpression) {
-        Expression exp = visitLeafExpression(likeExpression);
+        EgExpression exp = visitLeafExpression(likeExpression);
     }
 
     @Override
     public void visit(MinorThan minorThan) {
-        Expression exp = visitLeafExpression(minorThan);
+        EgExpression exp = visitLeafExpression(minorThan);
     }
 
     @Override
     public void visit(MinorThanEquals minorThanEquals) {
-        Expression exp = visitLeafExpression(minorThanEquals);
+        EgExpression exp = visitLeafExpression(minorThanEquals);
     }
 
     @Override
     public void visit(NotEqualsTo notEqualsTo) {
-        Expression exp = visitLeafExpression(notEqualsTo);
+        EgExpression exp = visitLeafExpression(notEqualsTo);
     }
 
     @Override
     public void visit(Column tableColumn) {
-        Expression exp = visitLeafExpression(tableColumn);
+        EgExpression exp = visitLeafExpression(tableColumn);
     }
 
     @Override
     public void visit(SubSelect subSelect) {
-        Expression exp = visitLeafExpression(subSelect);
+        EgExpression exp = visitLeafExpression(subSelect);
     }
 
     @Override
     public void visit(CaseExpression caseExpression) {
-        Expression exp = visitLeafExpression(caseExpression);
+        EgExpression exp = visitLeafExpression(caseExpression);
     }
 
     @Override
     public void visit(WhenClause whenClause) {
-        Expression exp = visitLeafExpression(whenClause);
+        EgExpression exp = visitLeafExpression(whenClause);
     }
 
     @Override
     public void visit(ExistsExpression existsExpression) {
-        Expression exp = visitLeafExpression(existsExpression);
+        EgExpression exp = visitLeafExpression(existsExpression);
     }
 
     @Override
     public void visit(AllComparisonExpression allComparisonExpression) {
-        Expression exp = visitLeafExpression(allComparisonExpression);
+        EgExpression exp = visitLeafExpression(allComparisonExpression);
     }
 
     @Override
     public void visit(AnyComparisonExpression anyComparisonExpression) {
-        Expression exp = visitLeafExpression(anyComparisonExpression);
+        EgExpression exp = visitLeafExpression(anyComparisonExpression);
     }
 
     @Override
     public void visit(Concat concat) {
-        Expression exp = visitLeafExpression(concat);
+        EgExpression exp = visitLeafExpression(concat);
     }
 
     @Override
     public void visit(Matches matches) {
-        Expression exp = visitLeafExpression(matches);
+        EgExpression exp = visitLeafExpression(matches);
     }
 
     @Override
     public void visit(BitwiseAnd bitwiseAnd) {
-        Expression exp = visitLeafExpression(bitwiseAnd);
+        EgExpression exp = visitLeafExpression(bitwiseAnd);
     }
 
     @Override
     public void visit(BitwiseOr bitwiseOr) {
-        Expression exp = visitLeafExpression(bitwiseOr);
+        EgExpression exp = visitLeafExpression(bitwiseOr);
     }
 
     @Override
     public void visit(BitwiseXor bitwiseXor) {
-        Expression exp = visitLeafExpression(bitwiseXor);
+        EgExpression exp = visitLeafExpression(bitwiseXor);
     }
     
     @Override
     public void visit(CastExpression cast) {
-        Expression exp = visitLeafExpression(cast);
+        EgExpression exp = visitLeafExpression(cast);
     }
 
     @Override
     public void visit(Modulo modulo) {
-        Expression exp = visitLeafExpression(modulo);
+        EgExpression exp = visitLeafExpression(modulo);
     }
 
     @Override
     public void visit(AnalyticExpression aexpr) {
-        Expression exp = visitLeafExpression(aexpr);
+        EgExpression exp = visitLeafExpression(aexpr);
     }
     
     @Override
     public void visit(WithinGroupExpression wgexpr) {
-        Expression exp = visitLeafExpression(wgexpr);
+        EgExpression exp = visitLeafExpression(wgexpr);
     }
 
     @Override
     public void visit(ExtractExpression eexpr) {
-        Expression exp = visitLeafExpression(eexpr);
+        EgExpression exp = visitLeafExpression(eexpr);
     }
 
     @Override
     public void visit(IntervalExpression iexpr) {
-        Expression exp = visitLeafExpression(iexpr);
+        EgExpression exp = visitLeafExpression(iexpr);
     }
 
     @Override
     public void visit(OracleHierarchicalExpression oexpr) {
-        Expression exp = visitLeafExpression(oexpr);
+        EgExpression exp = visitLeafExpression(oexpr);
     }
 
     @Override
     public void visit(RegExpMatchOperator rexpr) {
-        Expression exp = visitLeafExpression(rexpr);
+        EgExpression exp = visitLeafExpression(rexpr);
     }
     
     @Override
     public void visit(JsonExpression jsonExpr) {
-        Expression exp = visitLeafExpression(jsonExpr);
+        EgExpression exp = visitLeafExpression(jsonExpr);
     }
 
     @Override
     public void visit(RegExpMySQLOperator regExpMySQLOperator) {
-        Expression exp = visitLeafExpression(regExpMySQLOperator);
+        EgExpression exp = visitLeafExpression(regExpMySQLOperator);
     }
    
     @Override
     public void visit(UserVariable var) {
-        Expression exp = visitLeafExpression(var);
+        EgExpression exp = visitLeafExpression(var);
     }
     
     @Override
     public void visit(NumericBind bind) {
-        Expression exp = visitLeafExpression(bind);
+        EgExpression exp = visitLeafExpression(bind);
     }
     
     @Override
     public void visit(KeepExpression aexpr) {
-        Expression exp = visitLeafExpression(aexpr);
+        EgExpression exp = visitLeafExpression(aexpr);
     }
     
     @Override

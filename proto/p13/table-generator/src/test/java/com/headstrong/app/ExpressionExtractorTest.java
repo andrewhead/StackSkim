@@ -21,7 +21,7 @@ public class ExpressionExtractorTest extends TestCase {
     public void testExtractSingleExpression() {
         Statement stmt = TestJsqlParser.parse("SELECT col1 FROM tbl WHERE col1 = 0");
         SelectExpressionExtractor expExtractor = new SelectExpressionExtractor();
-        Expression root = expExtractor.visit(stmt);
+        EgExpression root = expExtractor.visit(stmt);
         assertEquals("col1 = 0", root.toString());
         assertEquals(0, root.getChildren().size());
     }
@@ -29,11 +29,11 @@ public class ExpressionExtractorTest extends TestCase {
     public void testExtractAndTest() {
         Statement stmt = TestJsqlParser.parse("SELECT col1, col2 FROM tbl WHERE col1 = 0 AND col2 = 0");
         SelectExpressionExtractor expExtractor = new SelectExpressionExtractor();
-        Expression root = expExtractor.visit(stmt);
+        EgExpression root = expExtractor.visit(stmt);
         assertEquals(root.getChildren().size(), 2);
-        Expression left = root.getChildren().get(0);
+        EgExpression left = root.getChildren().get(0);
         assertEquals("col1 = 0", left.toString());
-        Expression right = root.getChildren().get(1);
+        EgExpression right = root.getChildren().get(1);
         assertEquals("col2 = 0", right.toString());
     }
 
@@ -41,7 +41,7 @@ public class ExpressionExtractorTest extends TestCase {
         Statement stmt = TestJsqlParser.parse("SELECT col1, col2 FROM tbl WHERE col1 = 0 AND col2 = 0");
         SelectExpressionExtractor expExtractor = new SelectExpressionExtractor();
         expExtractor.visit(stmt);
-        ArrayList<Expression> leaves = expExtractor.getLeafExpressions();
+        ArrayList<EgExpression> leaves = expExtractor.getLeafExpressions();
         assertEquals(2, leaves.size());
     }
 

@@ -13,11 +13,11 @@ import java.util.HashSet;
  */
 public class TruthTable {
 
-    private Expression mRoot;
-    private ArrayList<Expression> mVariables;
+    private EgExpression mRoot;
+    private ArrayList<EgExpression> mVariables;
     private ArrayList<Evaluation> mEvaluations;
 
-    public TruthTable(Expression rootExpression, ArrayList<Expression> variables) {
+    public TruthTable(EgExpression rootExpression, ArrayList<EgExpression> variables) {
         mRoot = rootExpression;
         mVariables = variables;
     }
@@ -51,7 +51,7 @@ public class TruthTable {
         mEvaluations = new ArrayList<Evaluation>();
         for (ArrayList<Boolean> combo: valueCombos) {
             for (int i = 0; i < mVariables.size(); i++) {
-                Expression leafExpression = mVariables.get(i);
+                EgExpression leafExpression = mVariables.get(i);
                 leafExpression.setValue(combo.get(i));
             }
             boolean result = mRoot.evaluate();

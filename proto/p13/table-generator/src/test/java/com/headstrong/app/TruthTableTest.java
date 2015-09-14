@@ -22,8 +22,8 @@ public class TruthTableTest extends TestCase {
     private TruthTable getTruthTableForQuery(String query) {
         Statement stmt = TestJsqlParser.parse(query);
         SelectExpressionExtractor selExtractor = new SelectExpressionExtractor();
-        Expression root = selExtractor.visit(stmt);
-        ArrayList<Expression> leafExpressions = selExtractor.getLeafExpressions();
+        EgExpression root = selExtractor.visit(stmt);
+        ArrayList<EgExpression> leafExpressions = selExtractor.getLeafExpressions();
         TruthTable truthTable = new TruthTable(root, leafExpressions);
         truthTable.evaluate();
         return truthTable;

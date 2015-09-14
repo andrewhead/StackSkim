@@ -19,12 +19,12 @@ public class ExpressionTest extends TestCase {
     }
 
     public void testDefaultValueIsFalse() {
-        Expression expression = new Expression("col1 = 0");
+        EgExpression expression = new EgExpression(null, "col1 = 0");
         assertEquals(false, expression.getValue());
     }
 
     public void testDefaultEvaluate() {
-        Expression expression = new Expression("col1 = 0");
+        EgExpression expression = new EgExpression(null, "col1 = 0");
         expression.setValue(false);
         assertEquals(false, expression.evaluate());
         expression.setValue(true);
