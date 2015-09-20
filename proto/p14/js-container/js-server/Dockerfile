@@ -14,4 +14,5 @@ WORKDIR /opt/app
 ADD . /opt/app
 
 EXPOSE 8080
-CMD ["nodejs", "index.js"]
+CMD ./start.sh && /bin/bash
+# CMD ["nodejs", "index.js"]
