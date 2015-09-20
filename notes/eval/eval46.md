@@ -56,7 +56,10 @@ As regular expressions detected can belong do different flavors, we rely on the 
 
 #### Detecting regex in grep commands
 
-To detect patterns in grep, we refer to the grep man page to find that patterns may be specified as a positional required argument, or within an optional argument.  We then check out this commit of the grep source code (corresponding to v2.21).  We invoke the three commands specified by the `README-hacking`: `./bootstrap`, `./configure`, and `make`.  Then we modify the code!
+To detect patterns in grep, we refer to the grep man page to find that patterns may be specified as a positional required argument, or within an optional argument.  We then check out this commit of the grep source code (corresponding to v2.21).  We invoke the three commands specified by the `README-hacking`: `./bootstrap`, `./configure`, and `make`.  For our particular OS installation, we also had to do the following:
+* when running `./bootstrap`, set the ACLOCAL_PATH variable to point to our local aclocal .m4 files (for our Homebrew installation on OSX, this was `/usr/local/share/aclocal/`).
+* `WERROR_CFLAGS= make -e` for the `make` command.  For some reason, the gnulib "error" module is automatically included, which has a warning that causes a build failure.  So we disable build failures based on warnings.
+After this setup, we modified the grep source code.
 
 #### Detecting regex in sed commands
 
