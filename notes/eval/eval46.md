@@ -123,6 +123,12 @@ For server version `a4ef8ca`.  Javascript code snippets must parse before we try
 
 Precision 77.52%, Recall 13.93%
 
+##### Corrections
+
+While inspecting the data, we noticed that there was a different number of true positives reported for precision and recall.  We discovered that our detection algorithm found some regions twice (by looking at the same region from different levels of nesting in the HTML).  We then adjusted the precision and recall manually (see `eval/e46/followup.txt` and `eval/e46/notes.txt`) by subtracting out the examples that were detected more than once:
+
+Precision 70.45%, Recall 13.93%
+
 ##### Errata
 
 May have accidentally run some sites multiple times through the detector and skipped over others while trying to force the browser to skip loading some slow-to-load resources for some pages.

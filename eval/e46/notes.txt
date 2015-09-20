@@ -1,0 +1,19 @@
+notes.txt
+
+:Author: andrew
+:Email: andrew@C02MX11NFD58
+:Date: 2015-09-04 16:25
+
+We found that a number of the regular expressions found were duplicated.
+3 pairs of the 29 that were not matched were duplicates
+38 of the 100 that were matched were duplicates
+
+We therefore find that the total number of true detections is:
+100 - 38
+and the total number of detections is:
+(100 - 38) + (29 - 3) = 62 + 26 = 88
+
+We had a success rate, therefore, of
+62 / 88
+
+

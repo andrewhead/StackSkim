@@ -16,14 +16,20 @@ logging.basicConfig(level=logging.INFO, format="%(message)s")
 def print_stats(detected_regions, truth_regions):
     stats = AccuracyStats()
     prec, found_regions, false_regions = stats.precision(detected_regions, truth_regions)
-    rec, _, missing_regions = stats.recall(detected_regions, truth_regions)
+    rec, rfound_regions, missing_regions = stats.recall(detected_regions, truth_regions)
+    '''
+    for dgood in sorted([_.text for _ in found_regions]):
+        print dgood
+    for rgood in sorted([_[1][0].text for _ in rfound_regions.items()]):
+        print rgood
+    '''
     print "Precision: %.4f (%d/%d), Recall %.4f (%d/%d)" %\
         (prec, len(found_regions), len(detected_regions),
-         rec, len(found_regions), len(truth_regions.keys()))
-    precisions = stats.link_precisions(detected_regions, truth_regions)
-    recalls = stats.link_recalls(detected_regions, truth_regions)
-    print "Per-page Precision: %.4f, Recall %.4f" %\
-        (sum(precisions) / len(precisions), sum(recalls) / len(recalls))
+         rec, len(rfound_regions), len(truth_regions.keys()))
+    # precisions = stats.link_precisions(detected_regions, truth_regions)
+    # recalls = stats.link_recalls(detected_regions, truth_regions)
+    # print "Per-page Precision: %.4f, Recall %.4f" %\
+    #     (sum(precisions) / len(precisions), sum(recalls) / len(recalls))
     return found_regions, false_regions, missing_regions
 
 
@@ -55,6 +61,8 @@ class AccuracyStats(object):
             else:
                 missing[key] = true_region_candidates
         recall = found_count / float(total) if total != 0 else None
+        # print found_count
+        # print len(found.keys())
         return recall, found, missing
 
     def link_precisions(self, detected_regions, truth_regions):
@@ -94,6 +102,20 @@ class AccuracyStats(object):
     def is_detected_region_true(self, region, truth_regions):
         for truth_list in truth_regions.values():
             if region in truth_list:
+                try:
+                    # print "Match"
+                    # print "Detected: ", unicode(region)
+                    pass
+                except:
+                    pass
+                for r in truth_list:
+                    if region == r:
+                        try:
+                            # print "Truth: ", unicode(r)
+                            pass
+                        except:
+                            pass
+                # print ""
                 return True
         return False
 
@@ -102,9 +124,14 @@ class AccuracyStats(object):
         A "true" region can be described relative to any number of its parent elements.
         We pass in all of these possible region descriptions as 'region_candidates'.
         '''
+        i = 0
         for r in region_candidates:
             if r in detected_regions:
-                return True
+                i += 1
+        if i >= 1:
+            print "Matches:", i
+            print r.text
+            return True
         return False
 
 
@@ -214,9 +241,10 @@ def load_groundtruth_regions(filename, delimiter='\t', valid_urls=None):
                 key = (r['url'], r['abs_start_offset'], r['abs_end_offset'])
                 if key not in truth_regions:
                     truth_regions[key] = []
-                truth_regions[key].append(
-                    Region(r['url'], r['element'], r['rel_start_offset'], r['rel_end_offset'])
-                )
+                region = Region(r['url'], r['element'], r['rel_start_offset'], r['rel_end_offset'])
+                truth_regions[key].append(region)
+                if len(tokens) > 6:
+                    region.text = tokens[6]
         return truth_regions
 
 
