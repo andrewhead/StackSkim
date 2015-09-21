@@ -18,6 +18,12 @@ public class ExpressionExtractorTest extends TestCase {
         return new TestSuite(ExpressionExtractorTest.class);
     }
 
+    public void testNoCrashWithNoWhereCondition() {
+        Statement stmt = TestJsqlParser.parse("SELECT col1 FROM tbl");
+        SelectExpressionExtractor expExtractor = new SelectExpressionExtractor();
+        EgExpression root = expExtractor.visit(stmt);
+    }
+
     public void testExtractSingleExpression() {
         Statement stmt = TestJsqlParser.parse("SELECT col1 FROM tbl WHERE col1 = 0");
         SelectExpressionExtractor expExtractor = new SelectExpressionExtractor();

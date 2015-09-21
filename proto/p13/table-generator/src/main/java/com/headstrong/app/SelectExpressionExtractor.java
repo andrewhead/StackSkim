@@ -378,7 +378,9 @@ public class SelectExpressionExtractor extends StatementVisitorAdapter
     
     @Override
     public void visit(PlainSelect plainSelect) {
-        plainSelect.getWhere().accept(this);
+        if (plainSelect.getWhere() != null) {
+            plainSelect.getWhere().accept(this);
+        }
     }
 
     @Override

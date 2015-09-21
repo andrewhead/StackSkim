@@ -52,6 +52,12 @@ public class DataGeneratorTest extends TestCase {
         assertEquals("msg", (String)data);
     }
 
+    public void testGenerateStringInequality() {
+        Object data = getFalseDataForFirstExpression("SELECT * FROM tbl WHERE col1 = 'msg'");
+        assertTrue(data instanceof String);
+        assertNotEquals("msg", (String)data);
+    }
+
     public void testGenerateLongIntegerEquality() {
         Object data = getTrueDataForFirstExpression("SELECT * FROM tbl WHERE col1 = 2");
         assertTrue(data instanceof Long);
@@ -65,13 +71,13 @@ public class DataGeneratorTest extends TestCase {
     }
 
     public void testGenerateGreaterThanInteger() {
-        Object data = getFalseDataForFirstExpression("SELECT * FROM tbl WHERE col1 > 2");
-        assertTrue(((Long)data).longValue() > 2);
+        Object data = getTrueDataForFirstExpression("SELECT * FROM tbl WHERE col1 > 2");
+        assertTrue(((Long)data).longValue() >= 2);
     }
 
     public void testGenerateGreaterThanIntegerReverseArgumentOrder() {
-        Object data = getFalseDataForFirstExpression("SELECT * FROM tbl WHERE 2 < col1");
-        assertTrue(((Long)data).longValue() > 2);
+        Object data = getTrueDataForFirstExpression("SELECT * FROM tbl WHERE 2 < col1");
+        assertTrue(((Long)data).longValue() >= 2);
     }
 
 }

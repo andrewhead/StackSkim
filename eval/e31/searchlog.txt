@@ -707,3 +707,40 @@ fetch all from directory s3 ansible
 ansible variables
 common file extensions
 get unique array entries javascript
+table of contents evernote
+java enum declaration
+vegetarian sloppy joes
+jsqlparser github
+add to vim search path
+long api java
+mysql column data types
+vim java error when over 100 characters
+control w f vim
+hashset java
+jsqlparser column expression
+jsqlparser source
+varargs java
+arrays from varargs
+define array with varags java
+arrays java util
+list of objects java
+variable list of different types of objects java
+serializable class has no definition of serialversionuid
+pass array as varargs java
+integer java api
+hashmap constructor java
+java build and print json object
+"Command \c@lotdepth already defined."
+titlesec subfigure
+json class java
+org.json maven
+mvn pull dependencies
+getRequestURI Java unescape spaces
+getRequestURI.getQuery
+java getQuery() pluses
+java getQuery() pluses spaces
+pass = in url parameter value
+pass equals in url parameter value
+encode equals url get parameter
+unsupportedencodingexception
+arrays.toArray
