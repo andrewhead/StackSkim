@@ -13,7 +13,13 @@ div.main_cont {
 }
 
 div.table_cont {
-  margin-top: 20px;
+  margin-top: 50px;
+  display: none;
+}
+
+div.col {
+  width: 50%;
+  float: left;
 }
 
 table {
@@ -32,8 +38,10 @@ table tr:nth-child(even) {
 
 form input[type="text"] {
   width: 70%;
+  font-size: 14px;
 }
 
 form input[type="button"] {
   width: 20%;
+  font-size: 14px;
 }

@@ -1,10 +1,9 @@
 var $ = require("jquery");
 
 
-function addTable(spec) {
+function addTable(div, spec) {
 
-    var div = $("div.table_cont");
-    div.empty();
+    div.find('table').remove();
     var table = $("<table>");
     var tbody = $("<tbody>");
     table.append(tbody);
@@ -27,7 +26,7 @@ function addTable(spec) {
         }
         tbody.append(row);
     }
-    console.log(div.html());
+
 }
 
 
@@ -41,7 +40,9 @@ $(function() {
             jsonpCallback: 'callback',
             contentType: "application/json",
             success: function (tableSpec) {
-                addTable(tableSpec);
+                $('div.table_cont').css('display', 'block');
+                addTable($('div.start_table_cont'), tableSpec.original);
+                addTable($('div.selected_table_cont'), tableSpec.selected);
             }
         });
     });
