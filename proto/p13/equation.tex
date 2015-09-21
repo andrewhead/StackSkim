@@ -1,0 +1,28 @@
+% vim:ft=tex:
+%
+
+\documentclass[12pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amstext}
+
+\title{equation}
+\author{Andrew Head}
+
+\begin{document}
+\maketitle
+
+\begin{align*}
+    \min_{c \in C} \text{Cost}(c)
+\end{align*}
+
+\begin{center}
+where
+\end{center}
+\begin{align*}
+    \text{Cost}(c) = \text{dist}(c_f, c_s) + \text{size}(c_f) + \text{size}(c_s) \\
+    - \min(\text{size}(c) - \text{limit\_size}, 0) \\
+    + \Sigma_{i=0}^V \left| \text{avg} (\text{values} (c, i)) - 0.5 \right|
+\end{align*}
+
+\end{document}

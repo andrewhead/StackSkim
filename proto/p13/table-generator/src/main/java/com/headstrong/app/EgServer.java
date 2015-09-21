@@ -120,7 +120,7 @@ public class EgServer {
             Map<String, String> params = queryToMap(queryString);
             String sql = params.get("sql");
             System.out.println("Received SQL: " + sql);
-            String response = getTable(sql);
+            String response = "callback(" + getTable(sql) + ");";
             t.sendResponseHeaders(200, response.length());
             OutputStream os = t.getResponseBody();
             os.write(response.getBytes());
@@ -134,7 +134,7 @@ public class EgServer {
         private Map<String, String> queryToMap(String query){
             Map<String, String> result = new HashMap<String, String>();
             for (String param : query.split("&")) {
-                String pair[] = param.split("=");
+                String pair[] = param.split("=", 2);
                 String decodedPair[] = new String[pair.length];
                 for (int i = 0; i < pair.length; i++) {
                     try {

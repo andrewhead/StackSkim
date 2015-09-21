@@ -1,0 +1,27 @@
+{
+  "name": "table-viewer",
+  "version": "0.0.1",
+  "description": "Viewer of examples of tables that SQL queries match",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "tutorons",
+    "code",
+    "examples",
+    "explanations"
+  ],
+  "author": "Andrew Head",
+  "license": "ISC",
+  "devDependencies": {
+    "browserify": "^11.1.0",
+    "gulp": "^3.9.0",
+    "gulp-connect": "^2.2.0",
+    "gulp-watch": "^4.3.5",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "dependencies": {
+    "jquery": "^2.1.4"
+  }
+}
