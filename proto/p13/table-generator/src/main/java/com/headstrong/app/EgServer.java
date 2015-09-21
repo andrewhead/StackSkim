@@ -21,6 +21,7 @@ import net.sf.jsqlparser.expression.Expression;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 
 
 public class EgServer {
@@ -64,15 +65,32 @@ public class EgServer {
         truthTable.evaluate();
 
         // Get expression conditions for selected and 'almost selected' rows
-        ArrayList<Evaluation> evaluations = new ArrayList<Evaluation>();
-        evaluations.addAll(truthTable.getTrueEvaluations());
-        evaluations.addAll(truthTable.getOneOffEvaluations());
+        ArrayList<Evaluation> relevantEvaluations = new ArrayList<Evaluation>();
+        ArrayList<Evaluation> selectedEvaluations = truthTable.getTrueEvaluations();
+        relevantEvaluations.addAll(selectedEvaluations);
+        relevantEvaluations.addAll(truthTable.getOneOffEvaluations());
+
+        // Serialize table into Json
+        Gson gson = new GsonBuilder()
+            .registerTypeAdapter(EgTable.class, new EgTableSerializer())
+            .registerTypeAdapter(EgRow.class, new EgRowSerializer())
+            .create();
+
+        EgTable startTable = buildTableForEvaluations(leafExpressions, relevantEvaluations);
+        EgTable selectedTable = buildTableForEvaluations(leafExpressions, selectedEvaluations);
+
+        Object tables = new Tables(startTable, selectedTable);
+        return gson.toJson(tables);
+    }
+
+    static EgTable buildTableForEvaluations(ArrayList<EgExpression> expressions, 
+            ArrayList<Evaluation> evaluations) {
 
         // Get ordered list of names of columns used in expressions
         ArrayList<String> expressionColumnNames = new ArrayList<String>();
         ColumnNameFinder colNameFinder = new ColumnNameFinder();
         if (evaluations.size() > 0) {
-            for (EgExpression expr:leafExpressions) {
+            for (EgExpression expr:expressions) {
                 String name = colNameFinder.getName(expr.getJsqlParserExpression());
                 expressionColumnNames.add(name);
             }
@@ -82,7 +100,7 @@ public class EgServer {
         ArrayList<ColumnType> expressionColumnTypes = new ArrayList<ColumnType>();
         ColumnTypeFinder colTypeFinder = new ColumnTypeFinder();
         for (String colName:expressionColumnNames) {
-            ColumnType colType = colTypeFinder.getType(colName, leafExpressions);
+            ColumnType colType = colTypeFinder.getType(colName, expressions);
             expressionColumnTypes.add(colType);
         }
 
@@ -92,8 +110,8 @@ public class EgServer {
         for (Evaluation eval:evaluations) {
             ArrayList<Object> cells = new ArrayList<Object>();
             ArrayList<Boolean> inputValues = eval.getValues();
-            for (int i = 0; i < leafExpressions.size(); i++) {
-                EgExpression expr = leafExpressions.get(i);
+            for (int i = 0; i < expressions.size(); i++) {
+                EgExpression expr = expressions.get(i);
                 Expression jsqlExpression = expr.getJsqlParserExpression();
                 boolean input = inputValues.get(i).booleanValue();
                 Object data = dataGenerator.generateData(jsqlExpression, input);
@@ -106,11 +124,19 @@ public class EgServer {
             table.addRow(row);
         }
 
-        Gson gson = new GsonBuilder()
-            .registerTypeAdapter(EgTable.class, new EgTableSerializer())
-            .registerTypeAdapter(EgRow.class, new EgRowSerializer())
-            .create();
-        return gson.toJson(table);
+        return table;
+    }
+
+    /**
+     * Container of the two types of tables we want to return
+     */
+    static class Tables {
+        private EgTable original;
+        private EgTable selected;
+        public Tables(EgTable originalTable, EgTable selectedTable) {
+            this.original = originalTable;
+            this.selected = selectedTable;
+        }
     }
 
     static class QueryHandler implements HttpHandler {
