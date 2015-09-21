@@ -22,11 +22,15 @@ public class EgRowSerializerTest extends TestCase {
     }
 
     public void testSerializeRow() {
-        EgRow row = new EgRow(Arrays.asList("col1", "col2"), 1, "msg1");
+        EgRow row = new EgRow(Arrays.asList("col1", "col2"),
+            new EgCell(1, true), new EgCell("msg1", false));
         Gson gson = new GsonBuilder()
             .registerTypeAdapter(EgRow.class, new EgRowSerializer())
+            .registerTypeAdapter(EgCell.class, new EgCellSerializer())
             .create();
-        assertEquals("[1,\"msg1\"]", gson.toJson(row));
+        assertEquals(
+            "[{\"data\":1,\"satisfies\":true},{\"data\":\"msg1\",\"satisfies\":false}]",
+            gson.toJson(row));
     }
 
 }

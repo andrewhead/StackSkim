@@ -9,27 +9,35 @@ import java.util.HashMap;
 public class EgRow {
 
     List<String> mColumnNames;
-    List<Object> mCells;
+    List<EgCell> mCells;
     HashMap<String, Object> mMap = new HashMap<String, Object>();
 
-    public EgRow(List<String> columnNames, Object... cells) {
+    public EgRow(List<String> columnNames, EgCell... cells) {
         mColumnNames = columnNames;
         mCells = Arrays.asList(cells);
         for (int i = 0; i < mColumnNames.size(); i++) {
-            mMap.put(mColumnNames.get(i), mCells.get(i));
+            mMap.put(mColumnNames.get(i), mCells.get(i).getData());
         }
     }
 
-    public List<Object> getCells() {
+    public List<EgCell> getCells() {
         return mCells;
     }
 
+    public List<Object> getData() {
+        List<Object> data = new ArrayList<Object>();
+        for (EgCell cell:mCells) {
+            data.add(cell.getData());
+        }
+        return data;
+    }
+
     public long getLong(int cellIndex) {
-        return (Long) mCells.get(cellIndex);
+        return (Long) mCells.get(cellIndex).getData();
     }
 
     public String getString(int cellIndex) {
-        return (String) mCells.get(cellIndex);
+        return (String) mCells.get(cellIndex).getData();
     }
 
     public long getLong(String columnName) {

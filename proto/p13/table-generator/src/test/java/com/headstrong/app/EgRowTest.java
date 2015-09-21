@@ -20,7 +20,8 @@ public class EgRowTest extends TestCase {
     private EgRow buildTestRow() {
         return new EgRow(
             Arrays.asList("col1", "col2"),
-            (long)1, "msg1"
+            new EgCell((long)1, false),
+            new EgCell("msg1", false)
         );
     }
 

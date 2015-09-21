@@ -32,6 +32,14 @@ td {
   padding: 5px 20px;
 }
 
+tr.hovered td {
+  background-color: #ddddff;
+}
+
+tr.hovered td.violation {
+  background-color: #ffbbbb;
+}
+
 table tr:nth-child(even) {
   background-color: #e0e0e0;
 }

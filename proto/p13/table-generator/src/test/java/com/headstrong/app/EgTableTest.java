@@ -23,10 +23,10 @@ public class EgTableTest extends TestCase {
         List<String> columnNames = Arrays.asList("col1", "col2");
         List<ColumnType> columnTypes = Arrays.asList(ColumnType.LONG, ColumnType.STRING);
         EgTable table = new EgTable(columnNames, columnTypes);
-        table.addRow(new EgRow(columnNames, 1, "msg1"));
-        table.addRow(new EgRow(columnNames, 2, "msg2"));
-        assertEquals(Arrays.asList(1, "msg1"), table.getRow(0).getCells());
-        assertEquals(Arrays.asList(2, "msg2"), table.getRow(1).getCells());
+        table.addRow(new EgRow(columnNames, new EgCell(1, false), new EgCell("msg1", true)));
+        table.addRow(new EgRow(columnNames, new EgCell(2, true), new EgCell("msg2", false)));
+        assertEquals(Arrays.asList(1, "msg1"), table.getRow(0).getData());
+        assertEquals(Arrays.asList(2, "msg2"), table.getRow(1).getData());
     }
 
 }

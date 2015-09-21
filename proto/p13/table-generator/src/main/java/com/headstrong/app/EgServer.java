@@ -74,6 +74,7 @@ public class EgServer {
         Gson gson = new GsonBuilder()
             .registerTypeAdapter(EgTable.class, new EgTableSerializer())
             .registerTypeAdapter(EgRow.class, new EgRowSerializer())
+            .registerTypeAdapter(EgCell.class, new EgCellSerializer())
             .create();
 
         EgTable startTable = buildTableForEvaluations(leafExpressions, relevantEvaluations);
@@ -108,16 +109,18 @@ public class EgServer {
         ArrayList<EgRow> rows = new ArrayList<EgRow>();
         DataGenerator dataGenerator = new DataGenerator();
         for (Evaluation eval:evaluations) {
-            ArrayList<Object> cells = new ArrayList<Object>();
+            ArrayList<EgCell> cells = new ArrayList<EgCell>();
             ArrayList<Boolean> inputValues = eval.getValues();
             for (int i = 0; i < expressions.size(); i++) {
                 EgExpression expr = expressions.get(i);
                 Expression jsqlExpression = expr.getJsqlParserExpression();
                 boolean input = inputValues.get(i).booleanValue();
                 Object data = dataGenerator.generateData(jsqlExpression, input);
-                cells.add(data);
+                cells.add(new EgCell(data, input));
             }
-            rows.add(new EgRow(expressionColumnNames, cells.toArray()));
+            EgCell[] cellArray = new EgCell[cells.size()];
+            cells.toArray(cellArray);
+            rows.add(new EgRow(expressionColumnNames, cellArray));
         }
         EgTable table = new EgTable(expressionColumnNames, expressionColumnTypes);
         for (EgRow row:rows) {
