@@ -4,7 +4,11 @@
         "target": "System.out.println(\"Hello world\");"
     },
     {
-        "source": "head",
-        "target": "hedd"
+        "source": "Anna Mullin",
+        "target": "Superb God"
+    },
+    {
+        "source": "python Driver.java",
+        "target": "javac Driver.java && java Driver"
     }
 ]

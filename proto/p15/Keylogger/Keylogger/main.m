@@ -20,10 +20,12 @@
 // It's too late to be thorough in the reading
 @interface KeyPressData : NSObject {
     NSMutableArray *keyPresses;
+    NSMutableArray *shiftPositions;
     NSArray *rules;
     bool shiftDown;
 }
 @property(nonatomic, readwrite) NSMutableArray *keyPresses;
+@property(nonatomic, readwrite) NSMutableArray *shiftPositions;
 @property(nonatomic, readwrite) NSArray *rules;
 @property(nonatomic, readwrite) bool shiftDown;
 @end
@@ -31,6 +33,7 @@
 @implementation KeyPressData
 
 @synthesize keyPresses;
+@synthesize shiftPositions;
 @synthesize rules;
 @synthesize shiftDown;
 
@@ -41,6 +44,44 @@
 }
 
 @end
+
+char upperCase(char c) {
+    if (c >= 97 && c <= 122) {
+        return toupper(c);
+    } else if (c == '\'') {
+        return '"';
+    } else if (c == '1') {
+        return '!';
+    } else if (c == '7') {
+        return '&';
+    } else if (c == '9') {
+        return '(';
+    } else if (c == '0') {
+        return ')';
+    }
+    return c;
+}
+
+char lowerCase(char c) {
+    if (c >= 65 && c <= 90) {
+        return tolower(c);
+    } else if (c == '!') {
+        return '1';
+    } else if (c == '&') {
+        return '7';
+    } else if (c == '(') {
+        return '9';
+    } else if (c == ')') {
+        return '0';
+    } else if (c == '"') {
+        return '\'';
+    }
+    return c;
+}
+
+bool needsShift(char c) {
+    return !(c == lowerCase(c));
+}
 
 char getKeyChar(int keyCode) {
     if (keyCode == kVK_ANSI_A) {
@@ -97,15 +138,26 @@ char getKeyChar(int keyCode) {
         return 'z';
     } else if (keyCode == kVK_Space) {
         return ' ';
-    } else if (keyCode == kVK_ANSI_Quote) {
-        return '"';
+    } else if (keyCode == kVK_ANSI_Semicolon) {
+        return ';';
+    } else if (keyCode == kVK_ANSI_Period) {
+        return '.';
+    }else if (keyCode == kVK_ANSI_Quote) {
+        return '\'';
+    } else if (keyCode == kVK_ANSI_0) {
+        return '0';
     } else if (keyCode == kVK_ANSI_1) {
         return '1';
+    } else if (keyCode == kVK_ANSI_7) {
+        return '7';
+    } else if (keyCode == kVK_ANSI_9) {
+        return '9';
     }
     return -1;
 }
 
 int getKeyCode(char c) {
+    c = tolower(c);
     if (c == 'a') {
         return kVK_ANSI_A;
     } else if (c == 'b') {
@@ -160,10 +212,20 @@ int getKeyCode(char c) {
         return kVK_ANSI_Z;
     } else if (c == ' ') {
         return kVK_Space;
-    } else if (c == '"') {
+    } else if (c == ';') {
+        return kVK_ANSI_Semicolon;
+    } else if (c == '.') {
+        return kVK_ANSI_Period;
+    } else if (c == '\'') {
         return kVK_ANSI_Quote;
+    } else if (c == '0') {
+        return kVK_ANSI_0;
     } else if (c == '1') {
         return kVK_ANSI_1;
+    } else if (c == '7') {
+        return kVK_ANSI_7;
+    }else if (c == '9') {
+        return kVK_ANSI_9;
     }
     return -1;
 }
@@ -192,10 +254,21 @@ CGEventRef logKey(CGEventTapProxy proxy, CGEventType type, CGEventRef ref, void 
     
     KeyPressData *kpData = (__bridge KeyPressData*)refcon;
     NSMutableArray *keyArray = kpData.keyPresses;
+    NSMutableArray *shiftPositions = kpData.shiftPositions;
     NSArray *rules = kpData.rules;
-    
+
     int keyCode = (int) CGEventGetIntegerValueField(ref, kCGKeyboardEventKeycode);
+    
+    // Ignore the following types of events:
+    // * key ups
+    // * special keys (shift, etc.)
+    if (type == kCGEventKeyUp | type == kCGEventFlagsChanged) {
+        return ref;
+    }
+
+    bool shiftDown = CGEventSourceKeyState(kCGEventSourceStateHIDSystemState, kVK_Shift);
     [keyArray addObject:[NSNumber numberWithInteger:keyCode]];
+    [shiftPositions addObject:[NSNumber numberWithBool:shiftDown]];
     
     int leftIdx = findKeycode(keyArray, kVK_ANSI_LeftBracket);
     if (leftIdx != -1) {
@@ -208,34 +281,68 @@ CGEventRef logKey(CGEventTapProxy proxy, CGEventType type, CGEventRef ref, void 
             range.location = leftIdx + 1;
             range.length = rightIdx - leftIdx - 1;
             NSMutableString *msg = [[NSMutableString alloc] init];
+            bool ruleFound = false;
             
+            // Synthesize the string that was typed
             keysBetween = [keyArray subarrayWithRange:range];
-            for (NSNumber *num in keysBetween) {
-                char c = getKeyChar((int)[num intValue]);
+            [keysBetween enumerateObjectsUsingBlock:^(id obj, NSUInteger index, BOOL * stop) {
+                char c = getKeyChar((int)[obj intValue]);
+                if ([[shiftPositions objectAtIndex:range.location + index] boolValue]) {
+                    c = upperCase(c);
+                }
                 [msg appendFormat:@"%c", c];
-            }
+            } ];
             
             for (NSDictionary *rule in rules) {
+                
                 if ([[rule objectForKey:@"source"] compare:msg] == NSOrderedSame) {
                     
+                    ruleFound = true;
+                    
                     // Delete the number of characters that were in the source pattern
-                    for (int i = 0; i < (int)[msg length]; i++) {
-                        CGEventRef deleteEvent = CGEventCreateKeyboardEvent(NULL, kVK_Delete, true);
-                        CGEventTapPostEvent(proxy, deleteEvent);
+                    // in addition to the left bracket
+                    for (int i = 0; i < (int)[msg length] + 1; i++) {
+                        CGEventTapPostEvent(proxy, CGEventCreateKeyboardEvent(NULL, kVK_Delete, true));
+                        CGEventTapPostEvent(proxy, CGEventCreateKeyboardEvent(NULL, kVK_Delete, false));
                     }
                     
                     // Generate all of the characters in the target pattern
                     NSString *target = [rule objectForKey:@"target"];
+                    // NSLog(@"Target: %@", target);
                     const char* targetCStr = [target cStringUsingEncoding:NSASCIIStringEncoding];
                     for (int i = 0; i < strlen(targetCStr); i++) {
-                         CGEventRef keyEvent = CGEventCreateKeyboardEvent(NULL, getKeyCode(targetCStr[i]), true);
-                         CGEventTapPostEvent(proxy, keyEvent);
+                        
+                        char c = targetCStr[i];
+
+                        // Then, send the key event
+                        // Flag for whether to hold down shift
+                        CGEventFlags flags = 0;
+                        if (needsShift(c)) {
+                            flags = flags | kCGEventFlagMaskShift;
+                        }
+                        int keyCode = getKeyCode(lowerCase(c));
+                        // Key down
+                        CGEventRef downEvent = CGEventCreateKeyboardEvent(NULL, keyCode, true);
+                        CGEventSetFlags(downEvent, flags);
+                        CGEventTapPostEvent(proxy, downEvent);
+                        // Key up
+                        CGEventRef upEvent = CGEventCreateKeyboardEvent(NULL, keyCode, false);
+                        CGEventSetFlags(upEvent, flags);
+                        CGEventTapPostEvent(proxy, upEvent);
                     }
 
                 }
             }
-            NSLog(@"%@", msg);
+            
+            // NSLog(@"Source: %@", msg);
+            
+            // Clear out past keys and shift positions -- start fresh with the next keys
             [keyArray removeAllObjects];
+            [shiftPositions removeAllObjects];
+            if (ruleFound) {
+                return nil;
+            }
+            
         }
         
     }
@@ -245,8 +352,6 @@ CGEventRef logKey(CGEventTapProxy proxy, CGEventType type, CGEventRef ref, void 
 }
 
 int main(int argc, const char * argv[]) {
-
-    NSMutableArray *arr = [NSMutableArray array];
 
     // TODO: replace this with a path to a resource instead of a full path to this rules file
     NSInputStream *inStream = [[NSInputStream alloc] initWithFileAtPath:@"/Users/andrew/Adventures/design/code/research/proto/p15/Keylogger/Keylogger/rules.json"];
@@ -259,12 +364,15 @@ int main(int argc, const char * argv[]) {
     inStream = nil;
     
     KeyPressData *kpData = [[KeyPressData alloc] init];
-    kpData.keyPresses = arr;
+    kpData.keyPresses = [NSMutableArray array];
+    kpData.shiftPositions = [NSMutableArray array];
     kpData.rules = rules;
     void *kpDataPtr = (__bridge void*) kpData;
     
     // Listen for key down events
-    CGEventMask mask = CGEventMaskBit(kCGEventKeyDown) | CGEventMaskBit(kCGEventKeyUp);
+    CGEventMask mask = CGEventMaskBit(kCGEventKeyDown) |
+        CGEventMaskBit(kCGEventKeyUp) |
+        CGEventMaskBit(kCGEventFlagsChanged);
     
     // Create an event tap that
     // * listens for HID events before they enter the window server
