@@ -1,7 +1,7 @@
 [
     {
-        "source": "andrew",
-        "target": "andru"
+        "source": "print \"Hello world!\"",
+        "target": "System.out.println(\"Hello world\");"
     },
     {
         "source": "head",
