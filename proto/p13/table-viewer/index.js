@@ -2,7 +2,7 @@ var $ = require("jquery");
 var d3 = require("d3");
 
 
-function addTable(selector, spec) {
+function buildTable(selector, spec) {
 
     // Clear previous table
     var div = $(selector);
@@ -12,7 +12,6 @@ function addTable(selector, spec) {
     var firstRow = $("<tr>");
     table.append(tbody);
     div.append(table);
-    tbody.append(firstRow);
 
     d3.select(firstRow[0]).selectAll('th')
         .data(spec.columnNames)
@@ -31,7 +30,9 @@ function addTable(selector, spec) {
             d3.select(this).classed("hovered", false);
         })
         .selectAll("td")
-          .data(function(d) { return d; })
+          .data(function(d) { 
+              return d; 
+          })
           .enter()
             .append("td")
             .text(function(d) { return d.data; })
@@ -39,8 +40,24 @@ function addTable(selector, spec) {
                 return (d.satisfies === false);
             });
 
+    // Add the header only after all data rows have been added to the table
+    tbody.prepend(firstRow);
+
 }
 
+/*
+function selectColumns(selector, columnNames) {
+
+    var selectedColIndexes = [];
+    d3.select(selector).select("tr")
+      .each(function(d, i) {
+
+      });
+
+    d3.select(selector).selectAll("tr");
+
+}
+*/
 
 $(function() {
 
@@ -53,8 +70,8 @@ $(function() {
             contentType: "application/json",
             success: function (tableSpec) {
                 $('div.table_cont').css('display', 'block');
-                addTable('div.start_table_cont', tableSpec.original);
-                addTable('div.selected_table_cont', tableSpec.selected);
+                buildTable('div.start_table_cont', tableSpec.original);
+                buildTable('div.selected_table_cont', tableSpec.selected);
             }
         });
     });
