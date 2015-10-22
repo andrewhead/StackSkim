@@ -48,8 +48,20 @@
 char upperCase(char c) {
     if (c >= 97 && c <= 122) {
         return toupper(c);
+    } else if (c == ',') {
+        return '<';
+    } else if (c == '.') {
+        return '>';
+    } else if (c == ';') {
+        return ':';
     } else if (c == '\'') {
         return '"';
+    } else if (c == '[') {
+        return '{';
+    } else if (c == ']') {
+        return '}';
+    } else if (c == '-') {
+        return '_';
     } else if (c == '1') {
         return '!';
     } else if (c == '7') {
@@ -65,6 +77,12 @@ char upperCase(char c) {
 char lowerCase(char c) {
     if (c >= 65 && c <= 90) {
         return tolower(c);
+    } else if (c == '<') {
+        return ',';
+    } else if (c == '>') {
+        return '.';
+    } else if (c == ':') {
+        return ';';
     } else if (c == '!') {
         return '1';
     } else if (c == '&') {
@@ -75,6 +93,12 @@ char lowerCase(char c) {
         return '0';
     } else if (c == '"') {
         return '\'';
+    } else if (c == '{') {
+        return '[';
+    } else if (c == '}') {
+        return ']';
+    } else if (c == '_') {
+        return '-';
     }
     return c;
 }
@@ -138,18 +162,46 @@ char getKeyChar(int keyCode) {
         return 'z';
     } else if (keyCode == kVK_Space) {
         return ' ';
+    } else if (keyCode == kVK_Tab) {
+        return '\t';
+    } else if (keyCode == kVK_Return) {
+        return '\n';
     } else if (keyCode == kVK_ANSI_Semicolon) {
         return ';';
+    } else if (keyCode == kVK_ANSI_Comma) {
+        return ',';
     } else if (keyCode == kVK_ANSI_Period) {
         return '.';
-    }else if (keyCode == kVK_ANSI_Quote) {
+    } else if (keyCode == kVK_ANSI_Slash) {
+        return '/';
+    } else if (keyCode == kVK_ANSI_Quote) {
         return '\'';
+    } else if (keyCode == kVK_ANSI_LeftBracket) {
+        return '[';
+    } else if (keyCode == kVK_ANSI_RightBracket) {
+        return ']';
+    } else if (keyCode == kVK_ANSI_Minus) {
+        return '-';
+    } else if (keyCode == kVK_ANSI_Equal) {
+        return '=';
     } else if (keyCode == kVK_ANSI_0) {
         return '0';
     } else if (keyCode == kVK_ANSI_1) {
         return '1';
+    } else if (keyCode == kVK_ANSI_2) {
+        return '2';
+    } else if (keyCode == kVK_ANSI_3) {
+        return '3';
+    } else if (keyCode == kVK_ANSI_4) {
+        return '4';
+    } else if (keyCode == kVK_ANSI_5) {
+        return '5';
+    } else if (keyCode == kVK_ANSI_6) {
+        return '6';
     } else if (keyCode == kVK_ANSI_7) {
         return '7';
+    } else if (keyCode == kVK_ANSI_8) {
+        return '8';
     } else if (keyCode == kVK_ANSI_9) {
         return '9';
     }
@@ -212,25 +264,53 @@ int getKeyCode(char c) {
         return kVK_ANSI_Z;
     } else if (c == ' ') {
         return kVK_Space;
+    } else if (c == '\t') {
+        return kVK_Tab;
+    } else if (c == '\n') {
+        return kVK_Return;
     } else if (c == ';') {
         return kVK_ANSI_Semicolon;
+    } else if (c == ',') {
+        return kVK_ANSI_Comma;
     } else if (c == '.') {
         return kVK_ANSI_Period;
+    } else if (c == '/') {
+        return kVK_ANSI_Slash;
     } else if (c == '\'') {
         return kVK_ANSI_Quote;
+    } else if (c == '[') {
+        return kVK_ANSI_LeftBracket;
+    } else if (c == ']') {
+        return kVK_ANSI_RightBracket;
+    } else if (c == '-') {
+        return kVK_ANSI_Minus;
+    } else if (c == '=') {
+        return kVK_ANSI_Equal;
     } else if (c == '0') {
         return kVK_ANSI_0;
     } else if (c == '1') {
         return kVK_ANSI_1;
+    } else if (c == '2') {
+        return kVK_ANSI_2;
+    } else if (c == '3') {
+        return kVK_ANSI_3;
+    } else if (c == '4') {
+        return kVK_ANSI_4;
+    } else if (c == '5') {
+        return kVK_ANSI_5;
+    } else if (c == '6') {
+        return kVK_ANSI_6;
     } else if (c == '7') {
         return kVK_ANSI_7;
-    }else if (c == '9') {
+    } else if (c == '8') {
+        return kVK_ANSI_8;
+    } else if (c == '9') {
         return kVK_ANSI_9;
     }
     return -1;
 }
 
-int findKeycodeAfterIndex(NSMutableArray *keyArray, int keyCode, int start) {
+int findKeycodeAfterIndex(NSArray *keyArray, int keyCode, int start) {
     
     int itemIndex = -1;
     int* itemIndexPtr = &itemIndex;
@@ -246,8 +326,80 @@ int findKeycodeAfterIndex(NSMutableArray *keyArray, int keyCode, int start) {
     
 }
 
-int findKeycode(NSMutableArray *keyArray, int keyCode) {
+int findKeycode(NSArray *keyArray, int keyCode) {
     return findKeycodeAfterIndex(keyArray, keyCode, -1);
+}
+
+bool getClosedRange(NSArray *keyArray, NSRange* range) {
+    int leftIndex = findKeycode(keyArray, kVK_ANSI_LeftBracket);
+    if (leftIndex != -1) {
+        int rightIndex = findKeycodeAfterIndex(keyArray, kVK_ANSI_RightBracket, leftIndex);
+        if (rightIndex != -1) {
+            range->location = leftIndex + 1;
+            range->length = rightIndex - leftIndex - 1;
+            return true;
+        }
+        return false;
+    }
+    return false;
+}
+
+void typeDelete(CGEventSourceRef src, CGEventTapProxy proxy, int count) {
+    // Delete the number of characters that were in the source pattern
+    // in addition to the left bracket
+    for (int i = 0; i < count; i++) {
+        CGEventRef downEvent = CGEventCreateKeyboardEvent(NULL, kVK_Delete, true);
+        CGEventTapPostEvent(proxy, downEvent);
+        CFRelease(downEvent);
+        CGEventRef upEvent = CGEventCreateKeyboardEvent(NULL, kVK_Delete, false);
+        CGEventTapPostEvent(proxy, upEvent);
+        CFRelease(upEvent);
+    }
+}
+
+void typeMessage(CGEventSourceRef src, CGEventTapProxy proxy, NSString *msg) {
+    
+    const char* targetCStr = [msg cStringUsingEncoding:NSASCIIStringEncoding];
+    
+    for (int i = 0; i < strlen(targetCStr); i++) {
+        
+        char c = targetCStr[i];
+        // Flag for whether to hold down shift
+        CGEventFlags flags = 0;
+        if (needsShift(c)) {
+            flags = flags | kCGEventFlagMaskShift;
+        }
+        int keyCode = getKeyCode(lowerCase(c));
+        
+        // Key down
+        CGEventRef downEvent = CGEventCreateKeyboardEvent(src, keyCode, true);
+        // CGEventSetFlags(downEvent, CGEventGetFlags(downEvent) | flags);
+        CGEventSetFlags(downEvent, flags);
+        CGEventTapPostEvent(proxy, downEvent);
+        CFRelease(downEvent);
+        
+        // Key up
+        CGEventRef upEvent = CGEventCreateKeyboardEvent(src, keyCode, false);
+        // CGEventSetFlags(upEvent, CGEventGetFlags(upEvent) | flags);
+        CGEventSetFlags(upEvent, flags);
+        CGEventTapPostEvent(proxy, upEvent);
+        CFRelease(upEvent);
+        
+    }
+    
+}
+
+// Synthesize message from sequence of key presses and shifts
+NSString* getMessage(NSArray *keyArray, NSArray *shiftArray) {
+    NSMutableString *msg = [[NSMutableString alloc] init];
+    [keyArray enumerateObjectsUsingBlock:^(id obj, NSUInteger index, BOOL * stop) {
+        char c = getKeyChar((int)[obj intValue]);
+        if ([[shiftArray objectAtIndex:index] boolValue]) {
+            c = upperCase(c);
+        }
+        [msg appendFormat:@"%c", c];
+    } ];
+    return msg;
 }
 
 CGEventRef logKey(CGEventTapProxy proxy, CGEventType type, CGEventRef ref, void *refcon) {
@@ -264,85 +416,90 @@ CGEventRef logKey(CGEventTapProxy proxy, CGEventType type, CGEventRef ref, void 
     // * special keys (shift, etc.)
     if (type == kCGEventKeyUp | type == kCGEventFlagsChanged) {
         return ref;
+    } else if (keyCode == kVK_Delete) {
+        if ([keyArray count] > 0) {
+            [keyArray removeLastObject];
+        }
+        if ([shiftPositions count] > 0) {
+            [shiftPositions removeLastObject];
+        }
+        return ref;
     }
 
     bool shiftDown = CGEventSourceKeyState(kCGEventSourceStateHIDSystemState, kVK_Shift);
     [keyArray addObject:[NSNumber numberWithInteger:keyCode]];
     [shiftPositions addObject:[NSNumber numberWithBool:shiftDown]];
     
-    int leftIdx = findKeycode(keyArray, kVK_ANSI_LeftBracket);
-    if (leftIdx != -1) {
+    // Search for a regular expression pattern that matches ours (in our case, let's look
+    // for {{ on either side, the same way that the Django templating engine does it,
+    // so that this hopefully adapts to most languages that use brackets for blocks
+    // The pattern will be pj {{ }}.  When we see this pattern, we get everythin inside
+    // as the message.
+
+    NSError *error = NULL;
+    NSString *MACRO = @"pj \\{\\{\\s*(.*?)\\s*\\}\\}";
+    NSRegularExpression *macroPatt = [NSRegularExpression regularExpressionWithPattern:MACRO options:NSRegularExpressionDotMatchesLineSeparators error:&error];
+    if (error != NULL) {
+        NSLog(@"Regex error: %@", error);
+    }
+    NSString *keyedMsg = getMessage(keyArray, shiftPositions);
+    NSArray *matches = [macroPatt matchesInString:keyedMsg options:0 range:NSMakeRange(0, [keyedMsg length])];
+    bool matchFound = (int)[matches count] >= 1;
+
+    if (matchFound) {
+
+        NSTextCheckingResult *match = [matches objectAtIndex:0];
+        NSRange msgRange = [match rangeAtIndex:1];
+        NSArray *keysBetween = [keyArray subarrayWithRange:msgRange];
+        NSArray *shiftsBetween = [shiftPositions subarrayWithRange:msgRange];
+        NSString *msg = getMessage(keysBetween, shiftsBetween);
         
-        int rightIdx = findKeycodeAfterIndex(keyArray, kVK_ANSI_RightBracket, leftIdx);
-        if (rightIdx != -1) {
- 
-            NSArray *keysBetween;
-            NSRange range;
-            range.location = leftIdx + 1;
-            range.length = rightIdx - leftIdx - 1;
-            NSMutableString *msg = [[NSMutableString alloc] init];
-            bool ruleFound = false;
+        // Look for a rule that matches and type it in if it's there
+        bool ruleFound = false;
+        for (NSDictionary *rule in rules) {
             
-            // Synthesize the string that was typed
-            keysBetween = [keyArray subarrayWithRange:range];
-            [keysBetween enumerateObjectsUsingBlock:^(id obj, NSUInteger index, BOOL * stop) {
-                char c = getKeyChar((int)[obj intValue]);
-                if ([[shiftPositions objectAtIndex:range.location + index] boolValue]) {
-                    c = upperCase(c);
-                }
-                [msg appendFormat:@"%c", c];
-            } ];
+            NSString *pattStr = [rule objectForKey:@"source"];
+            NSError *error = NULL;
+            NSRegularExpression *patt =
+                [[NSRegularExpression alloc] initWithPattern:pattStr options:0 error:&error];
+            if (error != NULL) {
+                NSLog(@"Error building source pattern: %@", error);
+            }
+            NSLog(@"Patt str: %@", pattStr);
             
-            for (NSDictionary *rule in rules) {
-                
-                if ([[rule objectForKey:@"source"] compare:msg] == NSOrderedSame) {
-                    
-                    ruleFound = true;
-                    
-                    // Delete the number of characters that were in the source pattern
-                    // in addition to the left bracket
-                    for (int i = 0; i < (int)[msg length] + 1; i++) {
-                        CGEventTapPostEvent(proxy, CGEventCreateKeyboardEvent(NULL, kVK_Delete, true));
-                        CGEventTapPostEvent(proxy, CGEventCreateKeyboardEvent(NULL, kVK_Delete, false));
-                    }
-                    
-                    // Generate all of the characters in the target pattern
-                    NSString *target = [rule objectForKey:@"target"];
-                    // NSLog(@"Target: %@", target);
-                    const char* targetCStr = [target cStringUsingEncoding:NSASCIIStringEncoding];
-                    for (int i = 0; i < strlen(targetCStr); i++) {
-                        
-                        char c = targetCStr[i];
-
-                        // Then, send the key event
-                        // Flag for whether to hold down shift
-                        CGEventFlags flags = 0;
-                        if (needsShift(c)) {
-                            flags = flags | kCGEventFlagMaskShift;
-                        }
-                        int keyCode = getKeyCode(lowerCase(c));
-                        // Key down
-                        CGEventRef downEvent = CGEventCreateKeyboardEvent(NULL, keyCode, true);
-                        CGEventSetFlags(downEvent, flags);
-                        CGEventTapPostEvent(proxy, downEvent);
-                        // Key up
-                        CGEventRef upEvent = CGEventCreateKeyboardEvent(NULL, keyCode, false);
-                        CGEventSetFlags(upEvent, flags);
-                        CGEventTapPostEvent(proxy, upEvent);
-                    }
-
+            if ((int)[patt numberOfMatchesInString:msg options:0 range:NSMakeRange(0, [msg length])] > 0) {
+                ruleFound = true;
+                NSLog(@"Match found: %@", pattStr);
+                NSObject *tmplObj = [rule objectForKey:@"target"];
+                // Templates can be specified as either strings, or arrays of lines (arrays of strings)
+                NSString *tmpl = @"";
+                if ([tmplObj isKindOfClass:[NSString class]]) {
+                    tmpl = (NSString*)tmplObj;
+                } else if ([tmplObj isKindOfClass:[NSArray class]]) {
+                    tmpl = [(NSArray*)tmplObj componentsJoinedByString:@"\n"];
                 }
+                NSString *target = [patt stringByReplacingMatchesInString:msg options:0
+                    range:NSMakeRange(0, [msg length]) withTemplate:tmpl];
+                // NSLog(@"Replace with: %@", target);
+                CGEventSourceRef src = CGEventSourceCreate(kCGEventSourceStateHIDSystemState);
+                // Delete one fewer characters than macro match length, as the last character of
+                // the macro will never be passed on my this event tap
+                int charsToDelete = (int)[match range].length - 1;
+                typeDelete(src, proxy, charsToDelete);
+                typeMessage(src, proxy, target);
+                CFRelease(src);
+                break;
             }
             
-            // NSLog(@"Source: %@", msg);
-            
-            // Clear out past keys and shift positions -- start fresh with the next keys
-            [keyArray removeAllObjects];
-            [shiftPositions removeAllObjects];
-            if (ruleFound) {
-                return nil;
-            }
-            
+        }
+        
+        // Clear out the stored keys so we start fresh with the next bracket
+        [keyArray removeAllObjects];
+        [shiftPositions removeAllObjects];
+        
+        // If a rule was matched, don't type the final bracket
+        if (ruleFound) {
+             return NULL;
         }
         
     }
@@ -351,14 +508,24 @@ CGEventRef logKey(CGEventTapProxy proxy, CGEventType type, CGEventRef ref, void 
     
 }
 
+// What we know about the current problem is
+// 1. Delete works fine for everything
+// 2. Writing additional characters for the input string appears to help flush things out (which would mean more characters to delete)
+// 3. There is no relationship between the number of char in either the input or the output string and whether it prints
+// 4. The phenomenon can be seen with plain ASCII characters
+// 5. It's not based on the total number of preceding characters types (as we can put spaces before the bracket and it doesn't help but spaces inside of the braces sometimes do)
+
 int main(int argc, const char * argv[]) {
 
     // TODO: replace this with a path to a resource instead of a full path to this rules file
     NSInputStream *inStream = [[NSInputStream alloc] initWithFileAtPath:@"/Users/andrew/Adventures/design/code/research/proto/p15/Keylogger/Keylogger/rules.json"];
     [inStream open];
 
-    NSError *jsonError;
+    NSError *jsonError = NULL;
     NSArray *rules = [NSJSONSerialization JSONObjectWithStream:inStream options:0 error:&jsonError];
+    if (jsonError != NULL) {
+        NSLog(@"JSON reading error: %@", jsonError);
+    }
     
     [inStream close];
     inStream = nil;
@@ -386,6 +553,7 @@ int main(int argc, const char * argv[]) {
         mask,
         &logKey,
         kpDataPtr);
+    CGEventTapEnable(portRef, true);
     
     CFRunLoopSourceRef sourceRef = CFMachPortCreateRunLoopSource(
         kCFAllocatorDefault,
@@ -402,10 +570,6 @@ int main(int argc, const char * argv[]) {
     
     // Look up what CFRunLoopRun does, going forward
     CFRunLoopRun();
-    
-    NSLog(@"Hello, World!");
-    
-    while (true) {}
     
     return 0;
     

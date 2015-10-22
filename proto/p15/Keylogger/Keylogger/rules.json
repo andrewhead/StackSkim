@@ -1,14 +1,57 @@
 [
     {
-        "source": "print \"Hello world!\"",
-        "target": "System.out.println(\"Hello world\");"
+        "source": "print \"(.+?)\"",
+        "target": "System.out.println(\"$1\");"
     },
     {
-        "source": "Anna Mullin",
-        "target": "Superb God"
+        "source": "python (.+?)\\.java",
+        "target": "javac $1.java && java $1"
     },
     {
-        "source": "python Driver.java",
-        "target": "javac Driver.java && java Driver"
+        "source": "if __name__ == ['\"]__main__['\"]:\\n\\t\\w*\\(\\)\\s*",
+        "target": "// XXX: Make sure to rename this file \"Driver.java\" so it will compile.\npublic class Driver {\n\n\tpublic static void main(String [] args) {\n\t\t//Main code goes here\n\t}\n\n}"
+    },
+    {
+        "source": "with open\\(['\"](.+?)['\"]\\) as (.+?):\\n\\tprint (\\2).read\\(\\)",
+        "target": [
+            "// Paste these at the very top of your program in the list of import statements",
+            "import java.io.IOException;",
+            "import java.nio.file.Files;",
+            "import java.nio.file.Paths;",
+            "import java.nio.charset.StandardCharsets;",
+            "",
+            "String path = \"$1\";",
+            "byte[] encoded;",
+            "try {",
+            "   encoded = Files.readAllBytes(Paths.get(path));",
+            "} catch (IOException e) {",
+            "   encoded = null;",
+            "   // Handle possible file-reading exception here.",
+            "}",
+            "String content = new String(encoded, StandardCharsets.UTF_8);",
+            "System.out.println(content);"
+        ]
+    },
+    {
+        "source": "([^ ]+) = os.listdir\\(['\"](.+)['\"]\\)",
+        "target": [
+            "// Paste these import statements at the very top of your program in the list of import statements",
+            "import java.util.List;",
+            "import java.util.Arrays;",
+            "import java.io.File;",
+            "",
+            "File dir = new File(\"data/\");",
+            "List<String> files = Arrays.asList(dir.list());"
+        ]
+    },
+    {
+        "source": "for ([^ ]+) in ([^ ]+):\\n\\tpass",
+        "target": [
+            "// Replace \"Object\" here with the type that \"file\" is, if you want to treat it as that",
+            "// class instead of a generic Object.",
+            "for (Object $1:$2) {",
+            "    // Do something",
+            "}"
+        ]
     }
 ]
