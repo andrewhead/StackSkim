@@ -7,10 +7,15 @@ The server must be restarted every time a new evaluation is created for that to 
 
 # Planning
 
+* [Vision 3: Instructions for Effective Discovery and Assembly of Code for Beginning Systematic Software Development](planning/vis3)
+* [Vision 2: Abstracts Going Forward](planning/vis2)
 * [Vision 1: SQL Examples](planning/vis1)
+* [Examples 1: Good Examples of pages that containt Tutorons](planning/examples)
 
 # Evaluations
 
+* [Evaluation 53: Best features for clustering examples of programming primitives](eval/eval53)
+* [Evaluation 52: What Programming "Primitives" Can Programmers Recall?](eval/eval52)
 * [Evaluation 51: Understanding SQL Examples on the Web](eval/eval51)
 * [Evaluation 50: Using requests for automatic testing](eval/eval50)
 * [Evaluation 49: CSS Selector Parsing accuracy](eval/eval49)
@@ -20,6 +25,8 @@ The server must be restarted every time a new evaluation is created for that to 
 
 # Prototypes
 
+* [Prototype 16: Convert between languages using Online Example Code](proto/proto16)
+* [Prototype 15: Converting syntax trees between languages](proto/proto15)
 * [Prototype 13: Tables that SQL queries operate one](proto/proto13)
 * [Prototype 12: Wrapper around Regexper Server](proto/proto12)
 * [Prototype 11: Getting Regexper to run on a server](proto/proto11)

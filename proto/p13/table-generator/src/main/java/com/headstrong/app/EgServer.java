@@ -80,7 +80,7 @@ public class EgServer {
         EgTable startTable = buildTableForEvaluations(leafExpressions, relevantEvaluations);
         EgTable selectedTable = buildTableForEvaluations(leafExpressions, selectedEvaluations);
 
-        Object tables = new Tables(startTable, selectedTable);
+        Object tables = new Tables(columnNames, startTable, selectedTable);
         return gson.toJson(tables);
     }
 
@@ -131,12 +131,15 @@ public class EgServer {
     }
 
     /**
-     * Container of the two types of tables we want to return
+     * Container for the data we want to return
      */
     static class Tables {
+        private ArrayList<String> selectColumns;
         private EgTable original;
         private EgTable selected;
-        public Tables(EgTable originalTable, EgTable selectedTable) {
+        public Tables(ArrayList<String> selectColumns, EgTable originalTable,
+            EgTable selectedTable) {
+            this.selectColumns = selectColumns;
             this.original = originalTable;
             this.selected = selectedTable;
         }

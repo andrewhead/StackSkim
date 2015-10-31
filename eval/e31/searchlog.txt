@@ -744,3 +744,417 @@ pass equals in url parameter value
 encode equals url get parameter
 unsupportedencodingexception
 arrays.toArray
+invalid version 0.1
+browserify 
+gulp browserify
+gulp.src
+font-family helvetica css
+get ajax jquery
+jquery.get cross-domain
+string split java
+json missing ; before statement
+cross-origin different port
+java server allow cross-domain
+java sun httpserver cross-domain
+jsonp jquery
+jsonp callback is not defined
+append jquery
+tighten spacing in html table
+center table within div
+order of positional arguments css padding
+gson jsonobject
+define new class inline java
+columns css
+css display attribute
+jquery remove
+jquery.select
+div default display value css
+jsqlparser java
+jsqlparser github
+sql operator precedence
+ccjsqlparser
+trying to understand the operator associativity for AND and OR in JSqlParser for the CC file for the SQL parser.  Would be great to have some Tutorons
+highlight violators
+npm d3
+arraylist toArray
+style d3
+arraylist to array java
+comment out property css
+border on inside of row not outside css
+border-style
+html border adds to width of table
+html border makes table wider
+Anca -- is this lecture 5 or 8?
+tabular latex
+booktabs head row
+thead command sequence not found
+thead command not found latex
+itemize inside table latex
+pf config osx port forwarding
+pfctl list forwarding rules
+rdr any port osx
+virtualbox port forward osx vboxmanage
+rdr osx 192 localhost
+find which brew package installed a file
+imperative vs. declarative programming
+is html declarative or imperative
+command not found subfloat
+newline markdown
+vim range including end of file
+breakindent vim
+get open port osx
+sed match parentheses
+check i in range sh
+for i in range bash
+maximum tcp port osx
+compare integer to variable bash
+check if item in list bash
+if not regex match bash
+get absolute path of file osx terminal
+reset setting ifconfig interface osx
+ruler doesn't show in vim with set ruler
+vim ruler not showing
+svg in keynote
+command bibfont already defined
+subfigure alternatives latex
+linewidth undefined
+linewidth latex wiki
+parbox linewidth latex
+printbibliography styel
+printbibliography ieeetrans style
+bibliography style latex ieeetrans
+printbibliography bibliographystyle
+latex bibliography omit doi
+biblatex package
+no line break before items latex
+edit as new gmail
+https cors
+selenium take screenshot of browser
+save_screenshot selenium webdriver
+python crop image
+pil edit image
+pillow open image
+keynote crop video
+how to program a keylogger on osx
+osx applicationservices
+github os x keylogger
+html ignore all styles from stylesheet
+dot regular expression
+python regulare expressions
+python regular expressions
+string python
+python regex negate character class
+itertools product
+import mutually two modules Python
+import multi-part module as shorter name
+import module from subpackage python
+go back in vim buffer
+vim previous access previous yank
+foreach django template
+random.shuffle
+multi-column list html
+re.match
+clear existing styles css
+font-weight css
+wait until css is finished applying jquery
+css all except
+all but property css
+jquery force repaint
+css left applied late
+jquery delay
+left not applying to object firefox javascript css
+reapply left css
+can't reset 'left' of element css
+descendants jquery
+get width attribute jquery
+position default css
+window innerWidth
+position: absolute css
+window innerwidth without scrollbar
+can't set left property css
+premiere export each track separately
+premiere export each video track separately
+double dashes in HTML commend
+gradual scroll of webpage using jquery
+set page number html
+jquery animate
+w3 css3
+java read content of file into string
+java Paths API
+java api standardcharsets
+os.listdir Python
+list directory contents Java
+osx event tap
+EXC_BAD_ACCESS code=1 CFMachPortCreateRunLoopSource
+enable accessibility for app built in xcode
+enable accessibility for xcode app
+osx security & privacy enable xcode-built app
+xcode project enable accessibility
+xcode eventtap keyboard
+permissions to tap events os x xcode
+xcode event tap permissions
+github os x keylogger
+cgeventtapcreate returns null
+markdown insert image
+github os x keylogger
+nslog
+quartz key codes
+os x developers stack data structure
+string formatting os x
+nsmutablearray array of integers
+nsnumber
+casting with bridge os x
+objective-c __bridge
+nsarray check if it contains integer
+cfarray
+method overloading c
+nsmutablearray
+vw visualize model
+vowpal wabbit visualization
+visualize output from vowpal_wabbit
+model output vowpal_wabbit
+readable_model vw
+open input stream file ns os x
+nsinputstream
+nsdictionary
+collection os x mac developer library
+collections os x nsarray
+nsstring
+Tutorons would be helpful to recall the meaning of the message syntax for Objective-C, and to help me find how to print out an NSString
+string formatting os x
+working with nsinputstreams
+nsjsonserialization
+nserror
+Tutoron for telling us what fields we want to access on NSError
+nserror code 3840
+path from local source file os x
+file path mac developer library
+nsurl
+mac developer relative file path
+collections programming guide
+string formatting os x
+replace with upper case regular expression
+replace with upper case regular expression textmate
+textmate replace with newline
+objective-c define new data structure
+objective-c objects in struct
+define objective-c class with data only
+slice nsmutablearray
+nsarray
+nsmutablestring
+nsstring
+ns encoding ascii
+nsmutablestring
+append char to nsmutablestring
+nsdictionary
+nsstring comparison
+keyboard event backspace os x
+keyboard event backspace cgeventref
+nsarray of booleans
+upper-case ascii objective-c
+in c, upper case a character
+c library toupper
+listen for shift keyevent cgevent
+get whether key event was key down or key up
+get whether key event was key down or key up cgevent
+ascii codes
+json double quotes in string
+send shift event cgeventcreatekeyboardevent
+nsrange
+nil vs null objective-c
+return null instead of struct c
+nsrange
+ns regular expression matching
+key events sometimes silent osx
+cgkeyevent sometimes doesn't work silent
+osx cg keyboard event sometimes not posted
+cgeventtappostevent error
+events suppressed osx keyboard event
+cgeventtap ignoring return null
+cgeventtap not posting events
+flush out posted events mac developer
+cgeventtap write utf8 string
+cgeventtap write string
+maximum number of events to post cgeventtap
+split string over multiple lines json
+nsmutablearray
+cgeventtap all caps
+hbi what if a programming language taught you how to use it (different methods, their arguments, their best use cases) when you used it for the first time
+nsregularexpression
+nsregularexpression match captured group
+lookbehind capture groups nsregularexpression
+go to character position in file vim
+ns check object type
+join array into string ns
+file.readallbytes java
+latex decrease space before and after itemize latex
+go to character vim
+nsregularexpression
+jquery.insert
+move slide number keynote
+youtube-dl
+undefined control sequence sc bib
+printbibliography references name
+add note bibtex to document
+latex tilda
+bibtex mark to skip
+os x blend two photos
+grep as literal
+insert at last line tee
+tee append without adding newline
+sed replace last line
+sed insert newline
+add banner for github
+constrain image to height of text line html
+html img text height
+markdown table
+readlines python
+vw tutorial
+python random
+makedirs ox python
+python format float
+"could not send unlabeled data"
+active_interactor vw
+brew install vw
+undefined symbols "AllReduceSync" OS X vowpal wabbit
+git set repository master to tag
+active_interactor delegate library support not built in
+vowpal wabbit show iterations of model
+vowpal wabbit intermediate models
+save_per_pass
+vw get variable name for hash
+argparse python require
+arparse python require two options be presented together
+python os.copy
+python argparse arg with dash in name
+os check if dir exists
+python use path of caller
+file.readline
+plot without line python
+matplotlib set axis range
+subprocess.check_output
+set path for subprocess python
+os.environ python
+re.search
+latex within jupyter
+vw separate data
+vowpal wabbit separate data
+margin between subplots matplotlib
+vowpal wabbit separate data
+vowpal wabbit separable data
+markdown image
+embed image as set size markdown
+render django
+css style italics
+cols float left html
+nth-child css selector
+space between options in select css
+center label vertically in div
+div fill parent
+set height div to sibling height
+vertical-align css
+table rows different heights
+html table rows different heights ok
+space between rows of table
+center div on page css
+center verticaly div on page
+django template endfor
+set textarea initial text
+antlr4 visit terminal
+py4j pass python dictionary
+py4j maven
+maven point to local jar
+py4j maven
+maven build jar
+for loop django template
+jslint jquery $
+jquery cdn
+textarea events html
+ajax post
+403 ajax request to django server
+csrf_token django
+no cookies csrf request django
+django print all development setting
+return json django
+make textarea one line high css
+textarea the height of one line
+set placeholder jquery
+flush dns on mac
+supervisor.sock no such file
+wrap content on overflow html
+indent word wrap html
+csl-entry python html bibtex
+manage.py run script
+requests.get
+jquery .val get placeholder
+requests get page title
+:first-letter selector
+first-letter for span css
+python ast
+python lex
+python lexer
+python library lexer for python
+python ast
+python builtins
+lexer for tokenizing python
+tokenize python program
+readline
+readline python
+readline for string in Python
+python types of comments
+backreference python re
+re dot matches newline python
+jquery each
+jquery read session variable
+stringio get value
+jquery timer
+display as tooltip html
+get request IP django
+define model django
+datetimefield django
+jquery hide
+jquery post
+multiple tags one command ansible
+nginx ip address forwarded-for
+nginx forward ip address
+django-ip
+error creating new content types
+python no changes to model detected  django migration
+in javascript keyword
+nltk download ansible
+virtualenv ansible
+title only at top of page latex
+latex no page numbers
+accent command needs use of
+bibtex styles
+printbibliography with stylename
+biblatex acm style
+style acm not found
+printbibliography very short reference format
+biblatex cite undefined
+biblatex error: no driver found
+less space before printbibliography
+vertical space above printbibliography
+bibtex comment
+biblatex abbreviate first name
+get url of current page javascript
+"EOF in multi-line statement"
+python tokenize
+reduce top margin latex
+latex start figure numbering at 1 not 0.1
+latex figure 0.1
+latex put figure in corner
+make figure text tiny
+set bibliography size
+python indentation error tokenize
+tokenize exceptions.IndentationError
+tabnanny
+catch error when iterating python
+except multiple types of exceptions
+python regex
+peewee model classes
+peewee get_or_create
+input vs raw_input python
+sqlite describe table
+osx view sqlite3 database as table
+sqlite tableau
