@@ -4,7 +4,7 @@
 from __future__ import unicode_literals
 import logging
 import cache
-from bs4 import BeautifulSoup, Tag, NavigableString
+from bs4 import BeautifulSoup, Tag
 import tokenize
 import re
 from StringIO import StringIO
@@ -58,10 +58,17 @@ def extract_text(node, node_iterator):
                     return n.text
                 elif n.name in HEADER_TAGS:
                     return None
+            # The below conditions were originally put in place to detect description that occurred
+            # in a div directly before the code that did not appear in a div or p.  But I have found
+            # that it much more frequently selects code that appears in a tiny span in a preceding
+            # div or p, making the text descriptions that are scraped for a code example curt
+            # and irrelevant.  So we'll focus on just looking at text tags.
+            '''
             elif type(n) == NavigableString and is_text(unicode(n)):
                 parent_tags = [p.name for p in _parents(n) if hasattr(p, 'name')]
                 if not set(parent_tags).intersection(HEADER_TAGS + NONTEXT_TAGS):
                     return unicode(n)
+            '''
 
     return None
 
@@ -75,7 +82,7 @@ def extract_text_below(node):
 
 
 def extract_header_above(node):
-    for sib in node.previous_siblings:
+    for sib in node.previous_elements:
         if type(sib) == Tag and sib.name in HEADER_TAGS:
             return sib.text
     return None

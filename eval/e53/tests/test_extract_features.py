@@ -89,7 +89,7 @@ class TextCheckTest(unittest.TestCase):
         self.assertTrue(is_text("hello"))
 
 
-class TextExtractionTest(unittest.TestCase):
+class ExtractTextTest(unittest.TestCase):
 
     def test_get_text_above_from_p(self):
         code_node = get_code_node(
@@ -166,7 +166,7 @@ class TextExtractionTest(unittest.TestCase):
         text = extract_text_above(code_node)
         self.assertIsNone(text)
 
-    def test_get_text_above_from_string(self):
+    def test_do_not_get_text_above_from_plain_string_in_parent(self):
         code_node = get_code_node(
             "<html>",
             "  <body>",
@@ -175,7 +175,7 @@ class TextExtractionTest(unittest.TestCase):
             "</html>",
         )
         text = extract_text_above(code_node)
-        self.assertEqual(text, "Text before")
+        self.assertIsNone(text)
 
     '''
     As the next methods on extracting the text below a code node rely on the
@@ -240,6 +240,20 @@ class ExtractHeaderTest(unittest.TestCase):
             "    <h2>Header</h2>",
             "    <p>Text between</p>",
             "    <code>This is code</code>",
+            "  </body>",
+            "</html>",
+        )
+        text = extract_header_above(code_node)
+        self.assertEqual(text, "Header")
+
+    def test_get_header_from_aunt_node(self):
+        code_node = get_code_node(
+            "<html>",
+            "  <body>",
+            "    <h2>Header</h2>",
+            "    <div>",
+            "      <code>This is code</code>",
+            "    </div>",
             "  </body>",
             "</html>",
         )
