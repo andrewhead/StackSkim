@@ -7,6 +7,9 @@ The server must be restarted every time a new evaluation is created for that to 
 
 # Planning
 
+* [Vision 6: Brainstorms for Collaborative Work Projects](planning/vis6)
+* [Vision 5: Brainstorms for Growing Tutorons](planning/vis5)
+* [Planning 4: Brainstorms for User Interfaces](planning/vis4)
 * [Vision 3: Instructions for Effective Discovery and Assembly of Code for Beginning Systematic Software Development](planning/vis3)
 * [Vision 2: Abstracts Going Forward](planning/vis2)
 * [Vision 1: SQL Examples](planning/vis1)
@@ -14,6 +17,8 @@ The server must be restarted every time a new evaluation is created for that to 
 
 # Evaluations
 
+* [Evaluation 55: Programmers' Information Needs](eval/eval55)
+* [Evaluation 54: Why Makes Annotation Services Succeed and Fail?](eval/eval54)
 * [Evaluation 53: Best features for clustering examples of programming primitives](eval/eval53)
 * [Evaluation 52: What Programming "Primitives" Can Programmers Recall?](eval/eval52)
 * [Evaluation 51: Understanding SQL Examples on the Web](eval/eval51)

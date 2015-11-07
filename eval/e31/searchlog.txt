@@ -1158,3 +1158,21 @@ input vs raw_input python
 sqlite describe table
 osx view sqlite3 database as table
 sqlite tableau
+python cluster documents
+progressbar python
+python multivariate gaussian
+second-order least squares python
+python fit least-squares polynomial surface
+matplotlib contourf
+ipython notebook show image before raw_input
+show got an unexpected keyword argument block
+ipython notebook show plot and ask for input
+jupyter block=False
+jupyter show plot during computation
+ipython don't show pngs plotted
+display.clear_output
+np.mgrid
+numpy flatten
+matplotlib plot
+latex in ipython notebook
+workers addon
