@@ -1176,3 +1176,223 @@ numpy flatten
 matplotlib plot
 latex in ipython notebook
 workers addon
+lstsq python
+python constrained least squares
+fmin_slsqp
+l2-norm numpy
+n must not exceed M leastsq
+multivariate_normal
+numpy invert matrix
+leastsq with non-linear python
+scipy leastsq residuals stay the same
+scipy leastsq doesn't change parameters
+fit scipy expectation maximization
+python fit gaussian
+optimal parameters not found
+save fit even if runtimeerror scipy
+optimal results not found curve_fit scipy save current parameters
+maxfev scipy
+positive semidefinite matrix
+scipy max_fvel
+python scipy optimize
+python scipy optimize guide
+numpy square vector
+how to tell if 2x2 matrix is positive semidefinite
+Scipy GMM
+numpy.stack
+np.random.randn
+scipy fit a gaussian
+fit multivariate gaussian scipy
+latex glossary
+scipy optimize "invalid value encountered in divide"
+store link in git
+github versions of pull request
+github view previous version of pull request
+make a full web scraper with scrapy
+make a full web crawler with scrapy
+django startproject
+no module names security django
+jquery-ui
+vertical-align css
+django template resolve url
+space around text html button
+Gaussian mixture model scikit-learn
+python lightweight httpserver
+peewee getting started guide
+python calculator ui
+make directories with range of numbers unix
+python qt4
+pyside
+google docs center table
+jquery each
+javascript decimal to hex css
+to integer javascript
+strip javascript
+javascript console 200 lines of output
+no module named tkinter
+latex in harp server markdown
+markdown write asterisk
+monte carlo approximation
+scipy.optimize
+image.open.convert pil
+inverse of a scalar
+python nelder-mead
+nelder-mead simplex scipy
+nelder-mead 2d scipy
+nelder-mead python
+numpy.average
+with mock.patch
+mock patch raw_input
+enum34
+numpy comparison with delta
+python bayesian optimization
+svg properties
+d3 click and drag
+jshint unused positional argument
+jslint unparam
+d3 dragstart
+d3 sort
+display css property
+vertical align paragraph
+vertical-align html paragraph
+svg border
+bring item to front d3
+node d3
+d3 ajax
+jsonresponse django
+ajax post
+get list of data from d3 selection
+getlist dictionary python
+querydict getlist
+d3 exit
+check if all elements are true javascript
+cannot perform reduce with flexible type
+define django model
+np compare two vectors
+np clone array
+html set refresh interval
+refresh page every second
+peewee limit
+django limit
+border above table row
+center a table on a page
+columns css
+columns css float
+staticfiles django
+django static resolution in code
+center image in div
+center div on page
+center div without specifying width
+git submodule add
+firefox dns alias
+windows dns alias
+javascript array delete
+text anchor svg
+append text to rect svg
+append rect to g d3
+g attributes svg
+move text with rectangle d3
+stroke-width svg text
+listen for attribute change d3
+check if function javascript
+http ok response django
+number of digits django template
+json.dumps number of decimal points
+no lapack/blas resources found
+np.array
+np.array as flot
+create numpy array as float
+remove item from list python
+delete key from dict python
+np.float
+dictionary comparison with floating point precision python unittest
+save sqlite table from today!
+clear all keys from dictionary python
+text input value change listen jquery
+force jquery ui slider event
+set value of jquery slider
+rotate image by a few degrees osx
+split image into cells command line
+split image into cells command line imagemagick
+imagemagick segment image into cells
+imagemagick segment image
+imagemagick split image into grid
+resize image imagemagick
+process object has no attribute get_connections
+format integer two digits bash
+alfred calcultor log
+numpy log
+image for rect
+set image for rect svg
+svg image
+propagate to parent d3 click
+different stroke and fill opacity
+numpy assertalmostequal
+l2-norm
+numpy almost_equal
+isclose vs allclose
+numpy.testing assert_equal
+numpy.indexof
+iterate over rows of 3d array numpy
+iterate over rows in 3d numpy matrix
+numpy determinant of matrix
+numpy inverse
+expand tabs vim
+os x wlan mac address
+python loglevel
+flask jsonify
+jslint allow definition after use
+numpy linalgerror
+nelder-mead method
+scipy nelder-mead
+nelder-mead with 2D scipy
+np.average
+invalid value encountered in double_scalars
+functools python
+psiturk contact_address
+argmax Java
+argmax javascript
+set source with jquery
+python cache
+profile python
+profile decorator python
+jquery get first
+scipy.minimize
+python check if type is function
+select don't select anything by default
+select last row sqlite
+javascript merge objects
+psiturk debug condition
+javascript get type
+psiTurk.showPage
+python sqlite driver
+python sqlite3 fetch row as dictionary
+python sqlite3 fetch row as dictionary
+data format psiturk
+psiturk error 1010
+psiturk data format
+add gif to slideshow
+add gif to keynotes
+csvdictreader
+matplotlib scatter3d
+scatter cmap
+grayscale cmap matplotlib
+hit create psiturk
+duration must be a whole number psiturk
+failed to extend HIT.  please check the ID and try again
+fig.add_subplot
+ylabel matplotlib
+id_dsa vs .id_rsa
+digitalocean default user droplet
+ansible create user
+ansible make group
+set user for ansible command
+osx ansible 1.9 brew
+aws s3 ansible use local credentials
+ansible boto config
+ansible s3 commands using local credentials
+ansible credentials from boto
+ansible print all variables
+digitalocean droplet s3 permissions
+ansible extra-varas
+bullets in table markdown

@@ -2,6 +2,7 @@
 
 EVAL_DIR=eval
 PROTO_DIR=proto
+DEMO_DIR=demo
 PLANNING_DIR=planning
 BASE_FILE=base.md
 OUTPUT_FILE=index.md
@@ -25,3 +26,4 @@ cp $BASE_FILE $OUTPUT_FILE
 add_notes "Planning" $PLANNING_DIR ''
 add_notes "Evaluations" $EVAL_DIR eval
 add_notes "Prototypes" $PROTO_DIR proto
+add_notes "Demos" $DEMO_DIR demo
