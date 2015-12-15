@@ -3,7 +3,64 @@
 This review of related work is organized by themes seen in one or more works.
 It is designed to inform a new generation of synthesized programming help.
 
-## Information Needs can be Described by Common Questions
+## Information Needs Can Be Described by Common Questions
+
+Programmers have information needs both centered around code they're working with, and code they have yet to find.
+In their current form, Tutorons augment on code at the center of a programmer's attention.
+Existing research on programming search and comprehension illuminates common information needs tethered to code.
+Most obviously, programmers may wonder what a piece of code does (Stolee et al., Sadowski et al.).
+As Ko et al. (2004) point out, the output of end-user programming systems needs to be understandable---programmers will want to understand the behavior of their code.
+Programmers wonder why code isn't behaving as expected (Stolee et al., Sillito et al.).
+They also ask questions about the data it operates on (Sillito et al.)
+
+But programmers also ask questions for reasons beyond understanding it.
+First, they may want to find other relevant code.
+For instance, programmers ask where a referenced type or class is defined (Sadowski et al., Sillito et al.).
+Second, when collaborating, programmers want to know who altered or modified code (Fritz &amp; Murphy, Sadowski et al.).
+They wonder about how the style of the current code compares to the style of others' (Sadowski et al.).
+Third, to successfully run the code, programmers may want to know
+what dependencies the code has (Sadowski et al.)
+and how to pass data to a particular section of code (Sillito et al.)
+Finally, when programmers modify code,
+they ask about the differences between related pieces of code (Sillito et al.)
+and about how to move code into a class (Sillito et al.).
+
+In previous work, Tutorons aimed to promote understanding of what code does.
+This understanding was provided in the form of templates, synthesized prose, usage examples, and visualizations.
+Explanations were designed to answer these questions:
+(1) what is the purpose of this language and piece of code?
+(2) what does this code do?
+(3) what do each of the lexical or parse elements of the code do?
+I believed that if we included these elements in explanations, then programmers working with these examples would be better able to use and modify unfamiliar code.
+
+Currently, Tutorons do not assist with needs beyond code understanding.
+That means that the following questions are not addressed:
+Untouched tasks and information needs Tutorons don't touch include:
+1. helping programmers navigate to related pieces of code,
+2. helping programmers understand the history and ownership of code,
+3. assisting programmers in running code in their environment, with their data
+4. assisting programmers in understanding efficient ways to modify the code.
+
+For each of these needs, Tutorons could presumably be helpful.
+In the space below, I describe ideas for how Tutorons could satisfy these untouched information needs.
+Each task is accompanied with a description of 
+*what* help should be provided (form and content),
+*where* the help should be shown,
+*how* help would be generated (both sources of information and methods of generation),
+and *references* to related work on the topic.
+
+But first, some preliminaries.
+
+*Where do programmers typically express their information needs*
+Some researchers observed programmers and their needs from a development environment (e.g., Sillito et al.).
+Programmers were actively engaged in extending, modifying, or debugging code when they asked questions.
+Others elicited questions from programming search (e.g., Sadowski et al.).
+Some studies do not draw a fine line between the two activities, and presumably capture information needs from programmers that are both actively developing and searching for information (e.g., Ko et al., Brandt et al., Duala-Ekoko &amp; Robillard).
+For other research, it is difficult to tell where programmers experience information needs, as needs were elicited through surveys (e.g., Stolee et al., Umarji et al.), interviews (Fritz &amp; Murphy), or literature reviews (Li et al.).
+
+### Helping programmers navigate to related pieces of code
+
+### Outline
 
 * Takeaways
     * Programmers have information needs in two contexts (among others):
@@ -12,7 +69,7 @@ It is designed to inform a new generation of synthesized programming help.
                 * What does this piece of code do?  (Stolee et al., Sadowski et al.)
                 * Where is the referenced code defined? (Sadowski et al., Sillito et al.)
                 * What does this output mean? (Ko et al. "understanding")
-                * What's going wrong with this piece of code (Stolee et al., Sillito et al. subgraphs, Ko et al. "understanding")
+                * What's going wrong with this piece of code (Stolee et al., Sillito et al. subgraphs)
                 * What data is being modified /operated upon in this code? (Sillito et al.)
             * Building up a bigger picture
                 * What other code is this related to? (Sillito et al.)
@@ -32,6 +89,7 @@ It is designed to inform a new generation of synthesized programming help.
     * What this means for Tutorons
         * Must Tutorons-style help be tied to source code?  Could it be independent of source code?
         * Tutorons should be bi-directional.  Explanations (APIs) → usage examples, and usage examples → explanations.
+        * Interesting questions for Tutorons aren't only "what" (i.e. what questions should be answered), but also "where", "when", and "how"---how should the explanations should be shown?  Where should they be shown?  When do we show them to users?
 * Categorization schemes
     * type of problem that is being solved (e.g., debugging, finding features, tracking team progress)
         * Ko et al.'s: information barrier for debugging, selection barrier for choosing software
