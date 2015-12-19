@@ -2,6 +2,7 @@
 
 This is based on [Vision 5](vis5), a document that describes the future of Tutorons.
 Out of an intention to extend Tutorons to a larger academic community such as computer-supported collaborative work, this document proposes research that explores frontier, high-impact collaborative work research based on Tutorons.
+What are the important questions about collaborative knowledge cultivation and recall that further study can contribute to?
 
 ## Terminology
 * AAA: artifact-anchored annotation.  An annotation that is connected to a structured artifact on the web rather than unstructured text.  It can be applied to other artifacts elsewhere on the web that share some pattern with the original marked-up artifact.
@@ -51,6 +52,30 @@ The following categories were taken from the "Submitting Papers" section of the 
 
 ### A Toolkit for Composing Adaptive Annotations that Find and Explain Document Fragments Everywhere
 
+#### Prose
+
+People go through phases of indoctrination to new languages, crafts, and communities.
+(Or worse, they may be forever on their fringes, such as using statistics and math to perform statistics or machine learning.)
+These introductions may be met with frequent requests for clarifications during the person's behavior on the site.
+Failure to get questions answered can result in wasted time searching, and in extreme cases dropping projects.
+We propose reducing by 10x reduction in the frequency of information access failures, and a 10x improvement in speed of the time to access information clarifications that beginners are looking for.
+We believe this will lead to decreased frustration for learners in these communities.
+
+Currently, books and tutorials serve as introductions to a craft, and practice is needed to get to understand the language, practice, and terminology of a new community.
+But existing systems have neglected the ability of automation (and possibly NLP, site mining, common usage mining) to provide helpful web markups to answer most of the questions that beginners might have about online content.
+We believe that there has been yet to be work that takes a critical perspective of the value of shared annotations, and a view to how they would be most used for community newbies.
+
+We propose a toolkit with: ability to quarantine representative documents and learn a model for the document, development of simple explanations AND more complex explanations, and debugging examples for what is found based on the patterns and explanations generated (scrapes).
+Common Crawl search for first round.
+We vectorize documents based on style, tokens, and number of characters.
+Then we piggy back on an existing system like Hypothes.is or AnnotatorJS to show how this integrates with a larger community
+To evaluate the viability of this system, we have people build adaptive annotations for recipe ingredients, a new language, and Python builtins.
+We conduct a workshop with 4 people to elicit findings for the future.
+We will need access to a list of enthusiastic web hackers.
+I will spend 3 months developing prototypes, 1 month running a workshop, 1 month prototyping and testing the system.
+
+#### List
+
 Problem: People go through phases of indoctrination to new languages, crafts, and communities (or may be forever on their fringes, such as learning math).  These introductions may be met with frequent requests for clarifications during the person's behavior on the site.  Failure to get questions answered can result in wasted time searching, and in extreme cases dropping projects.
 Solution Impact: 10x reduction in the frequency of information access failures.  Decreased frustration in these communities.
 Current Approach: Books and tutorials for introductions to the craft.  Practice.  Structured resources.
@@ -71,12 +96,30 @@ Instead, it focuses on newbies to communities, a group that probably need freque
 * What crowd annotations systems can be built to support a world where Open Annotation's guidelines are fully implemented in the browser?
 * Find evidence for the benefits of online annotations.  When do they actually help people learn or understand material?  Are they better for personal use, and are shared annotations ever relevant?  If most shared annotations are irrelevant, maybe a person could enable certain types of annotations (either community or automatically generated) that they think would helpful to have in general.  If these annotations are available for &gt;80% of the cases where they want clarifications, then they're probably very helpful.
 * One thing that annotations can't help out with is a lack of attention and engagement with the material.  Sometimes the best thing to do (evidenced by my attention to the expected value today) is to read the content carefully, write it down, break it down, and synthesize.
+* How do people currently mark up and learn from the web?  How can we convert the urge to write personal notes (if there is any), to share website links and to click on the "Like" button toward collaborative markup and knowledge cultivation?
 
 ## Insights from ideation
 
 Annotations and community discussion is only necessary for when people get stuck.
 If there's a lower cost to moving to another document or just abandoning the tasks, people probably won't use collaborations or discussion.
 It's only when the information is the element in the critical path to getting a task done that we need to support knowledge sharing.
+
+Successful collaborative knowledge engineering can be judged with this question:
+**How easy is it for newcomers to apply the stored knowledge, and to design with it when the right time comes?**
+Therefore, we can see several steps contributing to the success of knowledge storage:
+
+1. How densely does this knowledge represent problems that the reader will need to solve?
+2. How well are these ideas represented by accurate mental models relevant to these problems?
+3. If the reader will need to recall this information while completing the task, how memorable and applicable is the knowledge?
+4. If the reader should draw upon this information for design and innovation in the future, how memorable and applicable is the knowledge?
+5. How well is the content described in terms the reader can understand?
+6. How **efficient** is the transfer of knowledge?  Is a **dense and practical understanding** conveyed in a short time?
+
+What this means is that relevant work may come from several places.
+One is in the successful design of books, tutorials, blog postings, and other instructional or educational texts.
+What are the fundamental guidelines for writing high-quality standalone texts for sharing knowledge?
+(Obviously, some texts are believed to be much more approachable than others, and it would be fascinating to understand what makes them so.)
+We can also take a perspective of recall and reuse based on theories of human cognition to determine what forms of storage are most useful.
 
 ### Components of the zeitgeist
 
