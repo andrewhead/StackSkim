@@ -15,10 +15,11 @@ The server must be restarted every time a new evaluation is created for that to 
 * [Planning 4: Brainstorms for User Interfaces](planning/vis4)
 * [Vision 3: Instructions for Effective Discovery and Assembly of Code for Beginning Systematic Software Development](planning/vis3)
 * [Vision 2: Abstracts Going Forward](planning/vis2)
+* [Vision 11: Researching Improved Authoring of Getting Started Guides](planning/vis11)
 * [Vision 10: Understanding the Lifetime of Documentation for Open Source Projects](planning/vis10)
 * [Vision 1: SQL Examples](planning/vis1)
 * [Related Work 3: Tutorial Mining](planning/rel3)
-* [Related Work 2: Writing Programming Documentation](planning/rel2)
+* [Related Work 2: Programmers Sharing Information](planning/rel2)
 * [Related Work 1: Programmer Information Needs](planning/rel1)
 * [Feedback from Peers on Tutorons](planning/feedback)
 * [Examples 1: Good Examples of pages that containt Tutorons](planning/examples)
@@ -40,6 +41,7 @@ The server must be restarted every time a new evaluation is created for that to 
 
 # Prototypes
 
+* [Prototype 18: A Repository of NPM README Files](proto/proto18)
 * [Prototype 17: Running CUTS to find tutorial topics](proto/proto17)
 * [Prototype 16: Convert between languages using Online Example Code](proto/proto16)
 * [Prototype 15: Converting syntax trees between languages](proto/proto15)

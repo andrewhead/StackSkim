@@ -1,5 +1,13 @@
 # Feedback from Peers on Tutorons
 
+## 2015-12-15: Meetup with Matthew
+
+* Brainstorming about Python explanations
+    * Some things like `sort` and `sorted` deserve to be described with a comparative example
+    * Could be great to have Tutoron inception: nested explanations
+    * Could be nice to describe arguments passed to a call
+        * How difficult would it be to trace the data path to a definition?
+
 ## 2015-12-9: Chat with Tom Yeh
 
 * Not everything meaningful is a CHI paper.  We should respect people who do non-CHI work that is meaningful.
