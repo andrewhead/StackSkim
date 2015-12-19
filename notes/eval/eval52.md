@@ -176,7 +176,20 @@ I suspect that almost everyone knows how to print a message, though probably ver
 
 ### Observations
 
-#### By subject
+#### By participant
+
+##### Participant 8: Jeremy Faludi
+
+The participant did not know any imperative languages besides Arduino, and I did not have an IDE ready.
+So, instead we worked with HTML.
+The participant was asked to:
+1. Display "hello world"
+2. Make a table of 2 rows and 2 columns, with contents of the numbers 1, 2, 3, and 4.
+3. Set the font size to 20
+4. Make a bulleted list with the numbers 1, 2, and 3
+
+The participant was able to do tasks 1, 2, and 4, and was able to show the HTML being rendered in the browser.
+This yields questions about whether structures like lists and tables from HTML might convert to lists and arrays in an imperative language.
 
 ### Errata
 
