@@ -10,9 +10,7 @@ import urlparse
 
 logging.basicConfig(level=logging.INFO, format="%(message)s")
 CACHE_NAME = 'packages'
-
 requests_cache.install_cache(CACHE_NAME)
-session = requests_cache.CachedSession(expire_after=60*60*24*7)
 
 
 def clean_url(url):
@@ -47,5 +45,6 @@ def throttle_hook(timeout=1.0):
 
 
 def get_session(timeout=1.0):
+    session = requests_cache.CachedSession(expire_after=60*60*24*7)
     session.hooks = {'response': throttle_hook(timeout)}
     return session

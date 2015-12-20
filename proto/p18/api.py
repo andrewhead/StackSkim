@@ -11,7 +11,9 @@ import cache
 
 
 logging.basicConfig(level=logging.INFO, format="%(message)s")
-
+default_requests_session = cache.get_session(timeout=1)
+default_requests_session.headers['User-Agent'] =\
+    "Andrew Head (for academic analysis) <andrewhead@eecs.berekeley.edu"
 
 lib_config = ConfigParser.ConfigParser()
 lib_config.read(os.path.expanduser(os.path.join('~', '.libraries_config')))

@@ -13,10 +13,18 @@ db = SqliteDatabase('packages.db')
 
 class Package(Model):
 
-    name = CharField()
-    repository_url = CharField(null=True)
-    page_no = IntegerField()
-    readme = TextField(default='')
+    name = CharField(index=True)
+    repository_url = CharField(null=True, default=None)
+    page_no = IntegerField(null=True, default=None)
+    readme = TextField(null=True, default=None)
+
+    # NPM data
+    description = CharField(null=True, default=None)
+    dependents = CharField(null=True, default=None)
+    dependencies = CharField(null=True, default=None)
+    day_download_count = IntegerField(null=True, default=None)
+    week_download_count = IntegerField(null=True, default=None)
+    month_download_count = IntegerField(null=True, default=None)
 
     # Github fields
     stargazers_count = IntegerField(null=True, default=None)
