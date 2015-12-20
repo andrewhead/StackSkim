@@ -40,6 +40,9 @@ def make_request(method, *args, **kwargs):
 
         try:
             res = method(*args, **kwargs)
+            if hasattr(res, 'status_code') and res.status_code == 404:
+                log_error("404")
+                res = None
             try_again = False
         except (slumber.exceptions.HttpNotFoundError):
             log_error("Not Found")
@@ -172,7 +175,7 @@ def fetch_npm_data(packages):
 
         if res is not None:
             page = BeautifulSoup(res.content, 'html.parser')
-            p.readme = page.select('div#readme')[0].text
+            p.readme = str(page.select('div#readme')[0])
             p.description = page.select('p.package-description')[0].text
             p.day_download_count = to_count(page.select('strong.daily-downloads')[0].text)
             p.week_download_count = to_count(page.select('strong.weekly-downloads')[0].text)
@@ -196,6 +199,11 @@ if __name__ == '__main__':
         '--npm-data',
         action='store_true',
         help="fetch Node.js data (READMES and downloads)"
+    )
+    parser.add_argument(
+        '--update',
+        action='store_true',
+        help="only update existing data (currently only for --npm-data"
     )
     parser.add_argument(
         '--lib-packages',
@@ -224,7 +232,11 @@ if __name__ == '__main__':
         create_tables()
         fetch_package_list()
     if args.npm_data:
-        fetch_npm_data(Package.select().order_by(fn.Random()))
+        if args.update:
+            packages = Package.select().where(Package.description != '')
+        else:
+            packages = Package.select().where(Package.readme >> None).order_by(fn.Random())
+        fetch_npm_data(packages)
     if args.lib_packages:
         create_tables()
         fetch_packagenames_from_libraryio(args.lib_package_count)
