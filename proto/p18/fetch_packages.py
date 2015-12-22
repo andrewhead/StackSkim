@@ -40,8 +40,8 @@ def make_request(method, *args, **kwargs):
 
         try:
             res = method(*args, **kwargs)
-            if hasattr(res, 'status_code') and res.status_code == 404:
-                log_error("404")
+            if hasattr(res, 'status_code') and res.status_code not in [200]:
+                log_error(str(res.status_code))
                 res = None
             try_again = False
         except (slumber.exceptions.HttpNotFoundError):

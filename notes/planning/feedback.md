@@ -1,5 +1,24 @@
 # Feedback from Peers on Tutorons
 
+## 2015-12-22: Checkin with Marti
+
+* Discussion items
+    * Question: What can we learn about writing great programming documentation from a data-driven approach
+    * Approach: NPM has 200,000 packages, each one has a README
+* Feedback
+    * The percentile plot was strange to read.  Marti wasn't expecting it to be an S-curve
+    * To move this toward some experiment
+        * Remember: to show causation, run a test of your own
+            * Example: release multiple tutorials online.  See which one gets the most traffic, which packages get the most downloads
+            * There's something unique about this methodology among data science.  Do more than counting.  Do science.
+    * If we considered the network of pages surrounding software, then we could incorporate the math I want to leverage
+    * The visualizations should include a separate category for "0 words", as there's a big difference between having none and one.
+* My additional thoughts I had before the meeting
+    * Additional features of interest include: how much of the language is task-oriented vs. feature-oriented
+    * What is the position of code blocks within a tutorial
+* TODOS
+    * Check if there's a bug in the code count
+
 ## 2015-12-15: Meetup with Matthew
 
 * Brainstorming about Python explanations

@@ -15,7 +15,7 @@ the presence of concrete tasks, code examples, and a large amount of descriptive
 I use the [Libraries.IO API](https://libraries.io/api#project-search) to perform a search for packages on npmjs.
 I save these to a local database.
 For each one, I save whether it has a README.
-For the top 1,000 packages, I fetch their README by using a `requests` call to Github.
+For the top 1,000 packages, I fetch their README with a call to the Github API.
 
 For each of these READMEs, I use `Python-Markdown` and BeautifulSoup to count the number of preformatted code blocks.
 I also use Treude et al.'s (2015) criteria for determining what language describes programming tasks.
@@ -47,12 +47,12 @@ There also appears to be a linear relationship between the number of code blocks
 
 #### Single Statistics
 
-* Code blocks: There is a median of 0 code blocks in READMEs (mean=1.93, min=0, max=45)
 * Words: There is a median of 599 words per README (mean=940, min=15, max=13,395)
-* Forks: There is a median of 163 forks per package (mean=744, min=4, max=38,180)
-* Contributions: There is a median of 42 contributions per package (mean=94, min=1, max=2,583)
+* Code blocks: There is a median of 0 code blocks in READMEs (mean=1.93, min=0, max=45)
 * Stars: there is a median of 1,083 stars per package (mean=4,227, min=2, max=90,207)
 * Open Issues: there is a median of 22 open issues per pacakge (mean=38, min=0, max=3,219)
+* Forks: There is a median of 163 forks per package (mean=744, min=4, max=38,180)
+* Contributions: There is a median of 42 contributions per package (mean=94, min=1, max=2,583)
 
 At a glance, most of the measures occur according to a power distribution.
 There does not seem to be strong relationships between the amount of code or words in a README and the stars or contributions for that project.
@@ -61,7 +61,7 @@ However, this might not be the case once we query all 200,000 projects and look 
 
 ### Errata
 
-Some of these values are wrong.
+Some of these data are wrong.
 When I visited the page for `mongoid`, I found that it has over 3,000 stars.
 But the data that I'm exploring only has two stars for it.
 
