@@ -6,8 +6,10 @@ Okay, the name is a work in progress.
 
 To view the notes:
 
-    cd notes
-    ./runserver.sh
+    brew install npm     # install npm
+    npm install -g harp  # install harp, the Markdown server
+    cd notes            
+    ./runserver.sh       # this creates a documentation index and runs the server
 
 Then go to `http://localhost:9000` in your browser.
 
@@ -33,8 +35,8 @@ See the experimental notes for that evaluation for how to run it.
 ## Contributing
 
 Develop with a [virtual environment](http://docs.python-guide.org/en/latest/dev/virtualenvs/) when possible.
-Have this be specific to your prototype or evaluation.
-Save the requirements for others to install later:
+You should have a separate virtual environment for each prototype or evaluation.
+When you commit your work, save the requirements for others to install later:
 
     pip freeze > reqs.txt
 
