@@ -1481,3 +1481,71 @@ javascript pause
 window.setTimeout
 beautifulsoup lxml
 latexmk command not found el capitan
+with function python
+os.mkdirs
+vim set line spacing
+npm api
+list of npm packages
+npm registry short
+session headers requests
+peewee .random()
+peewee .random() orm
+terminal-notifier not found el capitan
+http status codes
+os x automator get new file name
+automator request file name
+automator ask for name of new file
+append variables os x automator
+"take video snapshot" as png not tiff automator
+automator convert tiff
+automator "ask for finder items" front
+ask for folder applescript
+stanford-corenlp-python "Parse error"
+reset particle board
+el capitan opengl screensaver
+tutorial program a screensaver el capitan
+os x make screensaver from video
+tutorial program screensaver el capitan
+tutorial xcode screensaver el capitan
+screensaver doesn't work in this version of os x
+gl draw text
+nsbezier
+nstextview os x screensaver
+draw a string os x screensaver
+tutorial text screensaver os x
+no visible interface for NSMutableDictionary
+os x show image view
+os x screensaver image tutorial
+xcode add resource to project
+pathForResource os x
+log from os x screensaver
+debug os x screensaver
+tostring os x
+to string objective c
+initwithcontentsoffile
+drawInRect nsrect
+define array inline objective c
+NSForegroundColorAttributeName
+nsattributedstring os x
+setvalue to integer nsmutabledictionary
+nsattributedstring set font size
+nscolor set alpha
+drawRect z position objective c
+drawRect count number of times it was called
+os x objective c z order
+objective-c for loop
+mod operator objective-c
+negative mod objective-c
+exponent objective-c
+save item as image os x keynote
+drawAtPoint image objective c
+drawInRect image
+os xdrawInRect image
+os x drawInRect image
+objective-c sin
+mac os x make screensaver faster
+get size of view os x
+get size of view os x objective-c
+nscompositecopy
+cleaning out /lib/modules
+multiple stage entries for merged file
