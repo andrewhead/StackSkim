@@ -1,29 +1,12 @@
 # Related Work 2: Programmers Sharing Information
 
-## Code to Save
+## Summary
 
-    # This scrapes 1000 titles from ICSE
-    # It seems like we can only fetch 1000 lines at a time
-    # Change 'f' to set the starting point of the download
-    resp = requests.get(
-        'http://dblp.uni-trier.de/search/publ/inc', 
-        params={
-            'q': 'venue:ICSE:',
-            'h': 1000,
-            'f': '0',
-            's': 'yvpc'
-        })
-
-    soup = BeautifulSoup(resp.content, 'lxml')
-    entries = soup.select('.entry')
-
-    # This method gets the title and year of the work
-    for e in entries:
-        title = e.select('span.title')[0].text
-        year = e.select('span[itemprop="datePublished"]')[0].text
-        print year, title
-
-
+This related work has been aborted.
+This is due to a changing framework of what literature is valuable to see.
+I have learned the OOPSLA is not a rich venue about information sharing.
+However, TOSEM and ICSE have a lot of articles about information sharing.
+Some preliminary attempts to filter out unrelated titles can be found in the `filtered` directory.
 
 ## Technique
 
@@ -52,6 +35,9 @@ Additional publications that may be related include:
 * Cooperative and Human Aspects on Software Engineering (CHASE)
 * Big Data Software Engineering (BIGDSE)
 * Automated Software Engineering (ASE)
+
+Due to the difficulty of completing this evaluation and changes to the current topics of interest,
+I have updated the procedure for related work in [Related Work 4](rel4)
 
 ## Related Works
 
