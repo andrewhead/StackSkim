@@ -1,5 +1,16 @@
 # Feedback from Peers on Tutorons
 
+## 2015-12-22: Meetup with Dave Mellis
+
+* Has anybody done work to improve how people develop with and understand code with multiple languages or frameworks?
+    * For example, you have to use half a dozen frameworks to do modern web programming.  There's probably docs missing that describe how you should use these frameworks together
+    * There's details missing about how to compose these frameworks, or convert the output of one to be the input of another.  Think about accessing a node out of a jQuery list and passing it to a JavaScript function
+    * Can you transpile one of the languages into a readable version of the other, to make the ultimate code intent come through?
+    * How do you help the representations morph into one another?  Can you make representations that fit the information needs of multiple languages?
+* Potpourri ideas
+    * Generating best practices documents for teams based on what they _actually_ practice (for example, edit the CSS documents)
+    * What questions that programmers ask on StackOverflow don't have a good way of answering them in the IDE?  How can we make them better supported?
+
 ## 2015-12-22: Checkin with Marti
 
 * Discussion items

@@ -15,9 +15,14 @@ The server must be restarted every time a new evaluation is created for that to 
 * [Planning 4: Brainstorms for User Interfaces](planning/vis4)
 * [Vision 3: Instructions for Effective Discovery and Assembly of Code for Beginning Systematic Software Development](planning/vis3)
 * [Vision 2: Abstracts Going Forward](planning/vis2)
+* [Vision 13: Costs and Benefits of Project Proposals](planning/vis13)
+* [Vision 12: Problems, Contexts, Devices, and Theory](planning/vis12)
 * [Vision 11: Researching Improved Authoring of Getting Started Guides](planning/vis11)
 * [Vision 10: Understanding the Lifetime of Documentation for Open Source Projects](planning/vis10)
 * [Vision 1: SQL Examples](planning/vis1)
+* [Related Work 6: Community Opinions on Programmers and External Memory](planning/rel6)
+* [Related Work 5: Industry Opinions on README Design](planning/rel5)
+* [Related Work 4: Programmers Sharing Information](planning/rel4)
 * [Related Work 3: Tutorial Mining](planning/rel3)
 * [Related Work 2: Programmers Sharing Information](planning/rel2)
 * [Related Work 1: Programmer Information Needs](planning/rel1)
@@ -26,6 +31,7 @@ The server must be restarted every time a new evaluation is created for that to 
 
 # Evaluations
 
+* [Evaluation 58: Challenges for Writing Getting Started Documentation](eval/eval58)
 * [Evaluation 57: Information Needs of Programmers Following Tutorials](eval/eval57)
 * [Evaluation 56: Steps to execute pieces of example code (Personal)](eval/eval56)
 * [Evaluation 55: Programmers' Information Needs](eval/eval55)
