@@ -15,6 +15,7 @@ The server must be restarted every time a new evaluation is created for that to 
 * [Planning 4: Brainstorms for User Interfaces](planning/vis4)
 * [Vision 3: Instructions for Effective Discovery and Assembly of Code for Beginning Systematic Software Development](planning/vis3)
 * [Vision 2: Abstracts Going Forward](planning/vis2)
+* [Vision 12: Problems, Contexts, Devices, and Theory](planning/vis12)
 * [Vision 11: Researching Improved Authoring of Getting Started Guides](planning/vis11)
 * [Vision 10: Understanding the Lifetime of Documentation for Open Source Projects](planning/vis10)
 * [Vision 1: SQL Examples](planning/vis1)
