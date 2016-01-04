@@ -166,13 +166,10 @@ def fetch_package_list():
         if link is not None: # Only fetch package if it has a link to its own page.
             # Reformat spacing in extracted name.
             package_name = link.text.replace(u'\xa0', ' ')
-            logging.info("New package name: %s", package_name)
             Package.get_or_create(name=package_name)
 
 
 def fetch_pypi_data(packages):
-    END_OF_README = '<a name="downloads">&nbsp;</a>'
-
     for p in packages:
         # Turn package name into correct URL suffix.
         # Assumes p.name does not have invalid characters for a URL, such as "
@@ -189,7 +186,6 @@ def fetch_pypi_data(packages):
             # Package description is the first italicized <p> tag on a PyPI
             # package doc.
             p.description = page.find('p', style="font-style: italic").text
-            logging.info("Package description: %s", p.description)
 
             # README, if it exists, comes after the above italicized package
             # description and ends with END_OF_README.
@@ -202,19 +198,15 @@ def fetch_pypi_data(packages):
             lines = content[readme_start_index:].split('\n')
             readme_lines = []
             for line in lines:
-                if line.strip() == END_OF_README:
+                if line.strip() == '<a name="downloads">&nbsp;</a>':
                     break
                 readme_lines.append(line)
             p.readme = '\n'.join(readme_lines)
 
             download_spans = page.select('ul.nodot')[0].findAll('span')
             # There should be 3 spans: day, week, and month.
-            p.day_download_count, p.week_download_count, p.month_download_count = \
+            p.day_download_count, p.week_download_count, p.month_download_count =\
                 [int(span.text) for span in download_spans]
-
-            logging.info("Day download count: %d", p.day_download_count)
-            logging.info("Week download count: %d", p.week_download_count)
-            logging.info("Month download count: %d", p.month_download_count)
 
             p.save()
 
