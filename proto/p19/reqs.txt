@@ -4,3 +4,4 @@ peewee==2.7.4
 requests==2.8.1
 requests-cache==0.4.10
 slumber==0.7.1
+wheel==0.26.0
