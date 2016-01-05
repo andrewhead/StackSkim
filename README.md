@@ -34,13 +34,37 @@ See the experimental notes for that evaluation for how to run it.
 
 ## Contributing
 
+### Follow This Development Workflow
+
+1. Create a new branch for doing your work: `git checkout -b <branchname>`
+2. Do your local work and commit.  All new features or bug fixes should be accompanied by tests.
+3. Run the test suite to make sure everything still passes
+4. Push your branch
+4. Submit a pull request to merge into master ([see here](https://help.github.com/articles/using-pull-requests/)).  Assign the pull request to someone else on the team who should verify the style and design choices of your code.
+6. Respond to any comments you get from reviewers
+7. Once your pull request is accepted, merge your pull request into master
+8. Check out the master branch and verify that all tests still pass
+
+### Run Code In a Virtual Environment
+
 Develop with a [virtual environment](http://docs.python-guide.org/en/latest/dev/virtualenvs/) when possible.
 You should have a separate virtual environment for each prototype or evaluation.
 When you commit your work, save the requirements for others to install later:
 
     pip freeze > reqs.txt
 
+### Check the Style of Your Code Against Some Standard
+
+In general, to improve the readability of your code, write it according to some standard.
+Your Python code should be checked with `flake8`, with a line length of 100 characters.
+You can run the `flake8` check on all code in the current directory and its sub-directories like so:
+
+    pip install flake8
+    flake8 --max-line-length=100 .
+
+Run this check before you push your feature or your reviewer will ask you to when they review.
+
 ## Contributors
 
-* Andrew Head
+* Andrew Head `<andrewhead@eecs.berkeley.edu>`
 * Austin Le
