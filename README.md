@@ -67,4 +67,4 @@ Run this check before you push your feature or your reviewer will ask you to whe
 ## Contributors
 
 * Andrew Head `<andrewhead@eecs.berkeley.edu>`
-* Austin Le
+* Austin Le `<austinhle@berkeley.edu>`
