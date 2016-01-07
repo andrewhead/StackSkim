@@ -7,7 +7,10 @@
 In running [Prototype 18](../proto/proto18) on READMEs from around 7,000 NPM packages, I saw an unexpected trend:
 <img src="../assets/eval60-code-count-trends.png" width="800px"/>
 
-Only a small fraction of the READMEs queried had an odd number of code examples.
+This graphic was created from the Prototype 18 data using Tableau.
+See the file `data/exploratory-random.twb` in the Prototype 18 folder.
+
+The phenomenon I observed was that only a small fraction of the READMEs queried had an odd number of code examples.
 This seems strange.
 While we expect the roughly exponential decline relationship we see in the number of code blocks and their frequency,
 there is no obvious reason to explain why there is more likely to be an even number of code examples than an odd number.
@@ -22,6 +25,7 @@ If not, then I need to revisit the code that performs the analysis of counting c
 
 I produce two findings about how we compute code blocks for the READMEs:
 * Many of the READMEs are wrongly marked by the `analysis.py` script in [Prototype 18](../proto/proto18) as having two code blocks instead of one
+* The `analysis.py` script in Prototype 18 needlessly renders README scripts from Markdown to HTML, when they are HTML when we scrape them.  This may add additional markup to the READMEs.
 * The NPM webpage renderer likely inserts additional levels of the `pre` tag for code blocks in Markdown scripts.  I suspect this might be performed by `highlight.js`, which NPM may be using for their syntax highlighting.
 
 My long-term recommendation to solve this problem is to fetch READMEs in Markdown form directly from the NPM registry.
@@ -38,7 +42,7 @@ You will want to download it from there before running any of the following anal
 ### Expectation
 
 I find out that in fact there is a bug somewhere in the code.
-Of the random sample of READMEs that have two code examples in them, I find that about actually have an odd number of examples.
+Of the random sample of READMEs that have two code examples in them, I find that about half actually have an odd number of examples.
 
 ### Sqlite Verfication of trend
 
@@ -163,7 +167,7 @@ Then, I randomly sample examples that were reported to have two code examples.
     SELECT name FROM package WHERE code_count = 2 ORDER BY RANDOM() LIMIT 50;
 
 I store the results in a file named `random_packages.txt`
-I write a utility, `view_readmes.py` that opens up the Markdown for each package's README with the utility `grip`.
+I write a utility, `view_readmes.py` that opens up the HTML for each package's README and highlights code blocks (`pre` preformatted blocks).
 To run it use the command:
 
     ./view_readmes.py random_packages.txt
@@ -235,12 +239,3 @@ Some of the READMEs have code blocks that *don't* have a doubly-nested `pre` for
 For example, `uservoice-nodejs` has two code blocks.
 Neither of them has a doubly-nested `pre`.
 Only one of these code blocks has a `code` tag within the `pre` tag.
-
-### Errata: I was not rendering Markdown files
-
-All of the READMEs that I was writing out to file were HTML.
-That means that they were already rendered by the NPM site before they appeared here.
-It was unnecessary to use `grip`.
-All I really needed to do was display the HTML pages in some browser.
-Therefore, the extension of all of the files with the `.md` extension is a misnomer---all of them are HTML files.
-Therefore, maybe the reason that these READMEs have a unexpected doubly-nested `pre` tags is due to NPMs renderer.

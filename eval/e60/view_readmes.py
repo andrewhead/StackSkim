@@ -7,8 +7,7 @@ import argparse
 import os.path
 import codecs
 from models import Package
-from grip import serve
-import ConfigParser
+import webbrowser
 
 
 logging.basicConfig(level=logging.INFO, format="%(message)s")
@@ -16,11 +15,29 @@ README_DIR = 'readmes'
 if not os.path.exists(README_DIR):
     os.makedirs(README_DIR)
 
-# Github API credentals, as grip relies on Github API
-gh_config = ConfigParser.ConfigParser()
-gh_config.read(os.path.expanduser(os.path.join('~', '.github', 'github.cfg')))
-gh_username = gh_config.get('auth', 'username')
-gh_password = gh_config.get('auth', 'password')
+
+def write_readme(path, text):
+
+    with codecs.open(path, 'w', encoding='utf8') as readme:
+
+        # To read spaces properly in the texts that we scraped, the browser needs to be told
+        # to read the text as UTF-8.
+        readme.write('<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />\n')
+
+        # Add styles to the README to make the task of counting code blocks easier.
+        readme.write("\n".join([
+            "<style>",
+            "  pre {",
+            "    background-color: grey;",  # make <pre> blocks grey to easily count them
+            "  }",
+            "",
+            "  body {",
+            "    margin: 100px;",  # add margin around content to improve readability
+            "  }",
+            "",
+            "</style>"
+        ]))
+        readme.write(text)
 
 
 def main(package_list_path):
@@ -32,22 +49,13 @@ def main(package_list_path):
             package_name = line.strip()
             package = Package.get(Package.name == package_name)
 
-            readme_path = os.path.join(README_DIR, package.name) + '.md'
-            with codecs.open(readme_path, 'w', encoding='utf8') as readme:
-                readme.write(package.readme)
+            readme_path = os.path.join(README_DIR, package.name) + '.html'
+            write_readme(readme_path, package.readme)
 
             print "====Showing README for package", package_name
-            print "====Press Ctrl+C to continue."
-            try:
-                serve(
-                    path=readme_path,
-                    port=8080,
-                    browser=True,
-                    username=gh_username,
-                    password=gh_password,
-                )
-            except KeyboardInterrupt:
-                pass
+            print "====Press Enter to continue."
+            webbrowser.open("file://" + os.path.abspath(readme_path))
+            raw_input()  # wait for user to type <Enter>
 
         print "You have viewed all packages!"
 
