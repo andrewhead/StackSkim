@@ -3,8 +3,7 @@
 
 from __future__ import unicode_literals
 import logging
-from peewee import Model, SqliteDatabase,\
-    CharField, IntegerField, TextField, ForeignKeyField, BooleanField
+from peewee import Model, SqliteDatabase, CharField, IntegerField, TextField, ForeignKeyField
 
 
 logging.basicConfig(level=logging.INFO, format="%(message)s")
@@ -23,14 +22,6 @@ class Package(Model):
     week_download_count = IntegerField(null=True, default=None)
     month_download_count = IntegerField(null=True, default=None)
 
-    # Github fields
-    stargazers_count = IntegerField(null=True, default=None)
-    forks_count = IntegerField(null=True, default=None)
-    open_issues_count = IntegerField(null=True, default=None)
-    has_wiki = BooleanField(null=True, default=None)
-    subscribers_count = IntegerField(null=True, default=None)
-    github_contributions_count = IntegerField(null=True, default=None)
-
     class Meta:
         database = db
 
@@ -38,8 +29,8 @@ class Package(Model):
 class ReadmeAnalysis(Model):
 
     package = ForeignKeyField(Package)
-    code_count = IntegerField(default=-1)
-    word_count = IntegerField(default=-1)
+    code_count = IntegerField(default=None)
+    word_count = IntegerField(default=None)
 
     class Meta:
         database = db
