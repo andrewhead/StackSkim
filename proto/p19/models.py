@@ -12,8 +12,6 @@ db = SqliteDatabase('packages.db')
 
 class Package(Model):
     name = CharField(index=True)
-    repository_url = CharField(null=True, default=None)
-    page_no = IntegerField(null=True, default=None)
     readme = TextField(null=True, default=None)
 
     # PyPI data
@@ -27,7 +25,6 @@ class Package(Model):
 
 
 class ReadmeAnalysis(Model):
-
     package = ForeignKeyField(Package)
     code_count = IntegerField(default=None)
     word_count = IntegerField(default=None)
