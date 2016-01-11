@@ -15,7 +15,7 @@ default_requests_session.headers['User-Agent'] =\
     "Austin Le (for academic analysis) <austinhle@berkeley.edu>"
 
 gh_config = ConfigParser.ConfigParser()
-gh_config.read(os.path.expanduser(os.path.join('~', '.gitconfig')))
+gh_config.read(os.path.expanduser(os.path.join('~', '.github', 'github.cfg')))
 gh_username = gh_config.get('auth', 'username')
 gh_password = gh_config.get('auth', 'password')
 

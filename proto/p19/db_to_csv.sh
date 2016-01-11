@@ -11,7 +11,7 @@ SELECT
   description,
   day_download_count,
   week_download_count,
-  month_download_count,
+  month_download_count
 FROM package
 WHERE readme IS NOT NULL;
 

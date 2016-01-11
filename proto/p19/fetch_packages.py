@@ -11,12 +11,11 @@ from bs4 import BeautifulSoup
 
 from peewee import fn
 from models import Package, create_tables
-from api import LibrariesIo, Github, default_requests_session
+from api import Github, default_requests_session
 
 
 logging.basicConfig(level=logging.INFO, format="%(message)s")
 github = Github()
-libraries_io = LibrariesIo()
 
 
 def make_request(method, *args, **kwargs):
@@ -65,10 +64,17 @@ def fetch_package_list():
         default_requests_session.get,
         "https://pypi.python.org/pypi?%3Aaction=index",
     )
+
+    # Use BeautifulSoup to parse the HTML and find the package names.
     page = BeautifulSoup(res.content, 'html.parser')
     package_table = page.find('table')
     all_rows = package_table.findAll('tr')
     # Each row represents a single PyPI package.
+
+    logging.info("====There are currently %d packages on PyPI.", len(all_rows) - 1)
+
+    num_fetched = 0
+
     for row in all_rows:
         # Each row has 2 columns, a name (hyperlinked) and a description.
         link = row.find('a')
@@ -77,9 +83,19 @@ def fetch_package_list():
             # Reformat spacing in extracted name.
             package_name = link.text.replace(u'\xa0', ' ')
             Package.get_or_create(name=package_name)
+            num_fetched += 1
+            logging.info("Fetched %s.", package_name)
+            if num_fetched % 10 == 0:
+                logging.info("%d packages fetched.", num_fetched)
+
+    logging.info("====Done fetching package list.")
 
 
 def fetch_pypi_data(packages):
+    logging.info("Fetching PyPI data for %d packages", len(packages))
+
+    num_fetched = 0
+
     for p in packages:
         # Turn package name into correct URL suffix.
         # Assumes p.name does not have invalid characters for a URL, such as "
@@ -87,37 +103,34 @@ def fetch_pypi_data(packages):
 
         res = make_request(
             default_requests_session.get,
-            "https://pypi.python.org/pypi/{pkg}".format(pkg=formatted_name),
+            "https://pypi.python.org/pypi/{pkg}/json".format(pkg=formatted_name),
         )
 
         if res is not None:
-            page = BeautifulSoup(res.content, 'html.parser')
+            try:
+                package_json = res.json()
+            except ValueError:
+                logging.warn("No JSON Object Could Be Decoded")
 
-            # Package description is the first italicized <p> tag on a PyPI package doc.
-            p.description = page.find('p', style="font-style: italic").text
+            package_info = package_json['info']
 
-            # README, if it exists, comes after the above italicized package description and ends
-            # with END_OF_README.
+            download_info = package_info['downloads']
+            p.day_download_count = download_info['last_day']
+            p.week_download_count = download_info['last_week']
+            p.month_download_count = download_info['last_month']
 
-            # Explicitly decode content into utf-8, rather than default ascii.
-            content = res.content.decode('utf-8')
-
-            start_of_readme = '<p style="font-style: italic">' + p.description + '</p>'
-            readme_start_index = content.find(start_of_readme) + len(start_of_readme)
-            lines = content[readme_start_index:].split('\n')
-            readme_lines = []
-            for line in lines:
-                if line.strip() == '<a name="downloads">&nbsp;</a>':
-                    break
-                readme_lines.append(line)
-            p.readme = '\n'.join(readme_lines)
-
-            download_spans = page.select('ul.nodot')[0].findAll('span')
-            # There should be 3 spans: day, week, and month.
-            p.day_download_count, p.week_download_count, p.month_download_count =\
-                [int(span.text) for span in download_spans]
+            # The summary key is the brief description of the package, in just a few lines.
+            p.description = package_info['summary']
+            # The description key includes details such as installation, usage, and examples.
+            p.readme = package_info['description']
 
             p.save()
+
+            num_fetched += 1
+            if num_fetched % 10 == 0:
+                logging.info("Done fetching %d packages.", num_fetched)
+
+    logging.info("====Done retrieving package data for all packages.")
 
 
 if __name__ == '__main__':
@@ -147,5 +160,6 @@ if __name__ == '__main__':
         if args.update:
             packages = Package.select().where(Package.description != '')
         else:
-            packages = Package.select().where(Package.readme >> None).order_by(fn.Random())
+            # packages = Package.select().where(Package.readme >> None).order_by(fn.Random())
+            packages = Package.select().where(Package.readme >> None)
         fetch_pypi_data(packages)
