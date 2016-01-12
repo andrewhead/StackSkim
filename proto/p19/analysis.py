@@ -29,7 +29,7 @@ def main():
         # characters after the special marker ::.
 
         # This may prove to be a broken heuristic. In that case, consider using Sphinx:
-        # http://www.sphinx-doc.org/en/stable/index.html
+        # http://www.sphinx-doc.org/en/stable/index.html.
         block_count = len(re.findall('::.*\\n\\n', p.readme))
 
         try:
