@@ -69,12 +69,12 @@ def fetch_package_list():
     page = BeautifulSoup(res.content, 'html.parser')
     package_table = page.find('table')
     all_rows = package_table.findAll('tr')
-    # Each row represents a single PyPI package.
 
     logging.info("====There are currently %d packages on PyPI.", len(all_rows) - 1)
 
     num_fetched = 0
 
+    # Each row represents a single PyPI package.
     for row in all_rows:
         # Each row has 2 columns, a name (hyperlinked) and a description.
         link = row.find('a')
@@ -84,11 +84,10 @@ def fetch_package_list():
             package_name = link.text.replace(u'\xa0', ' ')
             Package.get_or_create(name=package_name)
             num_fetched += 1
-            logging.info("Fetched %s.", package_name)
             if num_fetched % 10 == 0:
                 logging.info("%d packages fetched.", num_fetched)
 
-    logging.info("====Done fetching package list.")
+    logging.info("====Done fetching package list. There were %d packages.", num_fetched)
 
 
 def fetch_pypi_data(packages):
@@ -130,7 +129,7 @@ def fetch_pypi_data(packages):
             if num_fetched % 10 == 0:
                 logging.info("Done fetching %d packages.", num_fetched)
 
-    logging.info("====Done retrieving package data for all packages.")
+    logging.info("====Done retrieving package data for all packages. %d packages had data.", num_fetched)
 
 
 if __name__ == '__main__':
@@ -160,6 +159,5 @@ if __name__ == '__main__':
         if args.update:
             packages = Package.select().where(Package.description != '')
         else:
-            # packages = Package.select().where(Package.readme >> None).order_by(fn.Random())
             packages = Package.select().where(Package.readme >> None)
         fetch_pypi_data(packages)

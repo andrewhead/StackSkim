@@ -3,8 +3,6 @@
 
 from __future__ import unicode_literals
 import logging
-import markdown
-from bs4 import BeautifulSoup
 import re
 
 from models import create_tables, Package, ReadmeAnalysis
